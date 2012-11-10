@@ -10,8 +10,8 @@
 -- Plants are from http://blender-archi.tuxfamily.org/Greenhouse
 -- and are subject to creative commons license, http://creativecommons.org/licenses/by/3.0/
 
-display.setStatusBar( display.HiddenStatusBar )
-
+display.setStatusBar( display.HiddenStatusBar )--inclure les autres fichiers LUAlocal gameUI = require("gameUI")--Utilisation de font en fonction du device
+labelFont = gameUI.newFontXP{ ios="Zapfino", android=native.systemFont }system.activate( "multitouch" )
 -- The sky as background
 local sky = display.newImage( "sky.jpg" )
 
@@ -60,24 +60,14 @@ tree[8]:setReferencePoint( display.BottomCenterReferencePoint )
 tree[8].x = 420; tree[8].y = baseline
 tree[8].dx = 0.8
 
--- an image sheet with a cat
-local sheet1 = graphics.newImageSheet( "runningcat.png", { width=512, height=256, numFrames=8 } )
-
--- play 8 frames every 1000 ms
-local instance1 = display.newSprite( sheet1, { name="cat", start=1, count=8, time=1000 } )
-instance1.x = display.contentWidth / 4 + 40
-instance1.y = baseline - 75
-instance1.xScale = .5
-instance1.yScale = .5
-instance1:play()
 
 -- A sprite sheet with a green dude
-local sheet2 = graphics.newImageSheet( "greenman.png", { width=128, height=128, numFrames=15 } )
+local sheet2 = graphics.newImageSheet( "mario2.png", { width=128, height=128, numFrames=3 } )
 
 -- play 15 frames every 500 ms
-local instance2 = display.newSprite( sheet2, { name="man", start=1, count=15, time=500 } )
-instance2.x = 3 * display.contentWidth / 4 + 30
-instance2.y = baseline - 55
+local instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=500 } )
+instance2.x = 50
+instance2.y = baseline -40
 instance2:play()
 
 

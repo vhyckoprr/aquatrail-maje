@@ -1,9 +1,9 @@
 application =
 {
 content =
-{
-width = 320,
-height = 480,
-scale = "zoomEven"
-},
+	{
+		width = 320,
+		height = 480,
+		scale = "zoomEven"
+	},
 }
