@@ -68,9 +68,10 @@ local sheet2 = graphics.newImageSheet( "mario2.png", { width=128, height=128, nu
 local instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=500 } )
 instance2.x = 50
 instance2.y = baseline -40
-instance2:play()
-
-
+instance2:play()local function spawnDisk( event )	print("add event listener touch")
+	local phase = event.phase	if "ended" == phase then		instance2.x = event.x; instance2.y = event.y;		instance2:addEventListener ( "touch", dragBody ) -- make object draggable	end	return true	end
+--sheet2:addEventListener( "touch", dragBody ) -- make object draggable
+
 -- Grass
 -- This is doubled so we can slide it
 -- When one of the grass images slides offscreen, we move it all the way to the right of the next one.
@@ -113,6 +114,12 @@ local function move(event)
 		end
 	end
 end
-
--- Start everything moving
+local function dragBody( event )	print("that good")
+	return gameUI.dragBody( event )
+	
+	-- Substitute one of these lines for the line above to see what happens!
+	--gameUI.dragBody( event, { maxForce=400, frequency=5, dampingRatio=0.2 } ) -- slow, elastic dragging
+	--gameUI.dragBody( event, { maxForce=20000, frequency=1000, dampingRatio=1.0, center=true } ) -- very tight dragging, snaps to object center
+end
+-- Start everything movingsky:addEventListener( "touch", spawnDisk ) -- touch the screen to create disks
 Runtime:addEventListener( "enterFrame", move );
