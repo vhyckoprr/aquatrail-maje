@@ -1,10 +1,10 @@
-application =
+-- cpmgen build.settings
+settings =
 {
-	content =
+	orientation =
 	{
-		width = 320,
-		height = 480,
-		scale = "zoomStretch",
-		fps = 60
+		default ="landscapeRight",
 	},
+
+}
 }
