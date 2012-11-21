@@ -1,0 +1,22 @@
+	{ 
+		
+		"tutorial16": [
+			
+				{
+					"density": 2, "friction": 0, "bounce": 0, 
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   161, 319.5  ,  224, 223.5  ,  351.5, 192  ,  376, 191.5  ,  383, 196.5  ,  383.5, 319  ]
+				}  ,
+				{
+					"density": 2, "friction": 0, "bounce": 0, 
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   351.5, 192  ,  224, 223.5  ,  282, 164.5  ,  287, 160.5  ,  302, 159.5  ,  320, 160.5  ]
+				}  ,
+				{
+					"density": 2, "friction": 0, "bounce": 0, 
+					"filter": { "categoryBits": 1, "maskBits": 65535 },
+					"shape": [   160.5, 228  ,  168, 223.5  ,  224, 223.5  ,  161, 319.5  ]
+				}  
+		]
+		
+	}

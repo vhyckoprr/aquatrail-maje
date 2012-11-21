@@ -1,0 +1,17 @@
+-- build.settings for project: LimeExemples
+-- Managed with http://CoronaProjectManager.com
+-- Copyright 2012 . All Rights Reserved.
+
+settings = {
+	orientation =
+	{
+		default = "landscapeRight",
+	},
+	iphone =
+	{
+		plist=
+		{
+			--UIStatusBarHidden=true,
+		},
+	},
+}

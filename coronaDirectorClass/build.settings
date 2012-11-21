@@ -1,12 +1,14 @@
 -- build.settings for project: ChangeScreen
 -- Managed with http://CoronaProjectManager.com
 -- Copyright 2012 . All Rights Reserved.
-
-settings = {
+
+settings =
+{
 	orientation =
 	{
-		--default = "landscapeRight",
+		default ="landscapeRight",
 	},
+
 	iphone =
 	{
 		plist=

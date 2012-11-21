@@ -1,0 +1,87 @@
+[
+	{
+		"name":"Hello World",
+		"description":"A small map just to get you going.",
+		"link":"http://www.justaddli.me/downloads/HelloWorld.zip",
+		"file":"SimpleMap.tmx",
+		"useCulling":true,
+		"isIncluded":true
+	},
+	{
+		"name":"Animations",
+		"description":"Simple animations, both frame and time based, all created in Tiled.",
+		"link":"http://www.justaddli.me/downloads/Animations.zip",
+		"file":"Animations.tmx",
+		"useCulling":true,
+		"isIncluded":true
+	},
+	{
+		"name":"Physics Slide",
+		"description":"A simple physics slide, weeeeeeeeee! Auto-Camera tracking.",
+		"link":"http://www.justaddli.me/downloads/PhysicsSlide.zip",
+		"file":"PhysicsSlide.tmx",
+		"usesPhysics":true,
+		"useCulling":true,
+		"isIncluded":true
+	},	
+	{
+		"name":"Physics Towers",
+		"description":"Physics bodies can all be defined directly in Tiled without any code.",
+		"link":"http://www.justaddli.me/downloads/Physics.zip",
+		"file":"Physics.tmx",
+		"usesPhysics":true,
+		"useCulling":true,
+		"isIncluded":true
+	},
+	{
+		"name":"Multiple Tilesets",
+		"description":"Just a simple map that shows off multilple tilesets and extra height.",
+		"link":"http://www.justaddli.me/downloads/MultipleTilesets.zip",
+		"file":"MultipleTilesets.tmx",
+		"useCulling":true,
+		"isIncluded":true
+	},
+	{
+		"name":"Parallax Scrolling",
+		"description":"A simple platformer style map with parallax scrolling.",
+		"link":"http://www.justaddli.me/downloads/BasicParallax.zip",
+		"file":"BasicParallax.tmx",
+		"usesPhysics":true,
+		"useCulling":false,
+		"isIncluded":true
+	},	
+	{
+		"name":"RPG?",
+		"description":"An RPG style map.",
+		"link":"http://www.justaddli.me/downloads/RPG.zip",
+		"file":"RPG.tmx",
+		"useCulling":true,
+		"isIncluded":false
+	},
+	{
+		"name":"Isometric",
+		"description":"An Isometric map.",
+		"link":"http://www.justaddli.me/downloads/Isometric.zip",
+		"file":"isometric.tmx",
+		"useCulling":false,
+		"useClamping":false,
+		"isIncluded":false
+	},
+	{
+		"name":"Perspective Walls",
+		"description":"A simple orthogonal map with an interesting perspective.",
+		"link":"http://www.justaddli.me/downloads/Perspective.zip",
+		"file":"perspective_walls.tmx",
+		"backColour":[0, 0, 0],
+		"useCulling":false,
+		"isIncluded":true
+	},
+	{
+		"name":"Huge Map",
+		"description":"A huge, but basic, map for performance testing.",
+		"link":"http://www.justaddli.me/downloads/HugeMap.zip",
+		"file":"HugeMap.tmx",
+		"useCulling":true,
+		"isIncluded":false
+	}
+]
