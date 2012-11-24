@@ -14,12 +14,6 @@ display.setStatusBar( display.HiddenStatusBar )
 
 --inclure les autres fichiers LUA
 local gameUI = require("gameUI")
-local Gesture = require("lib_gesture")
-
-
-local pointsTable = {}
-local line
-local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
 
 --Utilisation de font en fonction du device
 labelFont = gameUI.newFontXP{ ios="Zapfino", android=native.systemFont }
@@ -27,10 +21,7 @@ labelFont = gameUI.newFontXP{ ios="Zapfino", android=native.systemFont }
 system.activate( "multitouch" )
 
 
--- 
---  DECOR
---
---
+-- The sky as background
 local sky = display.newImage( "sky.jpg" )
 
 local baseline = 280
@@ -77,6 +68,42 @@ tree[8].xScale = 0.8; tree[8].yScale = 0.8
 tree[8]:setReferencePoint( display.BottomCenterReferencePoint )
 tree[8].x = 420; tree[8].y = baseline
 tree[8].dx = 0.8
+
+
+-- A sprite sheet with a green dude
+local sheet2 = graphics.newImageSheet( "mario2.png", { width=128, height=128, numFrames=3 } )
+
+-- play 3 frames every 500 ms
+local instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=400 } )
+instance2.x = 50
+instance2.y = baseline -40
+instance2:play()
+
+
+-- touch listener
+function instance2:touch( event )
+	instance2.x = event.x; instance2.y = event.y;
+    -- 'self' parameter exists via the ':' in function definition
+end
+
+-- begin detecting touches
+instance2:addEventListener( "touch", instance2 )
+
+
+
+local function spawnDisk( event )
+	
+	local phase = event.phase
+	if "ended" == phase then
+		local spriteMarioDrag = instance2
+		spriteMarioDrag.x = event.x; spriteMarioDrag.y = event.y;
+
+	end
+	return true
+
+end
+
+
 -- Grass
 -- This is doubled so we can slide it
 -- When one of the grass images slides offscreen, we move it all the way to the right of the next one.
@@ -92,62 +119,6 @@ grass2.y = baseline - 20
 -- solid ground, doesn't need to move
 local ground = display.newRect( 0, baseline, 480, 90 )
 ground:setFillColor( 0x31, 0x5a, 0x18 )
-
--- 
---  FIN DECOR
---
---
-
-
---
---
---Creation du sprite personnage
---
---
-local sheet2 = graphics.newImageSheet( "mario2.png", { width=128, height=128, numFrames=3 } )
-local sheet3 = graphics.newImageSheet( "mario3.png", { width=128, height=128, numFrames=3 } )
-
--- play 3 frames every 500 ms
-local instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=400 } )
-instance2.x = 50
-instance2.y = baseline -40
-instance2:play()
-instance2:addEventListener( "touch", instance2 )
---
---
---Fin Creation du sprite personnage
---
---
-
--- 
---	Event Touch Perso
---
-function instance2:touch( event )
-	print ( "ChangerEtat" )
-	instance2:removeEventListener( "touch", instance2 )	instance2:removeSelf( )
-	--display.remove( instance2 )
-	instance2=nil
-	if EtatHero==0 then
-		instance2 = display.newSprite( sheet3, { name="man", start=1, count=3, time=400 } )
-		EtatHero=1
-	elseif EtatHero==1 then
-		instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=400 } )
-		EtatHero=0
-	end
-	instance2.x = 50
-	instance2.y = baseline -40
-	instance2:play()
-	instance2:addEventListener( "touch", instance2 )
-    -- 'self' parameter exists via the ':' in function definition
-end
-
---
---Fin Event Touch Perso
---
-
---
---Faire avancer le decor
---
 
 -- A per-frame event to move the elements
 local tPrevious = system.getTimer()
@@ -176,72 +147,17 @@ local function move(event)
 	end
 end
 
---
---Fin faire avancer le decor
---
-local function drawLine ()
-	if (line and #pointsTable > 2) then
-		line:removeSelf()
-	end
+local function dragBody( event )
+	print("that good")
+	return gameUI.dragBody( event )
 	
-	local numPoints = #pointsTable
-	local nl = {}
-	local  j, p
-		 
-	nl[1] = pointsTable[1]
-		 
-	j = 2
-	p = 1
-		 
-	for  i = 2, numPoints, 1  do
-		nl[j] = pointsTable[i]
-		j = j+1
-		p = i 
-	end
-	
-	if ( p  < numPoints -1 ) then
-		nl[j] = pointsTable[numPoints-1]
-	end
-	
-	if #nl > 2 then
-			line = display.newLine(nl[1].x,nl[1].y,nl[2].x,nl[2].y)
-			for i = 3, #nl, 1 do 
-				line:append( nl[i].x,nl[i].y);
-			end
-			line:setColor(255,255,0)
-			line.width=5
-	end
-end
-
-local myText = display.newText("Result: ", 0, 0, native.systemFont, 32)
-myText:setTextColor(255, 0, 0)
-myText.size = 25
-
-local function Update(event)		
-	if "began" == event.phase then
-		pointsTable = nil
-		pointsTable = {}
-		local pt = {}
-		pt.x = event.x
-		pt.y = event.y
-		table.insert(pointsTable,pt)
-	
-	elseif "moved" == event.phase then
-	
-		local pt = {}
-		pt.x = event.x
-		pt.y = event.y
-		table.insert(pointsTable,pt)
-	
-	elseif "ended" == event.phase or "cancelled" == event.phase then
-			--drawLine ()
-			myText.text = Gesture.GestureResult()
-	end
-	instance2:addEventListener( "touch", instance2 )
+	-- Substitute one of these lines for the line above to see what happens!
+	--gameUI.dragBody( event, { maxForce=400, frequency=5, dampingRatio=0.2 } ) -- slow, elastic dragging
+	--gameUI.dragBody( event, { maxForce=20000, frequency=1000, dampingRatio=1.0, center=true } ) -- very tight dragging, snaps to object center
 end
 
 -- Start everything moving
+--sky
 
-
+Runtime:addEventListener( "touch", spawnDisk ) -- touch the screen to create disks
 Runtime:addEventListener( "enterFrame", move );
-Runtime:addEventListener( "touch"		, Update )
