@@ -25,7 +25,11 @@ local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
 labelFont = gameUI.newFontXP{ ios="Zapfino", android=native.systemFont }
 
 system.activate( "multitouch" )
-
+----Structure pour spritelocal sheetHeroData = {
+  width = 128,  height = 128,  numFrames = 8
+}local sequenceHeroData = {
+  {name = "EtatLiquide",  frames={ 1,2,3},  time = 400},    {name = "EtatSolide",  frames={ 5,6,7},  time = 400},    {name = "EtatVapeur",  frames={ 5,6,7},  time = 400}
+}----
 
 -- 
 --  DECOR
@@ -103,14 +107,12 @@ ground:setFillColor( 0x31, 0x5a, 0x18 )
 --
 --Creation du sprite personnage
 --
---
-local sheet2 = graphics.newImageSheet( "mario2.png", { width=128, height=128, numFrames=3 } )
-local sheet3 = graphics.newImageSheet( "mario3.png", { width=128, height=128, numFrames=3 } )
-
+--
+local sheet2 = graphics.newImageSheet( "HeroTest.png", sheetHeroData )
 -- play 3 frames every 500 ms
-local instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=400 } )
+local instance2 = display.newSprite( sheet2, sequenceHeroData )
 instance2.x = 50
-instance2.y = baseline -40
+instance2.y = baseline -40instance2:setSequence("EtatLiquide");
 instance2:play()
 instance2:addEventListener( "touch", instance2 )
 --
@@ -122,22 +124,15 @@ instance2:addEventListener( "touch", instance2 )
 -- 
 --	Event Touch Perso
 --
-function instance2:touch( event )
-	print ( "ChangerEtat" )
-	instance2:removeEventListener( "touch", instance2 )	instance2:removeSelf( )
-	--display.remove( instance2 )
-	instance2=nil
+function instance2:touch( event )
 	if EtatHero==0 then
-		instance2 = display.newSprite( sheet3, { name="man", start=1, count=3, time=400 } )
+		instance2:setSequence("EtatSolide");
 		EtatHero=1
 	elseif EtatHero==1 then
-		instance2 = display.newSprite( sheet2, { name="man", start=1, count=3, time=400 } )
+		instance2:setSequence("EtatLiquide");
 		EtatHero=0
-	end
-	instance2.x = 50
-	instance2.y = baseline -40
-	instance2:play()
-	instance2:addEventListener( "touch", instance2 )
+	end
+	instance2:play()
     -- 'self' parameter exists via the ':' in function definition
 end
 
