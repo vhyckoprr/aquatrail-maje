@@ -40,8 +40,9 @@ local physical = lime.buildPhysical(map)
 local onButtonLeftEvent = function(event)
 
 	if event.phase == "press" then
-		player.direction = DIRECTION_LEFT
-		player.xScale = player.direction
+		if (player.direction ==DIRECTION_RIGHT)then
+			player.direction = DIRECTION_LEFT
+			player.xScale = player.direction			-- on change de direction donc vx vy = 0			local vx, vy = player:getLinearVelocity()			player:setLinearVelocity(0, vy)		end
 		player.state = STATE_WALKING	
 	else
 		player.state = STATE_IDLE
@@ -54,9 +55,9 @@ end
 
 local onButtonRightEvent = function(event)
 
-	if event.phase == "press" then
-		player.direction = DIRECTION_RIGHT
-		player.xScale = player.direction
+	if event.phase == "press" then		if (player.direction ==DIRECTION_LEFT)then
+			player.direction = DIRECTION_RIGHT
+			player.xScale = player.direction			-- on change de direction donc vx vy = 0			local vx, vy = player:getLinearVelocity()			player:setLinearVelocity(0, vy)		end
 		player.state = STATE_WALKING	
 	else
 		player.state = STATE_IDLE
@@ -135,25 +136,26 @@ end
 player.collision = onCollision
 player:addEventListener( "collision", player )
 
-local onUpdate = function(event)
+local onUpdate = function(event)		local vx, vy = player:getLinearVelocity()
 	if player.state == STATE_WALKING then
-		
-		player:applyForce(player.direction * 10, 0, player.x, player.y)	
+				if (vx == 0)then			player:applyForce( player.direction*10, 0, player.x, player.y )
+		elseif (vx<200  and vx>-200) then
+			player:setLinearVelocity(vx * 1.2, vy)
+		end
 		
 	elseif player.state == STATE_IDLE then
-		
-		local vx, vy = player:getLinearVelocity()
-		
+		
 		if vx ~= 0 then
 			player:setLinearVelocity(vx * 0.9, vy)
 		end
 	end
 	-- Update the map. Needed for using map:setFocus()
 	map:setFocus( player )	
-	map:update( event )end
+	map:update( event )
+end
 
 Runtime:addEventListener("enterFrame", onUpdate)
 
-player.state = STATE_IDLE
+player.state = STATE_IDLEplayer.direction = DIRECTION_RIGHT
 player:prepare("anim" .. player.state)
 player:play()
