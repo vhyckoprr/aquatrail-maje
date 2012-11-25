@@ -119,6 +119,7 @@ local buttonB = ui.newButton{
 buttonB.x = buttonA.x - buttonB.width
 buttonB.y = buttonA.y
 
+
 local function onCollision(self, event )
 
  	if ( event.phase == "began" ) then
