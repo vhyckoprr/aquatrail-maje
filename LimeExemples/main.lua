@@ -30,8 +30,6 @@ local onPlayerProperty = function(property, type, object)
 	player = object.sprite
 end
 
-player = sprite.newSpriteSheet ( "player2.png", 100, 30 )
-
 map:setFocus( player )
 map:addPropertyListener("IsPlayer", onPlayerProperty)
 
@@ -98,7 +96,7 @@ local onButtonBPress = function(event)
 
 end
 
--- Create the HUD
+-- Create the HUD--[[
 local buttonLeft = ui.newButton{
         default = "buttonLeft.png",
         over = "buttonLeft_over.png",
@@ -115,7 +113,7 @@ local buttonRight = ui.newButton{
 }
 
 buttonRight.x = buttonLeft.x + buttonRight.width
-buttonRight.y = buttonLeft.y
+buttonRight.y = buttonLeft.y--]]
 
 local buttonA = ui.newButton{
         default = "buttonA.png",
@@ -133,7 +131,7 @@ local function onCollision(self, event )
 		if event.other.IsGround then
 			player.canJump = true
 			if player.state == STATE_JUMPING then
-				player.state = STATE_IDLE
+				player.state = STATE_WALKING
 			
 				player:prepare("anim" .. player.state)
 				player:play()
@@ -194,32 +192,23 @@ local onUpdate = function(event)
 	--check si il y a eu collision (direction positive vitesse negative)
 	if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
 		player:setLinearVelocity(0 , vy)
-	else
-
-		if player.state == STATE_WALKING then
-
+	else
 			if (vx == 0)then
 				player:applyForce( player.direction*10, 0, player.x, player.y )
 			elseif (vx<200  and vx>-200) then
-				player:setLinearVelocity(vx * 1.2, vy)
-			end
-			
-		elseif player.state == STATE_IDLE then
-			if (vx<25  and vx>-25) then
-					player:setLinearVelocity(0 , vy)
-			else
-				player:setLinearVelocity(vx *0.9 , vy)
-			end
-		end
+				player:setLinearVelocity(vx * 1.2, vy)						else				player:setLinearVelocity(200, vy)			end
 	end
 	-- Update the map. Needed for using map:setFocus()
 	map:setFocus( player )	
 	map:update( event )
+endlocal onTouch = function(event)
+	print("Cahngeetat")
 end
+player:addEventListener("touch", onTouch)
 
 Runtime:addEventListener("enterFrame", onUpdate)
 
-player.state = STATE_IDLE
+player.state = STATE_WALKING
 player.direction = DIRECTION_RIGHT
 player:prepare("anim" .. player.state)
 player:play()
