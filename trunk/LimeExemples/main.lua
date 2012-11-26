@@ -18,7 +18,9 @@ local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
 back:setFillColor(165, 210, 255)
 
 -- Load Lime
-local lime = require("lime")-- Disable culling
+local lime = require("lime")
+
+-- Disable culling
 lime.disableScreenCulling()
 
 -- Load your map
@@ -27,6 +29,8 @@ local map = lime.loadMap("tutorial20.tmx")
 local onPlayerProperty = function(property, type, object)
 	player = object.sprite
 end
+
+player = sprite.newSpriteSheet ( "player2.png", 100, 30 )
 
 map:setFocus( player )
 map:addPropertyListener("IsPlayer", onPlayerProperty)
@@ -133,9 +137,11 @@ local function onCollision(self, event )
 			
 				player:prepare("anim" .. player.state)
 				player:play()
-			end
+			end
+
 		elseif event.other.IsObstacle then
-			player.canJump = true		elseif event.other.IsPickup then
+			player.canJump = true
+		elseif event.other.IsPickup then
 			
 			local item = event.other
 			
@@ -170,26 +176,42 @@ local function onCollision(self, event )
 		end
 	elseif ( event.phase == "ended" ) then
 		if event.other.IsGround then
-			player.canJump = false
- 		elseif event.other.IsObstacle then 			local vx, vy = player:getLinearVelocity()
-			 player:setLinearVelocity(0 , vy)		end 	end
+			player.canJump = false
+
+ 		elseif event.other.IsObstacle then
+ 			local vx, vy = player:getLinearVelocity()
+			 player:setLinearVelocity(0 , vy)
+		end
+ 	end
 end
 
 player.collision = onCollision
 player:addEventListener( "collision", player )
 
 local onUpdate = function(event)
-		local vx, vy = player:getLinearVelocity()	--check si il y a eu collision (direction positive vitesse negative)	if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then		player:setLinearVelocity(0 , vy)	else
-		if player.state == STATE_WALKING then
+	
+	local vx, vy = player:getLinearVelocity()
+	--check si il y a eu collision (direction positive vitesse negative)
+	if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
+		player:setLinearVelocity(0 , vy)
+	else
+
+		if player.state == STATE_WALKING then
+
 			if (vx == 0)then
 				player:applyForce( player.direction*10, 0, player.x, player.y )
 			elseif (vx<200  and vx>-200) then
 				player:setLinearVelocity(vx * 1.2, vy)
 			end
 			
-		elseif player.state == STATE_IDLE then			if (vx<25  and vx>-25) then
-					player:setLinearVelocity(0 , vy)			else				player:setLinearVelocity(vx *0.9 , vy)			end
-		end	end
+		elseif player.state == STATE_IDLE then
+			if (vx<25  and vx>-25) then
+					player:setLinearVelocity(0 , vy)
+			else
+				player:setLinearVelocity(vx *0.9 , vy)
+			end
+		end
+	end
 	-- Update the map. Needed for using map:setFocus()
 	map:setFocus( player )	
 	map:update( event )
