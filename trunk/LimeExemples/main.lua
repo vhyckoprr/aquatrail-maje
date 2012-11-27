@@ -1,214 +1,46 @@
 display.setStatusBar( display.HiddenStatusBar )
 
-system.activate( "multitouch" )
+---------------------------------------------------------------
+-- Import director class
+---------------------------------------------------------------
 
-local STATE_IDLE = "Idle"
-local STATE_WALKING = "Walking"
-local STATE_JUMPING = "Jumping"
-local DIRECTION_LEFT = -1
-local DIRECTION_RIGHT = 1
+director = require("director")
 
-local ui = require("ui")
-require("physics")
+---------------------------------------------------------------
+-- Create a main group
+---------------------------------------------------------------
 
-physics.start()
+local mainGroup = display.newGroup()
 
--- Create a background colour just to make the map look a little nicer
-local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
-back:setFillColor(165, 210, 255)
+---------------------------------------------------------------
+-- Main function
+---------------------------------------------------------------
 
--- Load Lime
-local lime = require("lime")
+local function main()
 
--- Disable culling
-lime.disableScreenCulling()
-
--- Load your map
-local map = lime.loadMap("tutorial20.tmx")
-
-local onPlayerProperty = function(property, type, object)
-	player = object.sprite
-end
-
-map:setFocus( player )
-map:addPropertyListener("IsPlayer", onPlayerProperty)
-
--- Create the visual
-local visual = lime.createVisual(map)
-
--- Build the physical
-local physical = lime.buildPhysical(map)
-
--- HUD Event Listeners
-local onButtonLeftEvent = function(event)
-
-	if event.phase == "press" then
-		if (player.direction ==DIRECTION_RIGHT)then
-			player.direction = DIRECTION_LEFT
-			player.xScale = player.direction
-			-- on change de direction donc vx vy = 0
-			local vx, vy = player:getLinearVelocity()
-			player:setLinearVelocity(0, vy)
-		end
-		player.state = STATE_WALKING	
-	else
-		player.state = STATE_IDLE
-	end
-
-	player:prepare("anim" .. player.state)
+	-----------------------------------
+	-- Add the group from director class
+	-----------------------------------
 	
-	player:play()
-end
+	mainGroup:insert(director.directorView)
 
-local onButtonRightEvent = function(event)
-
-	if event.phase == "press" then
-		if (player.direction ==DIRECTION_LEFT)then
-			player.direction = DIRECTION_RIGHT
-			player.xScale = player.direction
-			-- on change de direction donc vx vy = 0
-			local vx, vy = player:getLinearVelocity()
-			player:setLinearVelocity(0, vy)
-		end
-		player.state = STATE_WALKING	
-	else
-		player.state = STATE_IDLE
-	end
-
-	player:prepare("anim" .. player.state)
+	-----------------------------------
+	-- Change scene without effects
+	-----------------------------------
 	
-	player:play()
-end
-
-local onButtonAPress = function(event)
-	if player.canJump then
-		player:applyLinearImpulse(0, -7.5, player.x, player.y)
-		
-		player.state = STATE_JUMPING
-		
-		player:prepare("anim" .. player.state)
-
-		player:play()
-	end
-end
-
-local onButtonBPress = function(event)
-
-end
-
--- Create the HUD--[[
-local buttonLeft = ui.newButton{
-        default = "buttonLeft.png",
-        over = "buttonLeft_over.png",
-        onEvent = onButtonLeftEvent
-}
-
-buttonLeft.x = buttonLeft.width / 2 + 10
-buttonLeft.y = display.contentHeight - buttonLeft.height / 2 - 10	
-
-local buttonRight = ui.newButton{
-        default = "buttonRight.png",
-        over = "buttonRight_over.png",
-        onEvent = onButtonRightEvent
-}
-
-buttonRight.x = buttonLeft.x + buttonRight.width
-buttonRight.y = buttonLeft.y--]]
-
-local buttonA = ui.newButton{
-        default = "buttonA.png",
-        over = "buttonA_over.png",
-        onPress = onButtonAPress
-}
-
-buttonA.x = display.contentWidth - buttonA.width / 2 - 10
-buttonA.y = display.contentHeight - buttonA.height / 2 - 10
-
-
-local function onCollision(self, event )
-
- 	if ( event.phase == "began" ) then
-		if event.other.IsGround then
-			player.canJump = true
-			if player.state == STATE_JUMPING then
-				player.state = STATE_WALKING
-			
-				player:prepare("anim" .. player.state)
-				player:play()
-			end
-
-		elseif event.other.IsObstacle then
-			player.canJump = true
-		elseif event.other.IsPickup then
-			
-			local item = event.other
-			
-			local onTransitionEnd = function(transitionEvent)
-				if transitionEvent["removeSelf"] then
-					transitionEvent:removeSelf()
-				end
-			end
-					
-			-- Fade out the item
-			transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
-			
-			local text = nil
-			
-			if item.pickupType == "score" then
-				
-				text = display.newText( item.scoreValue .. " Points!", 0, 0, "Helvetica", 50 )
-				
-			elseif item.pickupType == "health" then
-				
-				text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
-				
-			end
-			
-			if text then
-				text:setTextColor(0, 0, 0, 255)
-				text.x = display.contentCenterX
-				text.y = text.height / 2
-				
-				transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
-			end
-		end
-	elseif ( event.phase == "ended" ) then
-		if event.other.IsGround then
-			player.canJump = false
-
- 		elseif event.other.IsObstacle then
- 			local vx, vy = player:getLinearVelocity()
-			 player:setLinearVelocity(0 , vy)
-		end
- 	end
-end
-
-player.collision = onCollision
-player:addEventListener( "collision", player )
-
-local onUpdate = function(event)
+	director:changeScene("screen1")
 	
-	local vx, vy = player:getLinearVelocity()
-	--check si il y a eu collision (direction positive vitesse negative)
-	if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
-		player:setLinearVelocity(0 , vy)
-	else
-			if (vx == 0)then
-				player:applyForce( player.direction*10, 0, player.x, player.y )
-			elseif (vx<200  and vx>-200) then
-				player:setLinearVelocity(vx * 1.2, vy)						else				player:setLinearVelocity(200, vy)			end
-	end
-	-- Update the map. Needed for using map:setFocus()
-	map:setFocus( player )	
-	map:update( event )
-endlocal onTouch = function(event)
-	print("Cahngeetat")
+	-----------------------------------
+	-- Return
+	-----------------------------------
+	
+	return true
 end
-player:addEventListener("touch", onTouch)
 
-Runtime:addEventListener("enterFrame", onUpdate)
+---------------------------------------------------------------
+-- Begin
+---------------------------------------------------------------
 
-player.state = STATE_WALKING
-player.direction = DIRECTION_RIGHT
-player:prepare("anim" .. player.state)
-player:play()
+main()
+
+-- It's that easy! :-)
