@@ -7,12 +7,15 @@ function new()
 	display.setStatusBar( display.HiddenStatusBar )
 
 	system.activate( "multitouch" )
-		-- CONSTANTS,VARIABLES, REQUIREMENTS
-	local STATE_IDLE = "Idle"
-	local STATE_WALKING = "Walking"
-	local STATE_JUMPING = "Jumping"
+			local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
+-- CONSTANTS,VARIABLES, REQUIREMENTS	--Etat Liquide
+	local STATE_WALKING_LIQ = "WalkingLiq"
+	local STATE_JUMPING_LIQ = "JumpingLiq"	--Etat Solide
+	local STATE_WALKING_SOL = "WalkingSol"
+	local STATE_JUMPING_SOL = "JumpingSol"	--Transition Etat	local STATE_TRANSITION = "Transition"
 	local DIRECTION_LEFT = -1
-	local DIRECTION_RIGHT = 1	local SCORE = 0
+	local DIRECTION_RIGHT = 1
+	local SCORE = 0
 	local ui = require("ui")
 	require("physics")
 	
@@ -20,7 +23,8 @@ function new()
 	
 	-- Create a background colour just to make the map look a little nicer
 	local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
-	back:setFillColor(165, 210, 255)
+	back:setFillColor(165, 210, 255)
+
 	
 	-- Load Lime
 	local lime = require("lime")
@@ -44,7 +48,8 @@ function new()
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
-	-- HUD Event Listeners	--[[
+	-- HUD Event Listeners
+	--[[
 	local onButtonLeftEvent = function(event)
 		
 		if event.phase == "press" then
@@ -55,7 +60,8 @@ function new()
 				local vx, vy = player:getLinearVelocity()
 				player:setLinearVelocity(0, vy)
 			end
-			player.state = STATE_WALKING	
+			player.state = STATE_WALKING	
+
 		end
 	
 		player:prepare("anim" .. player.state)
@@ -73,7 +79,8 @@ function new()
 				local vx, vy = player:getLinearVelocity()
 				player:setLinearVelocity(0, vy)
 			end
-			player.state = STATE_WALKING	
+			player.state = STATE_WALKING	
+
 		end
 	
 		player:prepare("anim" .. player.state)
@@ -85,13 +92,14 @@ function new()
 		if player.canJump then
 			player:applyLinearImpulse(0, -7.5, player.x, player.y)
 			
-			player.state = STATE_JUMPING
+			if EtatHero == 0 then				player.state = STATE_JUMPING_LIQ			elseif EtatHero ==1 then				player.state = STATE_JUMPING_SOL			end
 			
 			player:prepare("anim" .. player.state)
 	
 			player:play()
 		end
-	end
+	end
+
 	
 	-- HUD A BUTTON--------------------------------------------------------------------------------------------------
 	local buttonA = ui.newButton{
@@ -109,12 +117,11 @@ function new()
 	 	if ( event.phase == "began" ) then
 			if event.other.IsGround then
 				player.canJump = true
-				if player.state == STATE_JUMPING then
-					player.state = STATE_WALKING
-				
+				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
+					if EtatHero == 0 then						player.state = STATE_WALKING_LIQ					elseif EtatHero ==1 then						player.state = STATE_WALKING_SOL					end
 					player:prepare("anim" .. player.state)
 					player:play()
-				end
+			end
 	
 			elseif event.other.IsObstacle then
 				player.canJump = true
@@ -135,7 +142,9 @@ function new()
 				
 				if item.pickupType == "score" then
 					
-					text = display.newText( item.scoreValue, 0, 0, "Helvetica", 20 )					SCORE=SCORE+item.scoreValue					updateScore()
+					text = display.newText( item.scoreValue, 0, 0, "Helvetica", 20 )
+					SCORE=SCORE+item.scoreValue
+					updateScore()
 					
 				elseif item.pickupType == "health" then
 					
@@ -163,7 +172,8 @@ function new()
 	end
 	
 	player.collision = onCollision
-	player:addEventListener( "collision", player )	
+	player:addEventListener( "collision", player )
+	
 	-- UPDATE----------------------------------------------------------------------
 	local onUpdate = function(event)
 		
@@ -186,21 +196,38 @@ function new()
 		-- Update the map. Needed for using map:setFocus()
 		map:setFocus( player )	
 		map:update( event )
-	end	Runtime:addEventListener("enterFrame", onUpdate)
-		-- TOUCH--------------------------------------------------------------------------
-	local onTouch = function(event)
-		print("Cahngeetat")
-	end	player:addEventListener("touch", onTouch)
+	end
+	Runtime:addEventListener("enterFrame", onUpdate)
 	
-		--PLAYER INIT-----------------------------------------------------------------------
-	player.state = STATE_WALKING
+	-- TOUCH--------------------------------------------------------------------------
+	local onTouch = function(event)
+		if ( event.phase == "began" ) then
+			print("ChangeEtat")	      	if EtatHero == 0 then		    	  EtatHero = 1		      	print("Etat Solide")	       	elseif EtatHero ==1 then		      	EtatHero =0		      	print("Etat Liquide")	      	end		end		if EtatHero == 0 then			player.state = STATE_WALKING_LIQ		elseif EtatHero ==1 then			player.state = STATE_WALKING_SOL		end
+	
+		player.direction = DIRECTION_RIGHT
+		player:prepare("anim" .. player.state)
+		player:play()
+	end
+	player:addEventListener("touch", onTouch)
+	
+	
+	--PLAYER INIT-----------------------------------------------------------------------
+	if EtatHero == 0 then		player.state = STATE_WALKING_LIQ	elseif EtatHero ==1 then		player.state = STATE_WALKING_SOL	end
 	player.direction = DIRECTION_RIGHT
 	player:prepare("anim" .. player.state)
 	player:play()
-	-- SCORING --------------------------------------------------------------------------		local scoreText  = display.newText( "score: "..SCORE, 0, 0, "Helvetica", 30 )	scoreText.x = display.contentWidth/2
-	scoreText.y =  scoreText.height / 2		function updateScore ()
+	
+-- SCORING --------------------------------------------------------------------------
+	
+	local scoreText  = display.newText( "score: "..SCORE, 0, 0, "Helvetica", 30 )
+	scoreText.x = display.contentWidth/2
+	scoreText.y =  scoreText.height / 2
+	
+	function updateScore ()
 	      scoreText.text = "score: "..SCORE
-	 end    -- BACKBUTTON---------------------------------------------
+	 end
+    
+-- BACKBUTTON---------------------------------------------
 		
 	local backbutton = display.newImage ("backbutton.png")
 	backbutton.x = backbutton.width / 2
@@ -214,7 +241,8 @@ function new()
 	backbutton:addEventListener ("touch", pressBack)  
 
 --------------------------------------------------------------
---Add the Director Class insert statements here	localGroup:insert(back)
+--Add the Director Class insert statements here
+	localGroup:insert(back)
 	localGroup:insert(visual)
 	localGroup:insert(buttonA)
 	localGroup:insert(scoreText)
