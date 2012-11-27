@@ -1,6 +1,7 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-function new()	
+function new()
+	
 	local localGroup = display.newGroup()
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
@@ -15,12 +16,14 @@ function new()
    	playBtn.isVisible = true
    	localGroup:insert(playBtn)
    
---Exit Button
+	--Exit Button
 	local exitBtn = display.newImage("Exit_Button.png")
   	exitBtn.x = display.contentWidth - exitBtn.width / 2
   	exitBtn.y = display.contentHeight - exitBtn.height / 2
    	exitBtn.isVisible = true
-  	localGroup:insert(exitBtn)
+  	localGroup:insert(exitBtn)  	  	--Text Aquatrail  	local aquaText  = display.newText( "Aquatrail DEMO 0.2", 0, 0, "Arial", 50 )
+		aquaText.x = display.contentWidth/2
+		aquaText.y =  display.contentHeight/2		localGroup:insert(aquaText)
 	
 	--PLAY function
 	local function pressPlay (event)
