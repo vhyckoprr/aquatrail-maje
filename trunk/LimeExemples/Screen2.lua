@@ -7,12 +7,22 @@ function new()
 	display.setStatusBar( display.HiddenStatusBar )
 
 	system.activate( "multitouch" )
-			local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
--- CONSTANTS,VARIABLES, REQUIREMENTS	--Etat Liquide
+	
+	
+	local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
+-- CONSTANTS,VARIABLES, REQUIREMENTS
+	--Etat Liquide
+
 	local STATE_WALKING_LIQ = "WalkingLiq"
-	local STATE_JUMPING_LIQ = "JumpingLiq"	--Etat Solide
+	local STATE_JUMPING_LIQ = "JumpingLiq"
+
+	--Etat Solide
 	local STATE_WALKING_SOL = "WalkingSol"
-	local STATE_JUMPING_SOL = "JumpingSol"	--Transition Etat	local STATE_TRANSITION = "Transition"
+	local STATE_JUMPING_SOL = "JumpingSol"
+
+	--Transition Etat
+	local STATE_TRANSITION = "Transition"
+
 	local DIRECTION_LEFT = -1
 	local DIRECTION_RIGHT = 1
 	local SCORE = 0
@@ -92,7 +102,11 @@ function new()
 		if player.canJump then
 			player:applyLinearImpulse(0, -7.5, player.x, player.y)
 			
-			if EtatHero == 0 then				player.state = STATE_JUMPING_LIQ			elseif EtatHero ==1 then				player.state = STATE_JUMPING_SOL			end
+			if EtatHero == 0 then
+				player.state = STATE_JUMPING_LIQ
+			elseif EtatHero ==1 then
+				player.state = STATE_JUMPING_SOL
+			end
 			
 			player:prepare("anim" .. player.state)
 	
@@ -118,7 +132,12 @@ function new()
 			if event.other.IsGround then
 				player.canJump = true
 				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
-					if EtatHero == 0 then						player.state = STATE_WALKING_LIQ					elseif EtatHero ==1 then						player.state = STATE_WALKING_SOL					end
+					if EtatHero == 0 then
+						player.state = STATE_WALKING_LIQ
+					elseif EtatHero ==1 then
+						player.state = STATE_WALKING_SOL
+					end
+
 					player:prepare("anim" .. player.state)
 					player:play()
 			end
@@ -202,8 +221,21 @@ function new()
 	-- TOUCH--------------------------------------------------------------------------
 	local onTouch = function(event)
 		if ( event.phase == "began" ) then
-			print("ChangeEtat")	      	if EtatHero == 0 then		    	  EtatHero = 1		      	print("Etat Solide")	       	elseif EtatHero ==1 then		      	EtatHero =0		      	print("Etat Liquide")	      	end		end		if EtatHero == 0 then			player.state = STATE_WALKING_LIQ		elseif EtatHero ==1 then			player.state = STATE_WALKING_SOL		end
-	
+			print("ChangeEtat")
+	      	if EtatHero == 0 then
+		    	  EtatHero = 1
+		      	print("Etat Solide")
+	       	elseif EtatHero ==1 then
+		      	EtatHero =0
+		      	print("Etat Liquide")
+	      	end
+		end
+		if EtatHero == 0 then
+			player.state = STATE_WALKING_LIQ
+		elseif EtatHero ==1 then
+			player.state = STATE_WALKING_SOL
+		end
+		--player.state = STATE_TRANSITION 
 		player.direction = DIRECTION_RIGHT
 		player:prepare("anim" .. player.state)
 		player:play()
@@ -212,7 +244,11 @@ function new()
 	
 	
 	--PLAYER INIT-----------------------------------------------------------------------
-	if EtatHero == 0 then		player.state = STATE_WALKING_LIQ	elseif EtatHero ==1 then		player.state = STATE_WALKING_SOL	end
+	if EtatHero == 0 then
+		player.state = STATE_WALKING_LIQ#cpm 
+	elseif EtatHero ==1 then
+		player.state = STATE_WALKING_SOL
+	end
 	player.direction = DIRECTION_RIGHT
 	player:prepare("anim" .. player.state)
 	player:play()

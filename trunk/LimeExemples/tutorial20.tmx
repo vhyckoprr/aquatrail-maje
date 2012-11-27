@@ -86,7 +86,7 @@
     <property name="IsPlayer" value=""/>
     <property name="animJumpingLiq" value="startFrame=5,frameCount=1,time=5000"/>
     <property name="animJumpingSol" value="startFrame=10,frameCount=1,time=5000"/>
-    <property name="animTransition" value="startFrame=11,frameCount=3,time=5000"/>
+    <property name="animTransition" value="startFrame=11,frameCount=3,time=500"/>
     <property name="animWalkingLiq" value="frameCount=2,time=500"/>
     <property name="animWalkingSol" value="startFrame=6,frameCount=2,time=500"/>
     <property name="bounce" value="0.2"/>
