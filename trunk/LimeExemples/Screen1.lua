@@ -1,6 +1,6 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-function new()
+function new()	
 	local localGroup = display.newGroup()
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
@@ -41,18 +41,7 @@ function new()
 			end
 		end
     		exitBtn:addEventListener("touch",exitBtnt)
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	-- MUST return a display.newGroup()
 	return localGroup
 end

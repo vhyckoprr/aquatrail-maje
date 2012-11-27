@@ -66,14 +66,13 @@
     <property name="HasBody" value=""/>
     <property name="IsAnimated" value=""/>
     <property name="IsPlayer" value=""/>
-    <property name="animIdle" value="startFrame=3,frameCount=2,time=5000"/>
     <property name="animJumping" value="startFrame=5,frameCount=1,time=5000"/>
     <property name="animWalking" value="frameCount=2,time=500"/>
     <property name="bounce" value="0.2"/>
     <property name="density" value="1.0"/>
     <property name="friction" value="0.3"/>
     <property name="isFixedRotation" value="true"/>
-    <property name="sequences" value="[&quot;animIdle&quot;,&quot;animWalking&quot;,&quot;animJumping&quot;]"/>
+    <property name="sequences" value="[&quot;animWalking&quot;,&quot;animJumping&quot;]"/>
    </properties>
   </tile>
  </tileset>
@@ -7699,9 +7698,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="13"/>
-   <tile gid="14"/>
-   <tile gid="15"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -7929,9 +7928,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="19"/>
-   <tile gid="20"/>
-   <tile gid="21"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -8159,9 +8158,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="19"/>
-   <tile gid="20"/>
-   <tile gid="21"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -8389,9 +8388,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="19"/>
-   <tile gid="20"/>
-   <tile gid="21"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -8619,9 +8618,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="19"/>
-   <tile gid="20"/>
-   <tile gid="21"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
