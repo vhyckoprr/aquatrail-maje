@@ -44,7 +44,7 @@ new = function ( params )
 	lime.disableScreenCulling()
 	
 	-- Load your map
-	local map = lime.loadMap("tutorial20.tmx")
+	local map = lime.loadMap("myLevel.tmx")
 	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
