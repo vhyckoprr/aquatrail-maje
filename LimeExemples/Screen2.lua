@@ -1,6 +1,6 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-function new()
+new = function ( params )
 	
 	local localGroup = display.newGroup()
 	
@@ -195,13 +195,25 @@ function new()
 	
 	-- UPDATE----------------------------------------------------------------------
 	local onUpdate = function(event)
-				--L'animation animTransition est enclencher?		if player.sequence == "animTransition" then			--Le sprite est il entrain d'executer une animation?			if player.animating  then				--Le sprite a il fini son animation?				if player.currentFrame ==3 then					if EtatHero == 0 then
+		
+		--L'animation animTransition est enclencher?
+		if player.sequence == "animTransition" then
+			--Le sprite est il entrain d'executer une animation?
+			if player.animating  then
+				--Le sprite a il fini son animation?
+				if player.currentFrame ==3 then
+					if EtatHero == 0 then
 						player.state = STATE_WALKING_LIQ
 					elseif EtatHero ==1 then
 						player.state = STATE_WALKING_SOL
-					end					player.direction = DIRECTION_RIGHT
+					end
+					player.direction = DIRECTION_RIGHT
 					player:prepare("anim" .. player.state)
-					player:play()				end			end		end		
+					player:play()
+				end
+			end
+		end
+		
 		local vx, vy = player:getLinearVelocity()
 		--check si il y a eu collision (direction positive vitesse negative)
 		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
@@ -223,7 +235,9 @@ function new()
 		map:update( event )
 	end
 	Runtime:addEventListener("enterFrame", onUpdate)
-	local function checkEndTransition( )		print("okay")	end
+	local function checkEndTransition( )
+		print("okay")
+	end
 	-- TOUCH--------------------------------------------------------------------------
 	local onTouch = function(event)
 		if ( event.phase == "began" ) then
@@ -273,7 +287,7 @@ function new()
 	local function pressBack (event)
 		if event.phase == "ended" then
 				Runtime:removeEventListener("enterFrame", onUpdate)
-				director:changeScene ("screen1")
+				director:changeScene ("Screen1")
 		end
 	end
 	backbutton:addEventListener ("touch", pressBack)  

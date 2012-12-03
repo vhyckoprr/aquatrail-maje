@@ -28,7 +28,7 @@ local function main()
 	-- Change scene without effects
 	-----------------------------------
 	
-	director:changeScene("screen1")
+	director:changeScene("Screen1")
 	
 	-----------------------------------
 	-- Return

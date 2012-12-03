@@ -1,6 +1,25 @@
 -- ui.lua (currently includes Button class with labels, font selection and optional event model)
 
--- Version 1.1
+-- Version 1.5 (works with multitouch, adds setText() method to buttons)
+--
+-- Copyright (C) 2010 ANSCA Inc. All Rights Reserved.
+--
+-- Permission is hereby granted, free of charge, to any person obtaining a copy of 
+-- this software and associated documentation files (the "Software"), to deal in the 
+-- Software without restriction, including without limitation the rights to use, copy, 
+-- modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+-- and to permit persons to whom the Software is furnished to do so, subject to the 
+-- following conditions:
+-- 
+-- The above copyright notice and this permission notice shall be included in all copies 
+-- or substantial portions of the Software.
+-- 
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+-- INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+-- PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE 
+-- FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+-- OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+-- DEALINGS IN THE SOFTWARE.
 
 module(..., package.seeall)
 
@@ -39,7 +58,7 @@ local function newButtonHandler( self, event )
 		end
 
 		-- Subsequent touch events will target button even if they are outside the stageBounds of button
-		display.getCurrentStage():setFocus( self )
+		display.getCurrentStage():setFocus( self, event.id )
 		self.isFocus = true
 		
 	elseif self.isFocus then
@@ -60,19 +79,21 @@ local function newButtonHandler( self, event )
 				default.isVisible = true
 				over.isVisible = false
 			end
-
-			-- Only consider this a "click" if the user lifts their finger inside button's stageBounds
-			if isWithinBounds then
-				if onEvent then
-					buttonEvent.phase = "release"
-					result = onEvent( buttonEvent )
-				elseif onRelease then
-					result = onRelease( event )
+			
+			if "ended" == phase then
+				-- Only consider this a "click" if the user lifts their finger inside button's stageBounds
+				if isWithinBounds then
+					if onEvent then
+						buttonEvent.phase = "release"
+						result = onEvent( buttonEvent )
+					elseif onRelease then
+						result = onRelease( event )
+					end
 				end
 			end
 			
 			-- Allow touch events to be sent normally to the objects they "hit"
-			display.getCurrentStage():setFocus( nil )
+			display.getCurrentStage():setFocus( self, nil )
 			self.isFocus = false
 		end
 	end
@@ -99,10 +120,30 @@ function newButton( params )
 		button:insert( over, true )
 	end
 	
-	if params.text then
+	-- Public methods
+	function button:setText( newText )
+	
+		local labelText = self.text
+		if ( labelText ) then
+			labelText:removeSelf()
+			self.text = nil
+		end
+
+		local labelShadow = self.shadow
+		if ( labelShadow ) then
+			labelShadow:removeSelf()
+			self.shadow = nil
+		end
+
+		local labelHighlight = self.highlight
+		if ( labelHighlight ) then
+			labelHighlight:removeSelf()
+			self.highlight = nil
+		end
+		
 		if ( params.size and type(params.size) == "number" ) then size=params.size else size=20 end
 		if ( params.font ) then font=params.font else font=native.systemFontBold end
-		if ( params.textColor ) then textColor=params.textColor else textColor={ 2.6, 2.6, 2.6, 2.6 } end
+		if ( params.textColor ) then textColor=params.textColor else textColor={ 255, 255, 255, 255 } end
 		
 		-- Optional vertical correction for fonts with unusual baselines (I'm looking at you, Zapfino)
 		if ( params.offset and type(params.offset) == "number" ) then offset=params.offset else offset = 0 end
@@ -111,16 +152,17 @@ function newButton( params )
 			-- Make the label text look "embossed" (also adjusts effect for textColor brightness)
 			local textBrightness = ( textColor[1] + textColor[2] + textColor[3] ) / 3
 			
-			local labelHighlight = display.newText( params.text, 0, 0, font, size )
+			labelHighlight = display.newText( newText, 0, 0, font, size )
 			if ( textBrightness > 127) then
-				labelHighlight:setTextColor( 2.6, 2.6, 2.6, 20 )
+				labelHighlight:setTextColor( 255, 255, 255, 20 )
 			else
-				labelHighlight:setTextColor( 2.6, 2.6, 2.6, 140 )
+				labelHighlight:setTextColor( 255, 255, 255, 140 )
 			end
 			button:insert( labelHighlight, true )
 			labelHighlight.x = labelHighlight.x + 1.5; labelHighlight.y = labelHighlight.y + 1.5 + offset
-			
-			local labelShadow = display.newText( params.text, 0, 0, font, size )
+			self.highlight = labelHighlight
+
+			labelShadow = display.newText( newText, 0, 0, font, size )
 			if ( textBrightness > 127) then
 				labelShadow:setTextColor( 0, 0, 0, 128 )
 			else
@@ -128,12 +170,18 @@ function newButton( params )
 			end
 			button:insert( labelShadow, true )
 			labelShadow.x = labelShadow.x - 1; labelShadow.y = labelShadow.y - 1 + offset
+			self.shadow = labelShadow
 		end
-			
-		local labelText = display.newText( params.text, 0, 0, font, size )
+		
+		labelText = display.newText( newText, 0, 0, font, size )
 		labelText:setTextColor( textColor[1], textColor[2], textColor[3], textColor[4] )
 		button:insert( labelText, true )
 		labelText.y = labelText.y + offset
+		self.text = labelText
+	end
+	
+	if params.text then
+		button:setText( params.text )
 	end
 	
 	if ( params.onPress and ( type(params.onPress) == "function" ) ) then
@@ -173,6 +221,7 @@ end
 function newLabel( params )
 	local labelText
 	local size, font, textColor, align
+	local t = display.newGroup()
 	
 	if ( params.bounds ) then
 		local bounds = params.bounds
@@ -183,13 +232,15 @@ function newLabel( params )
 	
 		if ( params.size and type(params.size) == "number" ) then size=params.size else size=20 end
 		if ( params.font ) then font=params.font else font=native.systemFontBold end
-		if ( params.textColor ) then textColor=params.textColor else textColor={ 2.6, 2.6, 2.6, 2.6 } end
+		if ( params.textColor ) then textColor=params.textColor else textColor={ 255, 255, 255, 255 } end
 		if ( params.offset and type(params.offset) == "number" ) then offset=params.offset else offset = 0 end
 		if ( params.align ) then align = params.align else align = "center" end
 		
 		if ( params.text ) then
 			labelText = display.newText( params.text, 0, 0, font, size )
 			labelText:setTextColor( textColor[1], textColor[2], textColor[3], textColor[4] )
+			t:insert( labelText )
+			-- TODO: handle no-initial-text case by creating a field with an empty string?
 	
 			if ( align == "left" ) then
 				labelText.x = left + labelText.stageWidth * 0.5
@@ -203,28 +254,36 @@ function newLabel( params )
 		labelText.y = top + labelText.stageHeight * 0.5
 
 		-- Public methods
-		function labelText:setText( newText )
+		function t:setText( newText )
 			if ( newText ) then
-				self.text = newText
+				labelText.text = newText
 				
 				if ( "left" == align ) then
-					self.x = left + self.stageWidth / 2
+					labelText.x = left + labelText.stageWidth / 2
 				elseif ( "right" == align ) then
-					self.x = (left + width) - self.stageWidth / 2
+					labelText.x = (left + width) - labelText.stageWidth / 2
 				else
-					self.x = ((2 * left) + width) / 2
+					labelText.x = ((2 * left) + width) / 2
 				end
 			end
 		end
 		
-		function labelText:setTextColor( textColor )
-			if ( textColor and type(textColor) == "table" ) then
-				self:setTextColor( textColor[1], textColor[2], textColor[3], textColor[4] )
-			end
+		function t:setTextColor( r, g, b, a )
+			local newR = 255
+			local newG = 255
+			local newB = 255
+			local newA = 255
+
+			if ( r and type(r) == "number" ) then newR = r end
+			if ( g and type(g) == "number" ) then newG = g end
+			if ( b and type(b) == "number" ) then newB = b end
+			if ( a and type(a) == "number" ) then newA = a end
+
+			labelText:setTextColor( r, g, b, a )
 		end
 	end
 	
-	-- Return instance
-	return labelText
+	-- Return instance (as display group)
+	return t
 	
 end

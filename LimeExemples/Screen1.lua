@@ -1,6 +1,6 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-function new()
+new = function ( params )
 	
 	local localGroup = display.newGroup()
 		-- Background
@@ -21,14 +21,18 @@ function new()
   	exitBtn.x = display.contentWidth - exitBtn.width / 2
   	exitBtn.y = display.contentHeight - exitBtn.height / 2
    	exitBtn.isVisible = true
-  	localGroup:insert(exitBtn)  	  	--Text Aquatrail  	local aquaText  = display.newText( "Aquatrail DEMO 0.2", 0, 0, "Arial", 50 )
+  	localGroup:insert(exitBtn)
+  	
+  	--Text Aquatrail
+  	local aquaText  = display.newText( "Aquatrail DEMO 0.2", 0, 0, "Arial", 50 )
 		aquaText.x = display.contentWidth/2
-		aquaText.y =  display.contentHeight/2		localGroup:insert(aquaText)
+		aquaText.y =  display.contentHeight/2
+		localGroup:insert(aquaText)
 	
 	--PLAY function
 	local function pressPlay (event)
 		if event.phase == "ended" then
-			director:changeScene ("screen2")
+			director:changeScene ("Screen2")
 		end
 	end
 	playBtn:addEventListener ("touch", pressPlay)
