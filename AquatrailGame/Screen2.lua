@@ -28,8 +28,9 @@ new = function ( params )
 	local SCORE = 0
 	local ui = require("ui")
 	require("physics")
-	
+	local gameUI = require("gameUI")
 	physics.start()
+	--gameUI.loadSoundXP( "maintheme.mp3" )
 	
 	-- Create a background colour just to make the map look a little nicer
 	local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
@@ -43,7 +44,7 @@ new = function ( params )
 	lime.disableScreenCulling()
 	
 	-- Load your map
-	local map = lime.loadMap("myLevel.tmx")
+	local map = lime.loadMap("tutorial20.tmx")
 	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
@@ -58,6 +59,8 @@ new = function ( params )
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
+	local maintheme = audio.loadSound( "maintheme.mp3" )
+	audio.play(maintheme,{loops = 100})
 	-- HUD Event Listeners
 	--[[
 	local onButtonLeftEvent = function(event)
