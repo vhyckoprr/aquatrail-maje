@@ -28,9 +28,7 @@ new = function ( params )
 	local SCORE = 0
 	local ui = require("ui")
 	require("physics")
-	local gameUI = require("gameUI")
 	physics.start()
-	--gameUI.loadSoundXP( "maintheme.mp3" )
 	
 	-- Create a background colour just to make the map look a little nicer
 	local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
@@ -60,7 +58,8 @@ new = function ( params )
 	local physical = lime.buildPhysical(map)
 	
 	local maintheme = audio.loadSound( "maintheme.mp3" )
-	audio.play(maintheme,{loops = 100})
+	local channelmaintheme = audio.play(maintheme,{loops = 100})
+	
 	-- HUD Event Listeners
 	--[[
 	local onButtonLeftEvent = function(event)
@@ -102,31 +101,31 @@ new = function ( params )
 	end
 	]]
 	local onButtonAPress = function(event)
-		if player.canJump then
-			player:applyLinearImpulse(0, -7.5, player.x, player.y)
+		--if player.canJump then
+			--player:applyLinearImpulse(0, -7.5, player.x, player.y)
 			
-			if EtatHero == 0 then
-				player.state = STATE_JUMPING_LIQ
-			elseif EtatHero ==1 then
-				player.state = STATE_JUMPING_SOL
-			end
+			--if EtatHero == 0 then
+				--player.state = STATE_JUMPING_LIQ
+			--elseif EtatHero ==1 then
+				--player.state = STATE_JUMPING_SOL
+			--end
 			
-			player:prepare("anim" .. player.state)
+			--player:prepare("anim" .. player.state)
 	
-			player:play()
-		end
+			--player:play()
+		--end
 	end
 
 	
 	-- HUD A BUTTON--------------------------------------------------------------------------------------------------
-	local buttonA = ui.newButton{
-	        default = "buttonA.png",
-	        over = "buttonA_over.png",
-	        onPress = onButtonAPress
-	}
+	--local buttonA = ui.newButton{
+	--        default = "buttonA.png",
+	--        over = "buttonA_over.png",
+	--        onPress = onButtonAPress
+	--}
 	
-	buttonA.x = display.contentWidth - buttonA.width / 2 - 10
-	buttonA.y = display.contentHeight - buttonA.height / 2 - 10
+	--buttonA.x = display.contentWidth - buttonA.width / 2 - 10
+	--buttonA.y = display.contentHeight - buttonA.height / 2 - 10
 	
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	local function onCollision(self, event )
@@ -244,13 +243,13 @@ new = function ( params )
 	-- TOUCH--------------------------------------------------------------------------
 	local onTouch = function(event)
 		if ( event.phase == "began" ) then
-			print("ChangeEtat")
+			--print("ChangeEtat")
 	      	if EtatHero == 0 then
-		    	  EtatHero = 1
-		      	print("Etat Solide")
+		    	EtatHero = 1
+		      	--print("Etat Solide")
 	       	elseif EtatHero ==1 then
 		      	EtatHero =0
-		      	print("Etat Liquide")
+		      	--print("Etat Liquide")
 	      	end
 		end
 
@@ -261,6 +260,28 @@ new = function ( params )
 	end
 	player:addEventListener("touch", onTouch)
 	
+	local function Jump (event)
+		if ( event.phase == "began" ) then
+				--mettre screen width a la place de 480
+				if((event.x - 480/2) >0) then
+					print("Jump")
+					if player.canJump then
+						player:applyLinearImpulse(0, -7.5, player.x, player.y)
+						
+						if EtatHero == 0 then
+							player.state = STATE_JUMPING_LIQ
+						elseif EtatHero ==1 then
+							player.state = STATE_JUMPING_SOL
+						end
+						
+						player:prepare("anim" .. player.state)
+				
+						player:play()
+					end
+				end
+		end
+	end
+	Runtime:addEventListener("touch", Jump)
 	
 	--PLAYER INIT-----------------------------------------------------------------------
 	if EtatHero == 0 then
@@ -289,17 +310,20 @@ new = function ( params )
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
+				audio.stop(channelmaintheme)
 				Runtime:removeEventListener("enterFrame", onUpdate)
 				director:changeScene ("Screen1")
 		end
 	end
 	backbutton:addEventListener ("touch", pressBack)  
-
+	
+	
+	
 --------------------------------------------------------------
 --Add the Director Class insert statements here
 	localGroup:insert(back)
 	localGroup:insert(visual)
-	localGroup:insert(buttonA)
+	--localGroup:insert(buttonA)
 	localGroup:insert(scoreText)
 	localGroup:insert(backbutton)
 
