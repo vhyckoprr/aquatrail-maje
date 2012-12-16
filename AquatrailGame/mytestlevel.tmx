@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="230" height="10" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="ParallaxEnabled" value="true"/>
+ </properties>
+ <tileset firstgid="1" name="tileset-platformer" tilewidth="32" tileheight="32">
+  <image source="tileset-platformer.png" width="192" height="544"/>
+  <tile id="53">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsPickup" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+    <property name="pickupType" value="score"/>
+    <property name="scoreValue" value="10"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="103" name="tileset-pipes" tilewidth="32" tileheight="32">
+  <image source="tileset-pipes.png" width="192" height="1152"/>
+  <tile id="90">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="102">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="103">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="319" name="player2" tilewidth="20" tileheight="30">
+  <image source="player.png" width="100" height="30"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsPlayer" value=""/>
+    <property name="animIdle" value="startFrame=3,frameCount=2,time=5000"/>
+    <property name="animJumping" value="startFrame=5,frameCount=1,time=5000"/>
+    <property name="animWalking" value="frameCount=2,time=500"/>
+    <property name="bounce" value="0.2"/>
+    <property name="density" value="1.0"/>
+    <property name="friction" value="0.3"/>
+    <property name="isFixedRotation" value="true"/>
+    <property name="sequences" value="[&quot;animIdle&quot;,&quot;animWalking&quot;,&quot;animJumping&quot;]"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="324" name="player4" tilewidth="20" tileheight="30">
+  <image source="PlayerTest.png" width="100" height="90"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsPlayer" value=""/>
+    <property name="animJumpingLiq" value="startFrame=5,frameCount=1,time=5000"/>
+    <property name="animJumpingSol" value="startFrame=10,frameCount=1,time=5000"/>
+    <property name="animTransition" value="startFrame=11,frameCount=3,time=500,loopCount=1"/>
+    <property name="animWalkingLiq" value="frameCount=2,time=500"/>
+    <property name="animWalkingSol" value="startFrame=6,frameCount=2,time=500"/>
+    <property name="bounce" value="0.2"/>
+    <property name="density" value="1.0"/>
+    <property name="friction" value="0.3"/>
+    <property name="isFixedRotation" value="true"/>
+    <property name="sequences" value="[&quot;animIdleLiq&quot;,&quot;animIdleSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animTransition&quot;]"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="339" name="AtlasGlace" tilewidth="32" tileheight="32">
+  <image source="../../../Sprite/Sol/AtlasGlace.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="351" name="player" tilewidth="50" tileheight="64">
+  <image source="SpritesHero.png" width="450" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsPlayer" value=""/>
+    <property name="animDJumpingLiq" value="startFrame=10,frameCount=1,time=5000"/>
+    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=5000"/>
+    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=5000"/>
+    <property name="animTransition" value="startFrame=11,frameCount=3,time=500,loopCount=1"/>
+    <property name="animWalkingLiq" value="startFrame=0,frameCount=4,time=500"/>
+    <property name="animWalkingSol" value="startFrame=10,frameCount=4,time=500"/>
+    <property name="bounce" value="0.2"/>
+    <property name="density" value="1.0"/>
+    <property name="friction" value="0.3"/>
+    <property name="isFixedRotation" value="true"/>
+    <property name="sequences" value="[&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animTransition&quot;,animDJumpingLiq&quot;]"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Hills" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1EEKgDAMRNGcQ0VUvP8ddK9nMi4K0pWaFhP8D2Y/IWlFAAAAAAAAAL8aTavpvi4CFBL9ps/+g2bWTBJ3jr9Ld2i5xUWzFmtkY3lX6aZ7iXnT1/6j1J3D4//lsdMb+R7v7jCff9PsFfo9Ff1dAQAQwQFaLgjF
+  </data>
+ </layer>
+ <layer name="Bushes" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0EkKACAIAMC+VP9/XB3rIhGCBDMgXsStNQAAAAAAACJ9xdjybX3F7MxZFfdG+/wq847XHr//EAA4TcqaBc4=
+  </data>
+ </layer>
+ <layer name="Clouds" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="0.1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1NENwCAIBUB3su6/Wh3BtCq03iX8+sCgpbxXe1292oSzsls560n3yHNRe7I7d1XeH9/Z6EzRs0fnj8rQZ4Ye+CZ/JwAAAAAAwBlu+PsIiQ==
+  </data>
+ </layer>
+ <layer name="Platforms" width="230" height="10">
+  <properties>
+   <property name="parallaxBase" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl1sOwiAQRWEB6oe6nmpijP++MDa6Vv3XNUmTEhELHV6CZU5ykya2MNB7R0oIgiAIgpTNIsGcVYI5ESQlrBWUpcdcI64x18RjDOTNxlJ9z/v2P+jzpprE71Ur3T1DhpHf5nLKNeOae4yROydKyA6gM01dKRICta/59hFG8sul2m/ltf5D72wyWXMdAbpgNhEFNZO55NKFG9c94Hiu2GTSJ5sxe5TurGs6n1aAa9P4plpM93d5Fupj1fM2/g+J7N2uTMbI5VXy26q9jpHLB9cz4HguuGQy5/9NcRbPrS6BzrMQL3d53jYDoRDe1WXSpqY14J4t8BtrKHLNpCmb0O/UPu07stX3fmqprtR7G0vyvpTg12a9B+rn0xKlZsA360KMfucS38/nvpSwH816X2Yv0Fk=
+  </data>
+ </layer>
+ <objectgroup name="Physics" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
+  <object type="Body" x="-140" y="258" width="2057" height="61">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="2624" y="257" width="575" height="60">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="3327" y="257" width="2108" height="61">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="5504" y="257" width="1851" height="60">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="865" y="191" width="62" height="65">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="5760" y="192" width="63" height="63">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="type"/>
+   </properties>
+  </object>
+  <object type="Body" x="6465" y="191" width="63" height="63">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="7074" y="227" width="29" height="27">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object x="3587" y="255">
+   <polygon points="0,0 30,-30 61,-30 88,-1"/>
+  </object>
+  <object name="PointA" type="Body" x="1921" y="261">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;pointA&quot;,&quot;pointB&quot;,&quot;pointC&quot;,&quot;pointD&quot;,&quot;pointE&quot;,&quot;pointF&quot;,&quot;pointG&quot;,&quot;pointH&quot;,&quot;pointA&quot;]"/>
+   </properties>
+  </object>
+  <object name="PointB" type="Body" x="2049" y="131">
+   <properties>
+    <property name="IsGround" value=""/>
+   </properties>
+  </object>
+  <object name="PointC" type="Body" x="2336" y="133">
+   <properties>
+    <property name="IsGround" value=""/>
+   </properties>
+  </object>
+  <object name="PointD" type="Body" x="2497" y="296">
+   <properties>
+    <property name="IsGround" value=""/>
+   </properties>
+  </object>
+  <object name="PointE" type="Body" x="2593" y="295">
+   <properties>
+    <property name="IsGround" value=""/>
+   </properties>
+  </object>
+  <object name="PointF" type="Body" x="2625" y="257"/>
+  <object name="pointG" type="Body" x="2625" y="318"/>
+  <object name="pointH" type="Body" x="1917" y="317"/>
+ </objectgroup>
+ <layer name="Castle" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt06ENADAMBLGMl/0nKi0ISUkf2NKNcFUAAACw11dABl9Clh4C/vIl5PElALw5RfEF6Q==
+  </data>
+ </layer>
+ <layer name="Foreground" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt00ERACAMwLBJA/+mkEHgGgX9dOYv63bAGA2JZN8OGKMhkQhPCA2JRHhCaEgkwhNCQyIRnhAaEonwhNCQSIQnhIZEIjwhNCQS4QmhIW87054FEw==
+  </data>
+ </layer>
+</map>

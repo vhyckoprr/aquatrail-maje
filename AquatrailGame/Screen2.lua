@@ -15,6 +15,7 @@ new = function ( params )
 
 	local STATE_WALKING_LIQ = "WalkingLiq"
 	local STATE_JUMPING_LIQ = "JumpingLiq"
+	local doubleSaut = true;
 
 	--Etat Solide
 	local STATE_WALKING_SOL = "WalkingSol"
@@ -42,7 +43,7 @@ new = function ( params )
 	lime.disableScreenCulling()
 	
 	-- Load your map
-	local map = lime.loadMap("myLevel.tmx")
+	local map = lime.loadMap("mytestlevel.tmx")
 	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
@@ -58,7 +59,7 @@ new = function ( params )
 	local physical = lime.buildPhysical(map)
 	
 	local maintheme = audio.loadSound( "maintheme.mp3" )
-	local channelmaintheme = audio.play(maintheme,{loops = 100})
+	--local channelmaintheme = audio.play(maintheme,{loops = 100})
 	
 	-- HUD Event Listeners
 	--[[
@@ -133,6 +134,11 @@ new = function ( params )
 	 	if ( event.phase == "began" ) then
 			if event.other.IsGround then
 				player.canJump = true
+				if(EtatHero ==0 )then
+					doubleSaut=true
+					print("doubleSaut = true")
+				end
+				
 				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
 					if EtatHero == 0 then
 						player.state = STATE_WALKING_LIQ
@@ -145,9 +151,12 @@ new = function ( params )
 			end
 	
 			elseif event.other.IsObstacle then
-				player.canJump = true
+				--player.canJump = true
+				--if(EtatHero ==0 )then
+				--	doubleSaut=true
+				--	print("doubleSaut = true")
+				--end
 			elseif event.other.IsPickup then
-				
 				local item = event.other
 				
 				local onTransitionEnd = function(transitionEvent)
@@ -177,17 +186,24 @@ new = function ( params )
 					text:setTextColor(0, 0, 0, 255)
 					text.x = display.contentCenterX
 					text.y = display.contentCenterY
-					
 					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
 				end
 			end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
+			print("isground ended")
 				player.canJump = false
-	
+				
+				--Check saut
+				--
+				--if doubleSaut==false and (EtatHero == 1 or EtatHero == 2 ) then
+				--	player.canJump = false
+				--	print("canJump = false1")
+				--end
+				
 	 		elseif event.other.IsObstacle then
-	 			local vx, vy = player:getLinearVelocity()
-				 player:setLinearVelocity(0 , vy)
+	 			--local vx, vy = player:getLinearVelocity()
+				--player:setLinearVelocity(0 , vy)
 			end
 	 	end
 	end
@@ -221,7 +237,6 @@ new = function ( params )
 		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
 			player:setLinearVelocity(0 , vy)
 		else
-	
 				if (vx == 0)then
 					player:applyForce( player.direction*10, 0, player.x, player.y )
 				elseif (vx<150  and vx>-150) then
@@ -230,7 +245,6 @@ new = function ( params )
 				else
 					player:setLinearVelocity(150, vy)
 				end
-	
 		end
 		-- Update the map. Needed for using map:setFocus()
 		map:setFocus( player )	
@@ -246,9 +260,11 @@ new = function ( params )
 			--print("ChangeEtat")
 	      	if EtatHero == 0 then
 		    	EtatHero = 1
+				doubleSaut = false
 		      	--print("Etat Solide")
 	       	elseif EtatHero ==1 then
 		      	EtatHero =0
+				doubleSaut = true
 		      	--print("Etat Liquide")
 	      	end
 		end
@@ -261,19 +277,30 @@ new = function ( params )
 	player:addEventListener("touch", onTouch)
 	
 	local function Jump (event)
+	--TODO : Faire en sorte de reset l'impulse car défois, le saut s'emballe sinon
+	--
+	
 		if ( event.phase == "began" ) then
+			player:applyLinearImpulse(0, 0, player.x, player.y)
 				--mettre screen width a la place de 480
-				if((event.x - 480/2) >0) then
-					print("Jump")
+				if((event.x - 480/2)-50 >0) then
+					--Check Doublesaut
+					--
+					if player.canJump == false and doubleSaut==true and EtatHero == 0 then
+						player.canJump = true
+						doubleSaut=false 
+					end
+						
 					if player.canJump then
-						player:applyLinearImpulse(0, -7.5, player.x, player.y)
+						print("Jump")
+						player:applyLinearImpulse(0, -4, player.x, player.y)
 						
 						if EtatHero == 0 then
 							player.state = STATE_JUMPING_LIQ
 						elseif EtatHero ==1 then
 							player.state = STATE_JUMPING_SOL
 						end
-						
+						player.canJump = false
 						player:prepare("anim" .. player.state)
 				
 						player:play()
