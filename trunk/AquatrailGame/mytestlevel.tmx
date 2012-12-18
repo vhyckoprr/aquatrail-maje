@@ -93,7 +93,7 @@
     <property name="density" value="1.0"/>
     <property name="friction" value="0.3"/>
     <property name="isFixedRotation" value="true"/>
-    <property name="sequences" value="[&quot;animIdleLiq&quot;,&quot;animIdleSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animTransition&quot;]"/>
+    <property name="sequences" value="[&quot;animWalkingLiq&quot;]"/>
    </properties>
   </tile>
  </tileset>
@@ -107,17 +107,19 @@
     <property name="HasBody" value=""/>
     <property name="IsAnimated" value=""/>
     <property name="IsPlayer" value=""/>
-    <property name="animDJumpingLiq" value="startFrame=10,frameCount=1,time=5000"/>
-    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=5000"/>
-    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=5000"/>
-    <property name="animTransition" value="startFrame=11,frameCount=3,time=500,loopCount=1"/>
-    <property name="animWalkingLiq" value="startFrame=0,frameCount=4,time=500"/>
+    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=800"/>
+    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=800"/>
+    <property name="animTransition" value="startFrame=29,frameCount=3,time=500,loopCount=1"/>
+    <property name="animWalkingLiq" value="frameCount=4,time=500"/>
     <property name="animWalkingSol" value="startFrame=10,frameCount=4,time=500"/>
-    <property name="bounce" value="0.2"/>
-    <property name="density" value="1.0"/>
-    <property name="friction" value="0.3"/>
+    <property name="bouceLiq" value="0"/>
+    <property name="bounceGla" value="0.1"/>
+    <property name="densityGla" value="1.25"/>
+    <property name="densityLiq" value="0.5"/>
+    <property name="frictionGla" value="0.5"/>
+    <property name="frictionLiq" value="0.3"/>
     <property name="isFixedRotation" value="true"/>
-    <property name="sequences" value="[&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animTransition&quot;,animDJumpingLiq&quot;]"/>
+    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransition&quot;]"/>
    </properties>
   </tile>
  </tileset>
@@ -126,7 +128,7 @@
    <property name="parallaxFactorX" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1EEKgDAMRNGcQ0VUvP8ddK9nMi4K0pWaFhP8D2Y/IWlFAAAAAAAAAL8aTavpvi4CFBL9ps/+g2bWTBJ3jr9Ld2i5xUWzFmtkY3lX6aZ7iXnT1/6j1J3D4//lsdMb+R7v7jCff9PsFfo9Ff1dAQAQwQFaLgjF
+   eJzt1EsKgDAMBcCcQ0VUvP8ZrQtBXIkfbHAGsn8hr40AAAAAgHo1Zdoy3ddB4CHZO73mH8rMZabIu8ffbT3M3MW9O+9q63QfOTu9zz/Gu3vU+H/VmOmK4x3P3rDW/bO/KwDIYAEY1AWn
   </data>
  </layer>
  <layer name="Bushes" width="230" height="10">
@@ -150,7 +152,7 @@
    <property name="parallaxBase" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl1sOwiAQRWEB6oe6nmpijP++MDa6Vv3XNUmTEhELHV6CZU5ykya2MNB7R0oIgiAIgpTNIsGcVYI5ESQlrBWUpcdcI64x18RjDOTNxlJ9z/v2P+jzpprE71Ur3T1DhpHf5nLKNeOae4yROydKyA6gM01dKRICta/59hFG8sul2m/ltf5D72wyWXMdAbpgNhEFNZO55NKFG9c94Hiu2GTSJ5sxe5TurGs6n1aAa9P4plpM93d5Fupj1fM2/g+J7N2uTMbI5VXy26q9jpHLB9cz4HguuGQy5/9NcRbPrS6BzrMQL3d53jYDoRDe1WXSpqY14J4t8BtrKHLNpCmb0O/UPu07stX3fmqprtR7G0vyvpTg12a9B+rn0xKlZsA360KMfucS38/nvpSwH816X2Yv0Fk=
+   eJztl90OgjAMhbcnQ2+M9/6NaPBZ9V6fSUhYgnXrOjrcgH7JSUxg0m3ndKCUIAiCIKybTYZnVhmeKQg5Mb2obKcqRIhmH6nQeG7/o47HarLXq16+e5aMUZLL1NRaqSNBV527UiEFsK9x+4hR5eUS9tvhXOfQO7tM3lpdCGokmwIAZvLfuawTnhuPVs8ENXGJySQnm1P2KN+7LvZ+WhF+Y/+P1YLd7/Is1cfQ8zH+T8nQu65MTpHLu8dv0L/cc+PV6j1+eBLGZLLkc9P2zdLqsvg8S/Gyy/OxGUiF9a4vkzE17Qj3HJDvKpd/G+I3Wakam0ksm9Tv1JBOjmxh+zOcz9z3hbouofVYgrr5njXPp2sUzAA361ZG/+ZS9ud7XdawHt18P2kp0po=
   </data>
  </layer>
  <objectgroup name="Physics" width="230" height="10">
@@ -187,12 +189,6 @@
     <property name="bodyType" value="static"/>
    </properties>
   </object>
-  <object type="Body" x="5760" y="192" width="63" height="63">
-   <properties>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="type"/>
-   </properties>
-  </object>
   <object type="Body" x="6465" y="191" width="63" height="63">
    <properties>
     <property name="IsGround" value=""/>
@@ -208,36 +204,42 @@
   <object x="3587" y="255">
    <polygon points="0,0 30,-30 61,-30 88,-1"/>
   </object>
-  <object name="PointA" type="Body" x="1921" y="261">
+  <object name="pointA" type="Body" x="1912" y="268">
    <properties>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
-    <property name="points" value="[&quot;pointA&quot;,&quot;pointB&quot;,&quot;pointC&quot;,&quot;pointD&quot;,&quot;pointE&quot;,&quot;pointF&quot;,&quot;pointG&quot;,&quot;pointH&quot;,&quot;pointA&quot;]"/>
+    <property name="points" value="[&quot;pointA&quot;,&quot;pointB&quot;,&quot;pointC&quot;,&quot;pointD&quot;]"/>
    </properties>
   </object>
-  <object name="PointB" type="Body" x="2049" y="131">
+  <object name="pointB" x="2049" y="131"/>
+  <object name="pointC" x="2336" y="133"/>
+  <object name="pointZ" type="Body" x="2594" y="293">
    <properties>
     <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;pointZ&quot;,&quot;pointE&quot;,&quot;pointF&quot;,&quot;pointG&quot;,&quot;pointH&quot;]"/>
    </properties>
   </object>
-  <object name="PointC" type="Body" x="2336" y="133">
+  <object name="Montee1A" type="Body" x="234" y="269">
    <properties>
     <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;,&quot;Montee1D&quot;]"/>
    </properties>
   </object>
-  <object name="PointD" type="Body" x="2497" y="296">
+  <object name="Montee1B" x="297" y="208"/>
+  <object name="Montee1C" x="345" y="208"/>
+  <object name="Montee1D" x="407" y="268"/>
+  <object name="pointE" x="2623" y="260"/>
+  <object name="pointF" x="2626" y="317"/>
+  <object name="pointG" x="2590" y="321"/>
+  <object name="pointD" x="2494" y="294"/>
+  <object type="Body" x="2493" y="293" width="97" height="36">
    <properties>
     <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
    </properties>
   </object>
-  <object name="PointE" type="Body" x="2593" y="295">
-   <properties>
-    <property name="IsGround" value=""/>
-   </properties>
-  </object>
-  <object name="PointF" type="Body" x="2625" y="257"/>
-  <object name="pointG" type="Body" x="2625" y="318"/>
-  <object name="pointH" type="Body" x="1917" y="317"/>
  </objectgroup>
  <layer name="Castle" width="230" height="10">
   <properties>

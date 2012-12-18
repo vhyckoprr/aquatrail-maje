@@ -59,75 +59,8 @@ new = function ( params )
 	local physical = lime.buildPhysical(map)
 	
 	local maintheme = audio.loadSound( "maintheme.mp3" )
-	--local channelmaintheme = audio.play(maintheme,{loops = 100})
-	
-	-- HUD Event Listeners
-	--[[
-	local onButtonLeftEvent = function(event)
-		
-		if event.phase == "press" then
-			if (player.direction ==DIRECTION_RIGHT)then
-				player.direction = DIRECTION_LEFT
-				player.xScale = player.direction
-				-- on change de direction donc vx vy = 0
-				local vx, vy = player:getLinearVelocity()
-				player:setLinearVelocity(0, vy)
-			end
-			player.state = STATE_WALKING	
 
-		end
-	
-		player:prepare("anim" .. player.state)
-		
-		player:play()
-	end
-	
-	local onButtonRightEvent = function(event)
-	
-		if event.phase == "press" then
-			if (player.direction ==DIRECTION_LEFT)then
-				player.direction = DIRECTION_RIGHT
-				player.xScale = player.direction
-				-- on change de direction donc vx vy = 0
-				local vx, vy = player:getLinearVelocity()
-				player:setLinearVelocity(0, vy)
-			end
-			player.state = STATE_WALKING	
-
-		end
-	
-		player:prepare("anim" .. player.state)
-		
-		player:play()
-	end
-	]]
-	local onButtonAPress = function(event)
-		--if player.canJump then
-			--player:applyLinearImpulse(0, -7.5, player.x, player.y)
-			
-			--if EtatHero == 0 then
-				--player.state = STATE_JUMPING_LIQ
-			--elseif EtatHero ==1 then
-				--player.state = STATE_JUMPING_SOL
-			--end
-			
-			--player:prepare("anim" .. player.state)
-	
-			--player:play()
-		--end
-	end
-
-	
-	-- HUD A BUTTON--------------------------------------------------------------------------------------------------
-	--local buttonA = ui.newButton{
-	--        default = "buttonA.png",
-	--        over = "buttonA_over.png",
-	--        onPress = onButtonAPress
-	--}
-	
-	--buttonA.x = display.contentWidth - buttonA.width / 2 - 10
-	--buttonA.y = display.contentHeight - buttonA.height / 2 - 10
-	
+	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	local function onCollision(self, event )
 	
@@ -146,6 +79,7 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 
+					print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
 			end
@@ -193,17 +127,6 @@ new = function ( params )
 			if event.other.IsGround then
 			print("isground ended")
 				player.canJump = false
-				
-				--Check saut
-				--
-				--if doubleSaut==false and (EtatHero == 1 or EtatHero == 2 ) then
-				--	player.canJump = false
-				--	print("canJump = false1")
-				--end
-				
-	 		elseif event.other.IsObstacle then
-	 			--local vx, vy = player:getLinearVelocity()
-				--player:setLinearVelocity(0 , vy)
 			end
 	 	end
 	end
@@ -226,6 +149,7 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 					player.direction = DIRECTION_RIGHT
+					print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
 				end
@@ -271,6 +195,7 @@ new = function ( params )
 
 		player.state = STATE_TRANSITION 
 		player.direction = DIRECTION_RIGHT
+		print("anim" .. player.state)
 		player:prepare("anim" .. player.state)
 		player:play()
 	end
@@ -293,7 +218,7 @@ new = function ( params )
 						
 					if player.canJump then
 						print("Jump")
-						player:applyLinearImpulse(0, -4, player.x, player.y)
+						player:applyLinearImpulse(0, -10, player.x, player.y)
 						
 						if EtatHero == 0 then
 							player.state = STATE_JUMPING_LIQ
@@ -301,6 +226,7 @@ new = function ( params )
 							player.state = STATE_JUMPING_SOL
 						end
 						player.canJump = false
+						print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
 				
 						player:play()
@@ -317,6 +243,7 @@ new = function ( params )
 		player.state = STATE_WALKING_SOL
 	end
 	player.direction = DIRECTION_RIGHT
+	print("anim" .. player.state)
 	player:prepare("anim" .. player.state)
 	player:play()
 	
@@ -350,7 +277,6 @@ new = function ( params )
 --Add the Director Class insert statements here
 	localGroup:insert(back)
 	localGroup:insert(visual)
-	--localGroup:insert(buttonA)
 	localGroup:insert(scoreText)
 	localGroup:insert(backbutton)
 
