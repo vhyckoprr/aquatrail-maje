@@ -192,17 +192,32 @@ new = function ( params )
 		      	--print("Etat Liquide")
 	      	end
 		end
-
+		ChangePlayerDynamic()
 		player.state = STATE_TRANSITION 
 		player.direction = DIRECTION_RIGHT
 		print("anim" .. player.state)
 		player:prepare("anim" .. player.state)
 		player:play()
 	end
-	player:addEventListener("touch", onTouch)
+	player:addEventListener("touch", onTouch)		function ChangePlayerDynamic()
+ 		local vx, vy = player:getLinearVelocity()
+		if EtatHero == 0 then
+
+		    	physics.removeBody( player )
+		    	physics.addBody( player, { density=player.densityLiq, friction=player. frictionLiq, bounce=player. bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
+		    	player.isFixedRotation = true
+		    --print("Etat Solide")
+		elseif EtatHero ==1 then
+
+      	physics.removeBody( player )
+		   physics.addBody( player, { density=player.densityGla, friction=player. frictionGla, bounce=player. bounceGla} )
+		   player.isFixedRotation = true
+		end
+		player:setLinearVelocity(vx, vy)
+	end
 	
 	local function Jump (event)
-	--TODO : Faire en sorte de reset l'impulse car défois, le saut s'emballe sinon
+	--TODO : Faire en sorte de reset l'impulse car dï¿½fois, le saut s'emballe sinon
 	--
 	
 		if ( event.phase == "began" ) then
@@ -241,7 +256,7 @@ new = function ( params )
 		player.state = STATE_WALKING_LIQ 
 	elseif EtatHero ==1 then
 		player.state = STATE_WALKING_SOL
-	end
+	end	ChangePlayerDynamic()
 	player.direction = DIRECTION_RIGHT
 	print("anim" .. player.state)
 	player:prepare("anim" .. player.state)
