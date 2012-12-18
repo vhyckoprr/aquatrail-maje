@@ -59,8 +59,8 @@ new = function ( params )
 	local physical = lime.buildPhysical(map)
 	
 	local maintheme = audio.loadSound( "maintheme.mp3" )
-
-	physics.setDrawMode("hybrid")
+	audio.play(maintheme,{loops=-1})
+	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	local function onCollision(self, event )
 	
@@ -264,7 +264,7 @@ new = function ( params )
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
-				audio.stop(channelmaintheme)
+				audio.stop()
 				Runtime:removeEventListener("enterFrame", onUpdate)
 				director:changeScene ("Screen1")
 		end

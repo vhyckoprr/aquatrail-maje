@@ -138,7 +138,7 @@
    <property name="parallaxFactorX" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztziEBAAAIA7BXon857BUWsyVYAgAAAAAAwGW+AwAAUBYsrgAy
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIAXAyPwAAE=
   </data>
  </layer>
  <layer name="Clouds" width="230" height="10">
@@ -210,8 +210,8 @@
     <property name="points" value="[&quot;pointA&quot;,&quot;pointB&quot;,&quot;pointC&quot;,&quot;pointD&quot;]"/>
    </properties>
   </object>
-  <object name="pointB" x="2061" y="141"/>
-  <object name="pointC" x="2321" y="141"/>
+  <object name="pointB" x="2060" y="136"/>
+  <object name="pointC" x="2326" y="136"/>
   <object name="pointZ" type="Body" x="2600" y="302">
    <properties>
     <property name="IsGround" value=""/>
@@ -226,8 +226,8 @@
     <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;,&quot;Montee1D&quot;]"/>
    </properties>
   </object>
-  <object name="Montee1B" x="297" y="208"/>
-  <object name="Montee1C" x="345" y="208"/>
+  <object name="Montee1B" x="293" y="203"/>
+  <object name="Montee1C" x="345" y="201"/>
   <object name="Montee1D" x="407" y="268"/>
   <object name="pointE" x="2628" y="269"/>
   <object name="pointF" x="2626" y="317"/>
@@ -240,7 +240,7 @@
    </properties>
   </object>
   <object x="3591" y="267" width="1"/>
-  <object name="Montee3C" x="3735" y="241"/>
+  <object name="Montee3C" x="3735" y="230"/>
   <object name="Montee3D" x="3769" y="273"/>
   <object name="Montee3A" type="Body" x="3595" y="272">
    <properties>
@@ -249,7 +249,7 @@
     <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;,&quot;Montee3D&quot;]"/>
    </properties>
   </object>
-  <object name="Montee3B" x="3625" y="243"/>
+  <object name="Montee3B" x="3625" y="232"/>
  </objectgroup>
  <layer name="Castle" width="230" height="10">
   <properties>
