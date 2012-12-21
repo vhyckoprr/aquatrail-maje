@@ -3,7 +3,7 @@ application =
 content =
 	{
 		width = 320,
-		height = 450,
+		height = 530,
 		scale = "zoomEven"
 	},
 }
