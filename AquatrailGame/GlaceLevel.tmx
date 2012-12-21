@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="230" height="10" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="ParallaxEnabled" value="true"/>
+ </properties>
+ <tileset firstgid="1" name="tileset-platformer" tilewidth="32" tileheight="32">
+  <image source="tileset-platformer.png" width="192" height="544"/>
+  <tile id="53">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsPickup" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+    <property name="pickupType" value="score"/>
+    <property name="scoreValue" value="10"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="103" name="tileset-pipes" tilewidth="32" tileheight="32">
+  <image source="tileset-pipes.png" width="192" height="1152"/>
+  <tile id="90">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="102">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="103">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="162">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="163">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="174">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="175">
+   <properties>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="319" name="player" tilewidth="50" tileheight="64">
+  <image source="SpritesHero.png" width="450" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsPlayer" value=""/>
+    <property name="animDJumping" value="startFrame=6,frameCount=3,time=800"/>
+    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=800"/>
+    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=800"/>
+    <property name="animTransition" value="startFrame=29,frameCount=3,time=500,loopCount=1"/>
+    <property name="animWalkingLiq" value="frameCount=4,time=500"/>
+    <property name="animWalkingSol" value="startFrame=10,frameCount=4,time=500"/>
+    <property name="bouceLiq" value="0"/>
+    <property name="bounceGla" value="0.1"/>
+    <property name="densityGla" value="0.45"/>
+    <property name="densityLiq" value="0.4"/>
+    <property name="frictionGla" value="0.5"/>
+    <property name="frictionLiq" value="0.3"/>
+    <property name="isFixedRotation" value="true"/>
+    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransition&quot;,&quot;animDJumping&quot;]"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="355" name="AtlasGlace" tilewidth="32" tileheight="32">
+  <image source="AtlasGlace.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="367" name="CollectableGoutte" tilewidth="32" tileheight="32">
+  <image source="gouttelette2.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsPickup" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+    <property name="pickupType" value="score"/>
+    <property name="scoreValue" value="10"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Hills" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIAXAyPwAAE=
+  </data>
+ </layer>
+ <layer name="Bushes" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIAXAyPwAAE=
+  </data>
+ </layer>
+ <layer name="Clouds" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="0.1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIAXAyPwAAE=
+  </data>
+ </layer>
+ <layer name="Platforms" width="230" height="10">
+  <properties>
+   <property name="parallaxBase" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl8EOgjAQRPGId/0d9OKPqCDR4P/fXA4mhLRl2W7ZAvOSSUigdElntrQoAADfg3UFQAOsI5ByMZjTwq/ICFgTV+sCQDJie5FmL+vfhd7IB7kM05KXHgy94TngQdKPUuYyRX9csuf2mfyQGoY6ZBMoopHLVnHfKGn8MQN/z8lkbDalvSbFuOE93zVwo+ldbi4rz3xj/8buGycaezb2gCSTOe6b/yy5/sVzqXFLaHr3xnjmHjhXufzbMc9kuUqayVA2uefUpb5n7Wu0dz1JtWNdoelsTmUDgqR6kX6HKt9m
+  </data>
+ </layer>
+ <objectgroup name="Physics" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
+  <object type="Body" x="-140" y="258" width="2057" height="61">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="2624" y="257" width="703" height="59">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="3327" y="257" width="2184" height="60">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="5504" y="257" width="1851" height="60">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="865" y="191" width="62" height="65">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="6465" y="191" width="63" height="63">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="7074" y="227" width="29" height="27">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object name="pointA" type="Body" x="1929" y="273">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;pointA&quot;,&quot;pointB&quot;,&quot;pointC&quot;,&quot;pointD&quot;]"/>
+   </properties>
+  </object>
+  <object name="pointB" x="2060" y="136"/>
+  <object name="pointC" x="2326" y="136"/>
+  <object name="pointZ" type="Body" x="2600" y="302">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;pointZ&quot;,&quot;pointE&quot;,&quot;pointF&quot;,&quot;pointG&quot;,&quot;pointH&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee1A" type="Body" x="234" y="269">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;,&quot;Montee1D&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee1B" x="293" y="203"/>
+  <object name="Montee1C" x="345" y="201"/>
+  <object name="Montee1D" x="407" y="268"/>
+  <object name="pointE" x="2628" y="269"/>
+  <object name="pointF" x="2626" y="317"/>
+  <object name="pointG" x="2590" y="321"/>
+  <object name="pointD" x="2483" y="299"/>
+  <object type="Body" x="2493" y="293" width="97" height="36">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object x="3591" y="267" width="1"/>
+  <object name="Montee3C" x="3735" y="230"/>
+  <object name="Montee3D" x="3769" y="273"/>
+  <object name="Montee3A" type="Body" x="3595" y="272">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;,&quot;Montee3D&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee3B" x="3625" y="232"/>
+ </objectgroup>
+ <layer name="Castle" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIAXAyPwAAE=
+  </data>
+ </layer>
+ <layer name="Foreground" width="230" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIAXAyPwAAE=
+  </data>
+ </layer>
+</map>

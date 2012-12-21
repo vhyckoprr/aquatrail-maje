@@ -28,9 +28,16 @@ new = function ( params )
 	local DIRECTION_RIGHT = 1
 	local SCORE = 0
 	local ui = require("ui")
+	local Gesture = require("lib_gesture")
 	require("physics")
 	physics.start()
 	
+	
+	local pointsTable = {}
+	local line
+	local myText = display.newText("Test: ", 75, 50, native.systemFont, 32)
+	myText:setTextColor(150, 0, 0)
+
 	-- Create a background colour just to make the map look a little nicer
 	local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
 	back:setFillColor(165, 210, 255)
@@ -43,7 +50,7 @@ new = function ( params )
 	lime.disableScreenCulling()
 	
 	-- Load your map
-	local map = lime.loadMap("mytestlevel.tmx")
+	local map = lime.loadMap("GlaceLevel.tmx")
 	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
@@ -58,7 +65,7 @@ new = function ( params )
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
-	local maintheme = audio.loadSound( "maintheme.mp3" )
+	local maintheme = audio.loadSound( "./Ressources/Sound/maintheme.mp3" )
 	audio.play(maintheme,{loops=-1})
 	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
@@ -216,14 +223,14 @@ new = function ( params )
 		player:setLinearVelocity(vx, vy)
 	end
 	
-	local function Jump (event)
-	--TODO : Faire en sorte de reset l'impulse car dï¿½fois, le saut s'emballe sinon
+	--Fonction de saut !
 	--
-	
+	local function Jump (event)
+		local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 		if ( event.phase == "began" ) then
-			player:applyLinearImpulse(0, 0, player.x, player.y)
+			
 				--mettre screen width a la place de 480
-				if((event.x - 480/2)-50 >0) then
+				if(event.x < ((480/2)-50)) then
 					--Check Doublesaut
 					--
 					if player.canJump == false and doubleSaut==true and EtatHero == 0 then
@@ -233,6 +240,7 @@ new = function ( params )
 						
 					if player.canJump then
 						print("Jump")
+						player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que ça sembale !
 						player:applyLinearImpulse(0, -10, player.x, player.y)
 						
 						if EtatHero == 0 then
@@ -286,7 +294,78 @@ new = function ( params )
 	end
 	backbutton:addEventListener ("touch", pressBack)  
 	
-	
+	--drawLine gesturelib
+	--
+	local function drawLine ()
+
+		if (line and #pointsTable > 2) then
+			line:removeSelf()
+		end
+		
+		local numPoints = #pointsTable
+		local nl = {}
+		local  j, p
+			 
+		nl[1] = pointsTable[1]
+			 
+		j = 2
+		p = 1
+			 
+		for  i = 2, numPoints, 1  do
+			nl[j] = pointsTable[i]
+			j = j+1
+			p = i 
+		end
+		
+		if ( p  < numPoints -1 ) then
+			nl[j] = pointsTable[numPoints-1]
+		end
+		
+		if #nl > 2 then
+				line = display.newLine(nl[1].x,nl[1].y,nl[2].x,nl[2].y)
+				for i = 3, #nl, 1 do 
+					line:append( nl[i].x,nl[i].y);
+				end
+				line:setColor(255,255,0)
+				line.width=5
+		end
+	end	
+	local function UpdateGesturelib(event)		
+		if "began" == event.phase then
+			pointsTable = nil
+			pointsTable = {}
+			local pt = {}
+			pt.x = event.x
+			pt.y = event.y
+			table.insert(pointsTable,pt)
+		
+		elseif "moved" == event.phase then
+		
+			local pt = {}
+			pt.x = event.x
+			pt.y = event.y
+			table.insert(pointsTable,pt)
+			if EtatHero == 1 and (event.x - (480/2)-50) >0
+			then
+				drawLine ()
+			end
+			
+		elseif "ended" == event.phase or "cancelled" == event.phase then
+				--drawLine ()
+				if EtatHero == 1 and (event.x - (480/2)-50) >0
+				then
+					myText.text = "Test : "..Gesture.GestureResult()
+					--Si on fait un "slash vers bas" alors on fait la capacité spécial du glaçon
+					if Gesture.GestureResult() == "SwipeD"
+					then
+					print("impulse bas")
+						player:applyLinearImpulse(0, 30, player.x, player.y)
+					end
+				end
+		end
+	end
+
+Runtime:addEventListener( "touch", UpdateGesturelib )
 	
 --------------------------------------------------------------
 --Add the Director Class insert statements here
