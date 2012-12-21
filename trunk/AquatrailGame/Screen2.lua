@@ -65,7 +65,7 @@ new = function ( params )
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
-	local maintheme = audio.loadSound( "./Ressources/Sound/maintheme.mp3" )
+	local maintheme = audio.loadSound( "maintheme.mp3" )
 	audio.play(maintheme,{loops=-1})
 	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
