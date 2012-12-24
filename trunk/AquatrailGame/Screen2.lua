@@ -20,6 +20,7 @@ new = function ( params )
 	--Etat Solide
 	local STATE_WALKING_SOL = "WalkingSol"
 	local STATE_JUMPING_SOL = "JumpingSol"
+	local BriseGlace = false;
 
 	--Transition Etat
 	local STATE_TRANSITION = "Transition"
@@ -50,7 +51,7 @@ new = function ( params )
 	lime.disableScreenCulling()
 	
 	-- Load your map
-	local map = lime.loadMap("GlaceLevel.tmx")
+	local map = lime.loadMap("Niveau1.tmx")
 	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
@@ -67,7 +68,7 @@ new = function ( params )
 	
 	local maintheme = audio.loadSound( "maintheme.mp3" )
 	audio.play(maintheme,{loops=-1})
-	--physics.setDrawMode("hybrid")
+	physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	local function onCollision(self, event )
 	
@@ -76,7 +77,7 @@ new = function ( params )
 				player.canJump = true
 				if(EtatHero ==0 )then
 					doubleSaut=true
-					print("doubleSaut = true")
+					--print("doubleSaut = true")
 				end
 				
 				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
@@ -86,7 +87,7 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 
-					print("anim" .. player.state)
+					--print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
 			end
@@ -129,10 +130,19 @@ new = function ( params )
 					text.y = display.contentCenterY
 					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
 				end
+			elseif event.other.IsStalacti then
+				print("brise stalactite")
+				if EtatHero == 1 then
+					event.other:removeSelf()
+				end
+			elseif event.other.IsGroundBrize then
+				if EtatHero == 1 and BriseGlace then
+					event.other:removeSelf()
+				end
 			end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
-			print("isground ended")
+				--print("isground ended")
 				player.canJump = false
 			end
 	 	end
@@ -358,15 +368,18 @@ new = function ( params )
 					--Si on fait un "slash vers bas" alors on fait la capacité spécial du glaçon
 					if Gesture.GestureResult() == "SwipeD"
 					then
-					print("impulse bas")
+						print("impulse bas")
 						player:applyLinearImpulse(0, 30, player.x, player.y)
+						BriseGlace=true
+						print("BriseGlace=true")
+						timer.performWithDelay( 1000, function() BriseGlace=false  print("BriseGlace=false") end, 1 )
 					end
 				end
 		end
 	end
 
 Runtime:addEventListener( "touch", UpdateGesturelib )
-	
+
 --------------------------------------------------------------
 --Add the Director Class insert statements here
 	localGroup:insert(back)

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="90" height="10" tilewidth="30" tileheight="30">
+ <tileset firstgid="1" name="AtlasGlace" tilewidth="32" tileheight="32">
+  <image source="AtlasGlace.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="13" name="SpritesHero" tilewidth="50" tileheight="64">
+  <image source="SpritesHero.png" width="450" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsPlayer" value=""/>
+    <property name="animDJumping" value="startFrame=6,frameCount=3,time=800"/>
+    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=800"/>
+    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=800"/>
+    <property name="animTransition" value="startFrame=29,frameCount=3,time=500,loopCount=1"/>
+    <property name="animWalkingLiq" value="frameCount=4,time=500"/>
+    <property name="animWalkingSol" value="startFrame=10,frameCount=4,time=500"/>
+    <property name="bounceGla" value="0"/>
+    <property name="bounceLiq" value="0.1"/>
+    <property name="densityGla" value="0.45"/>
+    <property name="densityLiq" value="0.4"/>
+    <property name="frictionGla" value="0.5"/>
+    <property name="frictionLiq" value="0.3"/>
+    <property name="isFixedRotation" value="true"/>
+    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransition&quot;,&quot;animDJumping&quot;]"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="49" name="tileset-pipes" tilewidth="32" tileheight="32">
+  <image source="tileset-pipes.png" width="192" height="1152"/>
+ </tileset>
+ <layer name="Plateform" width="90" height="10">
+  <data encoding="base64" compression="zlib">
+   eJztldEKgzAMRatMZbJ96/xXfde/2JOwyAjE0GpaamPFCwckQQmH2BpzJzQFUAJP7UEungdQAS+zdt2Yv39Kbvl61o8MeqauF8ctqSMd8FaYMTSzZ10S2/5xuLdK8A6l2Oid8dyJ7ZnuXx34DUno7nP4uXOG+HrugcHR4/+4lmcN11telvh6HoHJUredo5qeU7t2ecHE8Oy6q2J7/pBniWeJ67093Otj0IvkbsoJqWd0nWou277lzA9V8x6m
+  </data>
+ </layer>
+ <objectgroup name="Physics" width="90" height="10">
+  <object type="Body" x="2373" y="-136" width="353" height="255">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="1171" y="241" width="1527" height="57">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="3" y="123" width="206" height="176">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="362" y="272" width="779" height="27">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="1983" y="91" width="234" height="27">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="2222" y="92" width="147" height="27">
+   <properties>
+    <property name="IsGroundBrize" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="542" y="238" width="58" height="30">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="1082" y="179" width="57" height="92">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="1320" y="57" width="30" height="180">
+   <properties>
+    <property name="IsStalacti" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="1500" y="57" width="28" height="181">
+   <properties>
+    <property name="IsStalacti" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object type="Body" x="1682" y="148" width="58" height="91">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object name="Montee1A" type="Body" x="210" y="132">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee1B" x="359" y="283"/>
+  <object name="Montee2A" type="Body" x="1145" y="279">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Montee2A&quot;,&quot;Montee2B&quot;,&quot;Montee2C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee2B" x="1174" y="253"/>
+  <object type="Body" x="784" y="239" width="58" height="30">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object name="Montee3A" type="Body" x="1851" y="237">
+   <properties>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee3B" x="1985" y="106"/>
+  <object name="Montee1C" x="269" y="270"/>
+  <object name="Montee2C" x="1170" y="290"/>
+  <object name="Montee3C" x="1983" y="201"/>
+ </objectgroup>
+</map>
