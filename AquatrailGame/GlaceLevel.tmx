@@ -94,8 +94,8 @@
     <property name="animTransition" value="startFrame=29,frameCount=3,time=500,loopCount=1"/>
     <property name="animWalkingLiq" value="frameCount=4,time=500"/>
     <property name="animWalkingSol" value="startFrame=10,frameCount=4,time=500"/>
-    <property name="bouceLiq" value="0"/>
     <property name="bounceGla" value="0.1"/>
+    <property name="bounceLiq" value="0"/>
     <property name="densityGla" value="0.45"/>
     <property name="densityLiq" value="0.4"/>
     <property name="frictionGla" value="0.5"/>
