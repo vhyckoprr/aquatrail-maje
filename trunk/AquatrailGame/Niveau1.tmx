@@ -48,7 +48,7 @@
     <property name="bodyType" value="static"/>
    </properties>
   </object>
-  <object type="Body" x="3" y="123" width="206" height="176">
+  <object type="Body" x="0" y="120" width="206" height="176">
    <properties>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
@@ -102,14 +102,14 @@
     <property name="bodyType" value="static"/>
    </properties>
   </object>
-  <object name="Montee1A" type="Body" x="210" y="132">
+  <object name="Montee1A" type="Body" x="210" y="120">
    <properties>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee1B" x="359" y="283"/>
+  <object name="Montee1B" x="360" y="270"/>
   <object name="Montee2A" type="Body" x="1145" y="279">
    <properties>
     <property name="IsGround" value=""/>
