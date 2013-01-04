@@ -68,7 +68,7 @@ new = function ( params )
 	
 	local maintheme = audio.loadSound( "maintheme.mp3" )
 	audio.play(maintheme,{loops=-1})
-	physics.setDrawMode("hybrid")
+	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	local function onCollision(self, event )
 	
