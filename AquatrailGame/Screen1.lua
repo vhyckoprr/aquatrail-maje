@@ -5,29 +5,49 @@ new = function ( params )
 	local localGroup = display.newGroup()
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
-	local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
-	back:setFillColor(165, 210, 255)
-	localGroup:insert(back)
+	local backcolor = display.newRect(0, 0, display.contentWidth, display.contentHeight)
+	backcolor:setFillColor(169, 214, 255)
+	localGroup:insert(backcolor)		--Background	local back = display.newImage("fondAccueil.png")
+   back.isVisible = true   back.x = 	display.contentWidth/2 
+   back.y =  display.contentHeight/2 
+   localGroup:insert(back)      --logo	local logo = display.newImage("logo_aquatrail.png")
+   logo.isVisible = true   logo.x =  display.contentWidth/2 + logo.width / 4
+   logo.y =  display.contentHeight/2 - logo.height /1.5
+   localGroup:insert(back)
 	
 	--PlayButton
-  	local playBtn = display.newImage("Play_Button.png")
-   	playBtn.x = 	playBtn.width / 2
-   	playBtn.y =  display.contentHeight - playBtn.height / 2
+  	local playBtn = display.newImage("bouton_jouer.png")
+   	playBtn.x = 	display.contentWidth/2 
+   	playBtn.y =  display.contentHeight/2 
    	playBtn.isVisible = true
-   	localGroup:insert(playBtn)
+   	localGroup:insert(playBtn)   	   	--OptionsButton
+  	local OptBtn = display.newImage("bouton_options.png")
+   	OptBtn.x = 	display.contentWidth/2 
+   	OptBtn.y =  display.contentHeight-display.contentHeight/4 
+   	OptBtn.isVisible = true
+   	localGroup:insert(OptBtn)   	   	--RecompensesButton
+  	local RecBtn = display.newImage("bouton_recompenses.png")
+   	RecBtn.x = 	display.contentWidth/3
+   	RecBtn.y =  display.contentHeight-display.contentHeight/4-display.contentHeight/8
+   	RecBtn.isVisible = true
+   	localGroup:insert(RecBtn)   	   	--ScoreButton
+  	local ScoreBtn = display.newImage("bouton_scores.png")
+   	ScoreBtn.x = 	display.contentWidth-display.contentWidth/3
+   	ScoreBtn.y =    display.contentHeight-display.contentHeight/4-display.contentHeight/8
+   	ScoreBtn.isVisible = true
+   	localGroup:insert(ScoreBtn)   	   	--CreditButton
+  	local CreditBtn = display.newImage("bouton_credits.png")
+   	CreditBtn.x = display.contentWidth - CreditBtn.width*2
+  	 CreditBtn.y = display.contentHeight - CreditBtn.height
+   	CreditBtn.isVisible = true
+   	localGroup:insert(CreditBtn)
    
 	--Exit Button
 	local exitBtn = display.newImage("Exit_Button.png")
-  	exitBtn.x = display.contentWidth - exitBtn.width / 2
-  	exitBtn.y = display.contentHeight - exitBtn.height / 2
+  	exitBtn.x = display.contentWidth/2 
+  	exitBtn.y = display.contentHeight - exitBtn.height
    	exitBtn.isVisible = true
-  	localGroup:insert(exitBtn)
-  	
-  	--Text Aquatrail
-  	local aquaText  = display.newText( "Aquatrail DEMO 0.2", 0, 0, "Arial", 50 )
-		aquaText.x = display.contentWidth/2
-		aquaText.y =  display.contentHeight/2
-		localGroup:insert(aquaText)
+  	localGroup:insert(exitBtn)
 	
 	--PLAY function
 	local function pressPlay (event)

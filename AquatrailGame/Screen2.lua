@@ -53,6 +53,7 @@ new = function ( params )
 	-- Load your map
 	local map = lime.loadMap("Niveau1.tmx")
 	
+	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
 	end
@@ -216,11 +217,14 @@ new = function ( params )
 		player:prepare("anim" .. player.state)
 		player:play()
 	end
-	player:addEventListener("touch", onTouch)		function ChangePlayerDynamic()
+	player:addEventListener("touch", onTouch)
+	
+	function ChangePlayerDynamic()
  		local vx, vy = player:getLinearVelocity()
 		if EtatHero == 0 then
 
-		    	physics.removeBody( player )
+		    	physics.removeBody( player )
+
 		    	physics.addBody( player, { density=player.densityLiq, friction=player. frictionLiq, bounce=player. bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
 		    	player.isFixedRotation = true
 		    --print("Etat Solide")
@@ -250,7 +254,7 @@ new = function ( params )
 						
 					if player.canJump then
 						print("Jump")
-						player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que ça sembale !
+						player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que ï¿½a sembale !
 						player:applyLinearImpulse(0, -10, player.x, player.y)
 						
 						if EtatHero == 0 then
@@ -274,7 +278,8 @@ new = function ( params )
 		player.state = STATE_WALKING_LIQ 
 	elseif EtatHero ==1 then
 		player.state = STATE_WALKING_SOL
-	end	ChangePlayerDynamic()
+	end
+	ChangePlayerDynamic()
 	player.direction = DIRECTION_RIGHT
 	print("anim" .. player.state)
 	player:prepare("anim" .. player.state)
@@ -365,7 +370,7 @@ new = function ( params )
 				if EtatHero == 1 and (event.x - (480/2)-50) >0
 				then
 					myText.text = "Test : "..Gesture.GestureResult()
-					--Si on fait un "slash vers bas" alors on fait la capacité spécial du glaçon
+					--Si on fait un "slash vers bas" alors on fait la capacitï¿½ spï¿½cial du glaï¿½on
 					if Gesture.GestureResult() == "SwipeD"
 					then
 						print("impulse bas")
@@ -378,7 +383,37 @@ new = function ( params )
 		end
 	end
 
-Runtime:addEventListener( "touch", UpdateGesturelib )
+Runtime:addEventListener( "touch", UpdateGesturelib )-- ANIMATIONS-----------------------------------------------lance les animations :		local layer = map:getTileLayer("Plateform")
+ 
+-- Make sure we actually have a layer
+	if(layer) then
+ 
+        -- Get all the tiles on this layer
+        local tiles = layer.tiles
+        
+        -- Make sure tiles is not nil
+        if(tiles) then
+                
+                -- Loop through all our tiles on this layer     
+                for i=1, #tiles, 1 do
+                        -- Check if the tile is animated (note the capitilisation)
+                        if(tiles[i].IsAnimated) then
+                                -- Store off a copy of the tile
+                                local tile = tiles[i]
+                                
+                                -- Check if the tile has a property named "animation1", our sequence
+                                if(tile.animation1) then
+                                        
+                                        -- Prepare it through the sprite
+                                        tile.sprite:prepare("animation1")
+                                        
+                                        -- Now finally play it
+                                        tile.sprite:play()
+                                end
+                        end
+                end
+        end     
+end
 
 --------------------------------------------------------------
 --Add the Director Class insert statements here
