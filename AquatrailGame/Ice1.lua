@@ -30,18 +30,25 @@ new = function ( params )
 	local SCORE = 0
 	local ui = require("ui")
 	local Gesture = require("lib_gesture")
-	require("physics")	local DynResManager = require("DynResManager")
+	require("physics")
+	local DynResManager = require("DynResManager")
 	physics.start()
 	
 	
 	local pointsTable = {}
 	local line
 	local myText = display.newText("Test: ", 75, 50, native.systemFont, 32)
-	myText:setTextColor(150, 0, 0)	myText.isVisible = false
+	myText:setTextColor(150, 0, 0)
+	myText.isVisible = false
 
 	-- Create a background colour just to make the map look a little nicer
-	local back = DynResManager.createCenterRectangleFitted()
-	back:setFillColor(165, 210, 255)
+	--local back = DynResManager.createCenterRectangleFitted()
+	--back:setFillColor(165, 210, 255)		--Background
+	local back = display.newImage("background_ice.png")
+   back.isVisible = true
+   back.x = 	display.contentWidth/2 
+   back.y =  display.contentHeight/2    --fit   back.width=DynResManager.getScreenWidthPhysPix()   back.height=DynResManager.getScreenHeightPhysPix()
+   --localGroup:insert(back)
 
 	
 	-- Load Lime
@@ -67,7 +74,11 @@ new = function ( params )
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
-	local maintheme = audio.loadSound( "music_1.mp3" )	local b_stalactite = audio.loadSound( "b_stalactite.mp3" )	local b_saut = audio.loadSound( "b_saut.mp3" )	local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )	
+	local maintheme = audio.loadSound( "music_1.mp3" )
+	local b_stalactite = audio.loadSound( "b_stalactite.mp3" )
+	local b_saut = audio.loadSound( "b_saut.mp3" )
+	local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )
+	
 	audio.play(maintheme,{loops=-1})
 	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
@@ -111,7 +122,9 @@ new = function ( params )
 				-- Fade out the item
 				transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
 				
-				local text = nil								audio.play(b_gouttelette)
+				local text = nil
+				
+				audio.play(b_gouttelette)
 				
 				if item.pickupType == "score" then
 					
@@ -133,14 +146,20 @@ new = function ( params )
 				end
 			elseif event.other.IsStalacti then
 				print("brise stalactite")
-				if EtatHero == 1 then										local stalacti = event.other
+				if EtatHero == 1 then
+					
+					local stalacti = event.other
+
 					local onTransitionEnd = function(transitionEvent)
 					if transitionEvent["removeSelf"] then
 						transitionEvent:removeSelf()
 					end
-				end
+				end
+
 				-- Fade out the stalacti
-				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})				audio.play(b_stalactite)				
+				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+				audio.play(b_stalactite)
+				
 				end
 			elseif event.other.IsGroundBrize then
 				if EtatHero == 1 and BriseGlace then
@@ -180,7 +199,8 @@ new = function ( params )
 			end
 		end
 		
-		local vx, vy = player:getLinearVelocity()		--print("vx "..vx)
+		local vx, vy = player:getLinearVelocity()
+		--print("vx "..vx)
 		--check si il y a eu collision (direction positive vitesse negative)
 		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
 			player:setLinearVelocity(150, vy)
@@ -188,7 +208,8 @@ new = function ( params )
 				if (vx>=0 and vx<1)then
 					player:applyForce( player.direction*10, 0, player.x, player.y )
 				elseif (vx<150 ) then
-					player:setLinearVelocity(vx * 1.15, vy)
+					player:setLinearVelocity(vx * 1.15, vy)
+
 				else
 					player:setLinearVelocity(150, vy)
 				end
