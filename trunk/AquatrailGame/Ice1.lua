@@ -30,7 +30,7 @@ new = function ( params )
 	local SCORE = 0
 	local ui = require("ui")
 	local Gesture = require("lib_gesture")
-	require("physics")
+	require("physics")	local DynResManager = require("DynResManager")
 	physics.start()
 	
 	
@@ -40,7 +40,7 @@ new = function ( params )
 	myText:setTextColor(150, 0, 0)
 
 	-- Create a background colour just to make the map look a little nicer
-	local back = display.newRect(0, 0, display.contentWidth, display.contentHeight)
+	local back = DynResManager.createCenterRectangleFitted()
 	back:setFillColor(165, 210, 255)
 
 	
@@ -268,7 +268,9 @@ new = function ( params )
 					
 							player:play()
 						end
-					end			end
+					end
+			end
+
 	end
 	Runtime:addEventListener("touch", Jump)
 	
@@ -302,7 +304,9 @@ new = function ( params )
 	local function pressBack (event)
 		if event.phase == "ended" then
 				audio.stop()
-				Runtime:removeEventListener("enterFrame", onUpdate)				Runtime:removeEventListener( "touch", UpdateGesturelib )				Runtime:removeEventListener("touch", Jump)
+				Runtime:removeEventListener("enterFrame", onUpdate)
+				Runtime:removeEventListener( "touch", UpdateGesturelib )
+				Runtime:removeEventListener("touch", Jump)
 				director:changeScene ("IceWorld")
 		end
 	end

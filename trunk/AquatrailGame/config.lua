@@ -4,6 +4,8 @@ content =
 	{
 		width = 320,
 		height =480,
-		scale = "zoomEven"
+		scale = "letterbox",
+        xAlign = "center",
+        yAlign = "center"
 	},
 }
