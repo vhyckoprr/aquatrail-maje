@@ -240,36 +240,35 @@ new = function ( params )
 	--Fonction de saut !
 	--
 	local function Jump (event)
-		local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
-		if ( event.phase == "began" ) then
-			
-				--mettre screen width a la place de 480
-				if(event.x < ((480/2)-50)) then
-					--Check Doublesaut
-					--
-					if player.canJump == false and doubleSaut==true and EtatHero == 0 then
-						player.canJump = true
-						doubleSaut=false 
-					end
-						
-					if player.canJump then
-						print("Jump")
-						player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que �a sembale !
-						player:applyLinearImpulse(0, -10, player.x, player.y)
-						
-						if EtatHero == 0 then
-							player.state = STATE_JUMPING_LIQ
-						elseif EtatHero ==1 then
-							player.state = STATE_JUMPING_SOL
-						end
-						player.canJump = false
-						print("anim" .. player.state)
-						player:prepare("anim" .. player.state)
+			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
+			if ( event.phase == "began" ) then
 				
-						player:play()
-					end
-				end
-		end
+					--mettre screen width a la place de 480
+					if(event.x < ((480/2)-50)) then
+						--Check Doublesaut
+						--
+						if player.canJump == false and doubleSaut==true and EtatHero == 0 then
+							player.canJump = true
+							doubleSaut=false 
+						end
+							
+						if player.canJump then
+							print("Jump")
+							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que �a sembale !
+							player:applyLinearImpulse(0, -10, player.x, player.y)
+							
+							if EtatHero == 0 then
+								player.state = STATE_JUMPING_LIQ
+							elseif EtatHero ==1 then
+								player.state = STATE_JUMPING_SOL
+							end
+							player.canJump = false
+							print("anim" .. player.state)
+							player:prepare("anim" .. player.state)
+					
+							player:play()
+						end
+					end			end
 	end
 	Runtime:addEventListener("touch", Jump)
 	
@@ -303,8 +302,8 @@ new = function ( params )
 	local function pressBack (event)
 		if event.phase == "ended" then
 				audio.stop()
-				Runtime:removeEventListener("enterFrame", onUpdate)
-				director:changeScene ("Screen1")
+				Runtime:removeEventListener("enterFrame", onUpdate)				Runtime:removeEventListener( "touch", UpdateGesturelib )				Runtime:removeEventListener("touch", Jump)
+				director:changeScene ("IceWorld")
 		end
 	end
 	backbutton:addEventListener ("touch", pressBack)  
@@ -383,7 +382,13 @@ new = function ( params )
 		end
 	end
 
-Runtime:addEventListener( "touch", UpdateGesturelib )-- ANIMATIONS-----------------------------------------------lance les animations :		local layer = map:getTileLayer("Plateform")
+Runtime:addEventListener( "touch", UpdateGesturelib )
+
+-- ANIMATIONS---------------------------------------------
+
+--lance les animations :
+	
+	local layer = map:getTileLayer("Plateform")
  
 -- Make sure we actually have a layer
 	if(layer) then
