@@ -51,7 +51,7 @@ new = function ( params )
 	lime.disableScreenCulling()
 	
 	-- Load your map
-	local map = lime.loadMap("Niveau1.tmx")
+	local map = lime.loadMap("Niveau1_1.tmx")
 	
 	
 	local onPlayerProperty = function(property, type, object)
@@ -67,7 +67,7 @@ new = function ( params )
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
-	local maintheme = audio.loadSound( "maintheme.mp3" )
+	local maintheme = audio.loadSound( "music_1.mp3" )
 	audio.play(maintheme,{loops=-1})
 	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
