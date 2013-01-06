@@ -37,7 +37,7 @@ new = function ( params )
 	local pointsTable = {}
 	local line
 	local myText = display.newText("Test: ", 75, 50, native.systemFont, 32)
-	myText:setTextColor(150, 0, 0)
+	myText:setTextColor(150, 0, 0)	myText.isVisible = false
 
 	-- Create a background colour just to make the map look a little nicer
 	local back = DynResManager.createCenterRectangleFitted()
@@ -67,7 +67,7 @@ new = function ( params )
 	-- Build the physical
 	local physical = lime.buildPhysical(map)
 	
-	local maintheme = audio.loadSound( "music_1.mp3" )
+	local maintheme = audio.loadSound( "music_1.mp3" )	local b_stalactite = audio.loadSound( "b_stalactite.mp3" )	local b_saut = audio.loadSound( "b_saut.mp3" )	local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )	
 	audio.play(maintheme,{loops=-1})
 	--physics.setDrawMode("hybrid")
 	--COLLISION --------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ new = function ( params )
 				-- Fade out the item
 				transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
 				
-				local text = nil
+				local text = nil								audio.play(b_gouttelette)
 				
 				if item.pickupType == "score" then
 					
@@ -133,8 +133,14 @@ new = function ( params )
 				end
 			elseif event.other.IsStalacti then
 				print("brise stalactite")
-				if EtatHero == 1 then
-					event.other:removeSelf()
+				if EtatHero == 1 then										local stalacti = event.other
+					local onTransitionEnd = function(transitionEvent)
+					if transitionEvent["removeSelf"] then
+						transitionEvent:removeSelf()
+					end
+				end
+				-- Fade out the stalacti
+				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})				audio.play(b_stalactite)				
 				end
 			elseif event.other.IsGroundBrize then
 				if EtatHero == 1 and BriseGlace then
@@ -174,16 +180,15 @@ new = function ( params )
 			end
 		end
 		
-		local vx, vy = player:getLinearVelocity()
+		local vx, vy = player:getLinearVelocity()		--print("vx "..vx)
 		--check si il y a eu collision (direction positive vitesse negative)
 		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
-			player:setLinearVelocity(0 , vy)
+			player:setLinearVelocity(150, vy)
 		else
-				if (vx == 0)then
+				if (vx>=0 and vx<1)then
 					player:applyForce( player.direction*10, 0, player.x, player.y )
-				elseif (vx<150  and vx>-150) then
-					player:setLinearVelocity(vx * 1.15, vy)
-				
+				elseif (vx<150 ) then
+					player:setLinearVelocity(vx * 1.15, vy)
 				else
 					player:setLinearVelocity(150, vy)
 				end
@@ -194,7 +199,7 @@ new = function ( params )
 	end
 	Runtime:addEventListener("enterFrame", onUpdate)
 	local function checkEndTransition( )
-		print("okay")
+		--print("okay")
 	end
 	-- TOUCH--------------------------------------------------------------------------
 	local onTouch = function(event)
@@ -256,14 +261,14 @@ new = function ( params )
 							print("Jump")
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que �a sembale !
 							player:applyLinearImpulse(0, -10, player.x, player.y)
-							
+							audio.play(b_saut)
 							if EtatHero == 0 then
 								player.state = STATE_JUMPING_LIQ
 							elseif EtatHero ==1 then
 								player.state = STATE_JUMPING_SOL
 							end
 							player.canJump = false
-							print("anim" .. player.state)
+							--print("anim" .. player.state)
 							player:prepare("anim" .. player.state)
 					
 							player:play()
@@ -282,7 +287,7 @@ new = function ( params )
 	end
 	ChangePlayerDynamic()
 	player.direction = DIRECTION_RIGHT
-	print("anim" .. player.state)
+	--print("anim" .. player.state)
 	player:prepare("anim" .. player.state)
 	player:play()
 	
@@ -376,10 +381,10 @@ new = function ( params )
 					--Si on fait un "slash vers bas" alors on fait la capacit� sp�cial du gla�on
 					if Gesture.GestureResult() == "SwipeD"
 					then
-						print("impulse bas")
+						--print("impulse bas")
 						player:applyLinearImpulse(0, 30, player.x, player.y)
 						BriseGlace=true
-						print("BriseGlace=true")
+						--print("BriseGlace=true")
 						timer.performWithDelay( 1000, function() BriseGlace=false  print("BriseGlace=false") end, 1 )
 					end
 				end
