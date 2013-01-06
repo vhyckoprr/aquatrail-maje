@@ -1,11 +1,10 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-new = function ( params )
-	
+new = function ( params )		local DynResManager = require("DynResManager")	
 	local localGroup = display.newGroup()
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
-	local backcolor = display.newRect(0, 0, display.contentWidth, display.contentHeight)
+	local backcolor = DynResManager.createCenterRectangleFitted()
 	backcolor:setFillColor(169, 214, 255)
 	localGroup:insert(backcolor)
 	
