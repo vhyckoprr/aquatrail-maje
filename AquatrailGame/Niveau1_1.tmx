@@ -46,6 +46,16 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="267" name="Stalacmite" tilewidth="67" tileheight="200">
+  <image source="stalacmite.png" width="67" height="200"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsStalacti" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Plateform" width="94" height="10">
   <data>
    <tile gid="0"/>
@@ -280,13 +290,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="213"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="213"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -374,13 +384,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -468,13 +478,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -562,13 +572,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -656,13 +666,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -749,14 +759,14 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="219"/>
-   <tile gid="0"/>
+   <tile gid="267"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="219"/>
+   <tile gid="0"/>
+   <tile gid="267"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1005,12 +1015,6 @@
     <property name="bodyType" value="static"/>
    </properties>
   </object>
-  <object type="Body" x="1600" y="62" width="30" height="193">
-   <properties>
-    <property name="IsStalacti" value=""/>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
   <object type="Body" x="2115" y="98" width="250" height="29">
    <properties>
     <property name="IsGround" value=""/>
@@ -1064,12 +1068,6 @@
    </properties>
   </object>
   <object name="Montee2C" x="1248" y="311"/>
-  <object type="Body" x="1408" y="62" width="32" height="192">
-   <properties>
-    <property name="IsStalacti" value=""/>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
   <object name="Montee1A" type="Body" x="224" y="129">
    <properties>
     <property name="IsGround" value=""/>
