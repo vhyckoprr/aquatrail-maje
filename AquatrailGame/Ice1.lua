@@ -398,7 +398,7 @@ new = function ( params )
 			table.insert(pointsTable,pt)
 			if EtatHero == 1 and (event.x - (480/2)-50) >0
 			then
-				drawLine ()
+				--drawLine ()
 			end
 			
 		elseif "ended" == event.phase or "cancelled" == event.phase then
