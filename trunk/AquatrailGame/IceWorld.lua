@@ -2,7 +2,8 @@ module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 	
-	local DynResManager = require("DynResManager")	
+	local DynResManager = require("DynResManager")
+	
 	local localGroup = display.newGroup()
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
@@ -52,7 +53,7 @@ new = function ( params )
    localGroup:insert(case2Btn)
    local case2Text = display.newText("2", 0, 0, native.systemFont, 32)
 	case2Text:setTextColor(87, 163, 166)
-	case2Text.isVisible = false
+	case2Text.isVisible = true
 	case2Text.x = case2Btn.x
 	case2Text.y = case2Btn.y
    
@@ -112,7 +113,7 @@ new = function ( params )
    localGroup:insert(case1Cad)
    --
    local case2Cad = display.newImage("cadenas_niveau_bloque.png")
-   case2Cad.isVisible = true
+   case2Cad.isVisible = false
    case2Cad.x = case2Btn.x
    case2Cad.y =  case2Btn.y
    localGroup:insert(case2Cad)
@@ -147,7 +148,13 @@ new = function ( params )
 			director:changeScene ("Ice1")
 		end
 	end
-	case1Btn:addEventListener ("touch", pressCase1)
+	case1Btn:addEventListener ("touch", pressCase1)		--Level 2 Clic
+	   	local function pressCase2(event)
+		if event.phase == "ended" then
+			director:changeScene ("Ice2")
+		end
+	end
+	case2Btn:addEventListener ("touch", pressCase2)
    
 	--Return Button
 	   	local function pressReturn (event)
