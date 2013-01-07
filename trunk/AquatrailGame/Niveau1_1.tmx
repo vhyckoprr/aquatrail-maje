@@ -130,8 +130,8 @@
   </object>
   <object type="Body" x="2370" y="99" width="157" height="29">
    <properties>
+    <property name="IsDestroy" value=""/>
     <property name="IsGround" value=""/>
-    <property name="IsGroundBrize" value=""/>
     <property name="bodyType" value="static"/>
    </properties>
   </object>

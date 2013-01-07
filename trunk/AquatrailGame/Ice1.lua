@@ -43,11 +43,16 @@ new = function ( params )
 
 	-- Create a background colour just to make the map look a little nicer
 	--local back = DynResManager.createCenterRectangleFitted()
-	--back:setFillColor(165, 210, 255)		--Background
+	--back:setFillColor(165, 210, 255)
+	
+	--Background
 	local back = display.newImage("background_ice.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
-   back.y =  display.contentHeight/2    --fit   back.width=DynResManager.getScreenWidthPhysPix()   back.height=DynResManager.getScreenHeightPhysPix()
+   back.y =  display.contentHeight/2 
+   --fit
+   back.width=DynResManager.getScreenWidthPhysPix()
+   back.height=DynResManager.getScreenHeightPhysPix()
    --localGroup:insert(back)
 
 	
@@ -86,6 +91,7 @@ new = function ( params )
 	
 	 	if ( event.phase == "began" ) then
 			if event.other.IsGround then
+				print("Ground");
 				player.canJump = true
 				if(EtatHero ==0 )then
 					doubleSaut=true
@@ -99,10 +105,9 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 
-					--print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
-			end
+				end
 	
 			elseif event.other.IsObstacle then
 				--player.canJump = true
@@ -161,7 +166,9 @@ new = function ( params )
 				audio.play(b_stalactite)
 				
 				end
-			elseif event.other.IsGroundBrize then
+			end
+			if event.other.IsDestroy then
+				print("IsDestroy");
 				if EtatHero == 1 and BriseGlace then
 					event.other:removeSelf()
 				end
@@ -192,7 +199,7 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 					player.direction = DIRECTION_RIGHT
-					print("anim" .. player.state)
+					--print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
 				end
@@ -239,7 +246,7 @@ new = function ( params )
 		ChangePlayerDynamic()
 		player.state = STATE_TRANSITION 
 		player.direction = DIRECTION_RIGHT
-		print("anim" .. player.state)
+		--print("anim" .. player.state)
 		player:prepare("anim" .. player.state)
 		player:play()
 	end
@@ -391,7 +398,7 @@ new = function ( params )
 			table.insert(pointsTable,pt)
 			if EtatHero == 1 and (event.x - (480/2)-50) >0
 			then
-				--drawLine ()
+				drawLine ()
 			end
 			
 		elseif "ended" == event.phase or "cancelled" == event.phase then
