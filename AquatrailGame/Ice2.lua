@@ -91,6 +91,7 @@ new = function ( params )
 	
 	 	if ( event.phase == "began" ) then
 			if event.other.IsGround then
+				print("Ground");
 				player.canJump = true
 				if(EtatHero ==0 )then
 					doubleSaut=true
@@ -104,10 +105,9 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 
-					--print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
-			end
+				end
 	
 			elseif event.other.IsObstacle then
 				--player.canJump = true
@@ -166,7 +166,9 @@ new = function ( params )
 				audio.play(b_stalactite)
 				
 				end
-			elseif event.other.IsGroundBrize then
+			end
+			if event.other.IsDestroy then
+				print("IsDestroy");
 				if EtatHero == 1 and BriseGlace then
 					event.other:removeSelf()
 				end
@@ -197,7 +199,7 @@ new = function ( params )
 						player.state = STATE_WALKING_SOL
 					end
 					player.direction = DIRECTION_RIGHT
-					print("anim" .. player.state)
+					--print("anim" .. player.state)
 					player:prepare("anim" .. player.state)
 					player:play()
 				end
@@ -244,7 +246,7 @@ new = function ( params )
 		ChangePlayerDynamic()
 		player.state = STATE_TRANSITION 
 		player.direction = DIRECTION_RIGHT
-		print("anim" .. player.state)
+		--print("anim" .. player.state)
 		player:prepare("anim" .. player.state)
 		player:play()
 	end
