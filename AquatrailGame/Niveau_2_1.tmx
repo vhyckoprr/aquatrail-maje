@@ -109,7 +109,7 @@
   </tile>
  </tileset>
  <tileset firstgid="319" name="player2" tilewidth="20" tileheight="30">
-  <image source="player.png" width="100" height="30"/>
+  <image source="SpritesHero.png" width="100" height="30"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -127,7 +127,7 @@
   </tile>
  </tileset>
  <tileset firstgid="324" name="player4" tilewidth="20" tileheight="30">
-  <image source="PlayerTest.png" width="100" height="90"/>
+  <image source="SpritesHero.png" width="100" height="90"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
