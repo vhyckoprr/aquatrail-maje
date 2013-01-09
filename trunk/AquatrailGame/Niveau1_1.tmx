@@ -9913,6 +9913,13 @@
     <property name="DeclencherStalactite" value=""/>
    </properties>
   </object>
+  <object type="Body" x="1856" y="512" width="128" height="32">
+   <properties>
+    <property name="IsDestructible" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Castle" width="80" height="30" visible="0">
   <properties>
