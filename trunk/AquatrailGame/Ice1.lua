@@ -35,7 +35,7 @@ new = function ( params )
 		end
 	end
 	backbutton:addEventListener ("touch", pressBack)  
-   local visual = GameLogic.createMap("Niveau1_1.tmx", scoreText)
+   local visual = GameLogic.createMap("Niveau1.tmx", scoreText)
 
 	
 
