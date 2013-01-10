@@ -135,7 +135,6 @@ local createMap = function( urlMap, scoreElement  )
 			elseif event.other.IsStalacti then
 				print("brise stalactite")
 				if EtatHero == 1 then
-					
 					local stalacti = event.other
 
 					local onTransitionEnd = function(transitionEvent)

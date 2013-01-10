@@ -62,6 +62,17 @@
  <tileset firstgid="268" name="Clouds" tilewidth="32" tileheight="32">
   <image source="clouds.png" width="480" height="320"/>
  </tileset>
+ <tileset firstgid="418" name="solbrise" tilewidth="160" tileheight="32">
+  <image source="solbrise.png" width="160" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsDestroy" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Clouds" width="94" height="10">
   <properties>
    <property name="parallaxFactorX" value="0.2"/>
@@ -75,7 +86,7 @@
    <property name="parallaxBase" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlt0OQDAMRifET4g3412553W8hoosqaWtZpHZwpecmzVmjukY88c3OVAA7dsL+VhKoAJ6c3XfmPN9SPzxj/WO3R/OOzTOMQKbM18WZNXxRLM/KXd310jkQu0LfQvvzzrgffG34uL2rRQzATNTc3tCLN7fcC958skCrMQ41Ydj8h7aPefpSMscPNw4Nx939j3tfRBqGu+ce/y41D69q1OxnjRnXcpovVv3odal+RdLmR1fChPb
+   eJztlm0KgzAMhjsqbtLhzbZD7gbzv17HayxlFLKSxFBGP7AvPH8arPWxphrTkxoLDIArvZCTZQSuwGx+3U/m+z4ketITvGP33vkdjXM8gT2a75Jl1fVEsz9fhJSjaySsUDtD38L785bxvvhbiYn7Vot5AwtTi3tCLd5LuJc8pWQFNmKc6sM1ec/tnvPk45iDhxvn5uPOvn97fwg1jXfOPX5cap8e1akET5qzrmW03oP7XOvS/Iu1zAfwXRRb
   </data>
  </layer>
  <objectgroup name="Physics" width="94" height="10">
@@ -124,13 +135,6 @@
   </object>
   <object type="Body" x="0" y="129" width="220" height="188">
    <properties>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
-   </properties>
-  </object>
-  <object type="Body" x="2370" y="99" width="157" height="29">
-   <properties>
-    <property name="IsDestroy" value=""/>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
    </properties>
