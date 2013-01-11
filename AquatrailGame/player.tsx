@@ -3,8 +3,8 @@
  <image source="SpritesHero.png" width="450" height="256"/>
  <tile id="0">
   <properties>
-   <property name="GlobalJump" value="2"/>
-   <property name="GlobalSpeed" value="5"/>
+   <property name="globalJump" value="2"/>
+   <property name="globalSpeed" value="5"/>
    <property name="HasBody" value=""/>
    <property name="IsAnimated" value=""/>
    <property name="IsPlayer" value=""/>

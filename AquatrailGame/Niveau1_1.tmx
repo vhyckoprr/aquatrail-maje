@@ -31,8 +31,10 @@
     <property name="Name" value="SuperGouttelette"/>
     <property name="Nom" value="2"/>
     <property name="Score" value="200"/>
+    <property name="animation1" value="frameCount=1,time=2000"/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="true"/>
+    <property name="sequences" value="animation1"/>
    </properties>
   </tile>
   <tile id="62">
@@ -53,8 +55,10 @@
     <property name="Name" value="Esprit"/>
     <property name="Nom" value="3"/>
     <property name="Score" value="1000"/>
+    <property name="animation1" value="frameCount=1,time=2000"/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="true"/>
+    <property name="sequences" value="animation1"/>
    </properties>
   </tile>
   <tile id="71">
@@ -65,13 +69,14 @@
   </tile>
   <tile id="83">
    <properties>
-    <property name="BonusJumpLiq" value="0,5"/>
-    <property name="BonusSpeedLiq" value="1"/>
-    <property name="BonusSpeedSol" value="2"/>
     <property name="HasBody" value=""/>
     <property name="IsFrozen" value=""/>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0,5"/>
+    <property name="bonusJumpSol" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="2"/>
    </properties>
   </tile>
   <tile id="85">
@@ -9832,6 +9837,7 @@
   <object type="Body" x="1376" y="640" width="1184" height="64">
    <properties>
     <property name="IsGround" value=""/>
+    <property name="IsNotFrozen" value=""/>
     <property name="bodyType" value="static"/>
    </properties>
   </object>
@@ -9901,13 +9907,6 @@
     <property name="HasBody" value=""/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="true"/>
-   </properties>
-  </object>
-  <object type="Body" x="1856" y="512" width="128" height="32">
-   <properties>
-    <property name="IsDestructible" value=""/>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
    </properties>
   </object>
  </objectgroup>
