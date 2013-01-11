@@ -6,7 +6,8 @@ new = function ( params )
 	display.setStatusBar( display.HiddenStatusBar )
 
 	system.activate( "multitouch" )
-	local DynResManager = require("DynResManager")	 local GameLogic = require("GameLogic")
+	local DynResManager = require("DynResManager")
+	 local GameLogic = require("GameLogic")
 	
 	--Background
 	local back = display.newImage("background_ice.png")
@@ -34,8 +35,10 @@ new = function ( params )
 				director:changeScene ("IceWorld")
 		end
 	end
-	backbutton:addEventListener ("touch", pressBack)  
-   local visual = GameLogic.createMap("Niveau1.tmx", scoreText)
+	backbutton:addEventListener ("touch", pressBack)  
+
+
+   local visual = GameLogic.createMap("Niveau1_1.tmx", scoreText)
 
 	
 
