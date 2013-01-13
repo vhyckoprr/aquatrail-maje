@@ -1,12 +1,17 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-new = function ( params )
-	
+new = function ( params )	
 	local localGroup = display.newGroup()
 	display.setStatusBar( display.HiddenStatusBar )
 
 	system.activate( "multitouch" )
-	local DynResManager = require("DynResManager")	 local GameLogic = require("GameLogic")
+	local DynResManager = require("DynResManager")
+	 local GameLogic = require("GameLogic")	 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU	local LEVEL = { 
+endLevel = function (self, score, time)
+							profile.saveInfoLevel(1, 2,score, time)							audio.stop()
+							GameLogic.stopEvents()
+							director:changeScene ("IceWorld")                end
+    }
 	
 	--Background
 	local back = display.newImage("background_ice.png")
@@ -20,7 +25,7 @@ new = function ( params )
    
    local scoreText  = display.newText( "score: ", 0, 0, "Helvetica", 30 )
 	scoreText.x = display.contentWidth/2
-	scoreText.y =  scoreText.height / 2
+	scoreText.y =  scoreText.height / 2			
 	
 	-- BACKBUTTON---------------------------------------------
 		
@@ -34,8 +39,11 @@ new = function ( params )
 				director:changeScene ("IceWorld")
 		end
 	end
-	backbutton:addEventListener ("touch", pressBack)  
-   local visual = GameLogic.createMap("Niveau_2_1.tmx", scoreText)
+	backbutton:addEventListener ("touch", pressBack)  
+	function endLevel ()			
+	end
+
+   local visual = GameLogic.createMap("Niveau_2_1.tmx", scoreText, LEVEL)
 
 	
 
