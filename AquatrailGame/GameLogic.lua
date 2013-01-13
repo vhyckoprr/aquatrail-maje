@@ -20,12 +20,24 @@ local STATE_TRANSITION = "Transition"
 
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
-local SCORE = 0local BASESPEEDSOLIDE=30local BASESPEEDLIQUIDE=30local BASEJUMPSOLIDE= 5local BASEJUMPLIQUIDE= 5--local player.globalJump--local player.globalSpeed
+local SCORE = 0local TIME = 0local LEVEL = {}
+
+local BASESPEEDSOLIDE=30
+local BASESPEEDLIQUIDE=30
+local BASEJUMPSOLIDE= 5
+local BASEJUMPLIQUIDE= 5
+
+--local player.globalJump
+--local player.globalSpeed
+
+
 local ui = require("ui")
 local Gesture = require("lib_gesture")
 require("physics")
 
-physics.start()
+physics.start()
+
+
 -- Load Lime
 local lime = require("lime")
 -- Disable culling
@@ -36,7 +48,8 @@ local player
 local visual 
 local physical
 
-local pointsTable = {}local stalactiteTable = {}
+local pointsTable = {}
+local stalactiteTable = {}
 local line
 
 local scoreElement
@@ -48,14 +61,15 @@ local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl )
+local createMap = function( urlMap, scoreEl, level )
 
 
 	map = lime.loadMap(urlMap)
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
-	end
-		SCORE=0
+	end		LEVEL = level
+	
+	SCORE=0
 	scoreElement = scoreEl 
 	scoreElement.text = "score: "..SCORE
 
@@ -66,15 +80,23 @@ local createMap = function( urlMap, scoreEl )
 	visual = lime.createVisual(map)
 
 	-- Build the physical
-	physical = lime.buildPhysical(map)		physics.setDrawMode( "hybrid" )
+	physical = lime.buildPhysical(map)
+	
+	physics.setDrawMode( "hybrid" )
 	
 --lancer le theme principal
-	audio.play(maintheme,{loops=-1})		local function changeStalactiteBodyType(body)		body.sprite.bodyType = "dynamic"		print(body.sprite.bodyType)		physics.setDrawMode( "hybrid" )	end
+	audio.play(maintheme,{loops=-1})
+	
+	local function changeStalactiteBodyType(body)
+		body.sprite.bodyType = "dynamic"
+		print(body.sprite.bodyType)
+		physics.setDrawMode( "hybrid" )
+	end
 	
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	 function onCollision(self, event )
 	
-	 	if ( event.phase == "began" ) then
+	 	if ( event.phase == "began" ) then	 	   if event.other.IsEnd then	 	   	--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau	 	   	print("FIN DU NIVEAU")	 	   	LEVEL:endLevel(SCORE,TIME)	 	end	 	
 			if event.other.IsGround then
 				print("Ground");
 				player.canJump = true
@@ -99,7 +121,13 @@ local createMap = function( urlMap, scoreEl )
 				--if(EtatHero ==0 )then
 				--	doubleSaut=true
 				--	print("doubleSaut = true")
-				--end			elseif event.other.DeclencherStalactite then				print("COUCOU")				for i=0, #stalactiteTable, 1 do					timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))				end				event.other:removeSelf()
+				--end
+			elseif event.other.DeclencherStalactite then
+				print("COUCOU")
+				for i=0, #stalactiteTable, 1 do
+					timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))
+				end
+				event.other:removeSelf()
 			elseif event.other.IsCollectable then
 				local item = event.other
 				
@@ -118,7 +146,7 @@ local createMap = function( urlMap, scoreEl )
 				
 				if (item.Score) then
 					SCORE=SCORE+item.Score
-					print(item.Score)
+					--print(item.Score)
 					scoreElement.text = "score: "..SCORE
 					
 				elseif item.pickupType == "health" then
@@ -155,7 +183,20 @@ local createMap = function( urlMap, scoreEl )
 				if EtatHero == 1 and BriseGlace then
 					event.other:removeSelf()
 				end
-			end			if event.other.IsFrozen then				BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq				BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq				BASESPEEDSOLIDE=30*event.other.bonusSpeedSol				BASEJUMPSOLIDE=30*event.other.bonusJumpSol				print("up "..BASESPEEDLIQUIDE.. " "..BASESPEEDSOLIDE)			elseif event.other.IsNotFrozen then				BASESPEEDSOLIDE=30				BASESPEEDLIQUIDE=30				BASEJUMPSOLIDE= 5				BASEJUMPLIQUIDE= 5				print("ANTIFROZEN")			end
+			end
+			if event.other.IsFrozen then
+				BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+				BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+				BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+				BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+				--print("up "..BASESPEEDLIQUIDE.. " "..BASESPEEDSOLIDE)
+			elseif event.other.IsNotFrozen then
+				BASESPEEDSOLIDE=30
+				BASESPEEDLIQUIDE=30
+				BASEJUMPSOLIDE= 5
+				BASEJUMPLIQUIDE= 5
+				--print("ANTIFROZEN")
+			end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
 				--print("isground ended")
@@ -190,7 +231,16 @@ local createMap = function( urlMap, scoreEl )
 		end
 		
 		local vx, vy = player:getLinearVelocity()
-		--print("vx "..vx)		local speed=30		local jump=30		if (EtatHero==0)then			speed = BASESPEEDLIQUIDE			print (BASESPEEDLIQUIDE)		elseif ( EtatHero==1)then			speed = BASESPEEDSOLIDE			print (BASESPEEDSOLIDE)		end
+		--print("vx "..vx)
+		local speed=30
+		local jump=30
+		if (EtatHero==0)then
+			speed = BASESPEEDLIQUIDE
+			--print (BASESPEEDLIQUIDE)
+		elseif ( EtatHero==1)then
+			speed = BASESPEEDSOLIDE
+			--print (BASESPEEDSOLIDE)
+		end
 		--check si il y a eu collision (direction positive vitesse negative)
 		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
 			player:setLinearVelocity(speed*player.globalSpeed, vy)
@@ -198,7 +248,8 @@ local createMap = function( urlMap, scoreEl )
 				if (vx>=0 and vx<1)then
 					player:applyForce( player.direction*10, 0, player.x, player.y )
 				elseif (vx<speed*player.globalSpeed ) then
-					player:setLinearVelocity(vx * 1.15, vy)
+					player:setLinearVelocity(vx * 1.15, vy)
+
 				else
 					player:setLinearVelocity(speed*player.globalSpeed, vy)
 				end
@@ -265,7 +316,14 @@ local createMap = function( urlMap, scoreEl )
 						if player.canJump == false and doubleSaut==true and EtatHero == 0 then
 							player.canJump = true
 							doubleSaut=false 
-						end												local jump						if (EtatHero==0)then							jump = BASEJUMPLIQUIDE						elseif ( EtatHero==1)then							jump = BASEJUMPSOLIDE						end
+						end
+						
+						local jump
+						if (EtatHero==0)then
+							jump = BASEJUMPLIQUIDE
+						elseif ( EtatHero==1)then
+							jump = BASEJUMPSOLIDE
+						end
 							
 						if player.canJump then
 							print("Jump")
@@ -377,22 +435,38 @@ local createMap = function( urlMap, scoreEl )
 	end
 
 Runtime:addEventListener( "touch", UpdateGesturelib )
--- STALACTITESlocal layer = map:getTileLayer("Platforms")stalactiteTable = {}
+
+-- STALACTITES
+
+local layer = map:getTileLayer("Platforms")
+stalactiteTable = {}
 -- Make sure we actually have a layer
-	if(layer) then
+	if(layer) then
+
         -- Get all the tiles on this layer
-        local tiles = layer.tiles
+        local tiles = layer.tiles
+
         -- Make sure tiles is not nil
-        if(tiles) then
-                -- Loop through all our tiles on this layer                     local j=0
+        if(tiles) then
+
+                -- Loop through all our tiles on this layer     
+                local j=0
                 for i=1, #tiles, 1 do
                         -- Check if the tile is a stalactite
                         if(tiles[i].IsStalactite) then
-                                -- Store off a copy of the tile                                --print(tiles[i].." "..tiles[i].sprite)                                stalactiteTable[j]=tiles[i]                                physics.addBody( tiles[i].sprite, { density=2, friction=0.1, bounce=0.1} ) 
-		   					 tiles[i].sprite.isFixedRotation = true								tiles[i].sprite.bodyType = "static"                                j=j+1
+                                -- Store off a copy of the tile
+                                --print(tiles[i].." "..tiles[i].sprite)
+                                stalactiteTable[j]=tiles[i]
+                                physics.addBody( tiles[i].sprite, { density=2, friction=0.1, bounce=0.1} ) 
+		   					 tiles[i].sprite.isFixedRotation = true
+								tiles[i].sprite.bodyType = "static"
+                                j=j+1
+
                         end
                 end
-        end   	end
+        end   
+	end
+
 -- ANIMATIONS---------------------------------------------
 
 --lance les animations :
