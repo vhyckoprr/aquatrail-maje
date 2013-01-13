@@ -1,8 +1,12 @@
 module(..., package.seeall)
 
 local loadsave = require("loadsave")
-local MAXLEVELINWORLD=6
-worldinfo = {}worldinfo.version = 1
+
+local MAXLEVELINWORLD=6
+
+worldinfo = {}
+
+worldinfo.version = 1
  
 worldinfo.world1 = {}
 worldinfo.world1.unlocked = true
@@ -44,18 +48,43 @@ worldinfo.world3 = {}
 worldinfo.world3.unlocked = false
 
 worldinfo.world4 = {}
-worldinfo.world4.unlocked = false--ATTENTION IL MANQUE TOUS LES LEVELS DES MONDES 2 3 & 4
-
+worldinfo.world4.unlocked = false
+
+--ATTENTION IL MANQUE TOUS LES LEVELS DES MONDES 2 3 & 4
+
+
 local initProfile = function( )
 	local worldInfoFile = loadsave.loadTable("profile.json")
-	if (worldinfo.version~=1) then
+	if (worldInfoFile == nil ) then
 		loadsave.saveTable(worldinfo, "profile.json")
 		print("JASON FILE NOT FOUND, CREATING NEW FILE")
-	else
+	elseif (worldInfoFile.version ~= worldinfo.version ) then		loadsave.saveTable(worldinfo, "profile.json")
+		print("JASON FILE OUT DATED, CREATING NEW FILE")	else 
 		worldinfo = worldInfoFile
 		print("WORLDINFO LOADED FROM FILE")
 	end
-endlocal saveInfoLevel = function(idWorld, idLevel,score, time)	local nextIdLevel = idLevel+1 	local nextIdWorld = idWorld+1 	local oldScore = worldinfo["world"..idWorld]["level"..idLevel].score	print("idWorld "..idWorld.." idLevel "..idLevel.." oldScore "..oldScore.." NewScore "..score)	if (oldScore<score)then		worldinfo["world"..idWorld]["level"..idLevel].score=tonumber(score)	end	--unlock next level	if (MAXLEVELINWORLD<=idLevel) then		worldinfo["world"..nextIdWorld].unlocked = true	else		worldinfo["world"..idWorld]["level"..nextIdLevel].unlocked=true	end	loadsave.saveTable(worldinfo, "profile.json")endlocal getInfos = function ()	return worldinfoend
+end
+
+local saveInfoLevel = function(idWorld, idLevel,score, time)
+	local nextIdLevel = idLevel+1 
+	local nextIdWorld = idWorld+1 
+	local oldScore = worldinfo["world"..idWorld]["level"..idLevel].score
+	print("idWorld "..idWorld.." idLevel "..idLevel.." oldScore "..oldScore.." NewScore "..score)
+	if (oldScore<score)then
+		worldinfo["world"..idWorld]["level"..idLevel].score=tonumber(score)
+	end
+	--unlock next level
+	if (MAXLEVELINWORLD<=idLevel) then
+		worldinfo["world"..nextIdWorld].unlocked = true
+	else
+		worldinfo["world"..idWorld]["level"..nextIdLevel].unlocked=true
+	end
+	loadsave.saveTable(worldinfo, "profile.json")
+end
+
+local getInfos = function ()
+	return worldinfo
+end
 
 local Profile = { initProfile=initProfile, saveInfoLevel=saveInfoLevel, getInfos=getInfos }
 
