@@ -1,12 +1,9 @@
 display.setStatusBar( display.HiddenStatusBar )
 
 ---------------------------------------------------------------
--- Import director class
+-- Import des library
 ---------------------------------------------------------------
 
-
---Library
---
 director = require("director")
 DynResManager = require("DynResManager")
 ui = require("ui")
@@ -15,7 +12,7 @@ lime = require("lime")
 json = require("json")
 require("physics")
 
---Nos include
+--Nos includes
 --
 GameLogic = require("GameLogic")
 loadsave = require("loadsave")
