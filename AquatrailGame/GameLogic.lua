@@ -89,7 +89,7 @@ local createMap = function( urlMap, scoreEl, level )
 	
 	local function changeStalactiteBodyType(body)
 		body.sprite.bodyType = "dynamic"
-		print(body.sprite.bodyType)
+		--print(body.sprite.bodyType)
 		physics.setDrawMode( "hybrid" )
 	end
 	
@@ -97,106 +97,96 @@ local createMap = function( urlMap, scoreEl, level )
 	 function onCollision(self, event )
 	
 	 	if ( event.phase == "began" ) then	 	   if event.other.IsEnd then	 	   	--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau	 	   	print("FIN DU NIVEAU")	 	   	LEVEL:endLevel(SCORE,TIME)	 	end	 	
-			if event.other.IsGround then
-				print("Ground");
-				player.canJump = true
-				if(EtatHero ==0 )then
-					doubleSaut=true
-					--print("doubleSaut = true")
+		if event.other.IsGround then
+			--print("Ground");
+			player.canJump = true
+			if(EtatHero ==0 )then
+				doubleSaut=true
+				--print("doubleSaut = true")
+			end
+			if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
+				if EtatHero == 0 then
+					player.state = STATE_WALKING_LIQ
+				elseif EtatHero ==1 then
+					player.state = STATE_WALKING_SOL
 				end
-				
-				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
-					if EtatHero == 0 then
-						player.state = STATE_WALKING_LIQ
-					elseif EtatHero ==1 then
-						player.state = STATE_WALKING_SOL
-					end
 
-					player:prepare("anim" .. player.state)
-					player:play()
+				player:prepare("anim" .. player.state)
+				player:play()
+			end
+		elseif event.other.IsObstacle then
+
+		
+		elseif event.other.DeclencherStalactite then
+			print("COUCOUDeclencherStalactite")
+			for i=0, #stalactiteTable, 1 do
+				timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))
+			end
+			event.other:removeSelf()
+		elseif event.other.IsCollectable then
+			local item = event.other
+			local onTransitionEnd = function(transitionEvent)
+				if transitionEvent["removeSelf"] then
+					transitionEvent:removeSelf()
 				end
-	
-			elseif event.other.IsObstacle then
-				--player.canJump = true
-				--if(EtatHero ==0 )then
-				--	doubleSaut=true
-				--	print("doubleSaut = true")
-				--end
-			elseif event.other.DeclencherStalactite then
-				print("COUCOU")
-				for i=0, #stalactiteTable, 1 do
-					timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))
-				end
-				event.other:removeSelf()
-			elseif event.other.IsCollectable then
-				local item = event.other
-				
+			end	
+			-- Fade out the item
+			transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+			local text = nil
+			audio.play(b_gouttelette)
+			if (item.Score) then
+				SCORE=SCORE+item.Score
+				--print(item.Score)
+				scoreElement.text = "score: "..SCORE
+			elseif item.pickupType == "health" then
+				text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
+			end
+			if text then
+				text:setTextColor(0, 0, 0, 255)
+				text.x = display.contentCenterX
+				text.y = display.contentCenterY
+				transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
+			end
+		elseif event.other.IsDestructible then
+			--print("brise stalactite")
+			if EtatHero == 1 then
+				local stalacti = event.other
+
 				local onTransitionEnd = function(transitionEvent)
-					if transitionEvent["removeSelf"] then
-						transitionEvent:removeSelf()
-					end
+				if transitionEvent["removeSelf"] then
+					transitionEvent:removeSelf()
 				end
-						
-				-- Fade out the item
-				transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
-				
-				local text = nil
-				
-				audio.play(b_gouttelette)
-				
-				if (item.Score) then
-					SCORE=SCORE+item.Score
-					--print(item.Score)
-					scoreElement.text = "score: "..SCORE
-					
-				elseif item.pickupType == "health" then
-					
-					text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
-					
-				end
-				
-				if text then
-					text:setTextColor(0, 0, 0, 255)
-					text.x = display.contentCenterX
-					text.y = display.contentCenterY
-					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
-				end
-			elseif event.other.IsDestructible then
-				print("brise stalactite")
-				if EtatHero == 1 then
-					local stalacti = event.other
+			end
+			-- Fade out the stalacti
+			transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+			audio.play(b_stalactite)
+			
+			end
+		end
+		if event.other.IsDestroy then
+			--print("IsDestroy");
+			if EtatHero == 1 and BriseGlace then
+				event.other:removeSelf()
+			end
+		end
+		if event.other.IsChangeVitesse then
+			BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+			BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+			BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+			BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+		end
+		if event.other.IsFrozen then
+			print("IsFrozen");
+			--Jouer l'animation de gele lac
 
-					local onTransitionEnd = function(transitionEvent)
-					if transitionEvent["removeSelf"] then
-						transitionEvent:removeSelf()
-					end
-				end
-
-				-- Fade out the stalacti
-				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
-				audio.play(b_stalactite)
-				
-				end
-			end
-			if event.other.IsDestroy then
-				print("IsDestroy");
-				if EtatHero == 1 and BriseGlace then
-					event.other:removeSelf()
-				end
-			end
-			if event.other.IsFrozen then
-				BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
-				BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
-				BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
-				BASEJUMPSOLIDE=30*event.other.bonusJumpSol
-				--print("up "..BASESPEEDLIQUIDE.. " "..BASESPEEDSOLIDE)
-			elseif event.other.IsNotFrozen then
-				BASESPEEDSOLIDE=30
-				BASESPEEDLIQUIDE=30
-				BASEJUMPSOLIDE= 5
-				BASEJUMPLIQUIDE= 5
-				--print("ANTIFROZEN")
-			end
+			--print("up "..BASESPEEDLIQUIDE.. " "..BASESPEEDSOLIDE)
+		elseif event.other.IsNotFrozen then
+			BASESPEEDSOLIDE=30
+			BASESPEEDLIQUIDE=30
+			BASEJUMPSOLIDE= 5
+			BASEJUMPLIQUIDE= 5
+			--print("ANTIFROZEN")
+		end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
 				--print("isground ended")
@@ -326,7 +316,7 @@ local createMap = function( urlMap, scoreEl, level )
 						end
 							
 						if player.canJump then
-							print("Jump")
+							--print("Jump")
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que �a sembale !
 							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
 							audio.play(b_saut)
@@ -428,7 +418,7 @@ local createMap = function( urlMap, scoreEl, level )
 						player:applyLinearImpulse(0, 30, player.x, player.y)
 						BriseGlace=true
 						--print("BriseGlace=true")
-						timer.performWithDelay( 1000, function() BriseGlace=false  print("BriseGlace=false") end, 1 )
+						timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 					end
 				end
 		end
