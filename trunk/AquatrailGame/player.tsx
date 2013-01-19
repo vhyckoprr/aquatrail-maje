@@ -3,8 +3,6 @@
  <image source="SpritesHero.png" width="450" height="256"/>
  <tile id="0">
   <properties>
-   <property name="globalJump" value="2"/>
-   <property name="globalSpeed" value="5"/>
    <property name="HasBody" value=""/>
    <property name="IsAnimated" value=""/>
    <property name="IsPlayer" value=""/>
@@ -18,6 +16,8 @@
    <property name="bounceLiq" value="0"/>
    <property name="densityGla" value="0.75"/>
    <property name="densityLiq" value="0.4"/>
+   <property name="globalJump" value="2"/>
+   <property name="globalSpeed" value="5"/>
    <property name="isFixedRotation" value="true"/>
    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransition&quot;,&quot;animDJumping&quot;]"/>
   </properties>
