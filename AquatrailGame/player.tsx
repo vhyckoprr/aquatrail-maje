@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="player" tilewidth="50" tileheight="64">
- <image source="SpritesHero.png" width="450" height="256"/>
+ <image source="SpritesHero.png" width="450" height="320"/>
  <tile id="0">
   <properties>
    <property name="HasBody" value=""/>
@@ -14,10 +14,10 @@
    <property name="animWalkingSol" value="startFrame=10,frameCount=4,time=500"/>
    <property name="bounceGla" value="0"/>
    <property name="bounceLiq" value="0"/>
-   <property name="densityGla" value="0.75"/>
-   <property name="densityLiq" value="0.4"/>
-   <property name="globalJump" value="2"/>
-   <property name="globalSpeed" value="5"/>
+   <property name="densityGla" value="0.5"/>
+   <property name="densityLiq" value="0.5"/>
+   <property name="globalJump" value="0.4"/>
+   <property name="globalSpeed" value="3"/>
    <property name="isFixedRotation" value="true"/>
    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransition&quot;,&quot;animDJumping&quot;]"/>
   </properties>
