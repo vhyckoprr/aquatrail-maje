@@ -4,7 +4,8 @@ display.setStatusBar( display.HiddenStatusBar )
 -- Import director class
 ---------------------------------------------------------------
 
-director = require("director")profile = require("Profile")
+director = require("director")
+profile = require("Profile")
 
 ---------------------------------------------------------------
 -- Create a main group
@@ -22,8 +23,13 @@ local function main()
 	-- Add the group from director class
 	-----------------------------------
 	
-	mainGroup:insert(director.directorView)		-----------------------------------	-- load profile
-	profile.initProfile()	-----------------------------------	
+	mainGroup:insert(director.directorView)
+	
+	-----------------------------------
+	-- load profile
+	profile.initProfile()
+	-----------------------------------		--------------------------------------	-- global variable test	list = {}	----------------------------------------
+	
 	-----------------------------------
 	-- Change scene without effects
 	-----------------------------------
