@@ -1,9 +1,12 @@
+xml = require( "xml" ).newParser()
+
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 	
+	require ("request")
 
-
+	
 	local localGroup = display.newGroup()
 
    
@@ -50,7 +53,7 @@ widgetGroup:insert( itemSelected )
 local backButton
 
 --Create Table view
-local list = widget.newTableView{
+list = widget.newTableView{
 	width = 480, 
 	height = 288,
 	bottomPadding = 8,
@@ -133,9 +136,14 @@ local function onRowTouch( event )
 		]]
 	end
 end
+------------------------------------------------------------------------------------------------------------------------------ EXPLICATION SUR RECUPERATION de l''XML sur le serveur-- DEUX METHODES-- Recuperation de l'xml sous forme de requete (utilisation de xml.lua))
+--network.request ( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData)
+-- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
+--SOIT-- Sauvegarde de l'xml puis lecture (utilisation de xml_parse.lua)
+--network.download ("http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData, "score.xml")
+-- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
 
-
--- insert rows into list (tableView widget)
+	-- insert rows on list FOR TEST ONLY 
 for i = 1, 20 do
 	list:insertRow{
 		height = 30,
@@ -143,6 +151,8 @@ for i = 1, 20 do
 		listener = onRowTouch
 	}
 end
+	----------------------------
+
 localGroup:insert(widgetGroup)
 --------------------------------------------------------------------------------------------END LIST------------------------------------------------------------------------------------------
    
@@ -163,4 +173,56 @@ localGroup:insert(widgetGroup)
 
 	-- MUST return a display.newGroup()
 	return localGroup
+end
+-- FOUNCTION EN DEHORS POUR POUVOIR LES APPELLER DEPUIS request.lua
+function list:displayData(xmlTree)			--[[ METHOD 1
+	local message = {}
+	--for j=1, #xmlTree.length do
+		message[0] = xmlTree.child[1]
+	--end
+	for i=1,#message do
+	local player = {}
+	-- extract data from table and store in local variables
+	-- for easier readability/access:
+	player.id = message[i].child[1].value
+	player.type = message[i].child[2].value
+	player.score = message[i].child[3].value
+	player.login = message[i].child[4].value
+	player.time = message[i].child[5].value
+	list:refreshData(player, i)
+
+end
+	]]--
+	--[[ METHOD 2
+	for i,xmlNode in pairs(xmlTree) do
+			local player = {}
+			print("ICI : "..xmlNode.Name)
+			player.id = xmlValue(xmlNode, "id")
+			player.type = xmlValue(xmlNode, "type")
+			player.score = xmlValue(xmlNode, "score")
+			player.login = xmlValue(xmlNode, "login")
+			player.time = xmlValue(xmlNode, "time")
+			player.world = xmlValue(xmlNode, "world")
+			player.stage = xmlValue(xmlNode, "stage")
+			print ( player.login)
+			list:refreshData(player, index)
+			index=index+1
+	end
+	]]--
+end
+
+function list:refreshData(playerData, index)
+		-- permet de creer la liste a partir des données xml	
+	-- insert rows into list (tableView widget)
+	print ("INDEX"..index)
+		list:insertRow{
+			height = 30,
+			onRender = onRowRender,
+			listener = onRowTouch
+			--onRender.classement = index,
+			--onRender.login = playerData.login,
+			--onRender.score = playerData.score,
+			--onRender.time = playerData.time
+		}
+
 end
