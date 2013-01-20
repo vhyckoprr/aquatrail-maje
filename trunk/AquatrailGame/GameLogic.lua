@@ -148,7 +148,7 @@ local createMap = function( urlMap, scoreEl, level )
 				transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
 			end
 		elseif event.other.IsDestructible then
-			--print("brise stalactite")
+			print("brise stalactite")
 			if EtatHero == 1 then
 				local stalacti = event.other
 
@@ -160,8 +160,7 @@ local createMap = function( urlMap, scoreEl, level )
 			-- Fade out the stalacti
 			transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
 			audio.play(b_stalactite)
-			
-			end
+		end
 		end
 		if event.other.IsDestroy then
 			--print("IsDestroy");
@@ -169,17 +168,33 @@ local createMap = function( urlMap, scoreEl, level )
 				event.other:removeSelf()
 			end
 		end
+		if event.other.IsLac then
+			print("IsLac")
+			if EtatHero == 0 then
+				event.other:removeSelf()
+			end
+		end
 		if event.other.IsChangeVitesse then
+			print("IsChangeVitesse");
 			BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
 			BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
 			BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
 			BASEJUMPSOLIDE=30*event.other.bonusJumpSol
 		end
 		if event.other.IsFrozen then
-			print("IsFrozen");
+			print("IsFrozen, gelée lac");
 			--Jouer l'animation de gele lac
+			if EtatHero == 1 then
+				local lac = event.other
 
-			--print("up "..BASESPEEDLIQUIDE.. " "..BASESPEEDSOLIDE)
+				local onGeleLacEnd = function(onGeleLacEndEvent)
+				if transitionEvent["removeSelf"] then
+					transitionEvent:removeSelf()
+				end
+			end
+			-- Fade out the stalacti
+			transition.to(lac, {time = 500, alpha = 0, onComplete=onGeleLacEnd})
+		end
 		elseif event.other.IsNotFrozen then
 			BASESPEEDSOLIDE=30
 			BASESPEEDLIQUIDE=30
