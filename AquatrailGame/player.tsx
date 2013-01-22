@@ -17,7 +17,7 @@
    <property name="densityGla" value="0.5"/>
    <property name="densityLiq" value="0.5"/>
    <property name="globalJump" value="0.4"/>
-   <property name="globalSpeed" value="3"/>
+   <property name="globalSpeed" value="6"/>
    <property name="isFixedRotation" value="true"/>
    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransition&quot;,&quot;animDJumping&quot;]"/>
   </properties>
