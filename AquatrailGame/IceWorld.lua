@@ -28,10 +28,9 @@ new = function ( params )
    --return
 	local reBtn = display.newImage("bouton_retour_glace.png")
    reBtn.isVisible = true
-   reBtn.x = reBtn.width
-   reBtn.y = display.contentHeight-display.contentHeight/4 +display.contentHeight/8
+   reBtn.x = display.contentWidth*0.02 + reBtn.width*0.5
+   reBtn.y = display.contentHeight*0.98 - reBtn.height*0.5
    localGroup:insert(reBtn)
-
 
 	--textWorlds
 	local textWorlds = display.newImage("texte_glace.png")
