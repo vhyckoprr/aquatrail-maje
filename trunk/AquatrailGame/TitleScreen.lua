@@ -59,12 +59,13 @@ new = function ( params )		local DynResManager = require("DynResManager")
    	creditBtn.isVisible = true
    	localGroup:insert(creditBtn)
    
-	--Exit Button
-	local exitBtn = display.newImage("bouton_quitter.png")
-  	exitBtn.x = display.contentWidth*0.98 - exitBtn.width*0.5
-  	exitBtn.y = display.contentHeight*0.02 + exitBtn.height
-   	exitBtn.isVisible = true
-  	localGroup:insert(exitBtn)
+	--Exit Button, D'apreès Théresa colombi pas pertinent de mettre un bouton quitter dans une appli iOS/Android
+	-- 
+	--local exitBtn = display.newImage("bouton_quitter.png")
+  	--exitBtn.x = display.contentWidth*0.98 - exitBtn.width*0.5
+  	--exitBtn.y = display.contentHeight*0.02 + exitBtn.height
+   	--exitBtn.isVisible = true
+  	--localGroup:insert(exitBtn)
 
 	
 	--PLAY function
@@ -93,7 +94,7 @@ new = function ( params )		local DynResManager = require("DynResManager")
 			end
 		end
 	end
-	exitBtn:addEventListener("touch",exitBtnt)
+	--exitBtn:addEventListener("touch",exitBtnt)
 
 	-- MUST return a display.newGroup()
 	return localGroup
