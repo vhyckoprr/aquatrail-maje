@@ -61,7 +61,7 @@ local line
 
 local scoreElement
 
-local maintheme = audio.loadSound( "music_1.mp3" )
+local maintheme = audio.loadSound( "Jeuxenfants.mp3" )
 local b_stalactite = audio.loadSound( "b_stalactite.mp3" )
 local b_saut = audio.loadSound( "b_saut.mp3" )
 local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )
@@ -95,6 +95,8 @@ local createMap = function( urlMap, scoreEl, level )
 	audio.play(maintheme,{loops=-1})
 	
 	local function changeStalactiteBodyType(body)
+		body.isAwake = true
+		body.isBodyActive = true
 		body.sprite.bodyType = "dynamic"
 		--print(body.sprite.bodyType)
 	end
@@ -185,21 +187,19 @@ local createMap = function( urlMap, scoreEl, level )
 			end
 		end
 		if event.other.IsChangeVitesse then
-			print("IsChangeVitesse");
 			BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
 			BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
 			BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
 			BASEJUMPSOLIDE=30*event.other.bonusJumpSol
 		end
 		if event.other.IsFrozen then
-			print("IsFrozen, gele lac");
 			--Jouer l'animation de gele lac
 			if EtatHero == 1 then
 				local lac = event.other
 
 				local onGeleLacEnd = function(onGeleLacEndEvent)
-				if transitionEvent["removeSelf"] then
-					transitionEvent:removeSelf()
+				if onGeleLacEndEvent["removeSelf"] then
+					onGeleLacEndEvent:removeSelf()
 				end
 			end
 			-- Fade out the stalacti
@@ -320,7 +320,6 @@ local createMap = function( urlMap, scoreEl, level )
 	end
 	function changeraltGaz() 
 		if gagnerAlt == true then
-			print("on gagne de l'altitude")
 			player:applyLinearImpulse(0, -2, player.x, player.y)
 			timer.performWithDelay( 100, changeraltGaz, 1 )
 		end
@@ -396,7 +395,6 @@ local createMap = function( urlMap, scoreEl, level )
 					end
 			end
 			if ( event.phase == "ended" ) then
-				print("ended gagnerAlt = false")
 				gagnerAlt = false
 			end
 
