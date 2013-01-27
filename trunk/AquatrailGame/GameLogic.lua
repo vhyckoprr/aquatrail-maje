@@ -82,7 +82,7 @@ local createMap = function( urlMap, scoreEl, level )
 	-- Build the physical
 	physical = lime.buildPhysical(map)
 	
-	physics.setDrawMode( "hybrid" )
+	--physics.setDrawMode( "hybrid" )
 	
 --lancer le theme principal
 	audio.play(maintheme,{loops=-1})
@@ -90,7 +90,6 @@ local createMap = function( urlMap, scoreEl, level )
 	local function changeStalactiteBodyType(body)
 		body.sprite.bodyType = "dynamic"
 		--print(body.sprite.bodyType)
-		physics.setDrawMode( "hybrid" )
 	end
 	
 	--COLLISION --------------------------------------------------------------------------------------------------------
@@ -158,20 +157,21 @@ local createMap = function( urlMap, scoreEl, level )
 				end
 			end
 			-- Fade out the stalacti
-			transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+			transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
 			audio.play(b_stalactite)
 		end
 		end
-		if event.other.IsDestroy then
-			--print("IsDestroy");
+		if event.other.IsSmashable then
+			--print("IsSmashable");
 			if EtatHero == 1 and BriseGlace then
-				event.other:removeSelf()
-			end
-		end
-		if event.other.IsLac then
-			print("IsLac")
-			if EtatHero == 0 then
-				event.other:removeSelf()
+				local stalacti = event.other
+
+				local onTransitionEnd = function(transitionEvent)
+				if transitionEvent["removeSelf"] then
+					transitionEvent:removeSelf()
+				end
+				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+				end
 			end
 		end
 		if event.other.IsChangeVitesse then
@@ -182,7 +182,7 @@ local createMap = function( urlMap, scoreEl, level )
 			BASEJUMPSOLIDE=30*event.other.bonusJumpSol
 		end
 		if event.other.IsFrozen then
-			print("IsFrozen, gelée lac");
+			print("IsFrozen, gele lac");
 			--Jouer l'animation de gele lac
 			if EtatHero == 1 then
 				local lac = event.other
@@ -246,6 +246,7 @@ local createMap = function( urlMap, scoreEl, level )
 			speed = BASESPEEDSOLIDE
 			--print (BASESPEEDSOLIDE)
 		end
+		--scrolling
 		--check si il y a eu collision (direction positive vitesse negative)
 		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
 			player:setLinearVelocity(speed*player.globalSpeed, vy)
@@ -313,9 +314,10 @@ local createMap = function( urlMap, scoreEl, level )
 	 function Jump (event)
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
-				
+				--event.x < ((480/2)-50)
+				--(event.x - (480/2)-50) >0
 					--mettre screen width a la place de 480
-					if(event.x < ((480/2)-50)) then
+					if (event.x - (480/2)-50) >0 then
 						--Check Doublesaut
 						--
 						if player.canJump == false and doubleSaut==true and EtatHero == 0 then
