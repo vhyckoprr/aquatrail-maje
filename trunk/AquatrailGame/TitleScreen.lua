@@ -11,56 +11,58 @@ new = function ( params )		local DynResManager = require("DynResManager")
 	--Background
 	local back = display.newImage("fond_accueil.png")
    back.isVisible = true
-   back.x = 	display.contentWidth/2 
-   back.y =  display.contentHeight/2 
+   back.x = 	display.contentWidth*0.5 
+   back.y =  display.contentHeight*0.5 
    localGroup:insert(back)
    
    --logo
 	local logo = display.newImage("logo_aquatrail.png")
+	local scale = 0.8
+   logo:scale(scale, scale)
    logo.isVisible = true
-   logo.x =  display.contentWidth/2 + logo.width /4
-   logo.y =  display.contentHeight/2 - logo.height /2.5
+   logo.x =  display.contentWidth*0.5
+   logo.y =  display.contentWidth*0.02 + (logo.height*0.5) *scale
    localGroup:insert(logo)
 	
 	--PlayButton
   	local playBtn = display.newImage("bouton_jouer.png")
-   	playBtn.x =  display.contentWidth/2 
-   	playBtn.y =  display.contentHeight-display.contentHeight/4-display.contentHeight/8
+   	playBtn.x =  display.contentWidth*0.5
+   	playBtn.y =  display.contentHeight*0.55
    	playBtn.isVisible = true
    	localGroup:insert(playBtn)
    	
    	--OptionsButton
-  	local OptBtn = display.newImage("bouton_options.png")
-   	OptBtn.x = 	display.contentWidth/2 
-   	OptBtn.y =  display.contentHeight-display.contentHeight/4 +display.contentHeight/8
-   	OptBtn.isVisible = true
-   	localGroup:insert(OptBtn)
+  	local optBtn = display.newImage("bouton_options.png")
+   	optBtn.x = 	display.contentWidth*0.75
+   	optBtn.y =  display.contentHeight*0.70
+   	optBtn.isVisible = true
+   	localGroup:insert(optBtn)
    	
    	--RecompensesButton
-  	local RecBtn = display.newImage("bouton_recompenses.png")
-   	RecBtn.x = 	display.contentWidth/3
-   	RecBtn.y =  display.contentHeight-display.contentHeight/4 
-   	RecBtn.isVisible = true
-   	localGroup:insert(RecBtn)
+  	local recBtn = display.newImage("bouton_recompenses.png")
+   	recBtn.x = 	display.contentWidth*0.25
+   	recBtn.y =  display.contentHeight*0.70 
+   	recBtn.isVisible = true
+   	localGroup:insert(recBtn)
    	
    	--ScoreButton
-  	local ScoreBtn = display.newImage("bouton_scores.png")
-   	ScoreBtn.x = 	display.contentWidth-display.contentWidth/3
-   	ScoreBtn.y =    display.contentHeight-display.contentHeight/4 
-   	ScoreBtn.isVisible = true
-   	localGroup:insert(ScoreBtn)
+  	local scoreBtn = display.newImage("bouton_scores.png")
+   	scoreBtn.x = display.contentWidth*0.33
+   	scoreBtn.y = display.contentHeight*0.85 
+   	scoreBtn.isVisible = true
+   	localGroup:insert(scoreBtn)
    	
    	--CreditButton
-  	local CreditBtn = display.newImage("bouton_credits.png")
-   	CreditBtn.x = display.contentWidth - CreditBtn.width/1.5
-  	 CreditBtn.y = display.contentHeight-display.contentHeight/4 +display.contentHeight/8
-   	CreditBtn.isVisible = true
-   	localGroup:insert(CreditBtn)
+  	local creditBtn = display.newImage("bouton_credits.png")
+   	creditBtn.x = display.contentWidth*0.66
+  	creditBtn.y = display.contentHeight*0.85
+   	creditBtn.isVisible = true
+   	localGroup:insert(creditBtn)
    
 	--Exit Button
 	local exitBtn = display.newImage("bouton_quitter.png")
-  	exitBtn.x = exitBtn.width
-  	 exitBtn.y = display.contentHeight-display.contentHeight/4 +display.contentHeight/8
+  	exitBtn.x = display.contentWidth*0.98 - exitBtn.width*0.5
+  	exitBtn.y = display.contentHeight*0.02 + exitBtn.height
    	exitBtn.isVisible = true
   	localGroup:insert(exitBtn)
 
@@ -73,17 +75,25 @@ new = function ( params )		local DynResManager = require("DynResManager")
 	end
 	playBtn:addEventListener ("touch", pressPlay)
 	
-	--EXIT Button
-	   	local exitScene = 0
-   		local function exitBtnt ( event )
-    		if event.phase == "ended" then
-      			if(exitScene == 0) then
-				exitScene = 1
-				os.exit()
-				end
+	--Options function
+	local function pressOptions (event)
+		if event.phase == "ended" then
+			director:changeScene ("OptionsScreen")
+		end
+	end
+	optBtn:addEventListener ("touch", pressOptions)
+	
+	--EXIT function
+	local exitScene = 0
+	local function exitBtnt ( event )
+		if event.phase == "ended" then
+			if(exitScene == 0) then
+			exitScene = 1
+			os.exit()
 			end
 		end
-    		exitBtn:addEventListener("touch",exitBtnt)
+	end
+	exitBtn:addEventListener("touch",exitBtnt)
 
 	-- MUST return a display.newGroup()
 	return localGroup
