@@ -8,12 +8,19 @@ local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
 
 local STATE_WALKING_LIQ = "WalkingLiq"
 local STATE_JUMPING_LIQ = "JumpingLiq"
-local doubleSaut = true;
+local doubleSaut = true
+
 
 --Etat Solide
 local STATE_WALKING_SOL = "WalkingSol"
 local STATE_JUMPING_SOL = "JumpingSol"
-local BriseGlace = false;
+local BriseGlace = false
+local chargesol = true
+
+--Etat Gazeu
+local STATE_WALKING_GAZ = "WalkingGaz"
+local STATE_JUMPING_GAZ = "JumpingGaz"
+local gagnerAlt = false--gagner de l'altitude
 
 --Transition Etat
 local STATE_TRANSITION = "Transition"
@@ -99,9 +106,12 @@ local createMap = function( urlMap, scoreEl, level )
 		if event.other.IsGround then
 			--print("Ground");
 			player.canJump = true
-			if(EtatHero ==0 )then
-				doubleSaut=true
-				--print("doubleSaut = true")
+			if EtatHero == 0 then
+				doubleSaut = true
+			elseif EtatHero == 1 then
+				chargesol = true
+			elseif EtatHero == 2 then
+				gagnerAlt = true
 			end
 			if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
 				if EtatHero == 0 then
@@ -308,7 +318,13 @@ local createMap = function( urlMap, scoreEl, level )
 		end
 		player:setLinearVelocity(vx, vy)
 	end
-	
+	function changeraltGaz() 
+		if gagnerAlt == true then
+			print("on gagne de l'altitude")
+			player:applyLinearImpulse(0, -2, player.x, player.y)
+			timer.performWithDelay( 100, changeraltGaz, 1 )
+		end
+	end
 	--Fonction de saut !
 	--
 	function ToucheScreen (event)
@@ -317,9 +333,16 @@ local createMap = function( urlMap, scoreEl, level )
 					if event.x - display.contentWidth/2 >0 then
 						--Check Doublesaut
 						--
-						if player.canJump == false and doubleSaut==true and EtatHero == 0 then
-							player.canJump = true
-							doubleSaut=false 
+						if EtatHero == 0 then
+							if player.canJump == false and doubleSaut == true then
+								player.canJump = true
+								doubleSaut=false 
+							end
+						elseif EtatHero == 1 and chargesol == true then
+							
+						elseif EtatHero == 2 then
+							gagnerAlt = true
+							timer.performWithDelay( 1000, changeraltGaz, 1 )
 						end
 						
 						local jump
@@ -330,20 +353,28 @@ local createMap = function( urlMap, scoreEl, level )
 						end
 							
 						if player.canJump then
-							--print("Jump")
-							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas que �a sembale !
+							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
 							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
 							audio.play(b_saut)
 							if EtatHero == 0 then
 								player.state = STATE_JUMPING_LIQ
 							elseif EtatHero ==1 then
 								player.state = STATE_JUMPING_SOL
+							elseif EtatHero ==2 then
+								player.state = STATE_JUMPING_GAZ
 							end
 							player.canJump = false
 							player:prepare("anim" .. player.state)
 							player:play()
+						--si je suis en glaçon et que je peu charger
+						elseif EtatHero == 1 and chargesol == true then 
+							chargesol = false
+							player:applyLinearImpulse(0, 30, player.x, player.y)
+							BriseGlace=true
+							print("Charge")
+							timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 						end
-					else--Si c'est pas la parti droite, alors c'est la parti gauche du device je change d'etat
+					else--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
 						if ( event.phase == "began" ) then
 							--print("ChangeEtat")
 							if EtatHero == 0 then
@@ -363,6 +394,10 @@ local createMap = function( urlMap, scoreEl, level )
 						player:prepare("anim" .. player.state)
 						player:play()
 					end
+			end
+			if ( event.phase == "ended" ) then
+				print("ended gagnerAlt = false")
+				gagnerAlt = false
 			end
 
 	end

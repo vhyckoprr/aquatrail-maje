@@ -216,6 +216,33 @@
   </tile>
  </tileset>
  <tileset firstgid="200" source="SupergoutteletteSpriteSheet.tsx"/>
+ <tileset firstgid="205" name="eaux_sprites" tilewidth="32" tileheight="32">
+  <image source="eaux_sprites.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsFrozen" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="2"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsLac" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="2"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Hills" width="80" height="30" visible="0">
   <properties>
    <property name="parallaxFactorX" value="0.7"/>
@@ -245,7 +272,7 @@
    <property name="parallaxBase" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztk9EJwjAUAN9qLuCX4AhOVCiiOEFBRHEBUccyhQgh+F6bNCVC7+AIBNK8XqkIAAAAAAAAACyJcySkQb9pbCPhP7g4O+814/ze2XgPBedKoda/2be7BffeJa1h3+7obL0nKdvwOXKvBnG71IbfdvH5kg1fI/fmZPdjT2unNXz4deVXrZ3V8J0xe+1+naLVLmzYKFrtwobxvRtDbdaaDr3jkK1i7vPWhlNnXYJzfmtEREREFPkAXI9UtQ==
+   eJztk9EJwjAUAN9qTuEITlQoojhBQURxAVG/dCVTiBAevrRJUyL0Do5AIM3rlYoAAAAAAAAAwJI4KiEN+k1jrYT/4OTsvOeM81tn490VnCuFWv9m3+4S3HuVtIZ9u72z9R6kbMP7yL0a6HapDb/t9PmSDR8j9+Zk82PPamc1vPl15VerXazhM2P22v06w1i7sGFjGGsXNtT3viJas9Z06B2HbA1zn/eOOHXWJTjnt0ZEREREkQ+UJluS
   </data>
  </layer>
  <objectgroup name="Physics" width="80" height="30">
@@ -404,7 +431,7 @@
    <property name="parallaxFactorX" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0DENAAAIBLHXiX8hOICJhKFNzsAlAAAAAAAAXKohdv4BAPBZA5tpBO0=
+   eJztwzENAAAIA7D594YnHOzjIGmTJgAAAAAAAFyaEgAA+G0B0GoFnA==
   </data>
  </layer>
  <layer name="Foreground" width="80" height="30" visible="0">
