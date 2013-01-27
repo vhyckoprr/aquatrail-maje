@@ -84,7 +84,7 @@ local createMap = function( urlMap, scoreEl, level )
 	
 	--physics.setDrawMode( "hybrid" )
 	
---lancer le theme principal
+    --lancer le theme principal
 	audio.play(maintheme,{loops=-1})
 	
 	local function changeStalactiteBodyType(body)
@@ -289,7 +289,7 @@ local createMap = function( urlMap, scoreEl, level )
 		player:prepare("anim" .. player.state)
 		player:play()
 	end
-	player:addEventListener("touch", onTouch)
+	--player:addEventListener("touch", onTouch)
 	
 	function ChangePlayerDynamic()
  		local vx, vy = player:getLinearVelocity()
@@ -311,13 +311,10 @@ local createMap = function( urlMap, scoreEl, level )
 	
 	--Fonction de saut !
 	--
-	 function Jump (event)
+	function ToucheScreen (event)
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
-				--event.x < ((480/2)-50)
-				--(event.x - (480/2)-50) >0
-					--mettre screen width a la place de 480
-					if (event.x - (480/2)-50) >0 then
+					if event.x - display.contentWidth/2 >0 then
 						--Check Doublesaut
 						--
 						if player.canJump == false and doubleSaut==true and EtatHero == 0 then
@@ -343,17 +340,34 @@ local createMap = function( urlMap, scoreEl, level )
 								player.state = STATE_JUMPING_SOL
 							end
 							player.canJump = false
-							--print("anim" .. player.state)
 							player:prepare("anim" .. player.state)
-					
 							player:play()
 						end
+					else--Si c'est pas la parti droite, alors c'est la parti gauche du device je change d'etat
+						if ( event.phase == "began" ) then
+							--print("ChangeEtat")
+							if EtatHero == 0 then
+								EtatHero = 1
+								doubleSaut = false
+								--print("Etat Solide")
+							elseif EtatHero ==1 then
+								EtatHero =0
+								doubleSaut = true
+								--print("Etat Liquide")
+							end
+						end
+						ChangePlayerDynamic()
+						player.state = STATE_TRANSITION 
+						player.direction = DIRECTION_RIGHT
+						--print("anim" .. player.state)
+						player:prepare("anim" .. player.state)
+						player:play()
 					end
 			end
 
 	end
-	Runtime:addEventListener("touch", Jump)
-	
+	Runtime:addEventListener("touch", ToucheScreen)
+
 	--PLAYER INIT-----------------------------------------------------------------------
 	if EtatHero == 0 then
 		player.state = STATE_WALKING_LIQ 
@@ -440,8 +454,8 @@ local createMap = function( urlMap, scoreEl, level )
 				end
 		end
 	end
-
-Runtime:addEventListener( "touch", UpdateGesturelib )
+--Pas d'utilisation de gesturelib donc on comment
+--Runtime:addEventListener( "touch", UpdateGesturelib )
 
 -- STALACTITES
 
@@ -516,8 +530,8 @@ end
 
 local stopEvents = function(   )
 	Runtime:removeEventListener("enterFrame", onUpdate)
-	Runtime:removeEventListener( "touch", UpdateGesturelib)
-	Runtime:removeEventListener("touch", Jump)
+	--Runtime:removeEventListener( "touch", UpdateGesturelib)
+	Runtime:removeEventListener("touch", ToucheScreen)
 end
 
 local GameLogic = { createMap = createMap, stopEvents = stopEvents, updateScore=updateScore}
