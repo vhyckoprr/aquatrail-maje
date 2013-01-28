@@ -4,9 +4,7 @@ module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 	
-	require ("request")
-
-	
+	require ("request")	
 	local localGroup = display.newGroup()
 
    
