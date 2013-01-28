@@ -145,6 +145,8 @@
     <property name="BonusSpeedLiq" value="0.6"/>
     <property name="BonusSpeedSol" value="0.8"/>
     <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value=""/>
    </properties>
   </tile>
   <tile id="6">
@@ -357,7 +359,7 @@
    <property name="parallaxFactorX" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwwEJADAIADD7h9NKr3AEQXCDRQAAAAAAAPAjB15SzQAAsNkDUIccOQ==
+   eJztw7ENAAAEADD/H8dLXrCIQZs0AgAAAAAAgIlc+EktBACAaw2OTyHi
   </data>
  </layer>
  <layer name="Foreground" width="80" height="30" visible="0">
