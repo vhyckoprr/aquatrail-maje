@@ -1,5 +1,5 @@
 xml = require( "xml" ).newParser()
-
+require ("xml_parser")
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
@@ -225,4 +225,13 @@ function list:refreshData(playerData, index)
 			--onRender.time = playerData.time
 		}
 
+end
+
+function xmlValue(xmlTree, nodeName)
+	for i,xmlNode in pairs(xmlTree.ChildNodes) do
+       
+		if(xmlNode.Name==nodeName) then
+			return xmlNode.Value
+		end
+	end
 end

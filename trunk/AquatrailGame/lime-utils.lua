@@ -913,7 +913,7 @@ end
 -- @return The clamped Y position.
 function clampPosition(x, y, bounds)
 
-	--[[
+	
 	local _x = x
 	local _y = y
 	
@@ -938,8 +938,8 @@ function clampPosition(x, y, bounds)
 	end
 	
 	return _x, _y
-	--]]
 	
+	--[[
 	local _x = x
 	local _y = y
 	local _bounds = bounds
@@ -965,7 +965,7 @@ function clampPosition(x, y, bounds)
 	end
 	
 	return _x, _y
-	
+	--]]
 end
 
 --- Calculates a viewpoint for a given position.

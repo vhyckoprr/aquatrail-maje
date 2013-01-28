@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="SupergoutteletteSpriteSheet" tilewidth="32" tileheight="32">
- <image source="SupergoutteletteSpriteSheet.png" width="160" height="32"/>
+ <image source="SupergoutteletteSpriteSheet.png" width="150" height="32"/>
  <tile id="0">
   <properties>
    <property name="HasBody" value=""/>
