@@ -61,7 +61,7 @@ local line
 
 local scoreElement
 
-local maintheme = audio.loadSound( "Jeuxenfants.mp3" )
+local maintheme = audio.loadSound( "themeglace.mp3" )
 local b_stalactite = audio.loadSound( "b_stalactite.mp3" )
 local b_saut = audio.loadSound( "b_saut.mp3" )
 local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )
@@ -320,7 +320,7 @@ local createMap = function( urlMap, scoreEl, level )
 	end
 	function changeraltGaz() 
 		if gagnerAlt == true then
-			player:applyLinearImpulse(0, -2, player.x, player.y)
+			player:applyLinearImpulse(0, -4, player.x, player.y)
 			timer.performWithDelay( 100, changeraltGaz, 1 )
 		end
 	end
@@ -338,7 +338,8 @@ local createMap = function( urlMap, scoreEl, level )
 								doubleSaut=false 
 							end
 						elseif EtatHero == 1 and chargesol == true then
-							
+						
+						
 						elseif EtatHero == 2 then
 							gagnerAlt = true
 							timer.performWithDelay( 1000, changeraltGaz, 1 )
