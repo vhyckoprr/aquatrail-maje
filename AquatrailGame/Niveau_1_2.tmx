@@ -45,12 +45,18 @@
  <tileset firstgid="61" name="terre_craquele" tilewidth="32" tileheight="32">
   <image source="terre_craquele.png" width="32" height="96"/>
  </tileset>
- <layer name="Calque de Tile 1" width="90" height="10">
+ <layer name="Plateforme" width="90" height="10">
+  <properties>
+   <property name="parallaxBase" value=""/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJztkEEKgDAMBIt4qK2gH1K/4v9f4fYQCEFDehLSDAw9tA1hUgqCIAi8s/29wADMsMDJ8IY8jHpA62Kl9atwhYsyE23vjJM8jXpA62KBN25mZabsfBn1AO+yd/6VjanzV+vRO1OX0qlszDu/zazifqTOD2wEEAQ=
   </data>
  </layer>
- <objectgroup name="phisic" width="90" height="10">
+ <objectgroup name="Physics" width="90" height="10">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
   <object name="Montee1A" type="Body" x="482" y="292">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -80,4 +86,9 @@
   </object>
   <object name="Montee2B" type="Body" x="648" y="290"/>
  </objectgroup>
+ <layer name="Foreground" width="90" height="10">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+  </data>
+ </layer>
 </map>
