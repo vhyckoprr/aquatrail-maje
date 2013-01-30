@@ -37,7 +37,7 @@ new = function ( params )
    --Réglage musique
    
    -- Chargement des musiques de test
-    local backgroundMusic = audio.loadStream("music_1.mp3")
+    local backgroundMusic = audio.loadStream("themeglace.mp3")
 	local stalactiteSound = audio.loadSound("b_stalactite.mp3")
  
    --Fonction définissant le comportement des sliders
@@ -116,8 +116,9 @@ new = function ( params )
 	-- Bouton retour
 	local reBtn = display.newImage("bouton_retour_defaut.png")
    reBtn.isVisible = true
-   reBtn.x = display.contentWidth*0.05 + reBtn.width*0.5
-   reBtn.y = display.contentHeight*0.95 - reBtn.height*0.5
+   reBtn:setReferencePoint(display.TopLeftReferencePoint)
+   reBtn.x = 15
+   reBtn.y = display.contentHeight - reBtn.height - 15
    localGroup:insert(reBtn)
 	
 	--Supprimer les données function
