@@ -23,7 +23,8 @@ local STATE_JUMPING_GAZ = "JumpingGaz"
 local gagnerAlt = false--gagner de l'altitude
 
 --Transition Etat
-local STATE_TRANSITION = "Transition"
+local STATE_TRANSITIONLIQSOL = "TransitionLiqSol"
+local STATE_TRANSITIONSOLLIQ = "TransitionSolLiq"
 
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
@@ -48,7 +49,7 @@ physics.start()
 -- Load Lime
 local lime = require("lime")
 -- Disable culling
---lime.disableScreenCulling()
+--lime.enableScreenCulling()
 
 local map
 local player
@@ -210,7 +211,6 @@ local createMap = function( urlMap, scoreEl, level )
 			BASESPEEDLIQUIDE=30
 			BASEJUMPSOLIDE= 5
 			BASEJUMPLIQUIDE= 5
-			--print("ANTIFROZEN")
 		end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
@@ -227,11 +227,11 @@ local createMap = function( urlMap, scoreEl, level )
 	 onUpdate = function(event)
 		
 		--L'animation animTransition est enclencher?
-		if player.sequence == "animTransition" then
+		if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" then
 			--Le sprite est il entrain d'executer une animation?
 			if player.animating  then
 				--Le sprite a il fini son animation?
-				if player.currentFrame ==3 then
+				if player.currentFrame ==4 then
 					if EtatHero == 0 then
 						player.state = STATE_WALKING_LIQ
 					elseif EtatHero ==1 then
@@ -285,15 +285,16 @@ local createMap = function( urlMap, scoreEl, level )
 	      	if EtatHero == 0 then
 		    	EtatHero = 1
 				doubleSaut = false
+				player.state = STATE_TRANSITIONLIQSOL
 		      	--print("Etat Solide")
 	       	elseif EtatHero ==1 then
 		      	EtatHero =0
 				doubleSaut = true
+				player.state = STATE_TRANSITIONSOLLIQ
 		      	--print("Etat Liquide")
 	      	end
 		end
 		ChangePlayerDynamic()
-		player.state = STATE_TRANSITION 
 		player.direction = DIRECTION_RIGHT
 		--print("anim" .. player.state)
 		player:prepare("anim" .. player.state)
@@ -304,9 +305,7 @@ local createMap = function( urlMap, scoreEl, level )
 	function ChangePlayerDynamic()
  		local vx, vy = player:getLinearVelocity()
 		if EtatHero == 0 then
-
 		    	physics.removeBody( player )
-
 		    	physics.addBody( player, { density=player.densityLiq, friction=player. frictionLiq, bounce=player. bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
 		    	player.isFixedRotation = true
 		    --print("Etat Solide")
@@ -380,15 +379,16 @@ local createMap = function( urlMap, scoreEl, level )
 							if EtatHero == 0 then
 								EtatHero = 1
 								doubleSaut = false
+								player.state = STATE_TRANSITIONLIQSOL 
 								--print("Etat Solide")
 							elseif EtatHero ==1 then
 								EtatHero =0
 								doubleSaut = true
 								--print("Etat Liquide")
+								player.state = STATE_TRANSITIONSOLLIQ
 							end
 						end
 						ChangePlayerDynamic()
-						player.state = STATE_TRANSITION 
 						player.direction = DIRECTION_RIGHT
 						--print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
