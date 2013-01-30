@@ -84,6 +84,22 @@ new = function ( params )		local DynResManager = require("DynResManager")
 	end
 	optBtn:addEventListener ("touch", pressOptions)
 	
+	--Credit function
+	local function pressCredits (event)
+		if event.phase == "ended" then
+			director:changeScene ("CreditsScreen")
+		end
+	end
+	creditBtn:addEventListener ("touch", pressCredits)
+	
+	--Score function
+	local function pressScore (event)
+		if event.phase == "ended" then
+			director:changeScene ("ScoreMenuScreen")
+		end
+	end
+	scoreBtn:addEventListener ("touch", pressScore)
+	
 	--EXIT function
 	local exitScene = 0
 	local function exitBtnt ( event )
