@@ -1,6 +1,8 @@
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
-new = function ( params )		local DynResManager = require("DynResManager")	
+new = function ( params )
+	local sysFonts = native.getFontNames()
+for k,v in pairs(sysFonts) do print(v) end	local DynResManager = require("DynResManager")	
 	local localGroup = display.newGroup()
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
@@ -11,8 +13,8 @@ new = function ( params )		local DynResManager = require("DynResManager")
 	--Background
 	local back = display.newImage("fond_accueil.png")
    back.isVisible = true
-   back.x = 	display.contentWidth*0.5 
-   back.y =  display.contentHeight*0.5 
+   back.x = display.contentWidth*0.5 
+   back.y = display.contentHeight*0.5 
    localGroup:insert(back)
    
    --logo
@@ -59,7 +61,7 @@ new = function ( params )		local DynResManager = require("DynResManager")
    	creditBtn.isVisible = true
    	localGroup:insert(creditBtn)
    
-	--Exit Button, D'apreès Théresa colombi pas pertinent de mettre un bouton quitter dans une appli iOS/Android
+	--Exit Button, D'aprÃ¨s ThÃ©resa colombi pas pertinent de mettre un bouton quitter dans une appli iOS/Android
 	-- 
 	--local exitBtn = display.newImage("bouton_quitter.png")
   	--exitBtn.x = display.contentWidth*0.98 - exitBtn.width*0.5
