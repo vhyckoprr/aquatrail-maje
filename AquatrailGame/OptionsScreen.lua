@@ -19,28 +19,28 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("OPTIONS", 0, 0, native.systemFont, 50)
+   local text = display.newText("OPTIONS", 0, 0, "Toledo", 50)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.1 + text.height*0.5
    
-   text = display.newText("Musique", 0, 0, native.systemFont, 16)
+   text = display.newText("Musique", 0, 0, "Toledo", 16)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.30 - text.width*0.5
    text.y = display.contentHeight*0.45 + 5
    
-   text = display.newText("Bruitages", 0, 0, native.systemFont, 16)
+   text = display.newText("Bruitages", 0, 0, "Toledo", 16)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.30 - text.width*0.5
    text.y = display.contentHeight*0.6 + 5
    
-   --RÈglage musique
+   --R√©glage musique
    
    -- Chargement des musiques de test
     local backgroundMusic = audio.loadStream("themeglace.mp3")
 	local stalactiteSound = audio.loadSound("b_stalactite.mp3")
  
-   --Fonction dÈfinissant le comportement des sliders
+   --Fonction d√©finissant le comportement des sliders
 	local function sliderMusiqueListener( event )
 		local slider = event.target
 		local value = event.value
@@ -61,14 +61,14 @@ new = function ( params )
 		audio.setVolume(value*0.01, { channel=2 })
 	end
 	
-	--CrÈation des sliders
+	--Cr√©ation des sliders
 	local sliderMusique = widget.newSlider
 	{
 		top = display.contentHeight*0.45,
 		left = display.contentWidth*0.38,
 		height = 10,
 		width = 200,
-		listener = sliderMusiqueListener, -- A chaque fois que l'on bouge le curseur, cette fonction est appelÈe
+		listener = sliderMusiqueListener, -- A chaque fois que l'on bouge le curseur, cette fonction est appel√©e
 	
 		-- if using vector shapes
 	    fillColor = { 0, 56, 112, 255 },
@@ -85,7 +85,7 @@ new = function ( params )
 		left = display.contentWidth*0.38,
 		height = 10,
 		width = 200,
-		listener = sliderBruitagesListener, -- A chaque fois que l'on bouge le curseur, cette fonction est appelÈe
+		listener = sliderBruitagesListener, -- A chaque fois que l'on bouge le curseur, cette fonction est appel√©e
 	
 		-- if using vector shapes
 	    fillColor = { 0, 56, 112, 255 },
@@ -96,7 +96,7 @@ new = function ( params )
 		cornerRadius = 5
 	}
 
-	--Valeur par dÈfaut des curseurs
+	--Valeur par d√©faut des curseurs
 	--RECUPERATION DES VALEURS DE VOLUME ENREGISTREES DANS LA BDD (au lieu de 75)
 	sliderMusique:setValue( 75 )
 	sliderBruitages:setValue( 75 )
@@ -105,12 +105,12 @@ new = function ( params )
     localGroup:insert( sliderMusique )
 	localGroup:insert( sliderBruitages )
    
-	-- Bouton supprimer les donnÈes
-	local supprBtn = display.newText("Supprimez les donnees", 0, 0, native.systemFont, 16)
+	-- Bouton supprimer les donn√©es
+	local supprBtn = display.newText("Supprimez les donn√©es", 0, 0, "Toledo", 16)
    supprBtn:setTextColor(0, 56, 112)
    supprBtn.isVisible = true
    supprBtn.x = display.contentWidth*0.33 + supprBtn.width*0.5
-   supprBtn.y = display.contentHeight*0.8 - supprBtn.height*0.5
+   supprBtn.y = display.contentHeight*0.8 - supprBtn.height*0.5 + 10
    localGroup:insert(supprBtn)
 	
 	-- Bouton retour
@@ -121,7 +121,7 @@ new = function ( params )
    reBtn.y = display.contentHeight - reBtn.height - 15
    localGroup:insert(reBtn)
 	
-	--Supprimer les donnÈes function
+	--Supprimer les donn√©es function
 	local function pressReturn (event)
 		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
