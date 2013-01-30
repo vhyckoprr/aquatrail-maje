@@ -66,7 +66,7 @@ new = function ( params )
    titre.x = display.contentWidth*0.55 + titre.width*0.5
    titre.y = text.y + text.height*0.5 + titre.height*0.5 + 20
    
-   text = display.newText("Théo Andreoletti\nDavid Valle", 0, 0, "Toledo", 12)
+   text = display.newText("Théo Andreoletti\nDavid Valles", 0, 0, "Toledo", 12)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.55 + text.width*0.5
    text.y = titre.y + titre.height*0.5 + text.height*0.5 + 10
