@@ -4,10 +4,8 @@ module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 	
-	require ("request")	
-	local localGroup = display.newGroup()
-
-   
+require ("request")	
+local localGroup = display.newGroup()
 ---------------------------------LIST---------------------------------------------------------------------
 --import the widget library
 local widget = require("widget")
@@ -135,7 +133,7 @@ local function onRowTouch( event )
 	end
 end
 ------------------------------------------------------------------------------------------------------------------------------ EXPLICATION SUR RECUPERATION de l''XML sur le serveur-- DEUX METHODES-- Recuperation de l'xml sous forme de requete (utilisation de xml.lua))
---network.request ( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData)
+network.request ( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData)
 -- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
 --SOIT-- Sauvegarde de l'xml puis lecture (utilisation de xml_parse.lua)
 --network.download ("http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData, "score.xml")
@@ -159,7 +157,7 @@ localGroup:insert(widgetGroup)
 	local backbutton = display.newImage ("backbutton.png")
 	backbutton.x = backbutton.width / 2
 	backbutton.y = backbutton.height / 2
-   localGroup:insert(backbutton)
+	localGroup:insert(backbutton)
    
   --Return Button
 	   	local function pressReturn (event)
@@ -227,7 +225,6 @@ end
 
 function xmlValue(xmlTree, nodeName)
 	for i,xmlNode in pairs(xmlTree.ChildNodes) do
-       
 		if(xmlNode.Name==nodeName) then
 			return xmlNode.Value
 		end

@@ -1,4 +1,4 @@
-require ("ScoreScreen")	------------------		-- listener for xml request
+require ("ScoreScreen")-------------------- listener for xml request
 function networkListenerData(event)	if (event.isError) then
 	   print("Network error!")
    else
