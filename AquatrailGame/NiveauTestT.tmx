@@ -3,49 +3,7 @@
  <properties>
   <property name="ParallaxEnabled" value="true"/>
  </properties>
- <tileset firstgid="1" name="AtlasGlace" tilewidth="32" tileheight="32">
-  <image source="AtlasGlace.png" width="96" height="128"/>
-  <tile id="1">
-   <properties>
-    <property name="HasBody" value=""/>
-    <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="bonusJumpLiq" value="1.5"/>
-    <property name="bonusJumpSol" value="1"/>
-    <property name="bonusSpeedLiq" value="0.6"/>
-    <property name="bonusSpeedSol" value="0.8"/>
-   </properties>
-  </tile>
-  <tile id="6">
-   <properties>
-    <property name="BonusJumpLiq" value="0.4"/>
-    <property name="BonusJumpSol" value="1"/>
-    <property name="BonusSpeedLiq" value="0.4"/>
-    <property name="BonusSpeedSol" value="0.7"/>
-   </properties>
-  </tile>
-  <tile id="8">
-   <properties>
-    <property name="BonusJumpLiq" value="0.75"/>
-    <property name="BonusJumpSol" value="1"/>
-    <property name="BonusSpeedLiq" value="0.8"/>
-    <property name="BonusSpeedSol" value="0.9"/>
-   </properties>
-  </tile>
-  <tile id="9">
-   <properties>
-    <property name="BonusJumpLiq" value=""/>
-    <property name="BonusJumpSol" value=""/>
-    <property name="BonusSpeedLiq" value=""/>
-    <property name="BonusSpeedSol" value=""/>
-   </properties>
-  </tile>
- </tileset>
- <tileset firstgid="13" name="AtlasVerglasVerso" tilewidth="32" tileheight="32">
-  <image source="AtlasVerglasVerso.png" width="96" height="128"/>
- </tileset>
- <tileset firstgid="25" name="stalactite_01" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="stalactite_01" tilewidth="32" tileheight="32">
   <image source="stalactite_01.png" width="32" height="64"/>
   <tile id="0">
    <properties>
@@ -63,7 +21,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="27" name="goutteletteSpriteSheet" tilewidth="32" tileheight="32">
+ <tileset firstgid="3" name="goutteletteSpriteSheet" tilewidth="32" tileheight="32">
   <image source="goutteletteSpriteSheet.png" width="64" height="32"/>
   <tile id="0">
    <properties>
@@ -79,49 +37,10 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="29" name="verglas" tilewidth="32" tileheight="32">
-  <image source="verglas.png" width="160" height="64"/>
-  <tile id="0">
-   <properties>
-    <property name="HasBody" value=""/>
-    <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="bonusJumpLiq" value="1"/>
-    <property name="bonusJumpSol" value="0.75"/>
-    <property name="bonusSpeedLiq" value="1"/>
-    <property name="bonusSpeedSol" value="1.4"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="HasBody" value=""/>
-    <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="bonusJumpLiq" value="1"/>
-    <property name="bonusJumpSol" value="0.75"/>
-    <property name="bonusSpeedLiq" value="1"/>
-    <property name="bonusSpeedSol" value="1.4"/>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-    <property name="HasBody" value=""/>
-    <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="bonusJumpLiq" value="1"/>
-    <property name="bonusJumpSol" value="0.75"/>
-    <property name="bonusSpeedLiq" value="1"/>
-    <property name="bonusSpeedSol" value="1.4"/>
-   </properties>
-  </tile>
- </tileset>
- <tileset firstgid="39" name="boule_de_neige" tilewidth="64" tileheight="64">
+ <tileset firstgid="5" name="boule_de_neige" tilewidth="64" tileheight="64">
   <image source="boule_de_neige.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="40" name="plateforme" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="plateforme" tilewidth="32" tileheight="32">
   <image source="plateforme.png" width="96" height="96"/>
   <tile id="0">
    <properties>
@@ -160,7 +79,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="49" name="stalactite_01_verso" tilewidth="32" tileheight="32">
+ <tileset firstgid="15" name="stalactite_01_verso" tilewidth="32" tileheight="32">
   <image source="stalactite_01_verso.png" width="32" height="64"/>
   <tile id="0">
    <properties>
@@ -175,7 +94,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="51" name="SuperGouttellettes" tilewidth="32" tileheight="32">
+ <tileset firstgid="17" name="SuperGouttellettes" tilewidth="32" tileheight="32">
   <image source="SuperGouttellettes.png" width="150" height="32"/>
   <tile id="0">
    <properties>
@@ -192,7 +111,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="55" name="eaux" tilewidth="384" tileheight="64">
+ <tileset firstgid="21" name="eaux" tilewidth="384" tileheight="64">
   <image source="eaux.png" width="384" height="64"/>
   <tile id="0">
    <properties>
@@ -206,7 +125,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="56" name="glace" tilewidth="384" tileheight="64">
+ <tileset firstgid="22" name="glace" tilewidth="384" tileheight="64">
   <image source="glace.png" width="384" height="64"/>
   <tile id="0">
    <properties>
@@ -220,7 +139,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="57" name="stalactite_rodeo" tilewidth="32" tileheight="64">
+ <tileset firstgid="23" name="stalactite_rodeo" tilewidth="32" tileheight="64">
   <image source="stalactite_01_verso.png" width="32" height="64"/>
   <tile id="0">
    <properties>
@@ -231,7 +150,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="58" name="AtlasGlace2" tilewidth="32" tileheight="32">
+ <tileset firstgid="24" name="AtlasGlace2" tilewidth="32" tileheight="32">
   <image source="AtlasGlace2.png" width="96" height="128"/>
   <tile id="0">
    <properties>
@@ -258,7 +177,7 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="70" name="player" tilewidth="45" tileheight="58">
+ <tileset firstgid="36" name="player" tilewidth="45" tileheight="58">
   <image source="SpritesHero.png" width="405" height="348"/>
   <tile id="0">
    <properties>
@@ -283,6 +202,9 @@
     <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransitionLiqSol&quot;,&quot;animTransitionSolLiq&quot;,&quot;animDJumping&quot;]"/>
    </properties>
   </tile>
+ </tileset>
+ <tileset firstgid="90" name="angle_plateforme" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme.png" width="32" height="32"/>
  </tileset>
  <layer name="Hills" width="280" height="30" visible="0">
   <properties>
@@ -329,7 +251,7 @@
    <property name="parallaxBase" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="Physics" width="280" height="30">
