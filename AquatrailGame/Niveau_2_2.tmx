@@ -36293,8 +36293,8 @@
     <property name="bodyType" value="static"/>
     <property name="bonusJumpLiq" value="0.5"/>
     <property name="bonusJumpSol" value="0.25"/>
-    <property name="bonusSpeedLiq" value="0.9"/>
-    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="bonusSpeedLiq" value="0.4"/>
+    <property name="bonusSpeedSol" value="0.7"/>
     <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;]"/>
    </properties>
   </object>
@@ -36305,10 +36305,10 @@
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
-    <property name="bonusJumpLiq" value="1.2"/>
+    <property name="bonusJumpLiq" value="1"/>
     <property name="bonusJumpSol" value="0.5"/>
-    <property name="bonusSpeedLiq" value="1.2"/>
-    <property name="bonusSpeedSol" value="1.6"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
     <property name="points" value="[&quot;Montee2A&quot;,&quot;Montee2B&quot;,&quot;Montee2C&quot;]"/>
    </properties>
   </object>
@@ -36332,6 +36332,10 @@
    <properties>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="2"/>
+    <property name="bonusJumpSol" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.6"/>
     <property name="points" value="[&quot;Montee4A&quot;,&quot;Montee4B&quot;,&quot;Montee4C&quot;]"/>
    </properties>
   </object>
@@ -36572,9 +36576,9 @@
   <object x="9088" y="576"/>
   <object x="9216" y="704"/>
   <object x="9088" y="704"/>
-  <object x="1696" y="192"/>
-  <object x="1600" y="96"/>
-  <object x="1696" y="96"/>
+  <object name="MonteMA" x="1696" y="192"/>
+  <object name="MonteMB" x="1600" y="96"/>
+  <object name="MonteMC" x="1696" y="96"/>
   <object x="1856" y="256"/>
   <object x="1792" y="192"/>
   <object x="1856" y="192"/>
