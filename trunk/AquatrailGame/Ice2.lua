@@ -56,7 +56,7 @@ endLevel = function (self, score, time)
 			
 	end
 
-   local visual = GameLogic.createMap("Niveau_2_1.tmx", scoreText, LEVEL)
+   local visual = GameLogic.createMap("Niveau_2_2.tmx", scoreText, LEVEL)
 
 	
 
