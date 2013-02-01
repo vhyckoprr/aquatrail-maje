@@ -4,8 +4,14 @@
  <tile id="0">
   <properties>
    <property name="HasBody" value=""/>
+   <property name="IsChangeVitesse" value=""/>
    <property name="IsDestructible" value=""/>
+   <property name="IsGround" value=""/>
    <property name="bodyType" value="static"/>
+   <property name="bonusJumpLiq" value="1"/>
+   <property name="bonusJumpSol" value="0.5"/>
+   <property name="bonusSpeedLiq" value="1"/>
+   <property name="bonusSpeedSol" value="1.4"/>
   </properties>
  </tile>
  <tile id="1">
