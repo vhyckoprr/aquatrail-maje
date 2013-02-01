@@ -114,6 +114,13 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </tile>
+  <tile id="7">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="39" name="boule_de_neige" tilewidth="64" tileheight="64">
   <image source="boule_de_neige.png" width="64" height="64"/>
