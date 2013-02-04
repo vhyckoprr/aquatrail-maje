@@ -84,6 +84,7 @@
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
+    <property name="IsDestructible" value=""/>
     <property name="IsGround" value=""/>
     <property name="IsStalactite" value=""/>
     <property name="bodyType" value="static"/>
@@ -161,6 +162,8 @@
  <tileset firstgid="106" name="angle_plateforme_neige_top_right" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_neige_top_right.png" width="32" height="32"/>
  </tileset>
+ <tileset firstgid="107" source="eaux_moyen.tsx"/>
+ <tileset firstgid="108" source="glace_moyen.tsx"/>
  <layer name="Platforms" width="280" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
@@ -8614,7 +8617,7 @@
   </object>
   <object name="Montee5B" x="320" y="64"/>
   <object name="Montee5C" x="320" y="160"/>
-  <object type="Body" x="640" y="0" width="64" height="320">
+  <object name="FINDENIVEAU" type="Body" x="640" y="96" width="576" height="352">
    <properties>
     <property name="HasBody" value=""/>
     <property name="IsEnd" value=""/>
