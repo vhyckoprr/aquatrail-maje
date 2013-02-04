@@ -6,7 +6,7 @@ local MAXLEVELINWORLD=6
 
 worldinfo = {}
 
-worldinfo.version = 1
+worldinfo.version = 2
  
 worldinfo.world1 = {}
 worldinfo.world1.unlocked = true
@@ -50,6 +50,9 @@ worldinfo.world3.unlocked = false
 worldinfo.world4 = {}
 worldinfo.world4.unlocked = false
 
+worldinfo.sound = 50
+worldinfo.bruitage = 50
+
 --ATTENTION IL MANQUE TOUS LES LEVELS DES MONDES 2 3 & 4
 
 
@@ -57,8 +60,10 @@ local initProfile = function( )
 	local worldInfoFile = loadsave.loadTable("profile.json")
 	if (worldInfoFile == nil ) then
 		loadsave.saveTable(worldinfo, "profile.json")
+		loadsave.saveTable(worldinfo, "profileOrigin.json")
 		print("JASON FILE NOT FOUND, CREATING NEW FILE")
 	elseif (worldInfoFile.version ~= worldinfo.version ) then		loadsave.saveTable(worldinfo, "profile.json")
+		loadsave.saveTable(worldinfo, "profileOrigin.json")
 		print("JASON FILE OUT DATED, CREATING NEW FILE")	else 
 		worldinfo = worldInfoFile
 		print("WORLDINFO LOADED FROM FILE")
@@ -82,11 +87,23 @@ local saveInfoLevel = function(idWorld, idLevel,score, time)
 	loadsave.saveTable(worldinfo, "profile.json")
 end
 
+local eraseProfile = function()
+	local worldInfoOriginFile = loadsave.loadTable("profileOrigin.json")
+	worldinfo = worldInfoOriginFile
+	loadsave.saveTable(worldinfo, "profile.json")
+end
+
+local saveOption = function(musi,brui)
+	worldinfo.sound = musi
+	worldinfo.bruitage = brui
+	print(musi)
+	loadsave.saveTable(worldinfo, "profile.json")
+end
 local getInfos = function ()
 	return worldinfo
 end
 
-local Profile = { initProfile=initProfile, saveInfoLevel=saveInfoLevel, getInfos=getInfos }
+local Profile = { initProfile=initProfile, saveInfoLevel=saveInfoLevel, getInfos=getInfos, saveOption=saveOption, eraseProfile=eraseProfile}
 
 return Profile
 
