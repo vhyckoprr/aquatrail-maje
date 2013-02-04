@@ -78,6 +78,13 @@
     <property name="bonusSpeedSol" value="1.0"/>
    </properties>
   </tile>
+  <tile id="4">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="15" name="stalactite_01_verso" tilewidth="32" tileheight="32">
   <image source="stalactite_01_verso.png" width="32" height="64"/>
