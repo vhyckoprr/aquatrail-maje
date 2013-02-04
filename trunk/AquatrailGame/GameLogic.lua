@@ -2,6 +2,18 @@ module(..., package.seeall)
 
 -- CONSTANTS,VARIABLES, REQUIREMENTS ---------------------------------------------------------
 
+
+--Les scores
+--Debut fin de niveau avec timer
+--
+---Choisir les 2 etats dans lesquels on switch
+	--Liq-Sol ou Liq-Gaz ou Sol-Nuage
+
+	
+	
+	
+	
+	
 local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
 
 --Etat Liquide
@@ -58,6 +70,7 @@ local physical
 
 local pointsTable = {}
 local stalactiteTable = {}
+local stalacmiteTable = {}
 local line
 
 local scoreElement
@@ -127,7 +140,6 @@ local createMap = function( urlMap, scoreEl, level )
 				player:play()
 			end
 		elseif event.other.IsObstacle then
-
 		
 		elseif event.other.DeclencherStalactite then
 			print("COUCOUDeclencherStalactite")
@@ -495,12 +507,11 @@ local createMap = function( urlMap, scoreEl, level )
 
 local layer = map:getTileLayer("Platforms")
 stalactiteTable = {}
+stalacmiteTable = {}
 -- Make sure we actually have a layer
 	if(layer) then
-
         -- Get all the tiles on this layer
         local tiles = layer.tiles
-
         -- Make sure tiles is not nil
         if(tiles) then
 
@@ -509,19 +520,28 @@ stalactiteTable = {}
                 for i=1, #tiles, 1 do
                         -- Check if the tile is a stalactite
                         if(tiles[i].IsStalactite) then
-                                -- Store off a copy of the tile
-                                --print(tiles[i].." "..tiles[i].sprite)
-                                stalactiteTable[j]=tiles[i]
-                                physics.addBody( tiles[i].sprite, { density=2, friction=0.1, bounce=0.1} ) 
-		   					 tiles[i].sprite.isFixedRotation = true
-								tiles[i].sprite.bodyType = "static"
-                                j=j+1
-
+							-- Store off a copy of the tile
+							--print(tiles[i].." "..tiles[i].sprite)
+							stalactiteTable[j]=tiles[i]
+							physics.addBody( tiles[i].sprite, { density=2, friction=0.1, bounce=0.1} ) 
+							tiles[i].sprite.isFixedRotation = true
+							tiles[i].sprite.bodyType = "static"
+							j=j+1
+                        end
+						if(tiles[i].IsStalacmite) then
+							-- Store off a copy of the tile
+							--print(tiles[i].." "..tiles[i].sprite)
+							--print("IsStalacmite"..i)
+							tiles[i].isSensor = true
+							stalacmiteTable[j]=tiles[i]
+							j=j+1
                         end
                 end
         end   
 	end
-
+ function stalacmiteisSensor (bool)
+ 
+ end
 -- ANIMATIONS---------------------------------------------
 
 --lance les animations :

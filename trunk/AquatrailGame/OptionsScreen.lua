@@ -5,7 +5,7 @@ new = function ( params )
 	local DynResManager = require("DynResManager")
 	local widget = require ("widget")
 	local localGroup = display.newGroup()
-	
+	local worldInfos = profile.getInfos()
 	-- Create a background colour just to make the screen look a little nicer
 	local backcolor = DynResManager.createCenterRectangleFitted()
 	backcolor:setFillColor(169, 214, 255)
@@ -19,17 +19,17 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("OPTIONS", 0, 0, "Toledo", 50)
+   local text = display.newText("OPTIONS", 0, 0, "Arial", 50)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.1 + text.height*0.5
    
-   text = display.newText("Musique", 0, 0, "Toledo", 16)
+   text = display.newText("Musique", 0, 0, "Arial", 16)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.30 - text.width*0.5
    text.y = display.contentHeight*0.45 + 5
    
-   text = display.newText("Bruitages", 0, 0, "Toledo", 16)
+   text = display.newText("Bruitages", 0, 0, "Arial", 16)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.30 - text.width*0.5
    text.y = display.contentHeight*0.6 + 5
@@ -48,6 +48,10 @@ new = function ( params )
 		local backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1 }  )
 		
 		audio.setVolume(value*0.01, { channel=1 })
+		--
+		--
+		
+		
 	end
 	
 	local function sliderBruitagesListener( event )
@@ -98,9 +102,10 @@ new = function ( params )
 
 	--Valeur par défaut des curseurs
 	--RECUPERATION DES VALEURS DE VOLUME ENREGISTREES DANS LA BDD (au lieu de 75)
-	sliderMusique:setValue( 75 )
-	sliderBruitages:setValue( 75 )
-	
+	print(worldInfos.sound)
+	sliderMusique:setValue( worldInfos.sound )
+	sliderBruitages:setValue( worldInfos.bruitage )
+		
     -- insert the slider widget into a group
     localGroup:insert( sliderMusique )
 	localGroup:insert( sliderBruitages )
@@ -125,6 +130,7 @@ new = function ( params )
 	local function pressReturn (event)
 		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
+			profile.eraseProfile()
 			director:changeScene ("SuppressionDonneesScreen")
 		end
 	end
@@ -134,10 +140,9 @@ new = function ( params )
 	local function pressReturn (event)
 		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
-		
 			local volumeMusique = audio.getVolume ( { channel = 1 } )
 			local volumeBruitages = audio.getVolume ( { channel = 2 } )
-			
+			profile.saveOption(volumeMusique*100,volumeBruitages*100)
 			--ENREGISTREMENT DES VALEURS DE VOLUMES volumeMusique ET volumeBruitages DANS LA BDD
 			
 			director:changeScene ("TitleScreen")
