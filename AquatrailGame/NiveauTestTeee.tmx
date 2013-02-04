@@ -4,7 +4,7 @@
   <property name="ParallaxEnabled" value="true"/>
  </properties>
  <tileset firstgid="1" name="stalactite_01" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/stalactite_01.png" width="32" height="64"/>
+  <image source="stalactite_01.png" width="32" height="64"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -22,7 +22,7 @@
   </tile>
  </tileset>
  <tileset firstgid="3" name="goutteletteSpriteSheet" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/goutteletteSpriteSheet.png" width="64" height="32"/>
+  <image source="goutteletteSpriteSheet.png" width="64" height="32"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -38,10 +38,10 @@
   </tile>
  </tileset>
  <tileset firstgid="5" name="boule_de_neige" tilewidth="64" tileheight="64">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/boule_de_neige.png" width="64" height="64"/>
+  <image source="boule_de_neige.png" width="64" height="64"/>
  </tileset>
  <tileset firstgid="6" name="plateforme" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/plateforme.png" width="96" height="96"/>
+  <image source="plateforme.png" width="96" height="96"/>
   <tile id="1">
    <properties>
     <property name="HasBody " value=""/>
@@ -70,7 +70,7 @@
   </tile>
  </tileset>
  <tileset firstgid="15" name="stalactite_01_verso" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/stalactite_01_verso.png" width="32" height="64"/>
+  <image source="stalactite_01_verso.png" width="32" height="64"/>
   <tile id="0">
    <properties>
     <property name="IsDestructible" value=""/>
@@ -85,7 +85,7 @@
   </tile>
  </tileset>
  <tileset firstgid="17" name="SuperGouttellettes" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/SuperGouttellettes.png" width="150" height="32"/>
+  <image source="SuperGouttellettes.png" width="150" height="32"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -102,7 +102,7 @@
   </tile>
  </tileset>
  <tileset firstgid="21" name="eaux" tilewidth="384" tileheight="64">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/eaux.png" width="384" height="64"/>
+  <image source="eaux.png" width="384" height="64"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -116,7 +116,7 @@
   </tile>
  </tileset>
  <tileset firstgid="22" name="glace" tilewidth="384" tileheight="64">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/glace.png" width="384" height="64"/>
+  <image source="glace.png" width="384" height="64"/>
   <tile id="0">
    <properties>
     <property name="" value=""/>
@@ -130,7 +130,7 @@
   </tile>
  </tileset>
  <tileset firstgid="23" name="stalactite_rodeo" tilewidth="32" tileheight="64">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/stalactite_01_verso.png" width="32" height="64"/>
+  <image source="stalactite_01_verso.png" width="32" height="64"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -141,7 +141,7 @@
   </tile>
  </tileset>
  <tileset firstgid="24" name="AtlasGlace2" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/AtlasGlace2.png" width="96" height="128"/>
+  <image source="AtlasGlace2.png" width="96" height="128"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -168,7 +168,7 @@
   </tile>
  </tileset>
  <tileset firstgid="36" name="player" tilewidth="45" tileheight="58">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/SpritesHero.png" width="405" height="348"/>
+  <image source="SpritesHero.png" width="405" height="348"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -194,16 +194,16 @@
   </tile>
  </tileset>
  <tileset firstgid="90" name="angle_plateforme_bottom_left" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/angle_plateforme_bottom_left.png" width="32" height="32"/>
+  <image source="angle_plateforme_bottom_left.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="91" name="angle_plateforme_bottom_right" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/angle_plateforme_bottom_right.png" width="32" height="32"/>
+  <image source="angle_plateforme_bottom_right.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="92" name="angle_plateforme_top_left" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/angle_plateforme_top_left.png" width="32" height="32"/>
+  <image source="angle_plateforme_top_left.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="93" name="angle_plateforme_top_right" tilewidth="32" tileheight="32">
-  <image source="../Documents/MAPI/MASTER_MAPI_MAJE2/Aquatrail/Source Aquatrail/AquatrailGame/angle_plateforme_top_right.png" width="32" height="32"/>
+  <image source="angle_plateforme_top_right.png" width="32" height="32"/>
  </tileset>
  <layer name="Hills" width="280" height="30" visible="0">
   <properties>
