@@ -4,6 +4,7 @@ new = function ( params )
 
 	local DynResManager = require("DynResManager")
 	local widget = require ("widget")
+	local worldInfos = profile.getInfos()
 	local localGroup = display.newGroup()
 	
 	-- Create a background colour just to make the screen look a little nicer
@@ -43,17 +44,20 @@ new = function ( params )
 		local row = event.target
 		local rowGroup = event.view
 		
-		local nomMonde
-		local numNiveau = (event.index % 7)-1
-		if(numNiveau == -1) then numNiveau = 6 end
-		if(event.index >= 1 and event.index <=7) then nomMonde = "Glace" end
-		if(event.index >= 8 and event.index <=14) then nomMonde = "Foret" end
-		if(event.index >= 15 and event.index <=21) then nomMonde = "Desert" end
-		if(event.index >= 22 and event.index <=28) then nomMonde = "Ile" end
+		-- Calcul de l'ID et du NOM du Monde et de l'ID du niveau
+		local nomMonde = ""
+		local idMonde = 1
+		local idNiveau = (event.index % 7)-1
+		if(idNiveau == -1) then idNiveau = 6 end
+		if(event.index >= 1 and event.index <=7) then nomMonde = "Glace"; idMonde = 1 end
+		if(event.index >= 8 and event.index <=14) then nomMonde = "Foret"; idMonde = 2 end
+		if(event.index >= 15 and event.index <=21) then nomMonde = "Desert"; idMonde = 3 end
+		if(event.index >= 22 and event.index <=28) then nomMonde = "Ile"; idMonde = 4 end
 		
+		-- Affichage du nom des niveaux et de leur numéro
 		if(not row.isCategory)
 		then
-			local text = display.newRetinaText( "Niveau " .. nomMonde .. " - " .. numNiveau, 0, 0, "Toledo", 12 )
+			local text = display.newRetinaText( "Niveau " .. nomMonde .. " - " .. idNiveau, 0, 0, "Toledo", 12 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
@@ -67,11 +71,14 @@ new = function ( params )
 			text:setTextColor( 112, 168, 224 )
 			rowGroup:insert( text )
 		end
-		
-		-- RECUPERER LE SCORE DE CHAQUE NIVEAU  (en fonction de i) DANS LA BDD
-		
-		score = math.random(0,9999)
-		
+
+		-- recuperation du score de chaque niveau  dans la bdd
+		score = 0;
+		if (idMonde == 1) then -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+		if(not(idNiveau == 0)) then score = worldInfos["world"..idMonde]["level"..idNiveau].score end
+		end -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+
+		-- Affichage du score sur les ligne des niveaux mais pas sur les lignes d'en-tête
 		if(not row.isCategory)
 		then
 			text = display.newRetinaText( score, 0, 0, "Toledo", 12 )
