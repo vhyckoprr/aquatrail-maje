@@ -6,6 +6,7 @@ new = function ( params )
 	local widget = require ("widget")
 	local localGroup = display.newGroup()
 	local worldInfos = profile.getInfos()
+	
 	-- Create a background colour just to make the screen look a little nicer
 	local backcolor = DynResManager.createCenterRectangleFitted()
 	backcolor:setFillColor(169, 214, 255)
@@ -48,9 +49,6 @@ new = function ( params )
 		local backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1 }  )
 		
 		audio.setVolume(value*0.01, { channel=1 })
-		--
-		--
-		
 		
 	end
 	
@@ -101,7 +99,7 @@ new = function ( params )
 	}
 
 	--Valeur par défaut des curseurs
-	--RECUPERATION DES VALEURS DE VOLUME ENREGISTREES DANS LA BDD (au lieu de 75)
+	--recuperation des valeurs de volume enregistrees dans la bdd (avec worldInfos)
 	print(worldInfos.sound)
 	sliderMusique:setValue( worldInfos.sound )
 	sliderBruitages:setValue( worldInfos.bruitage )
@@ -140,11 +138,11 @@ new = function ( params )
 	local function pressReturn (event)
 		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
+			--enregistrement des valeurs de volumes volumemusique et volumebruitages dans la bdd
 			local volumeMusique = audio.getVolume ( { channel = 1 } )
 			local volumeBruitages = audio.getVolume ( { channel = 2 } )
 			profile.saveOption(volumeMusique*100,volumeBruitages*100)
-			--ENREGISTREMENT DES VALEURS DE VOLUMES volumeMusique ET volumeBruitages DANS LA BDD
-			
+
 			director:changeScene ("TitleScreen")
 		end
 	end

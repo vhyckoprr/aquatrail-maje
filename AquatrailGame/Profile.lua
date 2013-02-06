@@ -7,7 +7,22 @@ local MAXLEVELINWORLD=6
 worldinfo = {}
 
 worldinfo.version = 2
+worldinfo.sound = 50
+worldinfo.bruitage = 50
  
+--ATTENTION IL MANQUE TOUS LES LEVELS DES MONDES 2 3 & 4
+for i=1, 4
+do
+	worldinfo["world"..i] = { unlocked = false }
+	for j=1, MAXLEVELINWORLD
+	do
+		worldinfo["world"..i]["level"..j] = { score = 0, time = "", unlocked = false }
+	end
+end
+
+worldinfo.world1.unlocked = true
+
+ --[[ -- Le code ci-dessus remplace le code ci-dessous normalement
 worldinfo.world1 = {}
 worldinfo.world1.unlocked = true
 
@@ -49,12 +64,7 @@ worldinfo.world3.unlocked = false
 
 worldinfo.world4 = {}
 worldinfo.world4.unlocked = false
-
-worldinfo.sound = 50
-worldinfo.bruitage = 50
-
---ATTENTION IL MANQUE TOUS LES LEVELS DES MONDES 2 3 & 4
-
+--]]
 
 local initProfile = function( )
 	local worldInfoFile = loadsave.loadTable("profile.json")
