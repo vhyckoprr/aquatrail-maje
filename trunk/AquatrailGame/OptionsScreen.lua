@@ -109,7 +109,7 @@ new = function ( params )
 	localGroup:insert( sliderBruitages )
    
 	-- Bouton supprimer les données
-	local supprBtn = display.newText("Supprimez les données", 0, 0, "Toledo", 16)
+	local supprBtn = display.newText("Supprimez les données", 0, 0, "Arial", 16)
    supprBtn:setTextColor(0, 56, 112)
    supprBtn.isVisible = true
    supprBtn.x = display.contentWidth*0.33 + supprBtn.width*0.5
