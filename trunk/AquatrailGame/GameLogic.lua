@@ -531,7 +531,7 @@ stalacmiteTable = {}
 						if(tiles[i].IsStalacmite) then
 							-- Store off a copy of the tile
 							--print(tiles[i].." "..tiles[i].sprite)
-							--print("IsStalacmite"..i)
+							print("IsStalacmite"..i)
 							tiles[i].isSensor = true
 							stalacmiteTable[j]=tiles[i]
 							j=j+1
