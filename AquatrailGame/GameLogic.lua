@@ -3,6 +3,17 @@ module(..., package.seeall)
 -- CONSTANTS,VARIABLES, REQUIREMENTS ---------------------------------------------------------
 
 
+--Etat de jeu
+--
+local GAMESTATE
+
+local STATE_STARTLEVEL = "startlevel"
+local STATE_PLAY = "play"
+local STATE_PAUSE = "pause"
+local STATE_ENDLEVEL = "endlevel"
+ 
+
+
 --Les scores
 --Debut fin de niveau avec timer
 --
@@ -79,12 +90,14 @@ local maintheme = audio.loadSound( "themeglace.mp3" )
 local b_stalactite = audio.loadSound( "b_stalactite.mp3" )
 local b_saut = audio.loadSound( "b_saut.mp3" )
 local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )
+local startlevel = audio.loadSound( "debut_niveau.mp3" )
+
 
 ------------------------------------------------------------------------------------
 
 local createMap = function( urlMap, scoreEl, level )
 
-
+	GAMESTATE = STATE_STARTLEVEL
 	map = lime.loadMap(urlMap)
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
@@ -108,6 +121,8 @@ local createMap = function( urlMap, scoreEl, level )
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1})
 	
+	
+	
 	local function changeStalactiteBodyType(body)
 		body.isAwake = true
 		body.isBodyActive = true
@@ -118,73 +133,78 @@ local createMap = function( urlMap, scoreEl, level )
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	 function onCollision(self, event )
 	
-	 	if ( event.phase == "began" ) then	 	   if event.other.IsEnd then	 	   	--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau	 	   	print("FIN DU NIVEAU")	 	   	LEVEL:endLevel(SCORE,TIME)	 	end	 	
-		if event.other.IsGround then
-			--print("Ground");
-			player.canJump = true
-			if EtatHero == 0 then
-				doubleSaut = true
-			elseif EtatHero == 1 then
-				chargesol = true
-			elseif EtatHero == 2 then
-				gagnerAlt = true
-			end
-			if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
-				if EtatHero == 0 then
-					player.state = STATE_WALKING_LIQ
-				elseif EtatHero ==1 then
-					player.state = STATE_WALKING_SOL
-				end
-
-				player:prepare("anim" .. player.state)
+	 	if ( event.phase == "began" ) then			if event.other.IsEnd then				--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau				print("FIN DU NIVEAU")
+				player:setLinearVelocity(0,0)
+				player:prepare("animEndLevel")
 				player:play()
-			end
-		elseif event.other.IsObstacle then
-		
-		elseif event.other.DeclencherStalactite then
-			print("COUCOUDeclencherStalactite")
-			for i=0, #stalactiteTable, 1 do
-				timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))
-			end
-			event.other:removeSelf()
-		elseif event.other.IsCollectable then
-			local item = event.other
-			local onTransitionEnd = function(transitionEvent)
-				if transitionEvent["removeSelf"] then
-					transitionEvent:removeSelf()
+				audio.play(startlevel)
+				GAMESTATE = STATE_ENDLEVEL			end	 	
+			if event.other.IsGround then
+				--print("Ground");
+				player.canJump = true
+				if EtatHero == 0 then
+					doubleSaut = true
+				elseif EtatHero == 1 then
+					chargesol = true
+				elseif EtatHero == 2 then
+					gagnerAlt = true
 				end
-			end	
-			-- Fade out the item
-			transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
-			local text = nil
-			audio.play(b_gouttelette)
-			if (item.Score) then
-				SCORE=SCORE+item.Score
-				--print(item.Score)
-				scoreElement.text = "score: "..SCORE
-			elseif item.pickupType == "health" then
-				text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
-			end
-			if text then
-				text:setTextColor(0, 0, 0, 255)
-				text.x = display.contentCenterX
-				text.y = display.contentCenterY
-				transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
-			end
-		elseif event.other.IsDestructible then
-			print("brise stalactite")
-			if EtatHero == 1 then
-				local stalacti = event.other
+				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
+					if EtatHero == 0 then
+						player.state = STATE_WALKING_LIQ
+					elseif EtatHero ==1 then
+						player.state = STATE_WALKING_SOL
+					end
 
-				local onTransitionEnd = function(transitionEvent)
-				if transitionEvent["removeSelf"] then
-					transitionEvent:removeSelf()
+					player:prepare("anim" .. player.state)
+					player:play()
 				end
+			elseif event.other.IsObstacle then
+		
+			elseif event.other.DeclencherStalactite then
+				print("COUCOUDeclencherStalactite")
+				for i=0, #stalactiteTable, 1 do
+					timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))
+				end
+				event.other:removeSelf()
+			elseif event.other.IsCollectable then
+				local item = event.other
+				local onTransitionEnd = function(transitionEvent)
+					if transitionEvent["removeSelf"] then
+						transitionEvent:removeSelf()
+					end
+				end	
+				-- Fade out the item
+				transition.to(item, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+				local text = nil
+				audio.play(b_gouttelette)
+				if (item.Score) then
+					SCORE=SCORE+item.Score
+					--print(item.Score)
+					scoreElement.text = "score: "..SCORE
+				elseif item.pickupType == "health" then
+					text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
+				end
+				if text then
+					text:setTextColor(0, 0, 0, 255)
+					text.x = display.contentCenterX
+					text.y = display.contentCenterY
+					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
+				end
+			elseif event.other.IsDestructible then
+				print("brise stalactite")
+				if EtatHero == 1 then
+					local stalacti = event.other
+
+					local onTransitionEnd = function(transitionEvent)
+					if transitionEvent["removeSelf"] then
+						transitionEvent:removeSelf()
+					end
+				end
+				-- Fade out the stalacti
+				transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
+				audio.play(b_stalactite)
 			end
-			-- Fade out the stalacti
-			transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
-			audio.play(b_stalactite)
-		end
 		end
 		if event.other.IsSmashable then
 			--print("IsSmashable");
@@ -238,82 +258,99 @@ local createMap = function( urlMap, scoreEl, level )
 	-- UPDATE----------------------------------------------------------------------
 	 onUpdate = function(event)
 		
-		--L'animation animTransition est enclencher?
-		if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" then
-			--Le sprite est il entrain d'executer une animation?
-			if player.animating  then
-				--Le sprite a il fini son animation?
-				if player.currentFrame ==4 then
-					if EtatHero == 0 then
-						player.state = STATE_WALKING_LIQ
-					elseif EtatHero ==1 then
-						player.state = STATE_WALKING_SOL
+		--Jouer animation debut de level
+		--
+		if GAMESTATE == STATE_STARTLEVEL then		
+			--L'animation animTransition est enclencher?
+			if player.sequence == "animStartLevel" then
+				--Le sprite est il entrain d'executer une animation?
+				if player.animating  then
+					--Le sprite a il fini son animation?
+					if player.currentFrame ==6 then
+						if EtatHero == 0 then
+							player.state = STATE_WALKING_LIQ
+						elseif EtatHero ==1 then
+							player.state = STATE_WALKING_SOL
+						end
+						player.direction = DIRECTION_RIGHT
+						player:prepare("anim" .. player.state)
+						player:play()
+						GAMESTATE = STATE_PLAY
 					end
-					player.direction = DIRECTION_RIGHT
-					--print("anim" .. player.state)
-					player:prepare("anim" .. player.state)
-					player:play()
 				end
 			end
-		end
-		
-		local vx, vy = player:getLinearVelocity()
-		--print("vx "..vx)
-		local speed=30
-		local jump=30
-		if (EtatHero==0)then
-			speed = BASESPEEDLIQUIDE
-			--print (BASESPEEDLIQUIDE)
-		elseif ( EtatHero==1)then
-			speed = BASESPEEDSOLIDE
-			--print (BASESPEEDSOLIDE)
-		end
-		--scrolling
-		--check si il y a eu collision (direction positive vitesse negative)
-		if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
-			player:setLinearVelocity(speed*player.globalSpeed, vy)
-		else
-				if (vx>=0 and vx<1)then
-					player:applyForce( player.direction*10, 0, player.x, player.y )
-				elseif (vx<speed*player.globalSpeed ) then
-					player:setLinearVelocity(vx * 1.15, vy)
-
-				else
-					player:setLinearVelocity(speed*player.globalSpeed, vy)
+		end 
+	 
+		if GAMESTATE == STATE_ENDLEVEL then	
+		--print("endlevel1")
+			--L'animation animTransition est enclencher?
+			if player.sequence == "animEndLevel"then
+				--Le sprite est il entrain d'executer une animation?
+				if player.animating  then
+					--Le sprite a il fini son animation?
+					if player.currentFrame ==6 then
+						print("endlevel2")
+						LEVEL:endLevel(SCORE,TIME)
+					end
 				end
+			end
+			
 		end
-		-- Update the map. Needed for using map:setFocus()
+		if GAMESTATE == STATE_PLAY then		
+			--L'animation animTransition est enclencher?
+			if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" then
+				--Le sprite est il entrain d'executer une animation?
+				if player.animating  then
+					--Le sprite a il fini son animation?
+					if player.currentFrame ==4 then
+						if EtatHero == 0 then
+							player.state = STATE_WALKING_LIQ
+						elseif EtatHero ==1 then
+							player.state = STATE_WALKING_SOL
+						end
+						player.direction = DIRECTION_RIGHT
+						--print("anim" .. player.state)
+						player:prepare("anim" .. player.state)
+						player:play()
+					end
+				end
+			end
+		
+			local vx, vy = player:getLinearVelocity()
+			--print("vx "..vx)
+			local speed=30
+			local jump=30
+			if (EtatHero==0)then
+				speed = BASESPEEDLIQUIDE
+				--print (BASESPEEDLIQUIDE)
+			elseif ( EtatHero==1)then
+				speed = BASESPEEDSOLIDE
+				--print (BASESPEEDSOLIDE)
+			end
+			--scrolling
+			--check si il y a eu collision (direction positive vitesse negative)
+			if ((player.direction == 1 and vx <0)or(player.direction == -1 and vx >0)) then
+				player:setLinearVelocity(speed*player.globalSpeed, vy)
+			else
+					if (vx>=0 and vx<1)then
+						player:applyForce( player.direction*10, 0, player.x, player.y )
+					elseif (vx<speed*player.globalSpeed ) then
+						player:setLinearVelocity(vx * 1.15, vy)
+
+					else
+						player:setLinearVelocity(speed*player.globalSpeed, vy)
+					end
+			end
+			-- Update the map. Needed for using map:setFocus()
+		end
 		map:setFocus( player )	
 		map:update( event )
+		
 	end
 	Runtime:addEventListener("enterFrame", onUpdate)
 	local function checkEndTransition( )
 		--print("okay")
 	end
-	-- TOUCH--------------------------------------------------------------------------
-	 onTouch = function(event)
-		if ( event.phase == "began" ) then
-			--print("ChangeEtat")
-	      	if EtatHero == 0 then
-		    	EtatHero = 1
-				doubleSaut = false
-				player.state = STATE_TRANSITIONLIQSOL
-		      	--print("Etat Solide")
-	       	elseif EtatHero ==1 then
-		      	EtatHero =0
-				doubleSaut = true
-				player.state = STATE_TRANSITIONSOLLIQ
-		      	--print("Etat Liquide")
-	      	end
-		end
-		ChangePlayerDynamic()
-		player.direction = DIRECTION_RIGHT
-		--print("anim" .. player.state)
-		player:prepare("anim" .. player.state)
-		player:play()
-	end
-	--player:addEventListener("touch", onTouch)
-	
 	function ChangePlayerDynamic()
  		local vx, vy = player:getLinearVelocity()
 		if EtatHero == 0 then
@@ -338,6 +375,7 @@ local createMap = function( urlMap, scoreEl, level )
 	--Fonction de saut !
 	--
 	function ToucheScreen (event)
+		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
 					if event.x - display.contentWidth/2 >0 then
@@ -410,7 +448,7 @@ local createMap = function( urlMap, scoreEl, level )
 			if ( event.phase == "ended" ) then
 				gagnerAlt = false
 			end
-
+		end
 	end
 	Runtime:addEventListener("touch", ToucheScreen)
 
@@ -422,10 +460,10 @@ local createMap = function( urlMap, scoreEl, level )
 	end
 	ChangePlayerDynamic()
 	player.direction = DIRECTION_RIGHT
-	--print("anim" .. player.state)
-	player:prepare("anim" .. player.state)
+	print("animStartLevel")
+	player:prepare("animStartLevel")
 	player:play()
-
+	audio.play(startlevel)
 	
 	--drawLine gesturelib
 	--
@@ -521,7 +559,7 @@ stalacmiteTable = {}
                         -- Check if the tile is a stalactite
                         if(tiles[i].IsStalactite) then
 							-- Store off a copy of the tile
-							--print(tiles[i].." "..tiles[i].sprite)
+							--print(tiles[i].." "..tiles[i].sprite.bodyType)
 							stalactiteTable[j]=tiles[i]
 							physics.addBody( tiles[i].sprite, { density=2, friction=0.1, bounce=0.1} ) 
 							tiles[i].sprite.isFixedRotation = true
@@ -531,7 +569,7 @@ stalacmiteTable = {}
 						if(tiles[i].IsStalacmite) then
 							-- Store off a copy of the tile
 							--print(tiles[i].." "..tiles[i].sprite)
-							print("IsStalacmite"..i)
+							--print("IsStalacmite"..i.."   "..tiles[i].isSensor)
 							tiles[i].isSensor = true
 							stalacmiteTable[j]=tiles[i]
 							j=j+1

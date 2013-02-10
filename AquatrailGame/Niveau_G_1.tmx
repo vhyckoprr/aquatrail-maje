@@ -255,7 +255,7 @@
   </tile>
  </tileset>
  <tileset firstgid="70" name="player" tilewidth="45" tileheight="58">
-  <image source="SpritesHero.png" width="405" height="348"/>
+  <image source="SpritesHero.png" width="405" height="522"/>
   <tile id="0">
    <properties>
     <property name="HasBody" value=""/>
@@ -280,6 +280,9 @@
     <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animTransitionLiqSol&quot;,&quot;animTransitionSolLiq&quot;,&quot;animDJumping&quot;]"/>
    </properties>
   </tile>
+ </tileset>
+ <tileset firstgid="151" name="SpritesHero" tilewidth="45" tileheight="58">
+  <image source="SpritesHero.png" width="405" height="522"/>
  </tileset>
  <layer name="Hills" width="280" height="30" visible="0">
   <properties>
