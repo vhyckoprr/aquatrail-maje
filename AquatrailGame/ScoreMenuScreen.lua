@@ -4,7 +4,7 @@ new = function ( params )
 
 	local DynResManager = require("DynResManager")
 	local widget = require ("widget")
-	local worldInfos = profile.getInfos()
+	local worldinfo = profile.getInfos()
 	local localGroup = display.newGroup()
 	
 	-- Create a background colour just to make the screen look a little nicer
@@ -72,12 +72,21 @@ new = function ( params )
 			rowGroup:insert( text )
 		end
 
+			
+		
+		
+
 		-- recuperation du score de chaque niveau  dans la bdd
 		score = 0;
 		if (idMonde == 1) then -- A SUPPRIMER lorsque la bdd des mondes sera complète 
-		if(not(idNiveau == 0)) then score = worldInfos["world"..idMonde]["level"..idNiveau].score end
+		if(not(idNiveau == 0)) then score = worldinfo["world"..idMonde]["level"..idNiveau].score end
 		end -- A SUPPRIMER lorsque la bdd des mondes sera complète 
 
+		
+		
+		
+		
+		
 		-- Affichage du score sur les ligne des niveaux mais pas sur les lignes d'en-tête
 		if(not row.isCategory)
 		then
