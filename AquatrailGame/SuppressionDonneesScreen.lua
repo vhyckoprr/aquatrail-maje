@@ -19,24 +19,24 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local titre = display.newText("SUPPRIMEZ LES DONNEES", 0, 0, "Toledo", 30)
+   local titre = display.newText("SUPPRIMEZ LES DONNEES", 0, 0, "Arial", 30)
    titre:setTextColor(112, 168, 224)
    titre.x = display.contentWidth*0.5
    titre.y = display.contentHeight*0.1 + titre.height*0.5
    
-   local text = display.newText("Vous perdrez l'intégralité de vos données : \n- Score \n- Récompenses \n- Niveaux", 0, 0, "Toledo", 18)
+   local text = display.newText("Vous perdrez l'intégralité de vos données : \n- Score \n- Récompenses \n- Niveaux", 0, 0, "Arial", 18)
    text:setTextColor(112, 168, 224)
    text.x = display.contentWidth*0.5 
    text.y = display.contentHeight*0.5
    
    --Bouton Valider
-   local validerBtn = display.newText("Valider", 0, 0, "Toledo", 20)
+   local validerBtn = display.newText("Valider", 0, 0, "Arial", 20)
    validerBtn:setTextColor(112, 168, 224)
    validerBtn.x = display.contentWidth*0.33
    validerBtn.y = display.contentHeight*0.8
    
    --Bouton Retour
-   local reBtn = display.newText("Retour", 0, 0, "Toledo", 20)
+   local reBtn = display.newText("Retour", 0, 0, "Arial", 20)
    reBtn:setTextColor(112, 168, 224)
    reBtn.x = display.contentWidth*0.66
    reBtn.y = display.contentHeight*0.8
