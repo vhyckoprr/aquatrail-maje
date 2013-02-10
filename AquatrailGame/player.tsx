@@ -3,6 +3,7 @@
  <image source="SpritesHero.png" width="405" height="348"/>
  <tile id="0">
   <properties>
+   <property name="ignoreCulling" value="true"/>
    <property name="HasBody" value=""/>
    <property name="IsAnimated" value=""/>
    <property name="IsPlayer" value=""/>

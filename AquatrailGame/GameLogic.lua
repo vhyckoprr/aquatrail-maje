@@ -61,7 +61,7 @@ physics.start()
 -- Load Lime
 local lime = require("lime")
 -- Disable culling
---lime.enableScreenCulling()
+lime.enableScreenCulling()
 
 local map
 local player
