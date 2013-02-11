@@ -17,8 +17,12 @@ local STATE_ENDLEVEL = "endlevel"
 
 
 ---Choisir les 2 etats dans lesquels on switch
---Liq-Sol ou Liq-Gaz ou Sol-Nuage
+--Liq-Sol ou Liq-Gaz ou Sol-Gaz
+local STATECHANGE
 
+local LIQSOL = "LiqSol"
+local LIQGAZ = "LiqGaz"
+local SOLGAZ = "SolGaz"
 	
 	
 	
@@ -47,6 +51,8 @@ local gagnerAlt = false--gagner de l'altitude
 --Transition Etat
 local STATE_TRANSITIONLIQSOL = "TransitionLiqSol"
 local STATE_TRANSITIONSOLLIQ = "TransitionSolLiq"
+local STATE_TRANSITIONLIQGAZ = "TransitionLiqGaz"
+local STATE_TRANSITIONGAZLIQ = "TransitionGazLiq"
 
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
@@ -56,6 +62,8 @@ local BASESPEEDSOLIDE=30
 local BASESPEEDLIQUIDE=30
 local BASEJUMPSOLIDE= 5
 local BASEJUMPLIQUIDE= 5
+local BASESPEEDGAZ= 10
+local BASEFLYGAZ= 0.02
 
 --local player.globalJump
 --local player.globalSpeed
@@ -94,13 +102,18 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl, level )
-
+local createMap = function( urlMap, scoreEl, level, statehero)
+	STATECHANGE = statehero
 	GAMESTATE = STATE_STARTLEVEL
+	EtatHero = 0
 	map = lime.loadMap(urlMap)
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
-	end		LEVEL = level
+	end
+		--
+	--animation walk en fonction de letat de depart, ex: Liqsol commence par walkliq
+	--
+		LEVEL = level
 	
 	SCORE=0
 	scoreElement = scoreEl 
@@ -148,13 +161,14 @@ local createMap = function( urlMap, scoreEl, level )
 				elseif EtatHero == 2 then
 					gagnerAlt = true
 				end
-				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL then
+				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL or  player.state == STATE_JUMPING_GAZ then
 					if EtatHero == 0 then
 						player.state = STATE_WALKING_LIQ
 					elseif EtatHero ==1 then
 						player.state = STATE_WALKING_SOL
+					elseif EtatHero ==2 then
+						player.state = STATE_WALKING_GAZ
 					end
-
 					player:prepare("anim" .. player.state)
 					player:play()
 				end
@@ -223,6 +237,8 @@ local createMap = function( urlMap, scoreEl, level )
 			BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
 			BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
 			BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+			--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
+			--BASEFLYGAZ=30*event.other.bonusJumpGaz
 		end
 		if event.other.IsFrozen then
 			--Jouer l'animation de gele lac
@@ -242,6 +258,8 @@ local createMap = function( urlMap, scoreEl, level )
 			BASESPEEDLIQUIDE=30
 			BASEJUMPSOLIDE= 5
 			BASEJUMPLIQUIDE= 5
+			BASESPEEDGAZ = 10
+			BASEFLYGAZ = 0.02
 		end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
@@ -256,6 +274,10 @@ local createMap = function( urlMap, scoreEl, level )
 	
 	-- UPDATE----------------------------------------------------------------------
 	 onUpdate = function(event)
+		if player.y < 100 then
+			player.y = 100
+			player:setLinearVelocity(vx , 0)
+		end
 		
 		--Jouer animation debut de level
 		--
@@ -268,8 +290,10 @@ local createMap = function( urlMap, scoreEl, level )
 					if player.currentFrame ==6 then
 						if EtatHero == 0 then
 							player.state = STATE_WALKING_LIQ
-						elseif EtatHero ==1 then
+						elseif EtatHero == 1 then
 							player.state = STATE_WALKING_SOL
+						elseif EtatHero == 2 then
+							player.state = STATE_WALKING_GAZ
 						end
 						player.direction = DIRECTION_RIGHT
 						player:prepare("anim" .. player.state)
@@ -297,7 +321,7 @@ local createMap = function( urlMap, scoreEl, level )
 		end
 		if GAMESTATE == STATE_PLAY then		
 			--L'animation animTransition est enclencher?
-			if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" then
+			if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" or player.sequence == "animTransitionGazLiq" or player.sequence == "animTransitionLiqGaz" then
 				--Le sprite est il entrain d'executer une animation?
 				if player.animating  then
 					--Le sprite a il fini son animation?
@@ -306,9 +330,11 @@ local createMap = function( urlMap, scoreEl, level )
 							player.state = STATE_WALKING_LIQ
 						elseif EtatHero ==1 then
 							player.state = STATE_WALKING_SOL
+						elseif EtatHero ==2 then
+							player.state = STATE_WALKING_GAZ
 						end
 						player.direction = DIRECTION_RIGHT
-						--print("anim" .. player.state)
+						print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
 						player:play()
 					end
@@ -325,6 +351,8 @@ local createMap = function( urlMap, scoreEl, level )
 			elseif ( EtatHero==1)then
 				speed = BASESPEEDSOLIDE
 				--print (BASESPEEDSOLIDE)
+			elseif ( EtatHero==2)then
+				speed = BASESPEEDGAZ
 			end
 			--scrolling
 			--check si il y a eu collision (direction positive vitesse negative)
@@ -354,21 +382,26 @@ local createMap = function( urlMap, scoreEl, level )
  		local vx, vy = player:getLinearVelocity()
 		if EtatHero == 0 then
 		    	physics.removeBody( player )
-		    	physics.addBody( player, { density=player.densityLiq, friction=player. frictionLiq, bounce=player. bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
+		    	physics.addBody( player, { density=player.densityLiq, friction=player.frictionLiq, bounce=player.bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
 		    	player.isFixedRotation = true
 		    --print("Etat Solide")
 		elseif EtatHero ==1 then
-
-      	physics.removeBody( player )
-		   physics.addBody( player, { density=player.densityGla, friction=player. frictionGla, bounce=player. bounceGla} )
+		   physics.removeBody( player )
+		   physics.addBody( player, { density=player.densityGla, friction=player.frictionGla, bounce=player.bounceGla} )
+		   player.isFixedRotation = true
+		elseif EtatHero ==2 then
+		   physics.removeBody( player )
+		   physics.addBody( player, { density=player.densityGaz, friction=player.frictionGaz, bounce=player.bounceGaz} )
 		   player.isFixedRotation = true
 		end
 		player:setLinearVelocity(vx, vy)
 	end
 	function changeraltGaz() 
 		if gagnerAlt == true then
-			player:applyLinearImpulse(0, -4, player.x, player.y)
+			print(player.y)
+			player:applyLinearImpulse(0, -0.1, player.x, player.y)
 			timer.performWithDelay( 100, changeraltGaz, 1 )
+			
 		end
 	end
 	--Fonction de saut !
@@ -390,19 +423,28 @@ local createMap = function( urlMap, scoreEl, level )
 						
 						elseif EtatHero == 2 then
 							gagnerAlt = true
-							timer.performWithDelay( 1000, changeraltGaz, 1 )
+							timer.performWithDelay( 0, changeraltGaz, 1 )
 						end
 						
 						local jump
-						if (EtatHero==0)then
+						if EtatHero==0 then
 							jump = BASEJUMPLIQUIDE
-						elseif ( EtatHero==1)then
+						elseif EtatHero==1 then
 							jump = BASEJUMPSOLIDE
+						elseif EtatHero==2 then
+							jump = BASEFLYGAZ
 						end
 							
 						if player.canJump then
+							print(EtatHero)
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
-							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
+							if EtatHero==2 then
+								player:applyLinearImpulse(0, -0.1, player.x, player.y)
+							else
+								player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
+							end
+							
+							--player:applyLinearImpulse(0, -(jump), player.x, player.y)
 							audio.play(b_saut)
 							if EtatHero == 0 then
 								player.state = STATE_JUMPING_LIQ
@@ -424,17 +466,42 @@ local createMap = function( urlMap, scoreEl, level )
 						end
 					else--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
 						if ( event.phase == "began" ) then
-							--print("ChangeEtat")
-							if EtatHero == 0 then
-								EtatHero = 1
-								doubleSaut = false
-								player.state = STATE_TRANSITIONLIQSOL 
-								--print("Etat Solide")
-							elseif EtatHero ==1 then
-								EtatHero =0
-								doubleSaut = true
-								--print("Etat Liquide")
-								player.state = STATE_TRANSITIONSOLLIQ
+							if STATECHANGE == LIQSOL then
+								if EtatHero == 0 then
+									EtatHero = 1
+									doubleSaut = false
+									player.state = STATE_TRANSITIONLIQSOL 
+									--print("Etat Solide")
+								elseif EtatHero ==1 then
+									EtatHero =0
+									doubleSaut = true
+									--print("Etat Liquide")
+									player.state = STATE_TRANSITIONSOLLIQ
+								end
+							elseif STATECHANGE == LIQGAZ then
+								if EtatHero == 0 then
+									EtatHero = 2
+									doubleSaut = false
+									player.state = STATE_TRANSITIONLIQGAZ 
+									--print("Etat Gaz")
+								elseif EtatHero == 2 then
+									EtatHero = 0
+									doubleSaut = true
+									--print("Etat Liquide")
+									player.state = STATE_TRANSITIONGAZLIQ
+								end
+							elseif STATECHANGE == SOLGAZ then
+								if EtatHero == 1 then
+									EtatHero = 2
+									doubleSaut = false
+									player.state = STATE_TRANSITIONSOLGAZ 
+									--print("Etat Gaz")
+								elseif EtatHero == 2 then
+									EtatHero = 1
+									doubleSaut = true
+									--print("Etat Solide")
+									player.state = STATE_TRANSITIONGAZSOL
+								end
 							end
 						end
 						ChangePlayerDynamic()
@@ -456,6 +523,8 @@ local createMap = function( urlMap, scoreEl, level )
 		player.state = STATE_WALKING_LIQ 
 	elseif EtatHero ==1 then
 		player.state = STATE_WALKING_SOL
+	elseif EtatHero ==2 then
+		player.state = STATE_WALKING_GAZ
 	end
 	ChangePlayerDynamic()
 	player.direction = DIRECTION_RIGHT
