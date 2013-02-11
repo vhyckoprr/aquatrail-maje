@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="280" height="30" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="ParallaxEnabled" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="goutteletteSpriteSheet.tsx"/>
+ <tileset firstgid="3" name="boule_de_neige" tilewidth="64" tileheight="64">
+  <image source="boule_de_neige.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="bodyType" value="dynamic"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="4" name="plateforme" tilewidth="32" tileheight="32">
+  <image source="plateforme.png" width="96" height="96"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1.0"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="1.5"/>
+    <property name="bonusSpeedSol" value="1.5"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="HasBody " value=""/>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1.0"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.5"/>
+    <property name="bonusSpeedSol" value="1.0"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1.0"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="1.0"/>
+    <property name="bonusSpeedSol" value="1.0"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="13" source="SuperGouttellettes.tsx"/>
+ <tileset firstgid="17" name="eaux" tilewidth="384" tileheight="64">
+  <image source="eaux.png" width="384" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsFrozen" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="18" name="glace" tilewidth="384" tileheight="64">
+  <image source="glace.png" width="384" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="" value=""/>
+    <property name="HasBody" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="19" name="stalactite_rodeo" tilewidth="32" tileheight="64">
+  <image source="stalactite_01_verso.png" width="32" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsDestructible" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsStalactite" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="20" name="AtlasGlace2" tilewidth="32" tileheight="32">
+  <image source="AtlasGlace2.png" width="96" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsSmashable" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsSmashable" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsSmashable" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsSmashable" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsSmashable" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="32" source="player.tsx"/>
+ <tileset firstgid="113" name="plateforme_neige" tilewidth="32" tileheight="32">
+  <image source="plateforme_neige.png" width="96" height="96"/>
+ </tileset>
+ <tileset firstgid="122" name="angle_plateforme_bottom_left" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_bottom_left.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="123" name="angle_plateforme_bottom_right" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_bottom_right.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="124" name="angle_plateforme_top_left" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_top_left.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="125" name="angle_plateforme_top_right" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_top_right.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="126" name="angle_plateforme_neige_bottom_left" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_neige_bottom_left.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="127" name="angle_plateforme_neige_bottom_right" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_neige_bottom_right.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="128" name="angle_plateforme_neige_top_left" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_neige_top_left.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="129" name="angle_plateforme_neige_top_right" tilewidth="32" tileheight="32">
+  <image source="angle_plateforme_neige_top_right.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="130" source="eaux_moyen.tsx"/>
+ <tileset firstgid="131" source="glace_moyen.tsx"/>
+ <tileset firstgid="132" name="stalactite_01" tilewidth="32" tileheight="32">
+  <image source="stalactite_01.png" width="32" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsDestructible" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="IsStalacmite" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="false"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsDestructible" value=""/>
+    <property name="IsStalacmite" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="false"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="134" name="stalactite_01_verso" tilewidth="32" tileheight="32">
+  <image source="stalactite_01_verso.png" width="32" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsDestructible" value=""/>
+    <property name="IsStalactite" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="false"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsDestructible" value=""/>
+    <property name="IsStalactite" value=""/>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Platforms" width="280" height="30">
+  <properties>
+   <property name="parallaxBase" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztm2Fv2yAQhom0tVu7fJm2fd7vbLdvc/K3Z6SyEcoBB3fmaN9HepVKcRps8MMZO84BDvd7Pi2UzzqHAYB/3M9uwBsCfgHgFvhFDvgFgFvgFzngFwBugV/keNjz5OZ7A34BVoBfZFnJMfAL0AZ+kWeV6yT4BWgDv8gDv4Aj+MPY9qTWijLwizzwC9DGu2Wb3YgG4Bd54BcgxYc9H4Vyd3DbPfCLPNbXeJ/3PO75onUAgAjeLb+cXL//dsc7Bn7RwWoN490Cr9hH2i2zHAO/6OBrmEcis2obuGUdNOen4Jgj1nzhF30ue64vf/vX1D2avnmOvgduWQOt2mWGY+AXfa6V90vrNbEfuPUQ6pU1SNdwtd2SOkYT+IUPtaY/0lepY3JrsN5Tl+g1/mzOO3CLbXztcEStMuKY0foGfuFRGg+j80HsCe+GXN1zTV49s56dAv1YcAs1bs9C+xj2Txor4126HS3jwffVSC0Tr9VwsHLMQRtW3NI6N3Jq9rBt2L8SPyvvB9Lvlebk+OeQRHvi48oZD73Prl0q78MjbwOLzy+UHNN6DZ7zpiac86Hl9xTc8yv9n9/2fN/zo+GzvXPMyLqqdO2i7X0Oltx4VFuoed9S7cKpY2r7mtsvCqnnjdO+pDyyZbYN24e0ErbfiM/WrjFH6te0donHGPee4NnVnxHXuAcgff5ZcksYC61t8ttz5qWAtWug3vE7uq8Uo66T/O3E0RkZF2n/xLVwz/xQq6XDmo+Eb3o8EPq59r2c+SGmZb0xbnfpe+I5J0c6Zu/c7e8IW4/Pqm7p9UtpjFK0tIU6X1Y+vtL9k9575vZf6VngkfvSJ+JvDnE/p57jhssR80rvPq0+9r8y+sFV/lfPZ2p9sPrx7Unpd4PpvecA97zO3Z++RsmhWUdK9rPkmEbshGJ2u1ZKWNPtWZ+NydXnJXydf34JVfNbvFeBvJ9QzG7XSild81DrB7m6Ilefp47xHgl1z+b++2Vzr3nP16mIjVDMbtdKkV4TizOyrgG3ILNDMbtdqwXrBwjyOhSz24UgyPqhmN0uBEHWD8VfEKWgkg==
+  </data>
+ </layer>
+ <layer name="Castle" width="280" height="30">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2DENAAAIA8FawL9ZJLCQkJA7BT90agIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABcqOsAWGbTAAAAwMR/AAAAfzU87wA0
+  </data>
+ </layer>
+ <objectgroup name="Physics" width="280" height="30">
+  <properties>
+   <property name="parallaxFactorX" value="1"/>
+  </properties>
+  <object name="FINDENIVEAU" type="Body" x="8704" y="96" width="64" height="448">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsEnd" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+   </properties>
+  </object>
+  <object type="Body" x="-1952" y="-32" width="352" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="0" y="640" width="256" height="96">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="544" y="672" width="1472" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2274" y="484" width="160" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2848" y="800" width="128" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3008" y="768" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3168" y="832" width="448" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3616" y="608" width="128" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2656" y="640" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2112" y="576" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="1536" y="576" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="352" y="576" width="128" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3168" y="640" width="224" height="96">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3680" y="736" width="704" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="4448" y="672" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="4512" y="704" width="480" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="6080" y="672" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="6208" y="704" width="414" height="66">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="6720" y="608" width="160" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="7008" y="448" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="7232" y="288" width="576" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="8320" y="544" width="160" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="352" y="736" width="128" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object name="1B" x="352" y="736"/>
+  <object name="1A" type="Body" x="256" y="640">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;1A,1B,1C&quot;]"/>
+   </properties>
+  </object>
+  <object name="1C" x="256" y="736"/>
+  <object name="2C" type="Body" x="544" y="736"/>
+  <object name="2B" type="Body" x="544" y="672"/>
+  <object name="2A" type="Body" x="480" y="736">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.25"/>
+    <property name="bonusSpeedLiq" value="0.9"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;1A&quot;,&quot;1B&quot;,&quot;1C&quot;]"/>
+   </properties>
+  </object>
+  <object name="3C" type="Body" x="2112" y="672"/>
+  <object name="3B" type="Body" x="2112" y="576"/>
+  <object name="3A" type="Body" x="2016" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.25"/>
+    <property name="bonusSpeedLiq" value="0.9"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;3A&quot;,&quot;3B&quot;,&quot;3C&quot;]"/>
+   </properties>
+  </object>
+  <object name="4C" type="Body" x="2272" y="576"/>
+  <object name="4A" type="Body" x="2176" y="576">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.25"/>
+    <property name="bonusSpeedLiq" value="0.9"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;4A&quot;,&quot;4B&quot;,&quot;4C&quot;]"/>
+   </properties>
+  </object>
+  <object name="4B" type="Body" x="2272" y="480"/>
+  <object name="5B" x="2496" y="544"/>
+  <object name="5A" type="Body" x="2432" y="480">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;5A&quot;,&quot;5B&quot;,&quot;5C&quot;]"/>
+   </properties>
+  </object>
+  <object name="5C" x="2432" y="544"/>
+  <object name="7C" x="2656" y="672"/>
+  <object name="7A" type="Body" x="2624" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;7A&quot;,&quot;7B&quot;,&quot;7C&quot;]"/>
+   </properties>
+  </object>
+  <object name="7B" x="2656" y="640"/>
+  <object name="8C" x="2720" y="704"/>
+  <object name="8A" type="Body" x="2720" y="640">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;8A&quot;,&quot;8B&quot;,&quot;8C&quot;]"/>
+   </properties>
+  </object>
+  <object name="8B" x="2784" y="704"/>
+  <object name="9C" x="2848" y="832"/>
+  <object name="9A" type="Body" x="2816" y="832">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;9A&quot;,&quot;9B&quot;,&quot;9C&quot;]"/>
+   </properties>
+  </object>
+  <object name="9B" x="2848" y="800"/>
+  <object name="10B" x="3008" y="768"/>
+  <object name="10C" x="3008" y="800"/>
+  <object name="10A" type="Body" x="2976" y="800">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;10A&quot;,&quot;10B&quot;,&quot;10C&quot;]"/>
+   </properties>
+  </object>
+  <object name="12A" type="Body" x="3136" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;12A&quot;,&quot;12B&quot;,&quot;12C&quot;]"/>
+   </properties>
+  </object>
+  <object name="12C" x="3168" y="672"/>
+  <object name="12B" x="3168" y="640"/>
+  <object name="15C" x="3648" y="832"/>
+  <object name="15A" type="Body" x="3616" y="832">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;15A&quot;,&quot;15B&quot;,&quot;15C&quot;]"/>
+   </properties>
+  </object>
+  <object name="15B" x="3648" y="800"/>
+  <object name="17A" type="Body" x="4384" y="736">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;17A&quot;,&quot;17B&quot;,&quot;17C&quot;]"/>
+   </properties>
+  </object>
+  <object name="17C" x="4448" y="736"/>
+  <object name="17B" x="4448" y="672"/>
+  <object name="16A" type="Body" x="3648" y="768">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;16A&quot;,&quot;16B&quot;,&quot;16C&quot;]"/>
+   </properties>
+  </object>
+  <object name="16C" x="3680" y="768"/>
+  <object name="16B" x="3680" y="736"/>
+  <object name="19C" x="6080" y="704"/>
+  <object name="19B" x="6080" y="672"/>
+  <object name="19A" type="Body" x="6048" y="704">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;19A&quot;,&quot;19B&quot;,&quot;19C&quot;]"/>
+   </properties>
+  </object>
+  <object name="21C" x="6720" y="704"/>
+  <object name="21A" type="Body" x="6624" y="704">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;21A&quot;,&quot;21B&quot;,&quot;21C&quot;]"/>
+   </properties>
+  </object>
+  <object name="21B" x="6720" y="608"/>
+  <object name="22A" type="Body" x="6880" y="576">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;22A&quot;,&quot;22B&quot;,&quot;22C&quot;]"/>
+   </properties>
+  </object>
+  <object name="22C" x="7008" y="576"/>
+  <object name="22B" x="7008" y="448"/>
+  <object name="23C" x="7136" y="448"/>
+  <object name="23B" x="7136" y="416"/>
+  <object name="23A" type="Body" x="7104" y="448">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;23A&quot;,&quot;23B&quot;,&quot;23C&quot;]"/>
+   </properties>
+  </object>
+  <object name="24B" x="7232" y="288"/>
+  <object name="24A" type="Body" x="7136" y="384">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;24A&quot;,&quot;24B&quot;,&quot;24C&quot;]"/>
+   </properties>
+  </object>
+  <object name="24C" x="7232" y="384"/>
+  <object name="26B" x="8320" y="544"/>
+  <object name="26A" type="Body" x="8288" y="576">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;26A&quot;,&quot;26B&quot;,&quot;26C&quot;]"/>
+   </properties>
+  </object>
+  <object name="26C" x="8320" y="576"/>
+  <object name="29C" x="8736" y="544"/>
+  <object name="29A" type="Body" x="8704" y="544">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;29A&quot;,&quot;29B&quot;,&quot;29C&quot;]"/>
+   </properties>
+  </object>
+  <object name="29B" x="8736" y="512"/>
+  <object type="Body" x="2496" y="544" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2432" y="0" width="32" height="128">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2464" y="0" width="32" height="160">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2496" y="0" width="32" height="320">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2528" y="0" width="32" height="384">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2560" y="0" width="224" height="416">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2784" y="0" width="128" height="448">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2912" y="0" width="32" height="480">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2944" y="0" width="32" height="512">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2976" y="0" width="64" height="544">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3040" y="0" width="64" height="512">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3104" y="0" width="320" height="480">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3424" y="0" width="160" height="512">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3584" y="0" width="32" height="480">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3616" y="0" width="96" height="448">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3712" y="0" width="32" height="416">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3744" y="0" width="32" height="384">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3776" y="0" width="64" height="352">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3840" y="0" width="32" height="320">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3392" y="672" width="128" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3136" y="672" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2400" y="576" width="128" height="192">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2688" y="704" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2752" y="704" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2816" y="832" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2368" y="768" width="64" height="96">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="3648" y="768" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="5376" y="704" width="672" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="6880" y="576" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="7136" y="384" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="8096" y="640" width="64" height="96">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="8544" y="672" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object name="6B" x="2560" y="576"/>
+  <object name="6A" type="Body" x="2528" y="544">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;6A&quot;,&quot;6B&quot;,&quot;6C&quot;]"/>
+   </properties>
+  </object>
+  <object name="6C" x="2528" y="576"/>
+  <object name="11C" x="3104" y="832"/>
+  <object name="11B" x="3168" y="832"/>
+  <object name="11A" type="Body" x="3104" y="768">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;11A&quot;,&quot;11B&quot;,&quot;11C&quot;]"/>
+   </properties>
+  </object>
+  <object name="13B" x="3424" y="672"/>
+  <object name="13A" type="Body" x="3392" y="640">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;13A&quot;,&quot;13B&quot;,&quot;13C&quot;]"/>
+   </properties>
+  </object>
+  <object name="13C" x="3392" y="672"/>
+  <object name="14A" type="Body" x="3520" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;14A&quot;,&quot;14B&quot;,&quot;14C&quot;]"/>
+   </properties>
+  </object>
+  <object name="14B" x="3552" y="704"/>
+  <object name="14C" x="3520" y="704"/>
+  <object name="18A" type="Body" x="4480" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;18A&quot;,&quot;18B&quot;,&quot;18C&quot;]"/>
+   </properties>
+  </object>
+  <object name="18B" x="4512" y="704"/>
+  <object name="18C" x="4480" y="704"/>
+  <object name="20A" type="Body" x="6176" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;20A&quot;,&quot;20B&quot;,&quot;20C&quot;]"/>
+   </properties>
+  </object>
+  <object name="20B" x="6208" y="704"/>
+  <object name="20C" x="6176" y="704"/>
+  <object name="25A" type="Body" x="7808" y="288">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;25A&quot;,&quot;25B&quot;,&quot;25C&quot;]"/>
+   </properties>
+  </object>
+  <object name="25B" x="8160" y="640"/>
+  <object name="25C" x="7808" y="640"/>
+  <object name="27C" x="8480" y="576"/>
+  <object name="27A" type="Body" x="8480" y="544">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;27A&quot;,&quot;27B&quot;,&quot;27C&quot;]"/>
+   </properties>
+  </object>
+  <object name="27B" x="8512" y="576"/>
+  <object name="28B" x="8672" y="544"/>
+  <object name="28C" x="8672" y="672"/>
+  <object name="28A" type="Body" x="8544" y="672">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;28A&quot;,&quot;28B&quot;,&quot;28C&quot;]"/>
+   </properties>
+  </object>
+  <object type="Body" x="1698" y="616" width="93" height="28">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="6242" y="649" width="93" height="28">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
