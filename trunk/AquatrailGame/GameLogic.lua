@@ -11,14 +11,13 @@ local STATE_STARTLEVEL = "startlevel"
 local STATE_PLAY = "play"
 local STATE_PAUSE = "pause"
 local STATE_ENDLEVEL = "endlevel"
- 
-
 
 --Les scores
---Debut fin de niveau avec timer
 --
+
+
 ---Choisir les 2 etats dans lesquels on switch
-	--Liq-Sol ou Liq-Gaz ou Sol-Nuage
+--Liq-Sol ou Liq-Gaz ou Sol-Nuage
 
 	
 	
@@ -95,7 +94,7 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl, level )
+local createMap = function( urlMap, scoreEl, level, )
 
 	GAMESTATE = STATE_STARTLEVEL
 	map = lime.loadMap(urlMap)
