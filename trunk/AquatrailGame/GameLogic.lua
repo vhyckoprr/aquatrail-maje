@@ -94,7 +94,7 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl, level, )
+local createMap = function( urlMap, scoreEl, level )
 
 	GAMESTATE = STATE_STARTLEVEL
 	map = lime.loadMap(urlMap)
