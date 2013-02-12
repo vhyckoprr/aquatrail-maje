@@ -53,6 +53,8 @@ local STATE_TRANSITIONLIQSOL = "TransitionLiqSol"
 local STATE_TRANSITIONSOLLIQ = "TransitionSolLiq"
 local STATE_TRANSITIONLIQGAZ = "TransitionLiqGaz"
 local STATE_TRANSITIONGAZLIQ = "TransitionGazLiq"
+local STATE_TRANSITIONSOLGAZ = "TransitionSolGaz"
+local STATE_TRANSITIONGAZSOL = "TransitionGazSol"
 
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
@@ -105,7 +107,15 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 local createMap = function( urlMap, scoreEl, level, statehero)
 	STATECHANGE = statehero
 	GAMESTATE = STATE_STARTLEVEL
-	EtatHero = 0
+	
+	if STATECHANGE == LIQSOL then
+		EtatHero = 0
+	elseif STATECHANGE == LIQGAZ then
+		EtatHero = 0
+	elseif STATECHANGE == SOLGAZ then
+		EtatHero = 1
+	end
+	
 	map = lime.loadMap(urlMap)
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
@@ -149,7 +159,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				player:prepare("animEndLevel")
 				player:play()
 				audio.play(startlevel)
-				GAMESTATE = STATE_ENDLEVEL			end	 	
+				GAMESTATE = STATE_ENDLEVEL			end
 			if event.other.IsGround then
 				--print("Ground");
 				player.canJump = true
@@ -172,9 +182,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 						player:prepare("anim" .. player.state)
 						player:play()
 					end
-				end
-			elseif event.other.IsObstacle then
-		
+				end		
 			elseif event.other.DeclencherStalactite then
 				print("COUCOUDeclencherStalactite")
 				for i=0, #stalactiteTable, 1 do
@@ -219,10 +227,8 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				--Jouer l'animation de gele lac
 			if EtatHero == 1 then
 				local lac = event.other
-				event.other:removeSelf()
 				local onGeleLacEnd = function(onGeleLacEndEvent)
 					if onGeleLacEndEvent["removeSelf"] then
-						print("brisebrise")
 						onGeleLacEndEvent:removeSelf()
 					end
 				end
@@ -325,7 +331,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 		end
 		if GAMESTATE == STATE_PLAY then		
 			--L'animation animTransition est enclencher?
-			if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" or player.sequence == "animTransitionGazLiq" or player.sequence == "animTransitionLiqGaz" then
+			if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" or player.sequence == "animTransitionGazLiq" or player.sequence == "animTransitionLiqGaz" or player.sequence == "animTransitionSolGaz" or player.sequence == "animTransitionGazSol" then
 				--Le sprite est il entrain d'executer une animation?
 				if player.animating  then
 					--Le sprite a il fini son animation?
@@ -426,8 +432,13 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 						
 						
 						elseif EtatHero == 2 then
-							gagnerAlt = true
-							timer.performWithDelay( 0, changeraltGaz, 1 )
+							print(event.y)
+							if event.y - display.contentHeight/2 >0 then
+								gagnerAlt = true
+								timer.performWithDelay( 0, changeraltGaz, 1 )
+							else
+								print("capacite special")
+							end
 						end
 						
 						local jump

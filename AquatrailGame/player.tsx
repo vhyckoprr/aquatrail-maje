@@ -13,8 +13,10 @@
    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=800"/>
    <property name="animStartLevel" value="startFrame=64,frameCount=6,time=1000,loopCount=1"/>
    <property name="animTransitionGazLiq" value="startFrame=37,frameCount=5,time=500,loopCount=1"/>
+   <property name="animTransitionGazSol" value="startFrame=37,frameCount=5,time=500,loopCount=1"/>
    <property name="animTransitionLiqGaz" value="startFrame=29,frameCount=5,time=500,loopCount=1"/>
    <property name="animTransitionLiqSol" value="startFrame=29,frameCount=5,time=500,loopCount=1"/>
+   <property name="animTransitionSolGaz" value="startFrame=29,frameCount=5,time=500,loopCount=1"/>
    <property name="animTransitionSolLiq" value="startFrame=37,frameCount=5,time=500,loopCount=1"/>
    <property name="animWalkingGaz" value="startFrame=19,frameCount=5,time=500"/>
    <property name="animWalkingLiq" value="frameCount=5,time=500"/>
@@ -23,11 +25,11 @@
    <property name="bounceLiq" value="0"/>
    <property name="densityGla" value="0.5"/>
    <property name="densityLiq" value="0.5"/>
-   <property name="globalJump" value="0.35"/>
+   <property name="globalJump" value="2"/>
    <property name="globalSpeed" value="6"/>
    <property name="ignoreCulling" value="true"/>
    <property name="isFixedRotation" value="true"/>
-   <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animWalkingGaz&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animJumpingGaz&quot;,&quot;animTransitionLiqSol&quot;,&quot;animTransitionSolLiq&quot;,&quot;animTransitionGazLiq&quot;,&quot;animTransitionLiqGaz&quot;,&quot;animDJumping&quot;,&quot;animStartLevel&quot;,&quot;animEndLevel&quot;]"/>
+   <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animWalkingGaz&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animJumpingGaz&quot;,&quot;animTransitionLiqSol&quot;,&quot;animTransitionSolLiq&quot;,&quot;animTransitionGazLiq&quot;,&quot;animTransitionSolGaz&quot;,&quot;animTransitionLiqGaz&quot;,&quot;animDJumping&quot;,&quot;animStartLevel&quot;,&quot;animTransitionGazSol&quot;,&quot;animEndLevel&quot;]"/>
   </properties>
  </tile>
 </tileset>
