@@ -4,7 +4,22 @@
   <property name="ParallaxEnabled" value="true"/>
  </properties>
  <tileset firstgid="1" source="stalactite_01.tsx"/>
- <tileset firstgid="3" source="goutteletteSpriteSheet.tsx"/>
+ <tileset firstgid="3" name="goutteletteSpriteSheet" tilewidth="32" tileheight="32">
+  <image source="goutteletteSpriteSheet.png" width="64" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsCollectable" value=""/>
+    <property name="Name" value="Gouttelette"/>
+    <property name="Score" value="100"/>
+    <property name="animation1" value="frameCount=1,time=2000"/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+    <property name="sequences" value="animation1"/>
+   </properties>
+  </tile>
+ </tileset>
  <tileset firstgid="5" name="boule_de_neige" tilewidth="64" tileheight="64">
   <image source="boule_de_neige.png" width="64" height="64"/>
   <tile id="0">
@@ -38,7 +53,23 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="17" source="SuperGouttellettes.tsx"/>
+ <tileset firstgid="17" name="SuperGouttellettes" tilewidth="32" tileheight="32">
+  <image source="SuperGouttellettes.png" width="150" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsCollectable" value=""/>
+    <property name="Name" value="SuperGouttelette"/>
+    <property name="Nom" value="2"/>
+    <property name="Score" value="200"/>
+    <property name="animation1" value="frameCount=4,time=200"/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+    <property name="sequences" value="animation1"/>
+   </properties>
+  </tile>
+ </tileset>
  <tileset firstgid="21" name="eaux" tilewidth="384" tileheight="64">
   <image source="eaux.png" width="384" height="64"/>
   <tile id="0">
@@ -146,7 +177,7 @@
     <property name="bounceLiq" value="0"/>
     <property name="densityGla" value="0.5"/>
     <property name="densityLiq" value="0.5"/>
-    <property name="globalJump" value="0.35"/>
+    <property name="globalJump" value="2"/>
     <property name="globalSpeed" value="6"/>
     <property name="ignoreCulling" value="true"/>
     <property name="isFixedRotation" value="true"/>

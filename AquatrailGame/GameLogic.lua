@@ -143,8 +143,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	end
 	
 	--COLLISION --------------------------------------------------------------------------------------------------------
-	 function onCollision(self, event )
-	
+	function onCollision(self, event )
 	 	if ( event.phase == "began" ) then			if event.other.IsEnd then				--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau				print("FIN DU NIVEAU")
 				player:setLinearVelocity(0,0)
 				player:prepare("animEndLevel")
@@ -154,23 +153,25 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 			if event.other.IsGround then
 				--print("Ground");
 				player.canJump = true
-				if EtatHero == 0 then
-					doubleSaut = true
-				elseif EtatHero == 1 then
-					chargesol = true
-				elseif EtatHero == 2 then
-					gagnerAlt = true
-				end
-				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL or  player.state == STATE_JUMPING_GAZ then
+				if GAMESTATE == STATE_PLAY then
 					if EtatHero == 0 then
-						player.state = STATE_WALKING_LIQ
-					elseif EtatHero ==1 then
-						player.state = STATE_WALKING_SOL
-					elseif EtatHero ==2 then
-						player.state = STATE_WALKING_GAZ
+						doubleSaut = true
+					elseif EtatHero == 1 then
+						chargesol = true
+					elseif EtatHero == 2 then
+						gagnerAlt = true
 					end
-					player:prepare("anim" .. player.state)
-					player:play()
+					if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL or  player.state == STATE_JUMPING_GAZ then
+						if EtatHero == 0 then
+							player.state = STATE_WALKING_LIQ
+						elseif EtatHero ==1 then
+							player.state = STATE_WALKING_SOL
+						elseif EtatHero ==2 then
+							player.state = STATE_WALKING_GAZ
+						end
+						player:prepare("anim" .. player.state)
+						player:play()
+					end
 				end
 			elseif event.other.IsObstacle then
 		
@@ -204,62 +205,66 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 					text.y = display.contentCenterY
 					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
 				end
-			elseif event.other.IsDestructible then
-				print("brise stalactite")
-				if EtatHero == 1 then
-					local stalacti = event.other
-
-					local onTransitionEnd = function(transitionEvent)
+				if event.other.IsChangeVitesse then
+					BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+					BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+					BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+					BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+					--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
+					--BASEFLYGAZ=30*event.other.bonusJumpGaz
+				end
+			end
+		if event.other.IsFrozen then
+			print("isFrozen")
+				--Jouer l'animation de gele lac
+			if EtatHero == 1 then
+				local lac = event.other
+				event.other:removeSelf()
+				local onGeleLacEnd = function(onGeleLacEndEvent)
+					if onGeleLacEndEvent["removeSelf"] then
+						print("brisebrise")
+						onGeleLacEndEvent:removeSelf()
+					end
+				end
+				-- Fade out the stalacti
+				transition.to(lac, {time = 500, alpha = 0, onComplete=onGeleLacEnd})
+			end
+			elseif event.other.IsNotFrozen then
+				BASESPEEDSOLIDE=30
+				BASESPEEDLIQUIDE=30
+				BASEJUMPSOLIDE= 5
+				BASEJUMPLIQUIDE= 5
+				BASESPEEDGAZ = 10
+				BASEFLYGAZ = 0.02
+		end
+		if event.other.IsDestructible then
+			--print("brise stalactite")
+			if EtatHero == 1 then
+				local stalacti = event.other
+				local onTransitionEnd = function(transitionEvent)
 					if transitionEvent["removeSelf"] then
 						transitionEvent:removeSelf()
 					end
 				end
-				-- Fade out the stalacti
-				transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
-				audio.play(b_stalactite)
-			end
-		end
-		if event.other.IsSmashable then
-			--print("IsSmashable");
-			if EtatHero == 1 and BriseGlace then
-				local stalacti = event.other
-
-				local onTransitionEnd = function(transitionEvent)
-				if transitionEvent["removeSelf"] then
-					transitionEvent:removeSelf()
-				end
-				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
-				end
-			end
-		end
-		if event.other.IsChangeVitesse then
-			BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
-			BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
-			BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
-			BASEJUMPSOLIDE=30*event.other.bonusJumpSol
-			--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
-			--BASEFLYGAZ=30*event.other.bonusJumpGaz
-		end
-		if event.other.IsFrozen then
-			--Jouer l'animation de gele lac
-			if EtatHero == 1 then
-				local lac = event.other
-
-				local onGeleLacEnd = function(onGeleLacEndEvent)
-				if onGeleLacEndEvent["removeSelf"] then
-					onGeleLacEndEvent:removeSelf()
-				end
-			end
 			-- Fade out the stalacti
-			transition.to(lac, {time = 500, alpha = 0, onComplete=onGeleLacEnd})
-		end
-		elseif event.other.IsNotFrozen then
-			BASESPEEDSOLIDE=30
-			BASESPEEDLIQUIDE=30
-			BASEJUMPSOLIDE= 5
-			BASEJUMPLIQUIDE= 5
-			BASESPEEDGAZ = 10
-			BASEFLYGAZ = 0.02
+			transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
+			audio.play(b_stalactite)
+			end
+		elseif event.other.IsSmashable then
+			print("IsSmashable");
+			print(BriseGlace);
+			if EtatHero == 1 and BriseGlace then
+				print("IsSmashable brise");
+				local stalacti = event.other
+				event.other:removeSelf()
+				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+				local onTransitionEnd = function(transitionEvent)
+					if transitionEvent["removeSelf"] then
+						transitionEvent:removeSelf()
+					end
+					transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
+				end
+			end
 		end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
@@ -276,7 +281,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	 onUpdate = function(event)
 		if player.y < 100 then
 			player.y = 100
-			player:setLinearVelocity(vx , 0)
+			--player:setLinearVelocity(vx , 0)
 		end
 		
 		--Jouer animation debut de level
@@ -317,7 +322,6 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 					end
 				end
 			end
-			
 		end
 		if GAMESTATE == STATE_PLAY then		
 			--L'animation animTransition est enclencher?
@@ -436,13 +440,17 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 						end
 							
 						if player.canJump then
-							print(EtatHero)
+							--print(EtatHero)
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
+							print(-(jump*player.globalJump))
+							print(player.globalJump)
+							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
+							--[[
 							if EtatHero==2 then
 								player:applyLinearImpulse(0, -0.1, player.x, player.y)
 							else
 								player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
-							end
+							end]]
 							
 							--player:applyLinearImpulse(0, -(jump), player.x, player.y)
 							audio.play(b_saut)

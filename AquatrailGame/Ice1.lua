@@ -60,9 +60,9 @@ endLevel = function (self, score, time)
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
-	STATECHANGE = "LiqGaz"
+	STATECHANGE = "LiqSol"
 	
-	local visual = GameLogic.createMap("Niveau_G_1_true.tmx", scoreText, LEVEL,STATECHANGE)
+	local visual = GameLogic.createMap("Niveau45.tmx", scoreText, LEVEL,STATECHANGE)
 
 --------------------------------------------------------------
 --Add the Director Class insert statements here
