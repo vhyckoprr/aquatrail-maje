@@ -664,9 +664,8 @@ stalacmiteTable = {}
                 end
         end   
 	end
- function stalacmiteisSensor (bool)
- 
- end
+--function stalacmiteisSensor (bool)
+--end
 -- ANIMATIONS---------------------------------------------
 
 --lance les animations :

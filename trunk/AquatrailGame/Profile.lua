@@ -88,10 +88,16 @@ local saveInfoLevel = function(idWorld, idLevel,score, time)
 	local nextIdLevel = idLevel+1 
 	local nextIdWorld = idWorld+1 
 	local oldScore = worldinfo["world"..idWorld]["level"..idLevel].score
-	print("idWorld "..idWorld.." idLevel "..idLevel.." oldScore "..oldScore.." NewScore "..score)
+	--local oldTime = worldinfo["world"..idWorld]["level"..idLevel].time
+	print("idWorld "..idWorld.." idLevel "..idLevel.."\noldScore "..oldScore.." NewScore "..score)
 	if (oldScore<score)then
 		worldinfo["world"..idWorld]["level"..idLevel].score=tonumber(score)
 	end
+	--[[
+	if (oldTime>time)then
+		worldinfo["world"..idWorld]["level"..idLevel].time=tonumber(time)
+	end
+	]]--
 	--unlock next level
 	if (MAXLEVELINWORLD<=idLevel) then
 		worldinfo["world"..nextIdWorld].unlocked = true
