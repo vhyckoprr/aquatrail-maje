@@ -12,7 +12,7 @@ new = function ( params )
 	 
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
-endLevel = function (self, score, time)
+endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 
 							profile.saveInfoLevel(1, 2,score, time)
 							audio.stop()
@@ -35,23 +35,6 @@ endLevel = function (self, score, time)
 	scoreText.x = display.contentWidth/2
 	scoreText.y =  scoreText.height / 2
 	
-	
-	
-	
-	-- BACKBUTTON---------------------------------------------
-		
-	local backbutton = display.newImage ("backbutton.png")
-	backbutton.x = backbutton.width / 2
-	backbutton.y = backbutton.height / 2
-	local function pressBack (event)
-		if event.phase == "ended" then
-				audio.stop()
-				GameLogic.stopEvents()
-				director:changeScene ("IceWorld")
-		end
-	end
-	backbutton:addEventListener ("touch", pressBack)  
-
 	function endLevel ()
 			
 	end
@@ -63,7 +46,24 @@ endLevel = function (self, score, time)
 	local STATECHANGE = "LiqSol"
     local visual = GameLogic.createMap("Niveau45.tmx", scoreText, LEVEL,STATECHANGE)
 
+	--CHRONOMETRE
+	local chrono = Chrono:new()
+	chrono:Start()
+	chrono:Display(true)
 	
+	-- BACKBUTTON--
+	local backbutton = display.newImage ("backbutton.png")
+	backbutton.x = backbutton.width / 2
+	backbutton.y = backbutton.height / 2
+	local function pressBack (event)
+		if event.phase == "ended" then
+				chrono:Stop()
+				audio.stop()
+				GameLogic.stopEvents()
+				director:changeScene ("IceWorld")
+		end
+	end
+	backbutton:addEventListener ("touch", pressBack)
 
 --------------------------------------------------------------
 --Add the Director Class insert statements here
