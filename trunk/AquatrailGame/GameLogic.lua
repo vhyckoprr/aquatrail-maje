@@ -104,7 +104,7 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl, level, statehero)
+local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	STATECHANGE = statehero
 	GAMESTATE = STATE_STARTLEVEL
 	
@@ -141,7 +141,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	--physics.setDrawMode( "hybrid" )
 	
     --lancer le theme principal
-	audio.play(maintheme,{loops=-1})
+	audio.play(maintheme,{loops=-1, channel=1})
 	
 	
 	
@@ -215,9 +215,9 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				end
 				if event.other.IsChangeVitesse then
 					BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
-					BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+					BASEJUMPLIQUIDE=5*event.other.bonusJumpLiq
 					BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
-					BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+					BASEJUMPSOLIDE=5*event.other.bonusJumpSol
 					--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
 					--BASEFLYGAZ=30*event.other.bonusJumpGaz
 				end
@@ -279,6 +279,34 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				player.canJump = false
 			end
 	 	end
+		
+		
+		--SUPER GOUTTELETTE
+		local stopSuperGoutteEffect = function()
+			BASESPEEDLIQUIDE=30
+			BASEJUMPLIQUIDE=5
+			BASESPEEDSOLIDE=30
+			BASEJUMPSOLIDE=5
+			--Augmente la vitesse de la musique et de l'animation
+			local mysource = audio.getSourceFromChannel(1)
+			al.Source(mysource, al.PITCH, 1.0)
+			player.timeScale = 1.0
+		end
+
+		if (event.other.Name == "SuperGouttelette") 
+		then
+			print ("Super Gouttelette recuperee")
+			BASESPEEDLIQUIDE=36
+			BASEJUMPLIQUIDE=6
+			BASESPEEDSOLIDE=36
+			BASEJUMPSOLIDE=6
+			--Augmente la vitesse de la musique et de l'animation
+			local mysource = audio.getSourceFromChannel(1)
+			al.Source(mysource, al.PITCH, 1.5)
+			player.timeScale = 1.5
+			timer.performWithDelay(5000, stopSuperGoutteEffect, 1)
+		end
+		
 	end
 	
 	player.collision = onCollision
@@ -536,9 +564,9 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 			end
 		end
 		
-	--Les Stalagmites ne bloque pas le glaçon :
-	local layer = map:getTileLayer("Platforms")
-	local tiles = layer:getTilesWithProperty("IsStalacmite")
+		--Les Stalagmites ne bloque pas le glaçon :
+		local layer = map:getTileLayer("Platforms")
+		local tiles = layer:getTilesWithProperty("IsStalacmite")
 		if(EtatHero == 1) then
             for i=1, #tiles, 1 do
 				tiles[i]:setProperty("isSensor", true)
