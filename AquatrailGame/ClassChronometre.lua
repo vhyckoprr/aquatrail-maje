@@ -14,6 +14,7 @@
 		var.minutes = 0
 		var.display = false
 		var.timeDisplayed = ""
+		var.secondesDelta = 0
 		return var
 	end
 	
@@ -29,11 +30,13 @@
 			self.secondePast = (self.secondePast+1)%60
 			if(self.secondePast == 0) then self.minutePast = true end
 			if(self.display) then self:Display(self.display) end
+			self.secondesDelta = self.secondesDelta+1
 		end
 	end
 	
 	--Lancer le chronometre
 	function Chrono:Start()
+		self.initTime = system.getTimer()/1000
 		Runtime:addEventListener("enterFrame", self)
 	end
 	
@@ -60,8 +63,21 @@
 		end
 	end
 	
-	--Getter
+	--reinitialiser
+	function Chrono:reInitialize()
+		self.secondePast = 0
+		self.minutePast = false
+		self.secondes = 0
+		self.minutes = 0
+		self.display = false
+		self.timeDisplayed = ""
+		self:Stop()
+	end
+	
+	--Getter et Setter
 	function getSecondes() return self.secondes end
 	function getMinutes() return self.minutes end
 	function getTimeInSecond() return self.minutes*60+self.secondes end
+	function resetSecondesDelta() self.secondesDelta = 0 end
+	function getSecondesDelta() return self.secondesDelta end
 --Fin de la "classe" Chrono

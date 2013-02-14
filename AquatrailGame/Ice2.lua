@@ -15,6 +15,7 @@ new = function ( params )
 	local LEVEL = { 
 endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 
+							--chrono:Stop()
 							profile.saveInfoLevel(1, 2,score, time)
 							audio.stop()
 							GameLogic.stopEvents()
@@ -46,6 +47,8 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
 	local STATECHANGE = "LiqSol"
+	
+
     local visual = GameLogic.createMap("Niveau_G_1_true.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
