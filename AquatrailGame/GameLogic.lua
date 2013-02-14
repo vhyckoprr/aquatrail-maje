@@ -254,6 +254,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				end
 			-- Fade out the stalacti
 			transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
+			print(stalacti.index)
 			audio.play(b_stalactite)
 			end
 		elseif event.other.IsSmashable then
@@ -534,7 +535,23 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				gagnerAlt = false
 			end
 		end
+		
+	--Les Stalagmites ne bloque pas le glaçon :
+	local layer = map:getTileLayer("Platforms")
+	local tiles = layer:getTilesWithProperty("IsStalacmite")
+		if(EtatHero == 1) then
+            for i=1, #tiles, 1 do
+				tiles[i]:setProperty("isSensor", true)
+				tiles[i]:reBuild()
+			end
+		else
+			for i=1, #tiles, 1 do
+				tiles[i]:setProperty("isSensor", false)
+				tiles[i]:reBuild()
+			end
+		end
 	end
+	
 	Runtime:addEventListener("touch", ToucheScreen)
 
 	--PLAYER INIT-----------------------------------------------------------------------
@@ -628,44 +645,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 --Pas d'utilisation de gesturelib donc on comment
 --Runtime:addEventListener( "touch", UpdateGesturelib )
 
--- STALACTITES
 
-local layer = map:getTileLayer("Platforms")
-stalactiteTable = {}
-stalacmiteTable = {}
--- Make sure we actually have a layer
-	if(layer) then
-        -- Get all the tiles on this layer
-        local tiles = layer.tiles
-        -- Make sure tiles is not nil
-        if(tiles) then
-
-                -- Loop through all our tiles on this layer     
-                local j=0
-                for i=1, #tiles, 1 do
-                        -- Check if the tile is a stalactite
-                        if(tiles[i].IsStalactite) then
-							-- Store off a copy of the tile
-							--print(tiles[i].." "..tiles[i].sprite.bodyType)
-							stalactiteTable[j]=tiles[i]
-							physics.addBody( tiles[i].sprite, { density=2, friction=0.1, bounce=0.1} ) 
-							tiles[i].sprite.isFixedRotation = true
-							tiles[i].sprite.bodyType = "static"
-							j=j+1
-                        end
-						if(tiles[i].IsStalacmite) then
-							-- Store off a copy of the tile
-							--print(tiles[i].." "..tiles[i].sprite)
-							--print("IsStalacmite"..i.."   "..tiles[i].isSensor)
-							tiles[i].isSensor = true
-							stalacmiteTable[j]=tiles[i]
-							j=j+1
-                        end
-                end
-        end   
-	end
---function stalacmiteisSensor (bool)
---end
 -- ANIMATIONS---------------------------------------------
 
 --lance les animations :

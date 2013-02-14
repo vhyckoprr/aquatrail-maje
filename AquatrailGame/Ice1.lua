@@ -17,6 +17,7 @@ new = function ( params )
 	endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 					profile.saveInfoLevel(1, 1,score, time)
 					audio.stop()
+					--chrono:Stop()
 					GameLogic.stopEvents()
 					director:changeScene ("ScoreScreen")
                 end
@@ -35,8 +36,9 @@ new = function ( params )
    local scoreText  = display.newText( "score: ", 0, 0, "Helvetica", 30 )
 	scoreText.x = display.contentWidth/2
 	scoreText.y =  scoreText.height / 2
-	
-	function endLevel () end
+
+	function endLevel ()  end
+	--endLevel(chrono)
 	
 	--STATECHANGE
 	--local LIQSOL = "LiqSol"

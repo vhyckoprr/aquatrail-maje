@@ -140,7 +140,7 @@
     <property name="HasBody" value=""/>
     <property name="IsDestructible" value=""/>
     <property name="IsGround" value=""/>
-    <property name="IsStalacmite" value=""/>
+    <property name="IsStalacmite" value="true"/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="false"/>
    </properties>
@@ -149,7 +149,7 @@
    <properties>
     <property name="HasBody" value=""/>
     <property name="IsDestructible" value=""/>
-    <property name="IsStalacmite" value=""/>
+    <property name="IsStalacmite" value="true"/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="false"/>
    </properties>

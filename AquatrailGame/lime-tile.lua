@@ -207,7 +207,7 @@ function Tile:setImage(gid)
 		self:create(index)
 		
 		-- Build the tile physical
-		self:build()
+		self:build(self.index)
 		
 	end
 
@@ -796,6 +796,25 @@ function Tile:build()
 			visual.height = visual.height * self.tileSet.tileYScale
 
 		end
+	end
+end
+
+function Tile:reBuild()
+	local visual = self:getVisual()
+	
+	if(self.HasBody and visual) then
+		
+		local body = visual
+	
+		if not physics then
+			require("physics")
+			physics.start()
+		end
+		
+		self.isSensor = stringToBool(self.isSensor)
+		addCollisionFilterToBody( self )
+		applyPhysicalParametersToBody(body, self)
+		addPropertiesToBody(body, self)
 	end
 end
 
