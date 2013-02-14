@@ -143,8 +143,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1, channel=1})
 	
-	
-	
+
 	local function changeStalactiteBodyType(body)
 		body.isAwake = true
 		body.isBodyActive = true
@@ -295,7 +294,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 
 		if (event.other.Name == "SuperGouttelette") 
 		then
-			print ("Super Gouttelette recuperee")
+			--print ("Super Gouttelette recuperee")
 			BASESPEEDLIQUIDE=36
 			BASEJUMPLIQUIDE=6
 			BASESPEEDSOLIDE=36
@@ -304,6 +303,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			local mysource = audio.getSourceFromChannel(1)
 			al.Source(mysource, al.PITCH, 1.5)
 			player.timeScale = 1.5
+			--Arrete le bonus dans 5 secondes
 			timer.performWithDelay(5000, stopSuperGoutteEffect, 1)
 		end
 		
@@ -414,9 +414,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		
 	end
 	Runtime:addEventListener("enterFrame", onUpdate)
+	
 	local function checkEndTransition( )
 		--print("okay")
 	end
+	
 	function ChangePlayerDynamic()
  		local vx, vy = player:getLinearVelocity()
 		if EtatHero == 0 then
@@ -435,6 +437,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		end
 		player:setLinearVelocity(vx, vy)
 	end
+	
 	function changeraltGaz() 
 		if gagnerAlt == true then
 			print(player.y)
@@ -443,8 +446,8 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			
 		end
 	end
+	
 	--Fonction de saut !
-	--
 	function ToucheScreen (event)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
