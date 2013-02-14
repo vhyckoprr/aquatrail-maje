@@ -20,7 +20,7 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("SCORES", 0, 0, "Arial", 50)
+   local text = display.newText("SCORES", 0, 0, "Toledo", 50)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.1 + text.height*0.5
@@ -57,14 +57,14 @@ new = function ( params )
 		-- Affichage du nom des niveaux et de leur numéro
 		if(not row.isCategory)
 		then
-			local text = display.newRetinaText( "Niveau " .. nomMonde .. " - " .. idNiveau, 0, 0, "Arial", 12 )
+			local text = display.newRetinaText( "Niveau " .. nomMonde .. " - " .. idNiveau, 0, 0, "Toledo", 12 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
 			text:setTextColor( 0 )
 			rowGroup:insert( text )
 		else
-			local text = display.newRetinaText( "Niveau " .. nomMonde, 0, 0, "Arial", 14 )
+			local text = display.newRetinaText( "Niveau " .. nomMonde, 0, 0, "Toledo", 14 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
@@ -90,14 +90,14 @@ new = function ( params )
 		-- Affichage du score sur les ligne des niveaux mais pas sur les lignes d'en-tête
 		if(not row.isCategory)
 		then
-			text = display.newRetinaText( score, 0, 0, "Arial", 12 )
+			text = display.newRetinaText( score, 0, 0, "Toledo", 12 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 415
 			text:setTextColor( 0 )
 			rowGroup:insert( text )
 		else
-			text = display.newRetinaText( "Score", 0, 0, "Arial", 14 )
+			text = display.newRetinaText( "Score", 0, 0, "Toledo", 14 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 415

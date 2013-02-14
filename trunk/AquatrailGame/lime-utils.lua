@@ -810,21 +810,21 @@ end
 -- @param params The physical properties.
 function applyPhysicalParametersToBody(body, params)
  
-	local _body = body
-	local _params = params
-	
+local _body = body
+local _params = params
+
 	if(_body) then
 
-			_body.isAwake = convertStringToBoolSafely(_params.isAwake)
-			_body.isBodyActive = convertStringToBoolSafely(_params.isBodyActive) or true
-			_body.isBullet = convertStringToBoolSafely(_params.isBullet)
-			_body.isSleepingAllowed = convertStringToBoolSafely(_params.isSleepingAllowed)
-			_body.isFixedRotation = convertStringToBoolSafely(_params.isFixedRotation)
-			_body.angularVelocity = _params.angularVelocity
-			_body.linearDamping = _params.linearDamping
-			_body.angularDamping = _params.angularDamping
-			_body.bodyType = _params.bodyType
-			_body.isSensor = convertStringToBoolSafely(_params.isSensor)
+		_body.isAwake = convertStringToBoolSafely(_params.isAwake)
+		_body.isBodyActive = convertStringToBoolSafely(_params.isBodyActive) or true
+		_body.isBullet = convertStringToBoolSafely(_params.isBullet)
+		_body.isSleepingAllowed = convertStringToBoolSafely(_params.isSleepingAllowed)
+		_body.isFixedRotation = convertStringToBoolSafely(_params.isFixedRotation)
+		_body.angularVelocity = _params.angularVelocity
+		_body.linearDamping = _params.linearDamping
+		_body.angularDamping = _params.angularDamping
+		_body.bodyType = _params.bodyType
+		_body.isSensor = convertStringToBoolSafely(_params.isSensor)
 
 	end
 end
