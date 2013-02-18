@@ -171,24 +171,25 @@ localGroup:insert(widgetGroup)
 	return localGroup
 end
 -- FOUNCTION EN DEHORS POUR POUVOIR LES APPELLER DEPUIS request.lua
-function list:displayData(xmlTree)			--[[ METHOD 1
+function list:displayData(xmlTree)	
+	print(xmlTree.child[1].name)
 	local message = {}
 	--for j=1, #xmlTree.length do
 		message[0] = xmlTree.child[1]
 	--end
 	for i=1,#message do
-	local player = {}
-	-- extract data from table and store in local variables
-	-- for easier readability/access:
-	player.id = message[i].child[1].value
-	player.type = message[i].child[2].value
-	player.score = message[i].child[3].value
-	player.login = message[i].child[4].value
-	player.time = message[i].child[5].value
-	list:refreshData(player, i)
+		print("boucle for")
+		local player = {}
+		-- extract data from table and store in local variables
+		-- for easier readability/access:
+		player.id = message[i].child[1].value
+		player.type = message[i].child[2].value
+		player.score = message[i].child[3].value
+		player.login = message[i].child[4].value
+		player.time = message[i].child[5].value
+		list:refreshData(player, i)
+	end
 
-end
-	]]--
 	--[[ METHOD 2
 	for i,xmlNode in pairs(xmlTree) do
 			local player = {}
