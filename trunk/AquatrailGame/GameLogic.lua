@@ -186,8 +186,8 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
 						BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
 						BASEJUMPSOLIDE=30*event.other.bonusJumpSol
-						--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
-						--BASEFLYGAZ=30*event.other.bonusJumpGaz
+						BASESPEEDGAZ=30*event.other.bonusSpeedGaz
+						BASEFLYGAZ=30*event.other.bonusJumpGaz
 					end
 				end		
 			elseif event.other.DeclencherStalactite then
@@ -464,7 +464,9 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						
 						
 						elseif EtatHero == 2 then
-							print(event.y)
+							player.state = STATE_JUMPING_GAZ
+							player:prepare("anim" .. player.state)
+							player:play()
 							if event.y - display.contentHeight/2 >0 then
 								gagnerAlt = true
 								timer.performWithDelay( 0, changeraltGaz, 1 )
@@ -564,6 +566,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			end
 			if ( event.phase == "ended" ) then
 				gagnerAlt = false
+				if EtatHero == 2 then --Faire animation quand on gagne en altitude et quand on perd
+					player.state = STATE_WALKING_GAZ
+					player:prepare("anim" .. player.state)
+					player:play()
+				end
 			end
 		end
 		

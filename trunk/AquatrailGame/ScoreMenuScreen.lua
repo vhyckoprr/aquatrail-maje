@@ -13,7 +13,7 @@ new = function ( params )
 	localGroup:insert(backcolor)
 	
 	--Background
-	local back = display.newImage("fond_accueil.png")
+   local back = display.newImage("fond_accueil.png")
    back.isVisible = true
    back.x = display.contentWidth*0.5 
    back.y = display.contentHeight*0.5 
