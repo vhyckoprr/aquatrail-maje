@@ -101,37 +101,38 @@
   </tile>
  </tileset>
  <tileset firstgid="32" source="player.tsx"/>
- <tileset firstgid="86" name="plateforme_neige" tilewidth="32" tileheight="32">
+ <tileset firstgid="113" name="plateforme_neige" tilewidth="32" tileheight="32">
   <image source="plateforme_neige.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="95" name="angle_plateforme_bottom_left" tilewidth="32" tileheight="32">
+ <tileset firstgid="122" name="angle_plateforme_bottom_left" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_bottom_left.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="96" name="angle_plateforme_bottom_right" tilewidth="32" tileheight="32">
+ <tileset firstgid="123" name="angle_plateforme_bottom_right" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_bottom_right.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="97" name="angle_plateforme_top_left" tilewidth="32" tileheight="32">
+ <tileset firstgid="124" name="angle_plateforme_top_left" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_top_left.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="98" name="angle_plateforme_top_right" tilewidth="32" tileheight="32">
+ <tileset firstgid="125" name="angle_plateforme_top_right" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_top_right.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="99" name="angle_plateforme_neige_bottom_left" tilewidth="32" tileheight="32">
+ <tileset firstgid="126" name="angle_plateforme_neige_bottom_left" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_neige_bottom_left.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="100" name="angle_plateforme_neige_bottom_right" tilewidth="32" tileheight="32">
+ <tileset firstgid="127" name="angle_plateforme_neige_bottom_right" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_neige_bottom_right.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="101" name="angle_plateforme_neige_top_left" tilewidth="32" tileheight="32">
+ <tileset firstgid="128" name="angle_plateforme_neige_top_left" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_neige_top_left.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="102" name="angle_plateforme_neige_top_right" tilewidth="32" tileheight="32">
+ <tileset firstgid="129" name="angle_plateforme_neige_top_right" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_neige_top_right.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="103" source="eaux_moyen.tsx"/>
- <tileset firstgid="104" source="glace_moyen.tsx"/>
- <tileset firstgid="105" source="stalactite_01.tsx"/>
- <tileset firstgid="107" source="stalactite_01_verso.tsx"/>
+ <tileset firstgid="130" source="eaux_moyen.tsx"/>
+ <tileset firstgid="131" source="glace_moyen.tsx"/>
+ <tileset firstgid="132" source="stalactite_01.tsx"/>
+ <tileset firstgid="134" source="stalactite_01_verso.tsx"/>
+ <tileset firstgid="136" source="esprit_glace.tsx"/>
  <layer name="Platforms" width="280" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
