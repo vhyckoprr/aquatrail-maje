@@ -181,6 +181,14 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						player:prepare("anim" .. player.state)
 						player:play()
 					end
+					if event.other.IsChangeVitesse then
+						BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+						BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+						BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+						BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+						--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
+						--BASEFLYGAZ=30*event.other.bonusJumpGaz
+					end
 				end		
 			elseif event.other.DeclencherStalactite then
 				print("COUCOUDeclencherStalactite")
@@ -211,14 +219,6 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 					text.x = display.contentCenterX
 					text.y = display.contentCenterY
 					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
-				end
-				if event.other.IsChangeVitesse then
-					BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
-					BASEJUMPLIQUIDE=5*event.other.bonusJumpLiq
-					BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
-					BASEJUMPSOLIDE=5*event.other.bonusJumpSol
-					--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
-					--BASEFLYGAZ=30*event.other.bonusJumpGaz
 				end
 			end
 		if event.other.IsFrozen then
