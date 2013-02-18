@@ -11,6 +11,7 @@
     <property name="bodyType" value="dynamic"/>
     <property name="density" value="2.0"/>
     <property name="friction" value="2.0"/>
+    <property name="ignoreCulling" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -28,6 +29,7 @@
     <property name="bonusJumpSol" value="0.5"/>
     <property name="bonusSpeedLiq" value="1"/>
     <property name="bonusSpeedSol" value="1.4"/>
+    <property name="ignoreCulling" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -44,6 +46,7 @@
     <property name="bonusJumpSol" value="0.5"/>
     <property name="bonusSpeedLiq" value="1"/>
     <property name="bonusSpeedSol" value="1.4"/>
+    <property name="ignoreCulling" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -60,6 +63,7 @@
     <property name="bonusJumpSol" value="0.75"/>
     <property name="bonusSpeedLiq" value="1"/>
     <property name="bonusSpeedSol" value="1.4"/>
+    <property name="ignoreCulling" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -75,6 +79,7 @@
     <property name="bonusJumpSol" value="1"/>
     <property name="bonusSpeedLiq" value="1"/>
     <property name="bonusSpeedSol" value="1.4"/>
+    <property name="ignoreCulling" value="true"/>
    </properties>
   </tile>
  </tileset>

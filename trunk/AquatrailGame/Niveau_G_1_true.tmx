@@ -28,6 +28,7 @@
     <property name="bodyType" value="dynamic"/>
     <property name="density" value="2.0"/>
     <property name="friction" value="2.0"/>
+    <property name="ignoreCulling" value="true"/>
    </properties>
   </tile>
  </tileset>
@@ -87,7 +88,20 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="22" source="glace.tsx"/>
+ <tileset firstgid="22" name="glace" tilewidth="384" tileheight="64">
+  <image source="glace.png" width="384" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1.4"/>
+    <property name="ignoreCulling" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
  <tileset firstgid="23" name="stalactite_rodeo" tilewidth="32" tileheight="64">
   <image source="stalactite_01_verso.png" width="32" height="64"/>
   <tile id="0">
@@ -129,7 +143,23 @@
  <tileset firstgid="133" name="angle_plateforme_neige_top_right" tilewidth="32" tileheight="32">
   <image source="angle_plateforme_neige_top_right.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="134" source="esprit_glace.tsx"/>
+ <tileset firstgid="134" name="esprit_glace" tilewidth="45" tileheight="57">
+  <image source="esprit_glace.png" width="225" height="57"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsAnimated" value=""/>
+    <property name="IsCollectable" value=""/>
+    <property name="Name" value="EspritGlace"/>
+    <property name="Nom" value="2"/>
+    <property name="Score" value="500"/>
+    <property name="animation1" value="frameCount=5,time=1000"/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+    <property name="sequences" value="animation1"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Platforms" width="280" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
