@@ -65,6 +65,7 @@
   <tile id="0">
    <properties>
     <property name="IsChangeVitesse" value=""/>
+    <property name="IsSableMouvant" value=""/>
     <property name="animation1" value="frameCount=2,time=800"/>
     <property name="bonusFlyGaz" value="0.5"/>
     <property name="bonusJumpLiq" value="0.75"/>
