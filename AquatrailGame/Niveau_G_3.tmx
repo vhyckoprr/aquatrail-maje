@@ -3,9 +3,6 @@
  <tileset firstgid="1" name="AtlasGlace2" tilewidth="32" tileheight="32">
   <image source="AtlasGlace2.png" width="96" height="128"/>
  </tileset>
- <tileset firstgid="13" name="AtlasVerglas" tilewidth="32" tileheight="32">
-  <image source="AtlasVerglas.png" width="96" height="128"/>
- </tileset>
  <tileset firstgid="25" name="eaux" tilewidth="32" tileheight="32">
   <image source="eaux.png" width="384" height="64"/>
  </tileset>
@@ -24,9 +21,6 @@
  <tileset firstgid="86" name="verglas" tilewidth="32" tileheight="32">
   <image source="verglas.png" width="160" height="64"/>
  </tileset>
- <tileset firstgid="96" name="AtlasVerglasVerso" tilewidth="32" tileheight="32">
-  <image source="AtlasVerglasVerso.png" width="96" height="128"/>
- </tileset>
  <tileset firstgid="108" name="eaux_moyen" tilewidth="32" tileheight="32">
   <image source="eaux_moyen.png" width="192" height="64"/>
  </tileset>
@@ -36,20 +30,11 @@
  <tileset firstgid="132" name="boule_de_neige" tilewidth="32" tileheight="32">
   <image source="boule_de_neige.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="136" name="SupergoutteletteSpriteSheet" tilewidth="32" tileheight="32">
-  <image source="SupergoutteletteSpriteSheet.png" width="160" height="32"/>
- </tileset>
  <tileset firstgid="141" name="goutteletteSpriteSheet" tilewidth="32" tileheight="32">
   <image source="goutteletteSpriteSheet.png" width="64" height="32"/>
  </tileset>
- <tileset firstgid="143" name="AtlasGlace" tilewidth="32" tileheight="32">
-  <image source="AtlasGlace.png" width="96" height="128"/>
- </tileset>
  <tileset firstgid="155" name="eaux_petit" tilewidth="32" tileheight="32">
   <image source="eaux_petit.png" width="96" height="64"/>
- </tileset>
- <tileset firstgid="161" name="AtlasGlaceVerso" tilewidth="32" tileheight="32">
-  <image source="AtlasGlaceVerso.png" width="96" height="128"/>
  </tileset>
  <tileset firstgid="173" name="SuperGouttellettes" tilewidth="32" tileheight="32">
   <image source="SuperGouttellettes.png" width="150" height="32"/>

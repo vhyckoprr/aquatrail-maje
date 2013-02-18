@@ -25,7 +25,7 @@
    <property name="bounceLiq" value="0"/>
    <property name="densityGla" value="0.5"/>
    <property name="densityLiq" value="0.5"/>
-   <property name="globalJump" value="2"/>
+   <property name="globalJump" value="0.4"/>
    <property name="globalSpeed" value="6"/>
    <property name="ignoreCulling" value="true"/>
    <property name="isFixedRotation" value="true"/>
