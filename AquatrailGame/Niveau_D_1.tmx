@@ -36,22 +36,47 @@
  <tileset firstgid="26" name="oasis" tilewidth="192" tileheight="128">
   <image source="oasis.png" width="192" height="128"/>
  </tileset>
- <tileset firstgid="27" name="herbes_animation" tilewidth="96" tileheight="32">
-  <image source="herbes_animation.png" width="96" height="192"/>
-  <tile id="1">
+ <tileset firstgid="27" source="goutteletteSpriteSheet.tsx"/>
+ <tileset firstgid="29" source="SuperGouttellettes.tsx"/>
+ <tileset firstgid="33" source="esprit_glace.tsx"/>
+ <tileset firstgid="38" name="vegetation_animation" tilewidth="96" tileheight="64">
+  <image source="vegetation_animation.png" width="96" height="256"/>
+  <tile id="0">
    <properties>
-    <property name="HasBody" value=""/>
     <property name="IsArrosable" value=""/>
     <property name="bodyType" value="static"/>
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="33" name="herbes_test" tilewidth="96" tileheight="32">
-  <image source="herbes_test.png" width="96" height="32"/>
+ <tileset firstgid="42" name="botte_de_foin" tilewidth="64" tileheight="64">
+  <image source="botte_de_foin.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="bodyType" value="dynamic"/>
+    <property name="density" value="2.0"/>
+    <property name="friction" value="2.0"/>
+    <property name="ignoreCulling" value="true"/>
+   </properties>
+  </tile>
  </tileset>
- <tileset firstgid="34" source="goutteletteSpriteSheet.tsx"/>
- <tileset firstgid="36" source="SuperGouttellettes.tsx"/>
- <tileset firstgid="40" source="esprit_glace.tsx"/>
+ <tileset firstgid="43" name="sable_mouvants_animation" tilewidth="96" tileheight="64">
+  <image source="sable_mouvants_animation.png" width="192" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="animation1" value="frameCount=2,time=800"/>
+    <property name="bonusFlyGaz" value="0.5"/>
+    <property name="bonusJumpLiq" value="0.75"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedGaz" value="0.4"/>
+    <property name="bonusSpeedLiq" value="0.4"/>
+    <property name="bonusSpeedSol" value="0.4"/>
+    <property name="sequences" value="animation1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="45" source="player.tsx"/>
  <layer name="Bonus" width="300" height="30">
   <properties>
    <property name="parallaxFactorX" value="1"/>
@@ -1011,13 +1036,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1073,7 +1095,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="36"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="29"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1090,9 +1115,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1114,7 +1139,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1180,7 +1205,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1289,7 +1314,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1300,7 +1325,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1396,9 +1421,9 @@
    <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="36"/>
+   <tile gid="29"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1424,7 +1449,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1526,7 +1551,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1593,7 +1618,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1647,13 +1672,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1669,7 +1691,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1701,7 +1726,7 @@
    <tile gid="10"/>
    <tile gid="2"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1711,7 +1736,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="16"/>
    <tile gid="16"/>
@@ -1773,7 +1798,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1787,7 +1812,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1841,7 +1866,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1886,7 +1911,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1897,13 +1922,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2039,7 +2064,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2049,7 +2074,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="36"/>
+   <tile gid="29"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2064,7 +2089,7 @@
    <tile gid="16"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2094,9 +2119,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2119,7 +2144,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2132,7 +2157,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2266,7 +2291,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2438,7 +2463,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="16"/>
    <tile gid="16"/>
@@ -2483,7 +2508,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2556,7 +2581,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2646,7 +2671,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="16"/>
@@ -2711,7 +2736,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2863,7 +2888,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3002,7 +3027,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3080,7 +3105,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3160,7 +3185,7 @@
    <tile gid="12"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3433,15 +3458,15 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
-   <tile gid="36"/>
+   <tile gid="29"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3629,7 +3654,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="36"/>
+   <tile gid="29"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3677,7 +3702,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4125,7 +4150,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="36"/>
+   <tile gid="29"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4183,7 +4208,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="42"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4274,7 +4299,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="34"/>
+   <tile gid="27"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4433,7 +4458,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="10"/>
    <tile gid="10"/>
    <tile gid="10"/>
    <tile gid="10"/>
@@ -4730,10 +4755,10 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="43"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -4821,7 +4846,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="10"/>
    <tile gid="10"/>
    <tile gid="10"/>
    <tile gid="10"/>
@@ -5030,10 +5055,10 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -5118,10 +5143,10 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
+   <tile gid="43"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -5138,7 +5163,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="33"/>
+   <tile gid="38"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5158,7 +5183,7 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="45"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5418,10 +5443,10 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="40"/>
-   <tile gid="0"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -5655,7 +5680,7 @@
    <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="28"/>
+   <tile gid="38"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -6749,7 +6774,7 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="0"/>
+   <tile gid="43"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="12"/>
@@ -7049,9 +7074,9 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -9154,7 +9179,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="1856" y="512" width="64" height="32">
+  <object type="Body" x="1856" y="512" width="64" height="192">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9193,7 +9218,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="2816" y="672" width="128" height="32">
+  <object type="Body" x="2816" y="672" width="128" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9206,7 +9231,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="3040" y="672" width="160" height="32">
+  <object type="Body" x="3040" y="672" width="160" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9336,7 +9361,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="5344" y="448" width="192" height="32">
+  <object type="Body" x="5344" y="448" width="192" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9349,7 +9374,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="5664" y="448" width="160" height="32">
+  <object type="Body" x="5632" y="448" width="192" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9492,7 +9517,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="8256" y="480" width="96" height="32">
+  <object type="Body" x="8256" y="480" width="96" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9505,7 +9530,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="8480" y="480" width="192" height="32">
+  <object type="Body" x="8448" y="480" width="224" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9518,20 +9543,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="8864" y="544" width="128" height="32">
-   <properties>
-    <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="bonusFlyGaz" value="1"/>
-    <property name="bonusJumpLiq" value="1"/>
-    <property name="bonusJumpSol" value="0.75"/>
-    <property name="bonusSpeedGaz" value="1"/>
-    <property name="bonusSpeedLiq" value="0.8"/>
-    <property name="bonusSpeedSol" value="0.8"/>
-   </properties>
-  </object>
-  <object type="Body" x="9120" y="544" width="64" height="32">
+  <object type="Body" x="8864" y="544" width="320" height="32">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9966,7 +9978,7 @@
     <property name="bonusSpeedSol" value="1"/>
    </properties>
   </object>
-  <object name="1A" type="Body" x="416" y="576">
+  <object name="Montee1A" type="Body" x="416" y="576">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9977,14 +9989,14 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;1A&quot;,&quot;1B&quot;,&quot;1C&quot;]"/>
+    <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;]"/>
    </properties>
   </object>
-  <object name="1C" x="512" y="576"/>
-  <object name="1B" x="512" y="480"/>
-  <object name="2B" x="736" y="608"/>
-  <object name="2C" x="640" y="608"/>
-  <object name="2A" type="Body" x="640" y="512">
+  <object name="Montee1C" x="512" y="576"/>
+  <object name="Montee1B" x="512" y="480"/>
+  <object name="Montee2B" x="736" y="608"/>
+  <object name="Montee2C" x="640" y="608"/>
+  <object name="Montee2A" type="Body" x="640" y="512">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9995,12 +10007,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;2A&quot;,&quot;2B&quot;,&quot;2C&quot;]"/>
+    <property name="points" value="[&quot;Montee2A&quot;,&quot;Montee2B&quot;,&quot;Montee2C&quot;]"/>
    </properties>
   </object>
-  <object name="3B" x="992" y="480"/>
-  <object name="3C" x="992" y="576"/>
-  <object name="3A" type="Body" x="896" y="576">
+  <object name="Montee3B" x="992" y="480"/>
+  <object name="Montee3C" x="992" y="576"/>
+  <object name="Montee3A" type="Body" x="896" y="576">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10011,11 +10023,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;3A&quot;,&quot;3B&quot;,&quot;3C&quot;]"/>
+    <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;]"/>
    </properties>
   </object>
-  <object name="4B" x="1280" y="640"/>
-  <object name="4A" type="Body" x="1152" y="512">
+  <object name="Montee4B" x="1280" y="640"/>
+  <object name="Montee4A" type="Body" x="1152" y="512">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10026,12 +10038,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;4A&quot;,&quot;4B&quot;,&quot;4C&quot;]"/>
+    <property name="points" value="[&quot;Montee4A&quot;,&quot;Montee4B&quot;,&quot;Montee4C&quot;]"/>
    </properties>
   </object>
-  <object name="4C" x="1152" y="640"/>
-  <object name="5C" x="1600" y="608"/>
-  <object name="5A" type="Body" x="1536" y="608">
+  <object name="Montee4C" x="1152" y="640"/>
+  <object name="Montee5C" x="1600" y="608"/>
+  <object name="Montee5A" type="Body" x="1536" y="608">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10042,13 +10054,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;5A&quot;,&quot;5B&quot;,&quot;5C&quot;]"/>
+    <property name="points" value="[&quot;Montee5A&quot;,&quot;Montee5B&quot;,&quot;Montee5C&quot;]"/>
    </properties>
   </object>
-  <object name="5B" x="1600" y="544"/>
-  <object name="6C" x="1920" y="576"/>
-  <object name="6B" x="1952" y="576"/>
-  <object name="6A" type="Body" x="1920" y="544">
+  <object name="Montee5B" x="1600" y="544"/>
+  <object name="Montee6C" x="1920" y="576"/>
+  <object name="Montee6B" x="1952" y="576"/>
+  <object name="Montee6A" type="Body" x="1920" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10059,11 +10071,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;6A&quot;,&quot;6B&quot;,&quot;6C&quot;]"/>
+    <property name="points" value="[&quot;Montee6A&quot;,&quot;Montee6B&quot;,&quot;Montee6C&quot;]"/>
    </properties>
   </object>
-  <object name="7C" x="2464" y="544"/>
-  <object name="7A" type="Body" x="2304" y="544">
+  <object name="Montee7C" x="2464" y="544"/>
+  <object name="Montee7A" type="Body" x="2304" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10074,13 +10086,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;7A&quot;,&quot;7B&quot;,&quot;7C&quot;]"/>
+    <property name="points" value="[&quot;Montee7A&quot;,&quot;Montee7B&quot;,&quot;Montee7C&quot;]"/>
    </properties>
   </object>
-  <object name="7B" x="2464" y="384"/>
-  <object name="8B" x="2784" y="480"/>
-  <object name="8C" x="2720" y="480"/>
-  <object name="8A" type="Body" x="2720" y="416">
+  <object name="Montee7B" x="2464" y="384"/>
+  <object name="Montee8B" x="2784" y="480"/>
+  <object name="Montee8C" x="2720" y="480"/>
+  <object name="Montee8A" type="Body" x="2720" y="416">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10091,10 +10103,10 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;8A&quot;,&quot;8B&quot;,&quot;8C&quot;]"/>
+    <property name="points" value="[&quot;Montee8A&quot;,&quot;Montee8B&quot;,&quot;Montee8C&quot;]"/>
    </properties>
   </object>
-  <object name="9A" type="Body" x="3200" y="672">
+  <object name="Montee9A" type="Body" x="3200" y="672">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10105,13 +10117,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;9A&quot;,&quot;9B&quot;,&quot;9C&quot;]"/>
+    <property name="points" value="[&quot;Montee9A&quot;,&quot;Montee9B&quot;,&quot;Montee9C&quot;]"/>
    </properties>
   </object>
-  <object name="9C" x="3264" y="672"/>
-  <object name="9B" x="3264" y="608"/>
-  <object name="10C" x="3520" y="608"/>
-  <object name="10A" type="Body" x="3456" y="608">
+  <object name="Montee9C" x="3264" y="672"/>
+  <object name="Montee9B" x="3264" y="608"/>
+  <object name="Montee10C" x="3520" y="608"/>
+  <object name="Montee10A" type="Body" x="3456" y="608">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10122,12 +10134,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;10A&quot;,&quot;10B&quot;,&quot;10C&quot;]"/>
+    <property name="points" value="[&quot;Montee10A&quot;,&quot;Montee10B&quot;,&quot;Montee10C&quot;]"/>
    </properties>
   </object>
-  <object name="10B" x="3520" y="544"/>
-  <object name="11C" x="4192" y="544"/>
-  <object name="11A" type="Body" x="4096" y="544">
+  <object name="Montee10B" x="3520" y="544"/>
+  <object name="Montee11C" x="4192" y="544"/>
+  <object name="Montee11A" type="Body" x="4096" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10138,13 +10150,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;11A&quot;,&quot;11B&quot;,&quot;11C&quot;]"/>
+    <property name="points" value="[&quot;Montee11A&quot;,&quot;Montee11B&quot;,&quot;Montee11C&quot;]"/>
    </properties>
   </object>
-  <object name="11B" x="4192" y="448"/>
-  <object name="12B" x="4416" y="416"/>
-  <object name="12C" x="4416" y="448"/>
-  <object name="12A" type="Body" x="4384" y="448">
+  <object name="Montee11B" x="4192" y="448"/>
+  <object name="Montee12B" x="4416" y="416"/>
+  <object name="Montee12C" x="4416" y="448"/>
+  <object name="Montee12A" type="Body" x="4384" y="448">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10155,12 +10167,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;12A&quot;,&quot;12B&quot;,&quot;12C&quot;]"/>
+    <property name="points" value="[&quot;Montee12A&quot;,&quot;Montee12B&quot;,&quot;Montee12C&quot;]"/>
    </properties>
   </object>
-  <object name="13B" x="2816" y="704"/>
-  <object name="13C" x="2784" y="704"/>
-  <object name="13A" type="Body" x="2784" y="672">
+  <object name="Montee13B" x="2816" y="704"/>
+  <object name="Montee13C" x="2784" y="704"/>
+  <object name="Montee13A" type="Body" x="2784" y="672">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10171,10 +10183,10 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;13A&quot;,&quot;13B&quot;,&quot;13C&quot;]"/>
+    <property name="points" value="[&quot;Montee13A&quot;,&quot;Montee13B&quot;,&quot;Montee13C&quot;]"/>
    </properties>
   </object>
-  <object name="14A" type="Body" x="4512" y="448">
+  <object name="Montee14A" type="Body" x="4512" y="448">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10185,12 +10197,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;14A&quot;,&quot;14B&quot;,&quot;14C&quot;]"/>
+    <property name="points" value="[&quot;Montee14A&quot;,&quot;Montee14B&quot;,&quot;Montee14C&quot;]"/>
    </properties>
   </object>
-  <object name="14C" x="4512" y="576"/>
-  <object name="14B" x="4640" y="576"/>
-  <object name="15A" type="Body" x="4352" y="160">
+  <object name="Montee14C" x="4512" y="576"/>
+  <object name="Montee14B" x="4640" y="576"/>
+  <object name="Montee15A" type="Body" x="4352" y="160">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10201,13 +10213,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;15A&quot;,&quot;15B&quot;,&quot;15C&quot;]"/>
+    <property name="points" value="[&quot;Montee15A&quot;,&quot;Montee15B&quot;,&quot;Montee15C&quot;]"/>
    </properties>
   </object>
-  <object name="15C" x="4352" y="192"/>
-  <object name="15B" x="4384" y="192"/>
-  <object name="16B" x="4576" y="224"/>
-  <object name="16A" type="Body" x="4544" y="192">
+  <object name="Montee15C" x="4352" y="192"/>
+  <object name="Montee15B" x="4384" y="192"/>
+  <object name="Montee16B" x="4576" y="224"/>
+  <object name="Montee16A" type="Body" x="4544" y="192">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10218,12 +10230,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;16A&quot;,&quot;16B&quot;,&quot;16C&quot;]"/>
+    <property name="points" value="[&quot;Montee16A&quot;,&quot;Montee16B&quot;,&quot;Montee16C&quot;]"/>
    </properties>
   </object>
-  <object name="16C" x="4544" y="224"/>
-  <object name="17C" x="5216" y="512"/>
-  <object name="13A" type="Body" x="3584" y="672">
+  <object name="Montee16C" x="4544" y="224"/>
+  <object name="Montee17C" x="5056" y="544"/>
+  <object name="Montee13A" type="Body" x="3584" y="672">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10234,11 +10246,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;13A&quot;,&quot;13B&quot;,&quot;13C&quot;]"/>
+    <property name="points" value="[&quot;Montee13A&quot;,&quot;Montee13B&quot;,&quot;Montee13C&quot;]"/>
    </properties>
   </object>
-  <object name="17B" x="5216" y="480"/>
-  <object name="17A" type="Body" x="5184" y="512">
+  <object name="Montee17B" x="5056" y="512"/>
+  <object name="Montee17A" type="Body" x="5024" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10249,11 +10261,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;17A&quot;,&quot;17B&quot;,&quot;17C&quot;]"/>
+    <property name="points" value="[&quot;Montee17A&quot;,&quot;Montee17B&quot;,&quot;Montee17C&quot;]"/>
    </properties>
   </object>
-  <object name="18C" x="5344" y="480"/>
-  <object name="13A" type="Body" x="3712" y="512">
+  <object name="Montee18C" x="5344" y="480"/>
+  <object name="Montee13A" type="Body" x="3712" y="512">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10264,11 +10276,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;13A&quot;,&quot;13B&quot;,&quot;13C&quot;]"/>
+    <property name="points" value="[&quot;Montee13A&quot;,&quot;Montee13B&quot;,&quot;Montee13C&quot;]"/>
    </properties>
   </object>
-  <object name="18B" x="5344" y="448"/>
-  <object name="18A" type="Body" x="5312" y="480">
+  <object name="Montee18B" x="5344" y="448"/>
+  <object name="Montee18A" type="Body" x="5312" y="480">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10279,11 +10291,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;18A&quot;,&quot;18B&quot;,&quot;18C&quot;]"/>
+    <property name="points" value="[&quot;Montee18A&quot;,&quot;Montee18B&quot;,&quot;Montee18C&quot;]"/>
    </properties>
   </object>
-  <object name="19B" x="5856" y="416"/>
-  <object name="19A" type="Body" x="5824" y="448">
+  <object name="Montee19B" x="5856" y="416"/>
+  <object name="Montee19A" type="Body" x="5824" y="448">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10294,11 +10306,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;19A&quot;,&quot;19B&quot;,&quot;19C&quot;]"/>
+    <property name="points" value="[&quot;Montee19A&quot;,&quot;Montee19B&quot;,&quot;Montee19C&quot;]"/>
    </properties>
   </object>
-  <object name="19C" x="5856" y="448"/>
-  <object name="20A" type="Body" x="5952" y="448">
+  <object name="Montee19C" x="5856" y="448"/>
+  <object name="Montee20A" type="Body" x="5952" y="448">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10309,13 +10321,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;20A&quot;,&quot;20B&quot;,&quot;20C&quot;]"/>
+    <property name="points" value="[&quot;Montee20A&quot;,&quot;Montee20B&quot;,&quot;Montee20C&quot;]"/>
    </properties>
   </object>
-  <object name="20C" x="5952" y="608"/>
-  <object name="20B" x="6112" y="608"/>
-  <object name="21B" x="6592" y="544"/>
-  <object name="21A" type="Body" x="6528" y="608">
+  <object name="Montee20C" x="5952" y="608"/>
+  <object name="Montee20B" x="6112" y="608"/>
+  <object name="Montee21B" x="6592" y="544"/>
+  <object name="Montee21A" type="Body" x="6528" y="608">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10326,11 +10338,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;21A&quot;,&quot;21B&quot;,&quot;21C&quot;]"/>
+    <property name="points" value="[&quot;Montee21A&quot;,&quot;Montee21B&quot;,&quot;Montee21C&quot;]"/>
    </properties>
   </object>
-  <object name="21C" x="6592" y="608"/>
-  <object name="22A" type="Body" x="6688" y="544">
+  <object name="Montee21C" x="6592" y="608"/>
+  <object name="Montee22A" type="Body" x="6688" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10341,14 +10353,14 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;22A&quot;,&quot;22B&quot;,&quot;22C&quot;]"/>
+    <property name="points" value="[&quot;Montee22A&quot;,&quot;Montee22B&quot;,&quot;Montee22C&quot;]"/>
    </properties>
   </object>
-  <object name="22B" x="6752" y="480"/>
-  <object name="22C" x="6752" y="544"/>
-  <object name="24B" x="6272" y="640"/>
-  <object name="24C" x="6240" y="640"/>
-  <object name="24A" type="Body" x="6240" y="608">
+  <object name="Montee22B" x="6752" y="480"/>
+  <object name="Montee22C" x="6752" y="544"/>
+  <object name="Montee24B" x="6272" y="640"/>
+  <object name="Montee24C" x="6240" y="640"/>
+  <object name="Montee24A" type="Body" x="6240" y="608">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10359,10 +10371,10 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;24A&quot;,&quot;24B&quot;,&quot;24C&quot;]"/>
+    <property name="points" value="[&quot;Montee24A&quot;,&quot;Montee24B&quot;,&quot;Montee24C&quot;]"/>
    </properties>
   </object>
-  <object name="25A" type="Body" x="7072" y="480">
+  <object name="Montee25A" type="Body" x="7072" y="480">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10373,12 +10385,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;25A&quot;,&quot;25B&quot;,&quot;25C&quot;]"/>
+    <property name="points" value="[&quot;Montee25A&quot;,&quot;Montee25B&quot;,&quot;Montee25C&quot;]"/>
    </properties>
   </object>
-  <object name="25B" x="7104" y="448"/>
-  <object name="25C" x="7104" y="480"/>
-  <object name="26A" type="Body" x="7296" y="480">
+  <object name="Montee25B" x="7104" y="448"/>
+  <object name="Montee25C" x="7104" y="480"/>
+  <object name="Montee26A" type="Body" x="7296" y="480">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10389,13 +10401,13 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;26A&quot;,&quot;26B&quot;,&quot;26C&quot;]"/>
+    <property name="points" value="[&quot;Montee26A&quot;,&quot;Montee26B&quot;,&quot;Montee26C&quot;]"/>
    </properties>
   </object>
-  <object name="26B" x="7456" y="640"/>
-  <object name="26C" x="7296" y="640"/>
-  <object name="27B" x="7840" y="544"/>
-  <object name="27A" type="Body" x="7776" y="608">
+  <object name="Montee26B" x="7456" y="640"/>
+  <object name="Montee26C" x="7296" y="640"/>
+  <object name="Montee27B" x="7840" y="544"/>
+  <object name="Montee27A" type="Body" x="7776" y="608">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10406,12 +10418,12 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;27A&quot;,&quot;27B&quot;,&quot;27C&quot;]"/>
+    <property name="points" value="[&quot;Montee27A&quot;,&quot;Montee27B&quot;,&quot;Montee27C&quot;]"/>
    </properties>
   </object>
-  <object name="27C" x="7840" y="608"/>
-  <object name="28B" x="8096" y="512"/>
-  <object name="28A" type="Body" x="8064" y="544">
+  <object name="Montee27C" x="7840" y="608"/>
+  <object name="Montee28B" x="8096" y="512"/>
+  <object name="Montee28A" type="Body" x="8064" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10422,11 +10434,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;28A&quot;,&quot;28B&quot;,&quot;28C&quot;]"/>
+    <property name="points" value="[&quot;Montee28A&quot;,&quot;Montee28B&quot;,&quot;Montee28C&quot;]"/>
    </properties>
   </object>
-  <object name="28C" x="8096" y="544"/>
-  <object name="29A" type="Body" x="8224" y="512">
+  <object name="Montee28C" x="8096" y="544"/>
+  <object name="Montee29A" type="Body" x="8224" y="512">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10437,14 +10449,14 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;29A&quot;,&quot;29B&quot;,&quot;29C&quot;]"/>
+    <property name="points" value="[&quot;Montee29A&quot;,&quot;Montee29B&quot;,&quot;Montee29C&quot;]"/>
    </properties>
   </object>
-  <object name="28C" x="8256" y="512"/>
-  <object name="29B" x="8256" y="480"/>
-  <object name="29C" x="8256" y="512"/>
-  <object name="30B" x="8704" y="448"/>
-  <object name="30A" type="Body" x="8672" y="480">
+  <object name="Montee28C" x="8256" y="512"/>
+  <object name="Montee29B" x="8256" y="480"/>
+  <object name="Montee29C" x="8256" y="512"/>
+  <object name="Montee30B" x="8704" y="448"/>
+  <object name="Montee30A" type="Body" x="8672" y="480">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10455,11 +10467,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;30A&quot;,&quot;30B&quot;,&quot;30C&quot;]"/>
+    <property name="points" value="[&quot;Montee30A&quot;,&quot;Montee30B&quot;,&quot;Montee30C&quot;]"/>
    </properties>
   </object>
-  <object name="30C" x="8704" y="480"/>
-  <object name="31A" type="Body" x="8768" y="480">
+  <object name="Montee30C" x="8704" y="480"/>
+  <object name="Montee31A" type="Body" x="8768" y="480">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10470,14 +10482,14 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;31A&quot;,&quot;31B&quot;,&quot;31C&quot;]"/>
+    <property name="points" value="[&quot;Montee31A&quot;,&quot;Montee31B&quot;,&quot;Montee31C&quot;]"/>
    </properties>
   </object>
-  <object name="31C" x="8768" y="576"/>
-  <object name="31B" x="8864" y="576"/>
-  <object name="32B" x="9312" y="416"/>
-  <object name="32C" x="9312" y="544"/>
-  <object name="32A" type="Body" x="9184" y="544">
+  <object name="Montee31C" x="8768" y="576"/>
+  <object name="Montee31B" x="8864" y="576"/>
+  <object name="Montee32B" x="9312" y="416"/>
+  <object name="Montee32C" x="9312" y="544"/>
+  <object name="Montee32A" type="Body" x="9184" y="544">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10488,11 +10500,11 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;32A&quot;,&quot;32B&quot;,&quot;32C&quot;]"/>
+    <property name="points" value="[&quot;Montee32A&quot;,&quot;Montee32B&quot;,&quot;Montee32C&quot;]"/>
    </properties>
   </object>
-  <object name="33B" x="9472" y="512"/>
-  <object name="33A" type="Body" x="9408" y="448">
+  <object name="Montee33B" x="9472" y="512"/>
+  <object name="Montee33A" type="Body" x="9408" y="448">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10503,10 +10515,10 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1.2"/>
     <property name="bonusSpeedSol" value="1.2"/>
-    <property name="points" value="[&quot;33A&quot;,&quot;33B&quot;,&quot;33C&quot;]"/>
+    <property name="points" value="[&quot;Montee33A&quot;,&quot;Montee33B&quot;,&quot;Montee33C&quot;]"/>
    </properties>
   </object>
-  <object name="33C" x="9408" y="512"/>
+  <object name="Montee33C" x="9408" y="512"/>
   <object type="Body" x="1248" y="224" width="95" height="3">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -10765,6 +10777,66 @@
     <property name="bonusSpeedGaz" value="1"/>
     <property name="bonusSpeedLiq" value="1"/>
     <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object type="Body" x="8352" y="544" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="0.5"/>
+    <property name="bonusJumpLiq" value="0.75"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedGaz" value="0.4"/>
+    <property name="bonusSpeedLiq" value="0.4"/>
+    <property name="bonusSpeedSol" value="0.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="2944" y="736" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="0.5"/>
+    <property name="bonusJumpLiq" value="0.75"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedGaz" value="0.4"/>
+    <property name="bonusSpeedLiq" value="0.4"/>
+    <property name="bonusSpeedSol" value="0.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="5536" y="512" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="0.5"/>
+    <property name="bonusJumpLiq" value="0.75"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedGaz" value="0.4"/>
+    <property name="bonusSpeedLiq" value="0.4"/>
+    <property name="bonusSpeedSol" value="0.4"/>
+   </properties>
+  </object>
+  <object type="Body" x="5024" y="544" width="32" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object type="Body" x="9536" y="-160" width="32" height="640">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsEnd" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
    </properties>
   </object>
  </objectgroup>
