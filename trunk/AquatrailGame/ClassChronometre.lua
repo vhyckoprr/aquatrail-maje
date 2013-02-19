@@ -45,6 +45,10 @@
 		Runtime:removeEventListener("enterFrame", self)
 	end
 	
+	function Chrono:Resume()
+		Runtime:addEventListener("enterFrame", self)
+	end
+	
 	--Afficher le chronometre
 	function Chrono:Display(isDisplay)
 		self.display = isDisplay
@@ -58,6 +62,8 @@
 			self.timeDisplayed = display.newText(self.minutes..":"..zeroComposite..self.secondes, 0, 0, "Toledo", 16)
 			self.timeDisplayed:setTextColor(255, 255, 255)
 			self.timeDisplayed:setReferencePoint(display.TopLeftReferencePoint)
+			--self.timeDisplayed.x = display.contentWidth*0.5 - self.timeDisplayed.width*0.5
+			--self.timeDisplayed.y = display.contentHeight - self.timeDisplayed.height
 			self.timeDisplayed.x = display.contentWidth*0.5 - self.timeDisplayed.width*0.5
 			self.timeDisplayed.y = display.contentHeight - self.timeDisplayed.height
 		end
