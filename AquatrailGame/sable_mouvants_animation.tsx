@@ -3,6 +3,7 @@
  <image source="sable_mouvants_animation.png" width="192" height="64"/>
  <tile id="0">
   <properties>
+   <property name="IsAnimated" value=""/>
    <property name="IsChangeVitesse" value=""/>
    <property name="IsSableMouvant" value=""/>
    <property name="animation1" value="frameCount=2,time=800"/>

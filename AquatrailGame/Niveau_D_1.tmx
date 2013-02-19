@@ -20,9 +20,9 @@
  <tileset firstgid="129" source="terre_craqueleev4.tsx"/>
  <tileset firstgid="138" source="vent_horizontal_gauche.tsx"/>
  <tileset firstgid="141" source="vent_vertical_bas.tsx"/>
- <layer name="Bonus" width="300" height="30">
+ <layer name="Platforms" width="300" height="30">
   <properties>
-   <property name="parallaxFactorX" value="1"/>
+   <property name="parallaxBase" value=""/>
   </properties>
   <data>
    <tile gid="0"/>
