@@ -311,8 +311,8 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	
 	-- UPDATE----------------------------------------------------------------------
 	 onUpdate = function(event)
-		if player.y < 100 then
-			player.y = 100
+		if player.y < 80 then
+			player.y = 80
 			--player:setLinearVelocity(vx , 0)
 		end
 		--Jouer animation debut de level
@@ -651,26 +651,22 @@ end
 
 
 local PauseGame = function()
-		print("ezaeaze")
-	GAMESTATE = STATE_PAUSE
-	--chrono:Stop()
-	--audio.pause()
-	--physics.pause()
-	--if event.phase == "began" then
-
-    --    if paused == false then
-    --         physics.pause()
-    --         paused = true
-	--		 audio.pause()
-    --    elseif paused == true then
-    --         physics.start()
-    --         paused = false
-	--		 audio.play()
-    --    end
-    --end
+	if paused == false then
+		physics.pause()
+		paused = true
+		audio.pause()
+		GAMESTATE = STATE_PAUSE
+		player:pause()
+	elseif paused == true then
+		physics.start()
+		paused = false
+		audio.resume(maintheme)
+		GAMESTATE = STATE_PLAY
+		player:play()
+	end
 end
 
-local GameLogic = { createMap = createMap, stopEvents = stopEvents, updateScore=updateScore}
+local GameLogic = { createMap = createMap, stopEvents = stopEvents,PauseGame=PauseGame, updateScore=updateScore}
 
 return GameLogic
 
