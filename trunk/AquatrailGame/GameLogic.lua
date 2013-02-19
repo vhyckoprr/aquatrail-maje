@@ -58,7 +58,8 @@ local STATE_TRANSITIONGAZSOL = "TransitionGazSol"
 
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
-local SCORE = 0local TIME = 0local LEVEL = {}
+local SCORE = 0local TIME = 0
+local POUVOIRVENT = 5local LEVEL = {}
 
 local BASESPEEDSOLIDE=30
 local BASESPEEDLIQUIDE=30
@@ -139,7 +140,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	-- Build the physical
 	physical = lime.buildPhysical(map)
 	
-	--physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "hybrid" )
 	
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1, channel=1})
@@ -269,12 +270,26 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 				end
 			end
 		end
-		--if event.other.IsVent then
-		--	if event.other.IsVent == "top" then
-		--		local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
-		--		player:setLinearVelocity(vx , vy+10)
-		--	end
-		--end
+		if event.other.IsVent then
+			print("Vent")
+			if event.other.IsVent == "top" then
+				local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
+				player:applyLinearImpulse(0, -POUVOIRVENT, player.x, player.y)
+			end
+			if event.other.IsVent == "down" then
+				local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
+				player:applyLinearImpulse(0, POUVOIRVENT, player.x, player.y)
+			end
+			if event.other.IsVent == "left" then
+				local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
+				player:applyLinearImpulse(POUVOIRVENT, 0, player.x, player.y)
+			end
+			if event.other.IsVent == "right" then
+				local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
+				player:applyLinearImpulse(-POUVOIRVENT, 0, player.x, player.y)
+			end
+		--
+		end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
 				--print("isground ended")
@@ -443,7 +458,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	function changeraltGaz() 
 		if gagnerAlt == true then
 			--print(player.y)
-			player:applyLinearImpulse(0, -0.1, player.x, player.y)
+			player:applyLinearImpulse(0, -3, player.x, player.y)
 			timer.performWithDelay( 100, changeraltGaz, 1 )
 			
 		end
@@ -578,16 +593,18 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		
 		--Les Stalagmites ne bloque pas le glaçon :
 		local layer = map:getTileLayer("Platforms")
-		local tiles = layer:getTilesWithProperty("IsStalacmite")
-		if(EtatHero == 1) then
-            for i=1, #tiles, 1 do
-				tiles[i]:setProperty("isSensor", true)
-				tiles[i]:reBuild()
-			end
-		else
-			for i=1, #tiles, 1 do
-				tiles[i]:setProperty("isSensor", false)
-				tiles[i]:reBuild()
+		if layer ~= nil then
+			local tiles = layer:getTilesWithProperty("IsStalacmite")
+			if(EtatHero == 1) then
+				for i=1, #tiles, 1 do
+					tiles[i]:setProperty("isSensor", true)
+					tiles[i]:reBuild()
+				end
+			else
+				for i=1, #tiles, 1 do
+					tiles[i]:setProperty("isSensor", false)
+					tiles[i]:reBuild()
+				end
 			end
 		end
 	end
@@ -616,33 +633,63 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
  
 -- Make sure we actually have a layer
 	if(layer) then
- 
         -- Get all the tiles on this layer
         local tiles = layer.tiles
         
         -- Make sure tiles is not nil
         if(tiles) then
                 
-                -- Loop through all our tiles on this layer     
-                for i=1, #tiles, 1 do
-                        -- Check if the tile is animated (note the capitilisation)
-                        if(tiles[i].IsAnimated) then
-                                -- Store off a copy of the tile
-                                local tile = tiles[i]
-                                
-                                -- Check if the tile has a property named "animation1", our sequence
-                                if(tile.animation1) then
-                                        
-                                        -- Prepare it through the sprite
-                                        tile.sprite:prepare("animation1")
-                                        
-                                        -- Now finally play it
-                                        tile.sprite:play()
-                                end
-                        end
-                end
+			-- Loop through all our tiles on this layer     
+			for i=1, #tiles, 1 do
+				-- Check if the tile is animated (note the capitilisation)
+				if(tiles[i].IsAnimated) then
+					-- Store off a copy of the tile
+					local tile = tiles[i]
+					
+					-- Check if the tile has a property named "animation1", our sequence
+					if(tile.animation1) then
+							
+						-- Prepare it through the sprite
+						tile.sprite:prepare("animation1")
+						
+						-- Now finally play it
+						tile.sprite:play()
+					end
+				end
+			end
         end     
-end
+	end
+	
+	local layer = map:getTileLayer("SableMouvant")
+ 
+-- Make sure we actually have a layer
+	if(layer) then
+        -- Get all the tiles on this layer
+        local tiles = layer.tiles
+        
+        -- Make sure tiles is not nil
+        if(tiles) then
+                
+			-- Loop through all our tiles on this layer     
+			for i=1, #tiles, 1 do
+				-- Check if the tile is animated (note the capitilisation)
+				if(tiles[i].IsAnimated) then
+					-- Store off a copy of the tile
+					local tile = tiles[i]
+					
+					-- Check if the tile has a property named "animation1", our sequence
+					if(tile.animation1) then
+							
+						-- Prepare it through the sprite
+						tile.sprite:prepare("animation1")
+						
+						-- Now finally play it
+						tile.sprite:play()
+					end
+				end
+			end
+        end     
+	end
 
 	return visual
 	
