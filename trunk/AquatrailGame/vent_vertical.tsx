@@ -3,10 +3,12 @@
  <image source="vent_vertical.png" width="192" height="96"/>
  <tile id="0">
   <properties>
+   <property name="HasBody" value=""/>
    <property name="IsAnimated" value=""/>
    <property name="IsVent" value="top"/>
    <property name="animation1" value="frameCount=3,time=800"/>
    <property name="bodyType" value="static"/>
+   <property name="isSensor" value="true"/>
    <property name="sequences" value="animation1"/>
   </properties>
  </tile>
