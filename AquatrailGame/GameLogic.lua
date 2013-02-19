@@ -87,6 +87,7 @@ local map
 local player
 local visual 
 local physical
+local paused = false
 
 local pointsTable = {}
 local stalactiteTable = {}
@@ -153,6 +154,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	function onCollision(self, event )
+	--if GAMESTATE == STATE_PLAY then
 	 	if ( event.phase == "began" ) then			if event.other.IsEnd then				--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau				print("FIN DU NIVEAU")
 				player:setLinearVelocity(0,0)
 				player:prepare("animEndLevel")
@@ -162,34 +164,32 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			if event.other.IsGround then
 				--print("Ground");
 				player.canJump = true
-				if GAMESTATE == STATE_PLAY then
+				if EtatHero == 0 then
+					doubleSaut = true
+				elseif EtatHero == 1 then
+					chargesol = true
+				elseif EtatHero == 2 then
+					gagnerAlt = true
+				end
+				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL or  player.state == STATE_JUMPING_GAZ then
 					if EtatHero == 0 then
-						doubleSaut = true
-					elseif EtatHero == 1 then
-						chargesol = true
-					elseif EtatHero == 2 then
-						gagnerAlt = true
+						player.state = STATE_WALKING_LIQ
+					elseif EtatHero ==1 then
+						player.state = STATE_WALKING_SOL
+					elseif EtatHero ==2 then
+						player.state = STATE_WALKING_GAZ
 					end
-					if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL or  player.state == STATE_JUMPING_GAZ then
-						if EtatHero == 0 then
-							player.state = STATE_WALKING_LIQ
-						elseif EtatHero ==1 then
-							player.state = STATE_WALKING_SOL
-						elseif EtatHero ==2 then
-							player.state = STATE_WALKING_GAZ
-						end
-						player:prepare("anim" .. player.state)
-						player:play()
-					end
-					if event.other.IsChangeVitesse then
-						BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
-						BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
-						BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
-						BASEJUMPSOLIDE=30*event.other.bonusJumpSol
-						BASESPEEDGAZ=30*event.other.bonusSpeedGaz
-						BASEFLYGAZ=30*event.other.bonusJumpGaz
-					end
-				end		
+					player:prepare("anim" .. player.state)
+					player:play()
+				end
+				if event.other.IsChangeVitesse then
+					BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+					BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+					BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+					BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+					--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
+					--BASEFLYGAZ=30*event.other.bonusFlyGaz
+				end
 			elseif event.other.DeclencherStalactite then
 				print("COUCOUDeclencherStalactite")
 				for i=0, #stalactiteTable, 1 do
@@ -253,14 +253,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 				end
 			-- Fade out the stalacti
 			transition.to(stalacti, {time = 0, alpha = 0, onComplete=onTransitionEnd})
-			print(stalacti.index)
+			--print(stalacti.index)
 			audio.play(b_stalactite)
 			end
 		elseif event.other.IsSmashable then
-			print("IsSmashable");
-			print(BriseGlace);
 			if EtatHero == 1 and BriseGlace then
-				print("IsSmashable brise");
 				local stalacti = event.other
 				event.other:removeSelf()
 				transition.to(stalacti, {time = 500, alpha = 0, onComplete=onTransitionEnd})
@@ -306,7 +303,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			--Arrete le bonus dans 5 secondes
 			timer.performWithDelay(5000, stopSuperGoutteEffect, 1)
 		end
-		
+	--end	
 	end
 	
 	player.collision = onCollision
@@ -373,7 +370,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 							player.state = STATE_WALKING_GAZ
 						end
 						player.direction = DIRECTION_RIGHT
-						print("anim" .. player.state)
+						--print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
 						player:play()
 					end
@@ -440,7 +437,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	
 	function changeraltGaz() 
 		if gagnerAlt == true then
-			print(player.y)
+			--print(player.y)
 			player:applyLinearImpulse(0, -0.1, player.x, player.y)
 			timer.performWithDelay( 100, changeraltGaz, 1 )
 			
@@ -487,8 +484,8 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						if player.canJump then
 							--print(EtatHero)
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
-							print(-(jump*player.globalJump))
-							print(player.globalJump)
+							--print(-(jump*player.globalJump))
+							--print(player.globalJump)
 							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
 							--[[
 							if EtatHero==2 then
@@ -514,7 +511,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 							chargesol = false
 							player:applyLinearImpulse(0, 30, player.x, player.y)
 							BriseGlace=true
-							print("Charge")
+							--print("Charge")
 							timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 						end
 					else--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
@@ -602,7 +599,6 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	end
 	ChangePlayerDynamic()
 	player.direction = DIRECTION_RIGHT
-	print("animStartLevel")
 	player:prepare("animStartLevel")
 	player:play()
 	audio.play(startlevel)
@@ -724,10 +720,32 @@ end
 	
 end
 
-local stopEvents = function(   )
+local stopEvents = function()
+	print("kay")
 	Runtime:removeEventListener("enterFrame", onUpdate)
 	--Runtime:removeEventListener( "touch", UpdateGesturelib)
 	Runtime:removeEventListener("touch", ToucheScreen)
+end
+
+
+local PauseGame = function()
+		print("ezaeaze")
+	GAMESTATE = STATE_PAUSE
+	--chrono:Stop()
+	--audio.pause()
+	--physics.pause()
+	if event.phase == "began" then
+
+        if paused == false then
+             physics.pause()
+             paused = true
+			 audio.pause()
+        elseif paused == true then
+             physics.start()
+             paused = false
+			 audio.play()
+        end
+    end
 end
 
 local GameLogic = { createMap = createMap, stopEvents = stopEvents, updateScore=updateScore}

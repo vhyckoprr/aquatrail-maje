@@ -4,6 +4,7 @@ new = function ( params )
 
 	
 	local localGroup = display.newGroup()
+	local paused = false
 	display.setStatusBar( display.HiddenStatusBar )
 
 	system.activate( "multitouch" )
@@ -57,7 +58,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	chrono:Display(true)
 	
 	-- BACKBUTTON--
-	local backbutton = display.newImage ("backbutton.png")
+	local backbutton = display.newImage ("Bouton-Reload-HUD.png")
 	backbutton.x = backbutton.width / 2
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
@@ -69,6 +70,32 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 		end
 	end
 	backbutton:addEventListener ("touch", pressBack) 
+	
+	-- PauseBUTTON--
+	local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
+	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
+	pauseBUTTON.y = pauseBUTTON.height / 2
+	local function PauseFonction (event)
+		print("pause")
+		if event.phase == "ended" then
+        if paused == false then
+             physics.pause()
+             paused = true
+			 audio.pause()
+			 chrono:Stop()
+			 GAMESTATE = STATE_PAUSE
+        elseif paused == true then
+             physics.start()
+             paused = false
+			 chrono:Resume()
+			 audio.resume(maintheme)
+			 GAMESTATE = STATE_PLAY
+        end
+				--GameLogic.stopEvents()
+				--GameLogic.PauseGame()
+		end
+	end
+	pauseBUTTON:addEventListener ("touch", PauseFonction) 
 
 --------------------------------------------------------------
 --Add the Director Class insert statements here
@@ -76,7 +103,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	localGroup:insert(visual)
 	localGroup:insert(scoreText)
 	localGroup:insert(backbutton)
-
+	localGroup:insert(pauseBUTTON)
 
 	-- MUST return a display.newGroup()
 	return localGroup
