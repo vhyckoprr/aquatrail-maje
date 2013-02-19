@@ -78,21 +78,19 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	local function PauseFonction (event)
 		print("pause")
 		if event.phase == "ended" then
-        if paused == false then
-             physics.pause()
-             paused = true
-			 audio.pause()
-			 chrono:Stop()
-			 GAMESTATE = STATE_PAUSE
-        elseif paused == true then
-             physics.start()
-             paused = false
-			 chrono:Resume()
-			 audio.resume(maintheme)
-			 GAMESTATE = STATE_PLAY
-        end
-				--GameLogic.stopEvents()
-				--GameLogic.PauseGame()
+			if paused == false then
+				 physics.pause()
+				 paused = true
+				 audio.pause()
+				 chrono:Stop()
+				 GAMESTATE = STATE_PAUSE
+			elseif paused == true then
+				 physics.start()
+				 paused = false
+				 chrono:Resume()
+				 audio.resume(maintheme)
+				 GAMESTATE = STATE_PLAY
+			end
 		end
 	end
 	pauseBUTTON:addEventListener ("touch", PauseFonction) 
