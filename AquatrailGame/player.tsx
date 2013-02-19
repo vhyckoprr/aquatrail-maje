@@ -23,12 +23,13 @@
    <property name="animWalkingSol" value="startFrame=10,frameCount=5,time=500"/>
    <property name="bounceGla" value="0"/>
    <property name="bounceLiq" value="0"/>
+   <property name="densityGaz" value="0.5"/>
    <property name="densityGla" value="0.5"/>
    <property name="densityLiq" value="0.5"/>
+   <property name="gazFly" value="4"/>
+   <property name="gazSpeed" value="4"/>
    <property name="globalJump" value="0.4"/>
    <property name="globalSpeed" value="6"/>
-   <property name="gazSpeed" value="4"/>
-   <property name="gazFly" value="4"/>
    <property name="ignoreCulling" value="true"/>
    <property name="isFixedRotation" value="true"/>
    <property name="sequences" value="[&quot;animWalkingLiq&quot;,&quot;animWalkingSol&quot;,&quot;animWalkingGaz&quot;,&quot;animJumpingLiq&quot;,&quot;animJumpingSol&quot;,&quot;animJumpingGaz&quot;,&quot;animTransitionLiqSol&quot;,&quot;animTransitionSolLiq&quot;,&quot;animTransitionGazLiq&quot;,&quot;animTransitionSolGaz&quot;,&quot;animTransitionLiqGaz&quot;,&quot;animDJumping&quot;,&quot;animStartLevel&quot;,&quot;animTransitionGazSol&quot;,&quot;animEndLevel&quot;]"/>
