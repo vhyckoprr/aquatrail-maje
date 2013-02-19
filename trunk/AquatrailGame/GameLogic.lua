@@ -378,7 +378,12 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		end
 		if GAMESTATE == STATE_PLAY then		
 			--L'animation animTransition est enclencher?
-			if player.sequence == "animTransitionLiqSol" or player.sequence == "animTransitionSolLiq" or player.sequence == "animTransitionGazLiq" or player.sequence == "animTransitionLiqGaz" or player.sequence == "animTransitionSolGaz" or player.sequence == "animTransitionGazSol" then
+			if player.sequence == "animTransitionLiqSol" 
+			or player.sequence == "animTransitionSolLiq" 
+			or player.sequence == "animTransitionGazLiq" 
+			or player.sequence == "animTransitionLiqGaz" 
+			or player.sequence == "animTransitionSolGaz" 
+			or player.sequence == "animTransitionGazSol" then
 				--Le sprite est il entrain d'executer une animation?
 				if player.animating  then
 					--Le sprite a il fini son animation?
