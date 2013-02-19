@@ -8,7 +8,7 @@
    <property name="IsPlayer" value=""/>
    <property name="animDJumping" value="startFrame=6,frameCount=3,time=800"/>
    <property name="animEndLevel" value="startFrame=73,frameCount=6,time=1000,loopCount=1"/>
-   <property name="animJumpingGaz" value="startFrame=23,frameCount=3,time=800"/>
+   <property name="animJumpingGaz" value="startFrame=21,frameCount=3,time=800"/>
    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=800"/>
    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=800"/>
    <property name="animStartLevel" value="startFrame=64,frameCount=6,time=1000,loopCount=1"/>
@@ -18,7 +18,7 @@
    <property name="animTransitionLiqSol" value="startFrame=29,frameCount=5,time=500,loopCount=1"/>
    <property name="animTransitionSolGaz" value="startFrame=29,frameCount=5,time=500,loopCount=1"/>
    <property name="animTransitionSolLiq" value="startFrame=37,frameCount=5,time=500,loopCount=1"/>
-   <property name="animWalkingGaz" value="startFrame=19,frameCount=5,time=500"/>
+   <property name="animWalkingGaz" value="startFrame=19,frameCount=2,time=500"/>
    <property name="animWalkingLiq" value="frameCount=5,time=500"/>
    <property name="animWalkingSol" value="startFrame=10,frameCount=5,time=500"/>
    <property name="bounceGla" value="0"/>
