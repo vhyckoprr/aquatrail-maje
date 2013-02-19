@@ -56,6 +56,7 @@ local STATE_TRANSITIONGAZLIQ = "TransitionGazLiq"
 local STATE_TRANSITIONSOLGAZ = "TransitionSolGaz"
 local STATE_TRANSITIONGAZSOL = "TransitionGazSol"
 
+local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
 local SCORE = 0local TIME = 0
@@ -469,7 +470,9 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
-					if event.x - display.contentWidth/2 >0 then
+					--pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
+					--pauseBUTTON.y = pauseBUTTON.height / 2
+					if event.x - display.contentWidth/2 >0 and  event.x < display.contentWidth - pauseBUTTON.width and  event.y < display.contentHeight - pauseBUTTON.height then
 						--Check Doublesaut
 						--
 						if EtatHero == 0 then
@@ -534,7 +537,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 							--print("Charge")
 							timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 						end
-					else--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
+					elseif event.x - display.contentWidth/2 <=0 then--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
 						if ( event.phase == "began" ) then
 							if STATECHANGE == LIQSOL then
 								if EtatHero == 0 then
