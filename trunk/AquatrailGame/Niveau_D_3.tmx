@@ -18629,7 +18629,7 @@
     <property name="points" value="[&quot;Montee4A&quot;,&quot;Montee4B&quot;,&quot;Montee4C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee1C" x="1088" y="1408"/>
+  <object name="Montee2C" x="1088" y="1408"/>
   <object name="Montee2A" type="Body" x="864" y="1408">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -18644,7 +18644,7 @@
     <property name="points" value="[&quot;Montee2A&quot;,&quot;Montee2B&quot;,&quot;Montee2C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee1B" x="1088" y="1184"/>
+  <object name="Montee2B" x="1088" y="1184"/>
   <object type="Body" x="1824" y="1184" width="256" height="32">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -18814,8 +18814,8 @@
    </properties>
   </object>
   <object name="Montee12B" x="5056" y="1440"/>
-  <object name="Montee12C" x="5088" y="992"/>
-  <object name="Montee12B" x="5088" y="960"/>
+  <object name="Montee13C" x="5088" y="992"/>
+  <object name="Montee13B" x="5088" y="960"/>
   <object name="Montee13A" type="Body" x="5056" y="992">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -18971,8 +18971,8 @@
    </properties>
   </object>
   <object name="Montee21C" x="6112" y="1792"/>
-  <object name="Montee17C" x="6208" y="1472"/>
-  <object name="Montee17B" x="6304" y="1472"/>
+  <object name="Montee22C" x="6208" y="1472"/>
+  <object name="Montee22B" x="6304" y="1472"/>
   <object name="Montee22A" type="Body" x="6208" y="1376">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -19159,7 +19159,7 @@
     <property name="points" value="[&quot;Montee33A&quot;,&quot;Montee33B&quot;,&quot;Montee33C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee34A" type="Body" x="9280" y="1504">
+  <object name="Montee33A" type="Body" x="9280" y="1504">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -19169,11 +19169,11 @@
     <property name="bonusJumpSol" value="0.75"/>
     <property name="bonusSpeedLiq" value="0.8"/>
     <property name="bonusSpeedSol" value="0.8"/>
-    <property name="points" value="[&quot;Montee34A&quot;,&quot;Montee34B&quot;,&quot;Montee34C&quot;]"/>
+    <property name="points" value="[&quot;Montee33A&quot;,&quot;Montee33B&quot;,&quot;Montee33C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee34C" x="9344" y="1504"/>
-  <object name="Montee34B" x="9344" y="1440"/>
+  <object name="Montee33C" x="9344" y="1504"/>
+  <object name="Montee33B" x="9344" y="1440"/>
  </objectgroup>
  <layer name="SableMouvant" width="300" height="60">
   <properties>
