@@ -79,17 +79,11 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 		print("pause")
 		if event.phase == "ended" then
 			if paused == false then
-				 physics.pause()
-				 paused = true
-				 audio.pause()
-				 chrono:Stop()
-				 GAMESTATE = STATE_PAUSE
+				chrono:Stop()
+				GameLogic.PauseGame()
 			elseif paused == true then
-				 physics.start()
-				 paused = false
-				 chrono:Resume()
-				 audio.resume(maintheme)
-				 GAMESTATE = STATE_PLAY
+				chrono:Resume()
+				GameLogic.PauseGame()
 			end
 		end
 	end

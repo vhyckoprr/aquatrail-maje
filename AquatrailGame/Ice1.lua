@@ -5,21 +5,21 @@ new = function ( params )
 	
 	local localGroup = display.newGroup()
 	display.setStatusBar( display.HiddenStatusBar )
-
+	local paused = false
 	system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
 	require("ClassChronometre")
 	 
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
-	local LEVEL = 
-	{ 
-	endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
-					profile.saveInfoLevel(1, 1,score, time)
-					audio.stop()
-					--chrono:Stop()
-					GameLogic.stopEvents()
-					director:changeScene ("ScoreScreen")
+	local LEVEL = { 
+endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
+
+							--chrono:Stop()
+							profile.saveInfoLevel(1, 2,score, time)
+							audio.stop()
+							GameLogic.stopEvents()
+							director:changeScene ("ScoreScreen")
                 end
     }
 	
@@ -37,17 +37,25 @@ new = function ( params )
 	scoreText.x = display.contentWidth/2
 	scoreText.y =  scoreText.height / 2
 
-	function endLevel ()  end
-	--endLevel(chrono)
 	
+	function endLevel ()
+			
+	end
+
 	--STATECHANGE
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
 	local STATECHANGE = "LiqSol"
 	
-	local visual = GameLogic.createMap("Niveau_G_5.tmx", scoreText, LEVEL,STATECHANGE)
 
+    local visual = GameLogic.createMap("Niveau_G_5.tmx", scoreText, LEVEL,STATECHANGE)
+
+	--CHRONOMETRE
+	local chrono = Chrono:new()
+	chrono:Start()
+	chrono:Display(true)
+	
 	-- BACKBUTTON--
 	local backbutton = display.newImage ("Bouton-Reload-HUD.png")
 	backbutton.x = backbutton.width / 2
@@ -67,26 +75,18 @@ new = function ( params )
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
 	local function PauseFonction (event)
-		print("pause")
 		if event.phase == "ended" then
 			if paused == false then
-				 physics.pause()
-				 paused = true
-				 audio.pause()
-				 chrono:Stop()
-				 GAMESTATE = STATE_PAUSE
+				chrono:Stop()
+				GameLogic.PauseGame()
 			elseif paused == true then
-				 physics.start()
-				 paused = false
-				 chrono:Resume()
-				 audio.resume(maintheme)
-				 GAMESTATE = STATE_PLAY
+				chrono:Resume()
+				GameLogic.PauseGame()
 			end
 		end
 	end
 	pauseBUTTON:addEventListener ("touch", PauseFonction) 
-	
-	
+
 --------------------------------------------------------------
 --Add the Director Class insert statements here
 	localGroup:insert(back)
