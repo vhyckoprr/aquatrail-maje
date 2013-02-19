@@ -46,7 +46,7 @@ new = function ( params )
 	--local SOLGAZ = "SolGaz"
 	local STATECHANGE = "LiqSol"
 	
-	local visual = GameLogic.createMap("Niveau_G_1_true.tmx", scoreText, LEVEL,STATECHANGE)
+	local visual = GameLogic.createMap("Niveau_G_1.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	local chrono = Chrono:new()
