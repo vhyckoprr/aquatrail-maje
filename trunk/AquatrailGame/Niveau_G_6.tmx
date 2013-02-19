@@ -9131,7 +9131,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object name="FINDENIVEAU" type="Body" x="8672" y="96" width="288" height="352">
+  <object name="FINDENIVEAU" type="Body" x="8896" y="0" width="32" height="544">
    <properties>
     <property name="HasBody" value=""/>
     <property name="IsEnd" value=""/>
@@ -9183,14 +9183,6 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object name="1_2-B" x="1796" y="193"/>
-  <object name="1_2-C" x="1824" y="193"/>
-  <object name="1_2-A" type="Body" x="1823" y="219">
-   <properties>
-    <property name="bodyType" value="static"/>
-    <property name="points" value="[&quot;1_2-A&quot;,&quot;1_2-B&quot;,&quot;1_2-C&quot;]"/>
-   </properties>
-  </object>
   <object type="Body" x="1792" y="320" width="64" height="32">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -9213,7 +9205,23 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="1836" y="192" width="48" height="33">
+  <object name="Z1A" type="Body" x="1824" y="224">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Z1A&quot;,&quot;Z1B&quot;,&quot;Z1C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Z1B" x="1792" y="192"/>
+  <object name="Z1C" x="1824" y="192"/>
+  <object name="Z2A" type="Body" x="1888" y="224">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="points" value="[&quot;Z2A&quot;,&quot;Z2B&quot;,&quot;Z2C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Z2B" x="1920" y="192"/>
+  <object name="Z2C" x="1888" y="192"/>
+  <object type="Body" x="1824" y="192" width="64" height="32">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9222,14 +9230,6 @@
     <property name="bonusJumpSol" value="0.75"/>
     <property name="bonusSpeedLiq" value="1"/>
     <property name="bonusSpeedSol" value="1.4"/>
-   </properties>
-  </object>
-  <object name="1_2-1C" x="1885" y="195"/>
-  <object name="1_2-1B" x="1918" y="194"/>
-  <object name="1_2-1A" type="Body" x="1882" y="219">
-   <properties>
-    <property name="bodyType" value="static"/>
-    <property name="points" value="[&quot;1_2-1A&quot;,&quot;1_2-1B&quot;,&quot;1_2-1C&quot;]"/>
    </properties>
   </object>
  </objectgroup>
