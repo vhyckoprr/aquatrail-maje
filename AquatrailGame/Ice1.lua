@@ -46,15 +46,10 @@ new = function ( params )
 	--local SOLGAZ = "SolGaz"
 	local STATECHANGE = "LiqSol"
 	
-	local visual = GameLogic.createMap("Niveau_G_1.tmx", scoreText, LEVEL,STATECHANGE)
+	local visual = GameLogic.createMap("Niveau_G_5.tmx", scoreText, LEVEL,STATECHANGE)
 
-	--CHRONOMETRE
-	local chrono = Chrono:new()
-	chrono:Start()
-	chrono:Display(true)
-	
-	-- BACKBUTTON--	
-	local backbutton = display.newImage ("backbutton.png")
+	-- BACKBUTTON--
+	local backbutton = display.newImage ("Bouton-Reload-HUD.png")
 	backbutton.x = backbutton.width / 2
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
@@ -67,6 +62,30 @@ new = function ( params )
 	end
 	backbutton:addEventListener ("touch", pressBack) 
 	
+	-- PauseBUTTON--
+	local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
+	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
+	pauseBUTTON.y = pauseBUTTON.height / 2
+	local function PauseFonction (event)
+		print("pause")
+		if event.phase == "ended" then
+			if paused == false then
+				 physics.pause()
+				 paused = true
+				 audio.pause()
+				 chrono:Stop()
+				 GAMESTATE = STATE_PAUSE
+			elseif paused == true then
+				 physics.start()
+				 paused = false
+				 chrono:Resume()
+				 audio.resume(maintheme)
+				 GAMESTATE = STATE_PLAY
+			end
+		end
+	end
+	pauseBUTTON:addEventListener ("touch", PauseFonction) 
+	
 	
 --------------------------------------------------------------
 --Add the Director Class insert statements here
@@ -74,7 +93,7 @@ new = function ( params )
 	localGroup:insert(visual)
 	localGroup:insert(scoreText)
 	localGroup:insert(backbutton)
-
+	localGroup:insert(pauseBUTTON)
 
 	-- MUST return a display.newGroup()
 	return localGroup
