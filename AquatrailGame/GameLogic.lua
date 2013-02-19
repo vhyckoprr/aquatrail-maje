@@ -300,8 +300,8 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			local mysource = audio.getSourceFromChannel(1)
 			al.Source(mysource, al.PITCH, 1.5)
 			player.timeScale = 1.5
-			--Arrete le bonus dans 5 secondes
-			timer.performWithDelay(5000, stopSuperGoutteEffect, 1)
+			--Arrete le bonus dans 2 secondes
+			timer.performWithDelay(2000, stopSuperGoutteEffect, 1)
 		end
 	--end	
 	end
@@ -315,7 +315,6 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			player.y = 100
 			--player:setLinearVelocity(vx , 0)
 		end
-		
 		--Jouer animation debut de level
 		--
 		if GAMESTATE == STATE_STARTLEVEL then		
@@ -657,18 +656,18 @@ local PauseGame = function()
 	--chrono:Stop()
 	--audio.pause()
 	--physics.pause()
-	if event.phase == "began" then
+	--if event.phase == "began" then
 
-        if paused == false then
-             physics.pause()
-             paused = true
-			 audio.pause()
-        elseif paused == true then
-             physics.start()
-             paused = false
-			 audio.play()
-        end
-    end
+    --    if paused == false then
+    --         physics.pause()
+    --         paused = true
+	--		 audio.pause()
+    --    elseif paused == true then
+    --         physics.start()
+    --         paused = false
+	--		 audio.play()
+    --    end
+    --end
 end
 
 local GameLogic = { createMap = createMap, stopEvents = stopEvents, updateScore=updateScore}
