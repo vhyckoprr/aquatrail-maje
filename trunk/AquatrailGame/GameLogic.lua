@@ -269,6 +269,12 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 				end
 			end
 		end
+		--if event.other.IsVent then
+		--	if event.other.IsVent == "top" then
+		--		local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
+		--		player:setLinearVelocity(vx , vy+10)
+		--	end
+		--end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
 				--print("isground ended")
