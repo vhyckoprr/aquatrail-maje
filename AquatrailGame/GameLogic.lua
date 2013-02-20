@@ -56,10 +56,16 @@ local STATE_TRANSITIONGAZLIQ = "TransitionGazLiq"
 local STATE_TRANSITIONSOLGAZ = "TransitionSolGaz"
 local STATE_TRANSITIONGAZSOL = "TransitionGazSol"
 
---local STATE_ANIMATIONHERO = false
-local STATE_ANIMATIONHERO = ""
+local STATE_ANIMATIONENCOURS = false
 
-local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
+--local STATE_ANIMATIONHERO = false
+--local STATE_ANIMATIONHERO = ""
+
+
+
+
+
+
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
 local SCORE = 0local TIME = 0
@@ -113,6 +119,10 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	STATECHANGE = statehero
 	GAMESTATE = STATE_STARTLEVEL
+	STATE_ANIMATIONENCOURS = true
+	local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
+	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
+	pauseBUTTON.y = pauseBUTTON.height / 2
 	
 	if STATECHANGE == LIQSOL then
 		EtatHero = 0
@@ -360,12 +370,14 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						player:prepare("anim" .. player.state)
 						player:play()
 						GAMESTATE = STATE_PLAY
+						STATE_ANIMATIONENCOURS = false
 					end
 				end
 			end
 		end 
 	 
 		if GAMESTATE == STATE_ENDLEVEL then	
+		STATE_ANIMATIONENCOURS = true
 		--print("endlevel1")
 			--L'animation animTransition est enclencher?
 			if player.sequence == "animEndLevel"then
@@ -398,7 +410,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						elseif EtatHero ==2 then
 							player.state = STATE_WALKING_GAZ
 						end
-						STATE_ANIMATIONTRANSENCOURS = false
+						STATE_ANIMATIONENCOURS = false
 						player.direction = DIRECTION_RIGHT
 						--print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
@@ -420,7 +432,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						elseif EtatHero ==2 then
 							player.state = STATE_WALKING_GAZ
 						end
-						STATE_ANIMATIONTRANSENCOURS = false
+						STATE_ANIMATIONENCOURS = false
 						player.direction = DIRECTION_RIGHT
 						--print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
@@ -501,9 +513,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
-					--pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
-					--pauseBUTTON.y = pauseBUTTON.height / 2
-					if event.x - display.contentWidth/2 >0 and  event.x < display.contentWidth - pauseBUTTON.width and  event.y < display.contentHeight - pauseBUTTON.height then
+					if event.x - display.contentWidth/2 >0 
+					and  event.x < display.contentWidth - pauseBUTTON.width 
+					and  event.y < display.contentHeight - pauseBUTTON.height 
+					and STATE_ANIMATIONENCOURS == false
+					then
 						--Check Doublesaut
 						--
 						if EtatHero == 0 then
@@ -535,9 +549,15 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 							jump = BASEFLYGAZ
 						end
 							
-						if player.canJump and STATE_ANIMATIONTRANSENCOURS == false then
+						if player.canJump 
+						and STATE_ANIMATIONENCOURS == false 
+						then
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
-							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
+							if EtatHero == 2 then
+								player:applyLinearImpulse(0, -3, player.x, player.y)
+							else
+								player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
+							end
 							audio.play(b_saut)
 							if EtatHero == 0 then
 								player.state = STATE_JUMPING_LIQ
@@ -557,7 +577,9 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 							--print("Charge")
 							timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 						end
-					elseif event.x - display.contentWidth/2 <=0 then--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
+					elseif event.x - display.contentWidth/2 <=0 
+					and STATE_ANIMATIONENCOURS == false
+					then--Si c'est pas la partie droite, alors c'est la partie gauche du device je change d'Etat
 						if ( event.phase == "began" ) then
 							if STATECHANGE == LIQSOL then
 								if EtatHero == 0 then
@@ -591,13 +613,13 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 									--print("Etat Gaz")
 								elseif EtatHero == 2 then
 									EtatHero = 1
-									doubleSaut = true
+									doubleSaut = false
 									--print("Etat Solide")
 									player.state = STATE_TRANSITIONGAZSOL
 								end
 							end
 						end
-						STATE_ANIMATIONTRANSENCOURS = true
+						STATE_ANIMATIONENCOURS = true
 						ChangePlayerDynamic()
 						player.direction = DIRECTION_RIGHT
 						--print("anim" .. player.state)
@@ -607,11 +629,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			end
 			if ( event.phase == "ended" ) then
 				gagnerAlt = false
-				--if EtatHero == 2 then --Faire animation quand on gagne en altitude et quand on perd
-				--	player.state = STATE_WALKING_GAZ
-				--	player:prepare("anim" .. player.state)
-				--	player:play()
-				--end
+				if EtatHero == 2 and STATE_ANIMATIONENCOURS == false then --Faire animation quand on gagne en altitude et quand on perd
+					player.state = STATE_WALKING_GAZ
+					player:prepare("anim" .. player.state)
+					player:play()
+				end
 			end
 		end
 		
