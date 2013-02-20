@@ -11275,6 +11275,20 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
+  <object name="Montee75A" type="Body" x="2450" y="716">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.9"/>
+    <property name="points" value="[&quot;Montee75A&quot;,&quot;Montee75B&quot;,&quot;Montee75C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee75B" x="2541" y="780"/>
+  <object name="Montee75C" x="2450" y="779"/>
  </objectgroup>
  <layer name="Castle" width="300" height="30">
   <properties>
