@@ -56,6 +56,9 @@ local STATE_TRANSITIONGAZLIQ = "TransitionGazLiq"
 local STATE_TRANSITIONSOLGAZ = "TransitionSolGaz"
 local STATE_TRANSITIONGAZSOL = "TransitionGazSol"
 
+--local STATE_ANIMATIONHERO = false
+local STATE_ANIMATIONHERO = ""
+
 local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
@@ -141,7 +144,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	-- Build the physical
 	physical = lime.buildPhysical(map)
 	
-	physics.setDrawMode( "hybrid" )
+	--physics.setDrawMode( "hybrid" )
 	
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1, channel=1})
@@ -378,16 +381,16 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		end
 		if GAMESTATE == STATE_PLAY then		
 			--L'animation animTransition est enclencher?
+			--Les transition liqsol et liq gaz ayant 1 frame de différence on est obliger de decomposer en 2 if différents.
 			if player.sequence == "animTransitionLiqSol" 
 			or player.sequence == "animTransitionSolLiq" 
-			or player.sequence == "animTransitionGazLiq" 
-			or player.sequence == "animTransitionLiqGaz" 
-			or player.sequence == "animTransitionSolGaz" 
-			or player.sequence == "animTransitionGazSol" then
+			--or player.sequence == "animTransitionSolGaz" 
+			--or player.sequence == "animTransitionGazSol" 
+			then
 				--Le sprite est il entrain d'executer une animation?
 				if player.animating  then
 					--Le sprite a il fini son animation?
-					if player.currentFrame ==4 then
+					if player.currentFrame ==5 then
 						if EtatHero == 0 then
 							player.state = STATE_WALKING_LIQ
 						elseif EtatHero ==1 then
@@ -395,6 +398,29 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 						elseif EtatHero ==2 then
 							player.state = STATE_WALKING_GAZ
 						end
+						STATE_ANIMATIONTRANSENCOURS = false
+						player.direction = DIRECTION_RIGHT
+						--print("anim" .. player.state)
+						player:prepare("anim" .. player.state)
+						player:play()
+					end
+				end
+			end
+			if player.sequence == "animTransitionGazLiq" 
+			or player.sequence == "animTransitionLiqGaz" 
+			then
+				--Le sprite est il entrain d'executer une animation?
+				if player.animating  then
+					--Le sprite a il fini son animation?
+					if player.currentFrame ==6 then
+						if EtatHero == 0 then
+							player.state = STATE_WALKING_LIQ
+						elseif EtatHero ==1 then
+							player.state = STATE_WALKING_SOL
+						elseif EtatHero ==2 then
+							player.state = STATE_WALKING_GAZ
+						end
+						STATE_ANIMATIONTRANSENCOURS = false
 						player.direction = DIRECTION_RIGHT
 						--print("anim" .. player.state)
 						player:prepare("anim" .. player.state)
@@ -445,18 +471,18 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	function ChangePlayerDynamic()
  		local vx, vy = player:getLinearVelocity()
 		if EtatHero == 0 then
-		    	physics.removeBody( player )
-		    	physics.addBody( player, { density=player.densityLiq, friction=player.frictionLiq, bounce=player.bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
-		    	player.isFixedRotation = true
+			physics.removeBody( player )
+			physics.addBody( player, { density=player.densityLiq, friction=player.frictionLiq, bounce=player.bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
+			player.isFixedRotation = true
 		    --print("Etat Solide")
 		elseif EtatHero ==1 then
-		   physics.removeBody( player )
-		   physics.addBody( player, { density=player.densityGla, friction=player.frictionGla, bounce=player.bounceGla} )
-		   player.isFixedRotation = true
+		    physics.removeBody( player )
+		    physics.addBody( player, { density=player.densityGla, friction=player.frictionGla, bounce=player.bounceGla} )
+		    player.isFixedRotation = true
 		elseif EtatHero ==2 then
-		   physics.removeBody( player )
-		   physics.addBody( player, { density=player.densityGaz, friction=player.frictionGaz, bounce=player.bounceGaz} )
-		   player.isFixedRotation = true
+		    physics.removeBody( player )
+		    physics.addBody( player, { density=player.densityGaz, friction=player.frictionGaz, bounce=player.bounceGaz} )
+		    player.isFixedRotation = true
 		end
 		player:setLinearVelocity(vx, vy)
 	end
@@ -509,20 +535,9 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 							jump = BASEFLYGAZ
 						end
 							
-						if player.canJump then
-							--print(EtatHero)
+						if player.canJump and STATE_ANIMATIONTRANSENCOURS == false then
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
-							--print(-(jump*player.globalJump))
-							--print(player.globalJump)
 							player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
-							--[[
-							if EtatHero==2 then
-								player:applyLinearImpulse(0, -0.1, player.x, player.y)
-							else
-								player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
-							end]]
-							
-							--player:applyLinearImpulse(0, -(jump), player.x, player.y)
 							audio.play(b_saut)
 							if EtatHero == 0 then
 								player.state = STATE_JUMPING_LIQ
@@ -582,6 +597,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 								end
 							end
 						end
+						STATE_ANIMATIONTRANSENCOURS = true
 						ChangePlayerDynamic()
 						player.direction = DIRECTION_RIGHT
 						--print("anim" .. player.state)
@@ -591,11 +607,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			end
 			if ( event.phase == "ended" ) then
 				gagnerAlt = false
-				if EtatHero == 2 then --Faire animation quand on gagne en altitude et quand on perd
-					player.state = STATE_WALKING_GAZ
-					player:prepare("anim" .. player.state)
-					player:play()
-				end
+				--if EtatHero == 2 then --Faire animation quand on gagne en altitude et quand on perd
+				--	player.state = STATE_WALKING_GAZ
+				--	player:prepare("anim" .. player.state)
+				--	player:play()
+				--end
 			end
 		end
 		
