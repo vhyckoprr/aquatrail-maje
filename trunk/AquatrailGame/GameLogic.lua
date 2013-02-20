@@ -24,10 +24,6 @@ local LIQSOL = "LiqSol"
 local LIQGAZ = "LiqGaz"
 local SOLGAZ = "SolGaz"
 	
-	
-	
-	
-	
 local EtatHero = 0 --0 pour Etat liquide, 1 pour Etat Solide, 2 pour Etat Vapeur
 
 --Etat Liquide
@@ -57,14 +53,6 @@ local STATE_TRANSITIONSOLGAZ = "TransitionSolGaz"
 local STATE_TRANSITIONGAZSOL = "TransitionGazSol"
 
 local STATE_ANIMATIONENCOURS = false
-
---local STATE_ANIMATIONHERO = false
---local STATE_ANIMATIONHERO = ""
-
-
-
-
-
 
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
