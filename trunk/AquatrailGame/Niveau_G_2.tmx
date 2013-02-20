@@ -9127,7 +9127,7 @@
   <properties>
    <property name="parallaxFactorX" value="1"/>
   </properties>
-  <object name="Montee1A" type="Body" x="1088" y="288">
+  <object name="Montee1A" type="Body" x="1088" y="286">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9139,9 +9139,9 @@
     <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee1B" type="Body" x="1088" y="416"/>
-  <object name="Montee1C" type="Body" x="960" y="416"/>
-  <object name="Montee2A" type="Body" x="1152" y="320">
+  <object name="Montee1B" type="Body" x="1068" y="428"/>
+  <object name="Montee1C" type="Body" x="940" y="428"/>
+  <object name="Montee2A" type="Body" x="1139" y="300">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9154,8 +9154,8 @@
    </properties>
   </object>
   <object name="Montee2C" x="1152" y="512"/>
-  <object name="Montee2B" x="1344" y="512"/>
-  <object name="Montee3A" type="Body" x="1600" y="224">
+  <object name="Montee2B" x="1331" y="493"/>
+  <object name="Montee3A" type="Body" x="1587" y="204">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9167,9 +9167,9 @@
     <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee3C" x="1600" y="320"/>
-  <object name="Montee3B" x="1696" y="320"/>
-  <object name="Montee4A" type="Body" x="800" y="832">
+  <object name="Montee3C" x="1587" y="300"/>
+  <object name="Montee3B" x="1707" y="302"/>
+  <object name="Montee4A" type="Body" x="787" y="812">
    <properties>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
@@ -9180,8 +9180,8 @@
     <property name="points" value="[&quot;Montee4A&quot;,&quot;Montee4B&quot;,&quot;Montee4C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee4B" x="896" y="928"/>
-  <object name="Montee4C" x="800" y="928"/>
+  <object name="Montee4B" x="908" y="908"/>
+  <object name="Montee4C" x="787" y="908"/>
   <object name="Montee6A" type="Body" x="2912" y="800">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -9195,7 +9195,7 @@
   </object>
   <object name="Montee6B" x="2880" y="768"/>
   <object name="Montee6C" x="2912" y="768"/>
-  <object name="Montee7A" type="Body" x="2752" y="864">
+  <object name="Montee7A" type="Body" x="2739" y="876">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9207,8 +9207,8 @@
     <property name="points" value="[&quot;Montee7A&quot;,&quot;Montee7B&quot;,&quot;Montee7C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee7B" x="2784" y="896"/>
-  <object name="Montee7C" x="2752" y="896"/>
+  <object name="Montee7B" x="2796" y="908"/>
+  <object name="Montee7C" x="2739" y="907"/>
   <object name="Montee8A" type="Body" x="3008" y="736">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -9222,7 +9222,7 @@
   </object>
   <object name="Montee8B" x="3136" y="608"/>
   <object name="Montee8C" x="3008" y="608"/>
-  <object name="Montee10A" type="Body" x="3840" y="576">
+  <object name="Montee10A" type="Body" x="3820" y="588">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9234,9 +9234,9 @@
     <property name="points" value="[&quot;Montee10A&quot;,&quot;Montee10B&quot;,&quot;Montee10C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee10B" x="4000" y="416"/>
-  <object name="Montee10C" x="4000" y="576"/>
-  <object name="Montee11A" type="Body" x="4096" y="448">
+  <object name="Montee10B" x="4000" y="414"/>
+  <object name="Montee10C" x="3980" y="588"/>
+  <object name="Montee11A" type="Body" x="4084" y="428">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9248,8 +9248,8 @@
     <property name="points" value="[&quot;Montee11A&quot;,&quot;Montee11B&quot;,&quot;Montee11C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee11C" x="4096" y="608"/>
-  <object name="Montee11B" x="4256" y="608"/>
+  <object name="Montee11C" x="4083" y="589"/>
+  <object name="Montee11B" x="4268" y="590"/>
   <object name="Montee12A" type="Body" x="4704" y="608">
    <properties>
     <property name="bodyType" value="static"/>
@@ -9275,9 +9275,9 @@
   </object>
   <object name="Montee13C" x="4896" y="576"/>
   <object name="Montee13B" x="4928" y="576"/>
-  <object name="Montee14B" x="5472" y="416"/>
-  <object name="Montee14C" x="5472" y="544"/>
-  <object name="Montee15A" type="Body" x="5632" y="448">
+  <object name="Montee14B" x="5472" y="413"/>
+  <object name="Montee14C" x="5452" y="556"/>
+  <object name="Montee15A" type="Body" x="5619" y="429">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9289,9 +9289,9 @@
     <property name="points" value="[&quot;Montee15A&quot;,&quot;Montee15B&quot;,&quot;Montee15C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee15B" x="5632" y="480"/>
-  <object name="Montee15C" x="5664" y="480"/>
-  <object name="Montee16A" type="Body" x="5760" y="480">
+  <object name="Montee15B" x="5619" y="459"/>
+  <object name="Montee15C" x="5676" y="460"/>
+  <object name="Montee16A" type="Body" x="5747" y="460">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9303,9 +9303,9 @@
     <property name="points" value="[&quot;Montee16A&quot;,&quot;Montee16B&quot;,&quot;Montee16C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee16C" x="5760" y="512"/>
-  <object name="Montee16B" x="5792" y="512"/>
-  <object name="Montee17A" type="Body" x="6848" y="480">
+  <object name="Montee16C" x="5747" y="492"/>
+  <object name="Montee16B" x="5804" y="492"/>
+  <object name="Montee17A" type="Body" x="6828" y="492">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9317,9 +9317,9 @@
     <property name="points" value="[&quot;Montee17A&quot;,&quot;Montee17B&quot;,&quot;Montee17C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee17B" x="6912" y="416"/>
-  <object name="Montee17C" x="6912" y="480"/>
-  <object name="Montee18A" type="Body" x="6976" y="448">
+  <object name="Montee17B" x="6912" y="414"/>
+  <object name="Montee17C" x="6892" y="492"/>
+  <object name="Montee18A" type="Body" x="6963" y="428">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9331,8 +9331,8 @@
     <property name="points" value="[&quot;Montee18A&quot;,&quot;Montee18B&quot;,&quot;Montee18C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee18B" x="7072" y="544"/>
-  <object name="Montee18C" x="6976" y="544"/>
+  <object name="Montee18B" x="7084" y="524"/>
+  <object name="Montee18C" x="6963" y="524"/>
   <object type="Body" x="9472" y="0" width="32" height="704">
    <properties>
     <property name="HasBody" value=""/>
@@ -9341,7 +9341,7 @@
     <property name="isSensor" value="true"/>
    </properties>
   </object>
-  <object name="Montee19A" type="Body" x="7232" y="544">
+  <object name="Montee19A" type="Body" x="7219" y="524">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9353,9 +9353,9 @@
     <property name="points" value="[&quot;Montee19A&quot;,&quot;Montee19B&quot;,&quot;Montee19C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee19B" x="7328" y="640"/>
-  <object name="Montee19C" x="7232" y="640"/>
-  <object name="Montee4AA" type="Body" x="1792" y="320">
+  <object name="Montee19B" x="7308" y="620"/>
+  <object name="Montee19C" x="7219" y="620"/>
+  <object name="Montee4AA" type="Body" x="1780" y="301">
    <properties>
     <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
@@ -9366,15 +9366,15 @@
     <property name="points" value="[&quot;Montee4AA&quot;,&quot;Montee4AB&quot;,&quot;Montee4AC&quot;]"/>
    </properties>
   </object>
-  <object name="Montee4AC" x="1792" y="384"/>
-  <object name="Montee4AB" x="1856" y="384"/>
-  <object name="Montee100B" x="1984" y="640"/>
-  <object name="Montee100C" x="1984" y="704"/>
-  <object name="Montee200B" x="7776" y="576"/>
-  <object name="Montee200C" x="7776" y="608"/>
-  <object name="Montee201B" x="7904" y="512"/>
-  <object name="Montee201C" x="7904" y="576"/>
-  <object name="Montee100A" type="Body" x="1920" y="704">
+  <object name="Montee4AC" x="1779" y="364"/>
+  <object name="Montee4AB" x="1868" y="366"/>
+  <object name="Montee100B" x="1984" y="638"/>
+  <object name="Montee100C" x="1964" y="716"/>
+  <object name="Montee200B" x="7776" y="574"/>
+  <object name="Montee200C" x="7756" y="620"/>
+  <object name="Montee201B" x="7904" y="510"/>
+  <object name="Montee201C" x="7884" y="588"/>
+  <object name="Montee100A" type="Body" x="1900" y="716">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9386,7 +9386,7 @@
     <property name="points" value="[&quot;Montee100A&quot;,&quot;Montee100B&quot;,&quot;Montee100C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee101A" type="Body" x="2144" y="576">
+  <object name="Montee101A" type="Body" x="2124" y="588">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9398,9 +9398,9 @@
     <property name="points" value="[&quot;Montee101A&quot;,&quot;Montee101B&quot;,&quot;Montee101C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee101C" x="2208" y="576"/>
-  <object name="Montee101B" x="2208" y="512"/>
-  <object name="Montee14A" type="Body" x="5344" y="544">
+  <object name="Montee101C" x="2188" y="587"/>
+  <object name="Montee101B" x="2208" y="510"/>
+  <object name="Montee14A" type="Body" x="5324" y="556">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9412,7 +9412,7 @@
     <property name="points" value="[&quot;Montee14A&quot;,&quot;Montee14B&quot;,&quot;Montee14C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee103A" type="Body" x="8800" y="832">
+  <object name="Montee103A" type="Body" x="8780" y="844">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9424,9 +9424,9 @@
     <property name="points" value="[&quot;Montee103A&quot;,&quot;Montee103B&quot;,&quot;Montee103C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee103C" x="8864" y="832"/>
-  <object name="Montee103B" x="8864" y="768"/>
-  <object name="Montee102A" type="Body" x="8128" y="800">
+  <object name="Montee103C" x="8828" y="844"/>
+  <object name="Montee103B" x="8864" y="764"/>
+  <object name="Montee102A" type="Body" x="8115" y="780">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9438,8 +9438,8 @@
     <property name="points" value="[&quot;Montee102A&quot;,&quot;Montee102B&quot;,&quot;Montee102C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee102C" x="8128" y="864"/>
-  <object name="Montee102B" x="8192" y="864"/>
+  <object name="Montee102C" x="8115" y="844"/>
+  <object name="Montee102B" x="8205" y="845"/>
   <object name="Montee104B" x="8288" y="640"/>
   <object name="Montee104C" x="8352" y="640"/>
   <object name="Montee104A" type="Body" x="8352" y="704">
@@ -9468,9 +9468,9 @@
   </object>
   <object name="Montee105C" x="8544" y="640"/>
   <object name="Montee105B" x="8608" y="640"/>
-  <object name="Montee106B" x="9216" y="736"/>
-  <object name="Montee106C" x="9088" y="736"/>
-  <object name="Montee106A" type="Body" x="9088" y="608">
+  <object name="Montee106B" x="9228" y="716"/>
+  <object name="Montee106C" x="9075" y="716"/>
+  <object name="Montee106A" type="Body" x="9075" y="588">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9482,7 +9482,7 @@
     <property name="points" value="[&quot;Montee106A&quot;,&quot;Montee106B&quot;,&quot;Montee106C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee200A" type="Body" x="7744" y="608">
+  <object name="Montee200A" type="Body" x="7724" y="620">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9494,7 +9494,7 @@
     <property name="points" value="[&quot;Montee200A&quot;,&quot;Montee200B&quot;,&quot;Montee200C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee201A" type="Body" x="7840" y="576">
+  <object name="Montee201A" type="Body" x="7820" y="588">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9570,7 +9570,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="1088" y="288" width="64" height="64">
+  <object type="Body" x="1088" y="288" width="52" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="bodyType" value="static"/>
@@ -9749,7 +9749,7 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
-  <object type="Body" x="4000" y="416" width="96" height="64">
+  <object type="Body" x="4000" y="416" width="82" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -9967,7 +9967,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="1248" y="192" width="352" height="64">
+  <object type="Body" x="1248" y="192" width="337" height="63">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="bodyType" value="static"/>
@@ -9997,7 +9997,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="1696" y="288" width="96" height="32">
+  <object type="Body" x="1696" y="288" width="81" height="32">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="bodyType" value="static"/>
@@ -10177,7 +10177,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="5472" y="416" width="160" height="64">
+  <object type="Body" x="5472" y="416" width="146" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10188,7 +10188,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="5664" y="448" width="96" height="64">
+  <object type="Body" x="5664" y="448" width="82" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10232,7 +10232,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="6912" y="416" width="64" height="64">
+  <object type="Body" x="6912" y="416" width="48" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -10339,7 +10339,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="8288" y="544" width="64" height="64">
+  <object type="Body" x="8288" y="544" width="64" height="96">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="bodyType" value="static"/>
@@ -10359,7 +10359,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="8544" y="544" width="64" height="64">
+  <object type="Body" x="8544" y="544" width="64" height="96">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="bodyType" value="static"/>
@@ -10962,7 +10962,7 @@
    </properties>
   </object>
   <object name="Montee4000B" x="1024" y="480"/>
-  <object name="Montee4000C" x="1152" y="480"/>
+  <object name="Montee4000C" x="1171" y="492"/>
   <object name="Montee4000A" type="Body" x="1152" y="608">
    <properties>
     <property name="bodyType" value="static"/>
@@ -11023,7 +11023,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="1248" y="192" width="351" height="3">
+  <object type="Body" x="1248" y="192" width="333" height="4">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -11034,7 +11034,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="1696" y="288" width="95" height="3">
+  <object type="Body" x="1696" y="288" width="78" height="4">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -11144,7 +11144,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="1088" y="288" width="63" height="3">
+  <object type="Body" x="1088" y="288" width="50" height="4">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
@@ -11258,6 +11258,16 @@
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusJumpLiq" value="0.75"/>
+    <property name="bonusJumpSol" value="0.5"/>
+    <property name="bonusSpeedLiq" value="0.6"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object type="Body" x="4896" y="544" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusJumpLiq" value="0.75"/>
     <property name="bonusJumpSol" value="0.5"/>
