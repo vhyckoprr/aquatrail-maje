@@ -8777,7 +8777,7 @@
     <property name="points" value="[&quot;Montee19A&quot;,&quot;Montee19B&quot;,&quot;Montee19C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee19B" x="8095" y="575"/>
+  <object name="Montee19B" x="8082" y="575"/>
   <object name="Montee19C" x="8076" y="748"/>
   <object name="Montee4AA" type="Body" x="1792" y="768">
    <properties>
@@ -9161,7 +9161,7 @@
     <property name="bonusSpeedSol" value="1.4"/>
    </properties>
   </object>
-  <object type="Body" x="8096" y="576" width="896" height="64">
+  <object type="Body" x="8083" y="576" width="896" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
     <property name="IsGround" value=""/>
