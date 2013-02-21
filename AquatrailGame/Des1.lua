@@ -16,7 +16,7 @@ new = function ( params )
 endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 
 							--chrono:Stop()
-							profile.saveInfoLevel(1, 1,score, time)
+							profile.saveInfoLevel(1, 2,score, time)
 							audio.stop()
 							GameLogic.stopEvents()
 							director:changeScene ("ScoreScreen")

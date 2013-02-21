@@ -6,7 +6,7 @@ local MAXLEVELINWORLD=6
 
 worldinfo = {}
 
-worldinfo.version = 6
+worldinfo.version = 8
 worldinfo.sound = 50
 worldinfo.bruitage = 50
  
@@ -60,11 +60,75 @@ worldinfo.world1.level6.score = 0
 worldinfo.world1.level6.time = ""
 worldinfo.world1.level6.unlocked = false
 
+--WORLDINFO 2
+--
 worldinfo.world2 = {}
-worldinfo.world2.unlocked = false
+worldinfo.world2.unlocked = true
 
+worldinfo.world2.level1 = {}
+worldinfo.world2.level1.score = 0
+worldinfo.world2.level1.time = ""
+worldinfo.world2.level1.unlocked = true
+
+worldinfo.world2.level2 = {}
+worldinfo.world2.level2.score = 0
+worldinfo.world2.level2.time = ""
+worldinfo.world2.level2.unlocked = false
+
+worldinfo.world2.level3 = {}
+worldinfo.world2.level3.score = 0
+worldinfo.world2.level3.time = ""
+worldinfo.world2.level3.unlocked = false
+
+worldinfo.world2.level4 = {}
+worldinfo.world2.level4.score = 0
+worldinfo.world2.level4.time = ""
+worldinfo.world2.level4.unlocked = false
+
+worldinfo.world2.level5 = {}
+worldinfo.world2.level5.score = 0
+worldinfo.world2.level5.time = ""
+worldinfo.world2.level5.unlocked = false
+
+worldinfo.world2.level6 = {}
+worldinfo.world2.level6.score = 0
+worldinfo.world2.level6.time = ""
+worldinfo.world2.level6.unlocked = false
+
+--WORLDINFO 3
+--
 worldinfo.world3 = {}
-worldinfo.world3.unlocked = false
+worldinfo.world3.unlocked = true
+
+worldinfo.world3.level1 = {}
+worldinfo.world3.level1.score = 0
+worldinfo.world3.level1.time = ""
+worldinfo.world3.level1.unlocked = true
+
+worldinfo.world3.level2 = {}
+worldinfo.world3.level2.score = 0
+worldinfo.world3.level2.time = ""
+worldinfo.world3.level2.unlocked = false
+
+worldinfo.world3.level3 = {}
+worldinfo.world3.level3.score = 0
+worldinfo.world3.level3.time = ""
+worldinfo.world3.level3.unlocked = false
+
+worldinfo.world3.level4 = {}
+worldinfo.world3.level4.score = 0
+worldinfo.world3.level4.time = ""
+worldinfo.world3.level4.unlocked = false
+
+worldinfo.world3.level5 = {}
+worldinfo.world3.level5.score = 0
+worldinfo.world3.level5.time = ""
+worldinfo.world3.level5.unlocked = false
+
+worldinfo.world3.level6 = {}
+worldinfo.world3.level6.score = 0
+worldinfo.world3.level6.time = ""
+worldinfo.world3.level6.unlocked = false
 
 worldinfo.world4 = {}
 worldinfo.world4.unlocked = false

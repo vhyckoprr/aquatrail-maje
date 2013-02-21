@@ -7,7 +7,7 @@ new = function ( params )
 	local paused = false
 	display.setStatusBar( display.HiddenStatusBar )
 
-	system.activate( "multitouch" )
+	--system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
 	require("ClassChronometre")
@@ -17,7 +17,7 @@ new = function ( params )
 endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 
 							--chrono:Stop()
-							profile.saveInfoLevel(1, 2,score, time)
+							profile.saveInfoLevel(1, 4,score, time)
 							audio.stop()
 							GameLogic.stopEvents()
 							director:changeScene ("ScoreScreen")
