@@ -26,6 +26,7 @@
  <tileset firstgid="14" source="goutteletteSpriteSheet.tsx"/>
  <tileset firstgid="16" source="SuperGouttellettes.tsx"/>
  <tileset firstgid="20" source="player.tsx"/>
+ <tileset firstgid="101" source="sol_herbe.tsx"/>
  <layer name="Calque de Tile 1" width="300" height="30">
   <data>
    <tile gid="0"/>
