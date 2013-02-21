@@ -154,7 +154,7 @@
     <property name="points" value="[&quot;Montee2A&quot;,&quot;Montee2B&quot;,&quot;Montee2C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee2C" x="1152" y="512"/>
+  <object name="Montee2C" x="1152" y="480"/>
   <object name="Montee2B" x="1331" y="493"/>
   <object name="Montee3A" type="Body" x="1587" y="204">
    <properties>
@@ -1958,7 +1958,7 @@
    </properties>
   </object>
   <object name="Montee4000B" x="1024" y="480"/>
-  <object name="Montee4000C" x="1171" y="492"/>
+  <object name="Montee4000C" x="1139" y="492"/>
   <object name="Montee4000A" type="Body" x="1152" y="608">
    <properties>
     <property name="bodyType" value="static"/>
