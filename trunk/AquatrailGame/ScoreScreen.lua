@@ -1,10 +1,13 @@
-xml = require( "xml" ).newParser()
-require ("xml_parser")
+
+
 module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 	
-require ("request")	
+--require ("request")	
+local json = require ("json")
+
+
 local localGroup = display.newGroup()
 ---------------------------------LIST---------------------------------------------------------------------
 --import the widget library
@@ -133,11 +136,12 @@ local function onRowTouch( event )
 	end
 end
 ------------------------------------------------------------------------------------------------------------------------------ EXPLICATION SUR RECUPERATION de l''XML sur le serveur-- DEUX METHODES-- Recuperation de l'xml sous forme de requete (utilisation de xml.lua))
-network.request ( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData)
+--network.request ( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListener)
+
 -- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
 --SOIT-- Sauvegarde de l'xml puis lecture (utilisation de xml_parse.lua)
---network.download ("http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData, "score.xml")
--- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
+--network.download ("http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData, "score.json")
+-- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
 
 	-- insert rows on list FOR TEST ONLY 
 for i = 1, 20 do
@@ -166,48 +170,27 @@ localGroup:insert(widgetGroup)
 		end
 	end
 	backbutton:addEventListener ("touch", pressReturn)
+	
+	function networkListener( event )
+        if ( event.isError ) then
+                print( "Network error!")
+        else
+                myNewData = event.response
+                print ("From server: "..myNewData)
+                decodedData = (json.decode( myNewData))
+				local index = decodedData.index - 1
+				print (index)
+				for i=1, index, 1 do
+					print(decodedData["row"..i].login);
+				end
+        end
+	end
+	network.request( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListener )
 
 	-- MUST return a display.newGroup()
 	return localGroup
 end
--- FOUNCTION EN DEHORS POUR POUVOIR LES APPELLER DEPUIS request.lua
-function list:displayData(xmlTree)	
-	print(xmlTree.child[1].name)
-	local message = {}
-	--for j=1, #xmlTree.length do
-		message[0] = xmlTree.child[1]
-	--end
-	for i=1,#message do 
-		print("boucle for")
-		local player = {}
-		-- extract data from table and store in local variables
-		-- for easier readability/access:
-		player.id = message[i].child[1].value
-		player.type = message[i].child[2].value
-		player.score = message[i].child[3].value
-		player.login = message[i].child[4].value
-		player.time = message[i].child[5].value
-		list:refreshData(player, i)
-	end
 
-	--[[ METHOD 2
-	for i,xmlNode in pairs(xmlTree) do
-			local player = {}
-			print("ICI : "..xmlNode.Name)
-			player.id = xmlValue(xmlNode, "id")
-			player.type = xmlValue(xmlNode, "type")
-			player.score = xmlValue(xmlNode, "score")
-			player.login = xmlValue(xmlNode, "login")
-			player.time = xmlValue(xmlNode, "time")
-			player.world = xmlValue(xmlNode, "world")
-			player.stage = xmlValue(xmlNode, "stage")
-			print ( player.login)
-			list:refreshData(player, index)
-			index=index+1
-	end
-	]]--
-end
-
 function list:refreshData(playerData, index)
 		-- permet de creer la liste a partir des données xml	
 	-- insert rows into list (tableView widget)
@@ -224,10 +207,3 @@ function list:refreshData(playerData, index)
 
 end
 
-function xmlValue(xmlTree, nodeName)
-	for i,xmlNode in pairs(xmlTree.ChildNodes) do
-		if(xmlNode.Name==nodeName) then
-			return xmlNode.Value
-		end
-	end
-end
