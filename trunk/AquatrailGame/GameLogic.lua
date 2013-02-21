@@ -104,7 +104,7 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl, level, statehero, chrono)
+local createMap = function( urlMap, scoreEl, level, statehero)
 	STATECHANGE = statehero
 	GAMESTATE = STATE_STARTLEVEL
 	STATE_ANIMATIONENCOURS = true
@@ -333,7 +333,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	player:addEventListener( "collision", player )
 	
 	-- UPDATE----------------------------------------------------------------------
-	 onUpdate = function(event)
+	onUpdate = function(event)
 		if player.y < 80 then
 			player.y = 80
 			--player:setLinearVelocity(vx , 0)
@@ -475,11 +475,11 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 			physics.addBody( player, { density=player.densityLiq, friction=player.frictionLiq, bounce=player.bounceLiq} )  -- manuel ,shape={0,0,20,0,20,20,0,20}} ) 
 			player.isFixedRotation = true
 		    --print("Etat Solide")
-		elseif EtatHero ==1 then
+		elseif EtatHero == 1 then
 		    physics.removeBody( player )
 		    physics.addBody( player, { density=player.densityGla, friction=player.frictionGla, bounce=player.bounceGla} )
 		    player.isFixedRotation = true
-		elseif EtatHero ==2 then
+		elseif EtatHero == 2 then
 		    physics.removeBody( player )
 		    physics.addBody( player, { density=player.densityGaz, friction=player.frictionGaz, bounce=player.bounceGaz} )
 		    player.isFixedRotation = true
@@ -497,7 +497,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 	end
 	
 	--Fonction de saut !
-	function ToucheScreen (event)
+	--[[function ToucheScreen (event)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
@@ -621,6 +621,9 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 					player.state = STATE_WALKING_GAZ
 					player:prepare("anim" .. player.state)
 					player:play()
+					if player.y < 85 then
+						player:setLinearVelocity(vx , 0)
+					end
 				end
 			end
 		end
@@ -643,7 +646,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, chrono)
 		end
 	end
 	
-	Runtime:addEventListener("touch", ToucheScreen)
+	Runtime:addEventListener("touch", ToucheScreen)]]
 
 	--PLAYER INIT-----------------------------------------------------------------------
 	if EtatHero == 0 then
@@ -732,7 +735,6 @@ end
 local stopEvents = function()
 	print("kay")
 	Runtime:removeEventListener("enterFrame", onUpdate)
-	--Runtime:removeEventListener( "touch", UpdateGesturelib)
 	Runtime:removeEventListener("touch", ToucheScreen)
 end
 

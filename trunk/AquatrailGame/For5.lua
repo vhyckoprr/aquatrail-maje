@@ -4,8 +4,9 @@ new = function ( params )
 
 	
 	local localGroup = display.newGroup()
-	display.setStatusBar( display.HiddenStatusBar )
 	local paused = false
+	display.setStatusBar( display.HiddenStatusBar )
+
 	--system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
@@ -16,7 +17,7 @@ new = function ( params )
 endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 
 							--chrono:Stop()
-							profile.saveInfoLevel(1, 1,score, time)
+							profile.saveInfoLevel(1, 2,score, time)
 							audio.stop()
 							GameLogic.stopEvents()
 							director:changeScene ("ScoreScreen")
@@ -24,7 +25,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
     }
 	
 	--Background
-	local back = display.newImage("background_ice.png")
+	local back = display.newImage("background_desert.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
@@ -49,12 +50,12 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	local STATECHANGE = "LiqGaz"
 	
 
-    local visual = GameLogic.createMap("Niveau_D_1.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_D_3.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
-	--local chrono = Chrono:new()
-	--chrono:Start()
-	--chrono:Display(true)
+	local chrono = Chrono:new()
+	chrono:Start()
+	chrono:Display(true)
 	
 	-- BACKBUTTON--
 	local backbutton = display.newImage ("Bouton-Reload-HUD.png")
@@ -62,7 +63,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
-				--chrono:Stop()
+				chrono:Stop()
 				audio.stop()
 				GameLogic.stopEvents()
 				director:changeScene ("IceWorld")
@@ -75,12 +76,13 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
 	local function PauseFonction (event)
+		print("pause")
 		if event.phase == "ended" then
 			if paused == false then
-				--chrono:Stop()
+				chrono:Stop()
 				GameLogic.PauseGame()
 			elseif paused == true then
-				--chrono:Resume()
+				chrono:Resume()
 				GameLogic.PauseGame()
 			end
 		end

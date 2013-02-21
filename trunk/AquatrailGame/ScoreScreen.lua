@@ -177,7 +177,7 @@ function list:displayData(xmlTree)
 	--for j=1, #xmlTree.length do
 		message[0] = xmlTree.child[1]
 	--end
-	for i=1,#message do
+	for i=1,#message do 
 		print("boucle for")
 		local player = {}
 		-- extract data from table and store in local variables

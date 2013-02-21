@@ -15,7 +15,7 @@ new = function ( params )
 		-- Background
 	-- Create a background colour just to make the screen look a little nicer
 	local backcolor = DynResManager.createCenterRectangleFitted()
-	backcolor:setFillColor(200, 127, 23)
+	backcolor:setFillColor(241, 148, 86)
 	localGroup:insert(backcolor)
 	
 	--Background
@@ -26,7 +26,7 @@ new = function ( params )
    localGroup:insert(back)
    
    --return
-	local reBtn = display.newImage("bouton_retour_foret.png")
+	local reBtn = display.newImage("bouton_retour_desert.png")
    reBtn.isVisible = true
    reBtn:setReferencePoint(display.TopLeftReferencePoint)
    reBtn.x = 15
@@ -34,7 +34,7 @@ new = function ( params )
    localGroup:insert(reBtn)
 
 	--textWorlds
-	local textWorlds = display.newImage("texte_foret.png")
+	local textWorlds = display.newImage("texte_desert.png")
    textWorlds.isVisible = true
    textWorlds.x = 	display.contentWidth/2 
    textWorlds.y =  display.contentHeight/7
@@ -152,7 +152,7 @@ new = function ( params )
    --Level 1 Clic
 	   	local function pressCase1(event)
 		if (event.phase == "ended" and unlockLevel1 ) then
-			director:changeScene ("For1")
+			director:changeScene ("Des1")
 		end
 	end
 	case1Btn:addEventListener ("touch", pressCase1)
@@ -160,7 +160,7 @@ new = function ( params )
 	--Level 2 Clic
 	   	local function pressCase2(event)
 		if (event.phase == "ended" and unlockLevel2 )  then
-			director:changeScene ("For2")
+			director:changeScene ("Des2")
 		end
 	end
 	case2Btn:addEventListener ("touch", pressCase2)
@@ -168,7 +168,7 @@ new = function ( params )
 	--Level 3 Clic
 	   	local function pressCase3(event)
 		if (event.phase == "ended" and unlockLevel3 )  then
-			director:changeScene ("For3")
+			director:changeScene ("Des3")
 		end
 	end
 	case3Btn:addEventListener ("touch", pressCase3)
@@ -176,7 +176,7 @@ new = function ( params )
 	--Level 4 Clic
 	   	local function pressCase4(event)
 		if (event.phase == "ended" and unlockLevel4 )  then
-			director:changeScene ("For4")
+			director:changeScene ("Des4")
 		end
 	end
 	case4Btn:addEventListener ("touch", pressCase4)
@@ -184,7 +184,7 @@ new = function ( params )
 	--Level 5 Clic
 	   	local function pressCase5(event)
 		if (event.phase == "ended" and unlockLevel5 )  then
-			director:changeScene ("For5")
+			director:changeScene ("Des5")
 		end
 	end
 	case5Btn:addEventListener ("touch", pressCase5)
@@ -192,7 +192,7 @@ new = function ( params )
 	--Level 6 Clic
 	   	local function pressCase6(event)
 		if (event.phase == "ended" and unlockLevel6 )  then
-			director:changeScene ("For6")
+			director:changeScene ("Des6")
 		end
 	end
 	case6Btn:addEventListener ("touch", pressCase6)
