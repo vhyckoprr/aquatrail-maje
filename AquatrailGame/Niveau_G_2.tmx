@@ -121,7 +121,7 @@
    <property name="parallaxBase" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="Physics" width="300" height="30">
@@ -426,7 +426,7 @@
    </properties>
   </object>
   <object name="Montee103C" x="8844" y="844"/>
-  <object name="Montee103B" x="8862" y="767"/>
+  <object name="Montee103B" x="8849" y="767"/>
   <object name="Montee102A" type="Body" x="8115" y="780">
    <properties>
     <property name="IsChangeVitesse" value=""/>
@@ -1283,17 +1283,6 @@
   <object type="Body" x="6528" y="384" width="64" height="32">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="bonusJumpLiq" value="1"/>
-    <property name="bonusJumpSol" value="0.75"/>
-    <property name="bonusSpeedLiq" value="1"/>
-    <property name="bonusSpeedSol" value="1.4"/>
-   </properties>
-  </object>
-  <object type="Body" x="7296" y="608" width="32" height="96">
-   <properties>
-    <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusJumpLiq" value="1"/>
     <property name="bonusJumpSol" value="0.75"/>
