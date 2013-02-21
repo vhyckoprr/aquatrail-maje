@@ -9237,7 +9237,6 @@
   <object name="Sable" type="Body" x="1408" y="192" width="288" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusFlyGaz" value="1"/>
     <property name="bonusJumpLiq" value="1"/>
@@ -9263,7 +9262,6 @@
   <object name="Sable" type="Body" x="1920" y="384" width="160" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusFlyGaz" value="1"/>
     <property name="bonusJumpLiq" value="1"/>
@@ -9276,7 +9274,6 @@
   <object name="Sable" type="Body" x="2272" y="128" width="160" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusFlyGaz" value="1"/>
     <property name="bonusJumpLiq" value="1"/>
@@ -9484,7 +9481,6 @@
   <object name="Sable" type="Body" x="6784" y="192" width="192" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusFlyGaz" value="1"/>
     <property name="bonusJumpLiq" value="1"/>
@@ -9497,7 +9493,6 @@
   <object name="Sable" type="Body" x="7168" y="288" width="160" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusFlyGaz" value="1"/>
     <property name="bonusJumpLiq" value="1"/>
@@ -9510,7 +9505,6 @@
   <object name="Sable" type="Body" x="7552" y="224" width="288" height="64">
    <properties>
     <property name="IsChangeVitesse" value=""/>
-    <property name="IsGround" value=""/>
     <property name="bodyType" value="static"/>
     <property name="bonusFlyGaz" value="1"/>
     <property name="bonusJumpLiq" value="1"/>
@@ -10102,6 +10096,84 @@
     <property name="IsEnd" value=""/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="true"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1408" y="192" width="191" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1920" y="384" width="159" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2272" y="128" width="159" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6784" y="192" width="191" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7168" y="288" width="159" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7552" y="224" width="95" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
  </objectgroup>
