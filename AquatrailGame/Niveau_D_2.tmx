@@ -17,17 +17,16 @@
  <tileset firstgid="118" source="vent_vertical_bas.tsx"/>
  <tileset firstgid="121" source="botte_de_foin.tsx"/>
  <tileset firstgid="122" source="nuage_noir.tsx"/>
- <tileset firstgid="124" name="cactus" tilewidth="32" tileheight="32">
-  <image source="cactus.png" width="32" height="64"/>
- </tileset>
- <tileset firstgid="126" source="tornade_anim.tsx"/>
- <tileset firstgid="129" source="vent_horizontal.tsx"/>
- <tileset firstgid="132" name="oasis" tilewidth="32" tileheight="32">
+ <tileset firstgid="124" source="tornade_anim.tsx"/>
+ <tileset firstgid="127" source="vent_horizontal.tsx"/>
+ <tileset firstgid="130" name="oasis" tilewidth="32" tileheight="32">
   <image source="oasis.png" width="192" height="128"/>
  </tileset>
- <tileset firstgid="156" source="goutteletteSpriteSheet.tsx"/>
- <tileset firstgid="158" source="SuperGouttellettes.tsx"/>
- <layer name="Calque de Tile 1" width="300" height="30">
+ <tileset firstgid="154" source="goutteletteSpriteSheet.tsx"/>
+ <tileset firstgid="156" source="SuperGouttellettes.tsx"/>
+ <tileset firstgid="160" source="cactus.tsx"/>
+ <tileset firstgid="162" source="rocher.tsx"/>
+ <layer name="Platforms" width="300" height="30">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -547,7 +546,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1059,7 +1058,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1258,15 +1257,11 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1321,9 +1316,13 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="154"/>
+   <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1441,7 +1440,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1753,7 +1752,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2285,7 +2284,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2545,7 +2544,7 @@
    <tile gid="121"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2888,12 +2887,12 @@
    <tile gid="14"/>
    <tile gid="14"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="129"/>
+   <tile gid="127"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3030,6 +3029,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="30"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3074,11 +3074,11 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
-   <tile gid="156"/>
    <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
-   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3135,8 +3135,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="4"/>
    <tile gid="11"/>
@@ -3150,7 +3149,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3560,7 +3559,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3636,7 +3635,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3653,7 +3652,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3768,7 +3767,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="124"/>
+   <tile gid="160"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3809,7 +3808,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3829,7 +3828,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="4"/>
    <tile gid="11"/>
@@ -3909,7 +3908,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4013,7 +4012,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4032,7 +4031,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="4"/>
@@ -4068,11 +4067,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="125"/>
+   <tile gid="161"/>
    <tile gid="0"/>
-   <tile gid="156"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4098,7 +4095,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4142,12 +4141,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="130"/>
+   <tile gid="131"/>
    <tile gid="132"/>
    <tile gid="133"/>
    <tile gid="134"/>
    <tile gid="135"/>
-   <tile gid="136"/>
-   <tile gid="137"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4327,7 +4326,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="4"/>
    <tile gid="10"/>
@@ -4378,7 +4377,7 @@
    <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4421,8 +4420,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="160"/>
    <tile gid="0"/>
-   <tile gid="124"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4442,12 +4441,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="136"/>
+   <tile gid="137"/>
    <tile gid="138"/>
    <tile gid="139"/>
    <tile gid="140"/>
    <tile gid="141"/>
-   <tile gid="142"/>
-   <tile gid="143"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4505,7 +4504,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="14"/>
    <tile gid="14"/>
@@ -4539,7 +4538,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4564,7 +4563,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="124"/>
+   <tile gid="160"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4663,7 +4662,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="22"/>
    <tile gid="23"/>
@@ -4694,7 +4693,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="4"/>
    <tile gid="10"/>
@@ -4721,9 +4720,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="161"/>
    <tile gid="0"/>
-   <tile gid="125"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="4"/>
    <tile gid="11"/>
@@ -4742,12 +4741,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="142"/>
+   <tile gid="143"/>
    <tile gid="144"/>
-   <tile gid="145"/>
-   <tile gid="146"/>
    <tile gid="0"/>
-   <tile gid="148"/>
-   <tile gid="149"/>
+   <tile gid="146"/>
+   <tile gid="147"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4769,7 +4768,7 @@
    <tile gid="24"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4777,10 +4776,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="162"/>
    <tile gid="0"/>
-   <tile gid="18"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4818,7 +4817,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="124"/>
+   <tile gid="160"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4842,7 +4841,7 @@
    <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="111"/>
    <tile gid="0"/>
@@ -4864,11 +4863,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="125"/>
+   <tile gid="161"/>
    <tile gid="0"/>
-   <tile gid="156"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4883,7 +4880,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="4"/>
    <tile gid="10"/>
@@ -4923,7 +4922,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="124"/>
+   <tile gid="160"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5042,66 +5041,66 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="148"/>
+   <tile gid="149"/>
    <tile gid="150"/>
    <tile gid="151"/>
    <tile gid="152"/>
    <tile gid="153"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="4"/>
+   <tile gid="11"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="25"/>
+   <tile gid="26"/>
+   <tile gid="26"/>
+   <tile gid="27"/>
+   <tile gid="12"/>
+   <tile gid="9"/>
+   <tile gid="10"/>
+   <tile gid="6"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="7"/>
+   <tile gid="10"/>
+   <tile gid="10"/>
+   <tile gid="10"/>
+   <tile gid="10"/>
+   <tile gid="10"/>
+   <tile gid="10"/>
+   <tile gid="10"/>
+   <tile gid="2"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="162"/>
+   <tile gid="0"/>
    <tile gid="154"/>
-   <tile gid="155"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="4"/>
-   <tile gid="11"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="12"/>
-   <tile gid="25"/>
-   <tile gid="26"/>
-   <tile gid="26"/>
-   <tile gid="27"/>
-   <tile gid="12"/>
-   <tile gid="9"/>
-   <tile gid="10"/>
-   <tile gid="6"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="7"/>
-   <tile gid="10"/>
-   <tile gid="10"/>
-   <tile gid="10"/>
-   <tile gid="10"/>
-   <tile gid="10"/>
-   <tile gid="10"/>
-   <tile gid="10"/>
-   <tile gid="2"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="18"/>
-   <tile gid="0"/>
-   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="22"/>
@@ -5117,8 +5116,8 @@
    <tile gid="9"/>
    <tile gid="2"/>
    <tile gid="0"/>
-   <tile gid="156"/>
-   <tile gid="125"/>
+   <tile gid="154"/>
+   <tile gid="161"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5171,7 +5170,7 @@
    <tile gid="10"/>
    <tile gid="2"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5192,7 +5191,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5207,7 +5206,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="22"/>
    <tile gid="24"/>
@@ -5223,7 +5222,7 @@
    <tile gid="111"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="125"/>
+   <tile gid="161"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="4"/>
@@ -5282,7 +5281,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="18"/>
+   <tile gid="162"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5290,7 +5289,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="126"/>
+   <tile gid="124"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5303,7 +5302,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="0"/>
-   <tile gid="158"/>
+   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="11"/>
    <tile gid="12"/>
@@ -5497,10 +5496,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="18"/>
+   <tile gid="162"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5559,7 +5558,7 @@
    <tile gid="9"/>
    <tile gid="10"/>
    <tile gid="0"/>
-   <tile gid="158"/>
+   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="10"/>
    <tile gid="25"/>
@@ -5685,7 +5684,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -5721,7 +5720,7 @@
    <tile gid="12"/>
    <tile gid="9"/>
    <tile gid="2"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -6055,7 +6054,7 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="0"/>
-   <tile gid="158"/>
+   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -6272,7 +6271,7 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="0"/>
-   <tile gid="158"/>
+   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -6289,7 +6288,7 @@
    <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="156"/>
+   <tile gid="154"/>
    <tile gid="111"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -6587,8 +6586,8 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="9"/>
-   <tile gid="6"/>
    <tile gid="19"/>
+   <tile gid="20"/>
    <tile gid="20"/>
    <tile gid="20"/>
    <tile gid="20"/>
@@ -6704,7 +6703,7 @@
    <tile gid="12"/>
    <tile gid="13"/>
    <tile gid="0"/>
-   <tile gid="158"/>
+   <tile gid="156"/>
    <tile gid="0"/>
    <tile gid="12"/>
    <tile gid="12"/>
@@ -6887,8 +6886,8 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="12"/>
    <tile gid="22"/>
+   <tile gid="23"/>
    <tile gid="23"/>
    <tile gid="23"/>
    <tile gid="23"/>
@@ -7187,8 +7186,8 @@
    <tile gid="12"/>
    <tile gid="12"/>
    <tile gid="12"/>
-   <tile gid="12"/>
    <tile gid="25"/>
+   <tile gid="26"/>
    <tile gid="26"/>
    <tile gid="26"/>
    <tile gid="26"/>
@@ -9031,124 +9030,1245 @@
    <tile gid="12"/>
   </data>
  </layer>
- <objectgroup name="physics" width="300" height="30">
-  <object x="0" y="352" width="160" height="32"/>
-  <object x="128" y="352"/>
-  <object x="128" y="576"/>
-  <object x="352" y="544" width="320" height="32"/>
-  <object x="672" y="480" width="64" height="64"/>
-  <object x="736" y="416" width="64" height="64"/>
-  <object x="768" y="480" width="32" height="192"/>
-  <object x="800" y="672" width="64" height="32"/>
-  <object x="960" y="672" width="32" height="32"/>
-  <object x="864" y="736" width="96" height="32"/>
-  <object x="992" y="544" width="32" height="128"/>
-  <object x="1024" y="544" width="256" height="32"/>
-  <object x="1248" y="544"/>
-  <object x="1248" y="672"/>
-  <object x="1376" y="672"/>
-  <object x="352" y="576"/>
-  <object x="1376" y="640" width="320" height="32"/>
-  <object x="896" y="160" width="224" height="64"/>
-  <object x="320" y="160" width="96" height="64"/>
-  <object x="1696" y="672"/>
-  <object x="1824" y="672"/>
-  <object x="1824" y="512"/>
-  <object x="1824" y="512" width="128" height="32"/>
-  <object x="1952" y="512"/>
-  <object x="1952" y="640"/>
-  <object x="2048" y="640"/>
-  <object x="2048" y="608" width="320" height="32"/>
-  <object x="2336" y="640" width="32" height="96"/>
-  <object x="2368" y="768" width="96" height="32"/>
-  <object x="2464" y="576" width="32" height="160"/>
-  <object x="2496" y="576" width="64" height="32"/>
-  <object x="2560" y="512" width="64" height="64"/>
-  <object x="2624" y="448" width="160" height="64"/>
-  <object x="2784" y="512" width="64" height="64"/>
-  <object x="2848" y="576" width="256" height="32"/>
-  <object x="3104" y="576"/>
-  <object x="3232" y="576"/>
-  <object x="3232" y="448"/>
-  <object x="3232" y="448" width="160" height="32"/>
-  <object x="3392" y="448"/>
-  <object x="3552" y="448"/>
-  <object x="3552" y="288"/>
-  <object x="3552" y="288" width="256" height="32"/>
-  <object x="3808" y="288"/>
-  <object x="3808" y="576"/>
-  <object x="4096" y="576"/>
-  <object x="4096" y="576" width="32" height="32"/>
-  <object x="4224" y="576" width="32" height="32"/>
-  <object x="4128" y="640" width="96" height="32"/>
-  <object x="4256" y="512" width="96" height="64"/>
-  <object x="4352" y="448" width="320" height="64"/>
-  <object x="4672" y="448"/>
-  <object x="4672" y="576"/>
-  <object x="4800" y="576"/>
-  <object x="4800" y="576" width="480" height="32"/>
-  <object x="4960" y="256" width="96" height="128"/>
-  <object x="5056" y="320" width="96" height="64"/>
-  <object x="4896" y="544" width="32" height="32"/>
-  <object x="2176" y="576" width="32" height="32"/>
-  <object x="1120" y="480" width="32" height="64"/>
-  <object x="4128" y="128" width="96" height="64"/>
-  <object x="5280" y="576"/>
-  <object x="5376" y="576"/>
-  <object x="5376" y="480"/>
-  <object x="5376" y="480" width="96" height="32"/>
-  <object x="5472" y="480"/>
-  <object x="5472" y="544"/>
-  <object x="5536" y="544"/>
-  <object x="5536" y="608" width="96" height="32"/>
-  <object x="5632" y="544"/>
-  <object x="5728" y="544"/>
-  <object x="5728" y="448"/>
-  <object x="5728" y="448" width="96" height="32"/>
-  <object x="5824" y="448"/>
-  <object x="5824" y="512"/>
-  <object x="5888" y="512"/>
-  <object x="5888" y="512" width="96" height="256"/>
-  <object x="5984" y="736" width="96" height="32"/>
-  <object x="6080" y="512" width="192" height="224"/>
-  <object x="6272" y="512"/>
-  <object x="6368" y="512"/>
-  <object x="6368" y="416"/>
-  <object x="6368" y="416" width="96" height="32"/>
-  <object x="6464" y="416"/>
-  <object x="6528" y="416"/>
-  <object x="6528" y="352"/>
-  <object x="6528" y="352" width="64" height="32"/>
-  <object x="6592" y="416" width="64" height="64"/>
-  <object x="6656" y="480" width="64" height="64"/>
-  <object x="6720" y="544" width="384" height="32"/>
-  <object x="7104" y="544"/>
-  <object x="7200" y="544"/>
-  <object x="7200" y="448"/>
-  <object x="7200" y="448" width="128" height="32"/>
-  <object x="7328" y="384" width="160" height="64"/>
-  <object x="7488" y="448" width="128" height="32"/>
-  <object x="7616" y="448"/>
-  <object x="7616" y="512"/>
-  <object x="7680" y="512"/>
-  <object x="7680" y="512" width="64" height="160"/>
-  <object x="7744" y="704" width="96" height="32"/>
-  <object x="7840" y="512" width="256" height="160"/>
-  <object x="8096" y="512"/>
-  <object x="8096" y="672"/>
-  <object x="8256" y="672"/>
-  <object x="8256" y="672" width="256" height="32"/>
-  <object x="8512" y="608" width="64" height="64"/>
-  <object x="8576" y="544" width="224" height="64"/>
-  <object x="8800" y="480" width="96" height="64"/>
-  <object x="8896" y="416" width="160" height="64"/>
-  <object x="9056" y="416"/>
-  <object x="9056" y="544"/>
-  <object x="9184" y="544"/>
-  <object x="9184" y="544" width="96" height="32"/>
-  <object x="9280" y="544"/>
-  <object x="9280" y="640"/>
-  <object x="9376" y="640"/>
-  <object x="9376" y="640" width="224" height="32"/>
+ <objectgroup name="Physics" width="300" height="30">
+  <object name="Pente1C" x="146" y="556"/>
+  <object name="Pente2C" x="1267" y="652"/>
+  <object name="Pente2B" x="1363" y="652"/>
+  <object name="Pente1B" x="339" y="556"/>
+  <object name="Montee1C" x="1835" y="649"/>
+  <object name="Montee1B" x="1834" y="511"/>
+  <object name="Pente3C" x="1939" y="620"/>
+  <object name="Pente3B" x="2036" y="620"/>
+  <object name="Montee2C" x="3244" y="588"/>
+  <object name="Montee2B" x="3251" y="446"/>
+  <object name="Montee3C" x="3565" y="460"/>
+  <object name="Montee3B" x="3567" y="287"/>
+  <object name="Pente4C" x="3796" y="588"/>
+  <object name="Pente4B" x="4082" y="588"/>
+  <object name="Pente5C" x="4660" y="587"/>
+  <object name="Pente5B" x="4788" y="588"/>
+  <object name="Montee4C" x="5388" y="587"/>
+  <object name="Montee4B" x="5394" y="478"/>
+  <object name="Pente6C" x="5459" y="555"/>
+  <object name="Pente6B" x="5523" y="556"/>
+  <object name="Montee5C" x="5740" y="556"/>
+  <object name="Montee5B" x="5744" y="448"/>
+  <object name="Pente7C" x="5812" y="524"/>
+  <object name="Pente7B" x="5875" y="524"/>
+  <object name="Montee6C" x="6380" y="523"/>
+  <object name="Montee6B" x="6386" y="414"/>
+  <object name="Montee7C" x="6540" y="428"/>
+  <object name="Montee7B" x="6544" y="351"/>
+  <object name="Montee8C" x="7212" y="556"/>
+  <object name="Montee8B" x="7214" y="447"/>
+  <object name="Pente8C" x="7602" y="524"/>
+  <object name="Pente8B" x="7666" y="524"/>
+  <object name="Pente9C" x="8083" y="684"/>
+  <object name="Pente9B" x="8243" y="685"/>
+  <object name="Pente10C" x="9043" y="556"/>
+  <object name="Pente10B" x="9171" y="556"/>
+  <object name="Pente11C" x="9267" y="652"/>
+  <object name="Pente11B" x="9363" y="652"/>
+  <object name="Sable" type="Body" x="0" y="352" width="145" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="352" y="544" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="576" y="544" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="672" y="480" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="736" y="416" width="64" height="256">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="960" y="672" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="800" y="672" width="64" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="992" y="544" width="272" height="129">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="896" y="160" width="224" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1440" y="352" width="192" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1835" y="512" width="102" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2048" y="608" width="320" height="128">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2464" y="576" width="96" height="224">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2848" y="576" width="256" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2912" y="160" width="160" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="3252" y="448" width="139" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="3569" y="288" width="224" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4096" y="576" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4224" y="576" width="32" height="96">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4128" y="672" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4128" y="128" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4800" y="576" width="480" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4960" y="256" width="96" height="128">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="5056" y="320" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="5395" y="480" width="62" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="5536" y="640" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="5743" y="448" width="63" height="31">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="5984" y="736" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6387" y="416" width="76" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6545" y="352" width="46" height="31">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6752" y="160" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6944" y="64" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7136" y="192" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6816" y="544" width="192" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7215" y="448" width="113" height="31">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7680" y="512" width="64" height="160">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7744" y="736" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7840" y="512" width="224" height="224">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="8896" y="416" width="145" height="63">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="9184" y="544" width="82" height="31">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="9376" y="640" width="224" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="448" y="544" width="128" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="1408" y="640" width="256" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1376" y="640" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1664" y="640" width="32" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="2624" y="448" width="160" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="2560" y="512" width="288" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="4256" y="512" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="4352" y="448" width="303" height="62">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="5888" y="512" width="96" height="224">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="6080" y="512" width="192" height="224">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="6592" y="416" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="6656" y="480" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="6720" y="544" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="7008" y="544" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="7328" y="384" width="160" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="7488" y="448" width="128" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="8256" y="672" width="256" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="8512" y="608" width="64" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="8576" y="544" width="224" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="TerreCraquelee" type="Body" x="8800" y="480" width="96" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1"/>
+    <property name="bonusSpeedSol" value="1"/>
+   </properties>
+  </object>
+  <object name="Montee1A" type="Body" x="1708" y="652">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee1A&quot;,&quot;Montee1B&quot;,&quot;Montee1C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee2A" type="Body" x="3116" y="588">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee2A&quot;,&quot;Montee2B&quot;,&quot;Montee2C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee3A" type="Body" x="3403" y="460">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee4A" type="Body" x="5292" y="588">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee4A&quot;,&quot;Montee4B&quot;,&quot;Montee4C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee5A" type="Body" x="5644" y="557">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee5A&quot;,&quot;Montee5B&quot;,&quot;Montee5C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee6A" type="Body" x="6284" y="524">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee6A&quot;,&quot;Montee6B&quot;,&quot;Montee6C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee7A" type="Body" x="6477" y="427">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee7A&quot;,&quot;Montee7B&quot;,&quot;Montee7C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Montee8A" type="Body" x="7116" y="556">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="0.5"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+    <property name="points" value="[&quot;Montee8A&quot;,&quot;Montee8B&quot;,&quot;Montee8C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente1A" type="Body" x="147" y="363">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente1A&quot;,&quot;Pente1B&quot;,&quot;Pente1C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente2A" type="Body" x="1267" y="556">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente2A&quot;,&quot;Pente2B&quot;,&quot;Pente2C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente3A" type="Body" x="1939" y="524">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente3A&quot;,&quot;Pente3B&quot;,&quot;Pente3C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente4A" type="Body" x="3795" y="300">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente4A&quot;,&quot;Pente4B&quot;,&quot;Pente4C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente5A" type="Body" x="4659" y="460">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente5A&quot;,&quot;Pente5B&quot;,&quot;Pente5C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente6A" type="Body" x="5460" y="491">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente6A&quot;,&quot;Pente6B&quot;,&quot;Pente6C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente7A" type="Body" x="5811" y="460">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente7A&quot;,&quot;Pente7B&quot;,&quot;Pente7C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente8A" type="Body" x="7603" y="459">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente8A&quot;,&quot;Pente8B&quot;,&quot;Pente8C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente9A" type="Body" x="8084" y="524">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente9A&quot;,&quot;Pente9B&quot;,&quot;Pente9C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Pente11A" type="Body" x="9268" y="556">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente11A&quot;,&quot;Pente11B&quot;,&quot;Pente11C&quot;]"/>
+   </properties>
+  </object>
+  <object name="FINDENIVEAU" type="Body" x="9536" y="0" width="64" height="640">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsEnd" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2368" y="800" width="96" height="160">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="864" y="736" width="96" height="32">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Pente10A" type="Body" x="9042" y="427">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="1.2"/>
+    <property name="bonusSpeedSol" value="1.2"/>
+    <property name="points" value="[&quot;Pente10A&quot;,&quot;Pente10B&quot;,&quot;Pente10C&quot;]"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="896" y="160" width="223" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="1440" y="352" width="191" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="2912" y="160" width="159" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4128" y="128" width="95" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="4960" y="256" width="95" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="5056" y="320" width="95" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6752" y="160" width="95" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="6944" y="64" width="95" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
+  <object name="Sable" type="Body" x="7136" y="192" width="63" height="3">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
