@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="goutteletteSpriteSheet" tilewidth="32" tileheight="32">
+<tileset name="goutteletteSpriteSheet" tilewidth="27" tileheight="32">
  <image source="goutteletteSpriteSheet.png" width="64" height="32"/>
  <tile id="0">
   <properties>
