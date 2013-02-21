@@ -142,7 +142,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	-- Build the physical
 	physical = lime.buildPhysical(map)
 	
-	--physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "hybrid" )
 	
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1, channel=1})
@@ -497,7 +497,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	end
 	
 	--Fonction de saut !
-	--[[function ToucheScreen (event)
+	function ToucheScreen (event)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
@@ -646,7 +646,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 		end
 	end
 	
-	Runtime:addEventListener("touch", ToucheScreen)]]
+	Runtime:addEventListener("touch", ToucheScreen)
 
 	--PLAYER INIT-----------------------------------------------------------------------
 	if EtatHero == 0 then
