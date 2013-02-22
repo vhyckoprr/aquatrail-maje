@@ -9042,8 +9042,8 @@
   <object name="Pente2C" x="3028" y="428"/>
   <object name="Pente2B" x="3155" y="428"/>
   <object name="Montee4B" x="2799" y="286"/>
-  <object name="Pente3B" x="3828" y="843"/>
-  <object name="Pente3C" x="4052" y="844"/>
+  <object name="Pente3C" x="3828" y="843"/>
+  <object name="Pente3B" x="4052" y="844"/>
   <object name="Pente4C" x="4979" y="460"/>
   <object name="Pente4B" x="5171" y="460"/>
   <object name="Montee5B" x="6411" y="222"/>
