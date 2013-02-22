@@ -10270,5 +10270,18 @@
     <property name="bonusSpeedSol" value="0.8"/>
    </properties>
   </object>
+  <object name="Sable" type="Body" x="5632" y="576" width="32" height="64">
+   <properties>
+    <property name="IsChangeVitesse" value=""/>
+    <property name="IsGround" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="bonusFlyGaz" value="1"/>
+    <property name="bonusJumpLiq" value="1"/>
+    <property name="bonusJumpSol" value="0.75"/>
+    <property name="bonusSpeedGaz" value="1"/>
+    <property name="bonusSpeedLiq" value="0.8"/>
+    <property name="bonusSpeedSol" value="0.8"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
