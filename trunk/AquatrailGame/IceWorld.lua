@@ -19,7 +19,7 @@ new = function ( params )
 	localGroup:insert(backcolor)
 	
 	--Background
-	local back = display.newImage("fond_glace.png")
+	local back = display.newImage("background_ice.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
