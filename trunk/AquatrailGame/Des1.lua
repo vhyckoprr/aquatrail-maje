@@ -24,7 +24,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
     }
 	
 	--Background
-	local back = display.newImage("background_ice.png")
+	local back = display.newImage("background_desert.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 

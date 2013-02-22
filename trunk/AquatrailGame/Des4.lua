@@ -25,7 +25,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
     }
 	
 	--Background
-	local back = display.newImage("background_ice.png")
+	local back = display.newImage("background_desert.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
@@ -47,10 +47,10 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
-	local STATECHANGE = "LiqSol"
+	local STATECHANGE = "LiqGaz"
 	
 
-    local visual = GameLogic.createMap("Niveau_G_1.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_D_4.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	local chrono = Chrono:new()
