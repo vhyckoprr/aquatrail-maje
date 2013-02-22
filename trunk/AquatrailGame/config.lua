@@ -7,5 +7,6 @@ content =
 		scale = "letterbox",
         xAlign = "center",
         yAlign = "center"
+		--fps = 25
 	},
 }

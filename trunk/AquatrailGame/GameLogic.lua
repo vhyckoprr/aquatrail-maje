@@ -112,6 +112,16 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
 	
+	--start FPS show
+	--
+	local prevTime = system.getTimer()
+	local fps = display.newText( "30", 30, 47, nil, 24 )
+	fps:setTextColor( 255 )
+	fps.prevTime = prevTime
+	--
+	--
+
+	
 	if STATECHANGE == LIQSOL then
 		EtatHero = 0
 	elseif STATECHANGE == LIQGAZ then
@@ -334,6 +344,17 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	
 	-- UPDATE----------------------------------------------------------------------
 	onUpdate = function(event)
+		--FPS Show
+		--
+		local curTime = event.time
+		local dt = curTime - prevTime
+		prevTime = curTime
+		if ( (curTime - fps.prevTime ) > 100 ) then
+			-- limit how often fps updates
+			fps.text = string.format( '%.2f', 1000 / dt )
+		end
+		--
+		--
 		if player.y < 80 then
 			player.y = 80
 			--player:setLinearVelocity(vx , 0)
@@ -665,7 +686,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 -- ANIMATIONS---------------------------------------------
 
 --lance les animations :
-	
+
 	local layer = map:getTileLayer("Platforms")
  
 -- Make sure we actually have a layer

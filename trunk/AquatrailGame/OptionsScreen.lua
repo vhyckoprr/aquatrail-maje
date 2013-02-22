@@ -20,17 +20,17 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("OPTIONS", 0, 0, "Toledo", 50)
+   local text = display.newText("OPTIONS", 0, 0, "Arial", 50)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.1 + text.height*0.5
    
-   text = display.newText("Musique", 0, 0, "Toledo", 16)
+   text = display.newText("Musique", 0, 0, "Arial", 16)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.30 - text.width*0.5
    text.y = display.contentHeight*0.45 + 5
    
-   text = display.newText("Bruitages", 0, 0, "Toledo", 16)
+   text = display.newText("Bruitages", 0, 0, "Arial", 16)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.30 - text.width*0.5
    text.y = display.contentHeight*0.6 + 5
@@ -109,7 +109,7 @@ new = function ( params )
 	localGroup:insert( sliderBruitages )
    
 	-- Bouton supprimer les données
-	local supprBtn = display.newText("Supprimez les données", 0, 0, "Toledo", 16)
+	local supprBtn = display.newText("Supprimez les données", 0, 0, "Arial", 16)
    supprBtn:setTextColor(0, 56, 112)
    supprBtn.isVisible = true
    supprBtn.x = display.contentWidth*0.33 + supprBtn.width*0.5
