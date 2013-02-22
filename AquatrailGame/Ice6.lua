@@ -47,10 +47,10 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
-	local STATECHANGE = "LiqGaz"
+	local STATECHANGE = "LiqSol"
 	
 
-    local visual = GameLogic.createMap("Niveau_D_3.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_G_6.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	local chrono = Chrono:new()
