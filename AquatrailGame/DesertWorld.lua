@@ -41,7 +41,7 @@ new = function ( params )
    localGroup:insert(textWorlds)
    
    --case1Btn
-	local case1Btn = display.newImage("bouton_niveau_desert_foret.png")
+	local case1Btn = display.newImage("bouton_niveau-desert_V2.0.png")
    case1Btn.isVisible = true
    case1Btn.x = display.contentWidth/2 -case1Btn.width*1.5
    case1Btn.y =  display.contentHeight/1.75 -case1Btn.height/1.5
@@ -53,7 +53,7 @@ new = function ( params )
 	case1Text.y = case1Btn.y
    
    --case2Btn
-	local case2Btn = display.newImage("bouton_niveau_desert_foret.png")
+	local case2Btn = display.newImage("bouton_niveau-desert_V2.0.png")
    case2Btn.isVisible = true
    case2Btn.x = display.contentWidth/2 
    case2Btn.y =  display.contentHeight/1.75 -case2Btn.height/1.5
@@ -65,7 +65,7 @@ new = function ( params )
 	case2Text.y = case2Btn.y
    
    --case3Btn
-	local case3Btn = display.newImage("bouton_niveau_desert_foret.png")
+	local case3Btn = display.newImage("bouton_niveau-desert_V2.0.png")
    case3Btn.isVisible = true
    case3Btn.x = display.contentWidth/2 +case3Btn.width*1.5
    case3Btn.y =  display.contentHeight/1.75 -case3Btn.height/1.5
@@ -77,7 +77,7 @@ new = function ( params )
 	case3Text.y = case3Btn.y
    
    --case4Btn
-	local case4Btn = display.newImage("bouton_niveau_desert_foret.png")
+	local case4Btn = display.newImage("bouton_niveau-desert_V2.0.png")
    case4Btn.isVisible = true
    case4Btn.x = display.contentWidth/2 -case4Btn.width*1.5
    case4Btn.y =  display.contentHeight/1.75 +case4Btn.height/1.5
@@ -89,7 +89,7 @@ new = function ( params )
 	case4Text.y = case4Btn.y
    
    --case5Btn
-	local case5Btn = display.newImage("bouton_niveau_desert_foret.png")
+	local case5Btn = display.newImage("bouton_niveau-desert_V2.0.png")
    case5Btn.isVisible = true
    case5Btn.x = display.contentWidth/2
    case5Btn.y =  display.contentHeight/1.75 +case5Btn.height/1.5
@@ -101,7 +101,7 @@ new = function ( params )
 	case5Text.y = case5Btn.y
    
    --case6Btn
-	local case6Btn = display.newImage("bouton_niveau_desert_foret.png")
+	local case6Btn = display.newImage("bouton_niveau-desert_V2.0.png")
    case6Btn.isVisible = true
    case6Btn.x = display.contentWidth/2 +case6Btn.width*1.5
    case6Btn.y =  display.contentHeight/1.75 +case6Btn.height/1.5
