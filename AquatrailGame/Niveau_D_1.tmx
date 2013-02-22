@@ -1824,7 +1824,7 @@
     <property name="points" value="[&quot;M18A&quot;,&quot;M18B&quot;,&quot;M18C&quot;]"/>
    </properties>
   </object>
-  <object type="Body" x="185" y="-58" width="32" height="640">
+  <object type="Body" x="242" y="113" width="32" height="640">
    <properties>
     <property name="HasBody" value=""/>
     <property name="IsEnd" value=""/>
