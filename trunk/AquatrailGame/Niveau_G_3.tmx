@@ -9067,6 +9067,16 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <objectgroup name="Physics" width="300" height="30">
+  <object type="Body" x="160" y="0" width="32" height="960">
+   <properties>
+    <property name="HasBody" value=""/>
+    <property name="IsEnd" value=""/>
+    <property name="bodyType" value="static"/>
+    <property name="isSensor" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="Calque 2" width="300" height="30">
   <data>
    <tile gid="0"/>
