@@ -66,7 +66,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 				chrono:Stop()
 				audio.stop()
 				GameLogic.stopEvents()
-				director:changeScene ("IceWorld")
+				director:changeScene ("DesertWorld")
 		end
 	end
 	backbutton:addEventListener ("touch", pressBack) 
