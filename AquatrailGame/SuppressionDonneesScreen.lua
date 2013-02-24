@@ -55,6 +55,7 @@ new = function ( params )
 			validerBtn:removeEventListener ("touch", Confirmation)
 			
 			--SUPPRIMER LES DONNEES DE LA BDD
+			profile.eraseProfile()
 			
 			titre.text = "CONFIRMATION"
 			text.text = "Vos données ont bien été suprimées"

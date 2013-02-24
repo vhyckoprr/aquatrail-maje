@@ -100,6 +100,14 @@ new = function ( params )	local DynResManager = require("DynResManager")
 	end
 	scoreBtn:addEventListener ("touch", pressScore)
 	
+	--Recompenses function
+	local function pressRecompenses (event)
+		if event.phase == "ended" then
+			director:changeScene ("recompensesScreen")
+		end
+	end
+	recBtn:addEventListener ("touch", pressRecompenses)
+	
 	--EXIT function
 	local exitScene = 0
 	local function exitBtnt ( event )
