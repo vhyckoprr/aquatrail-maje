@@ -57,7 +57,8 @@ local STATE_ANIMATIONENCOURS = false
 local DIRECTION_LEFT = -1
 local DIRECTION_RIGHT = 1
 local SCORE = 0local TIME = 0
-local POUVOIRVENT = 5local LEVEL = {}
+local POUVOIRVENT = 5
+local fpairs = ipairslocal LEVEL = {}
 
 local BASESPEEDSOLIDE=30
 local BASESPEEDLIQUIDE=30
@@ -152,7 +153,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	-- Build the physical
 	physical = lime.buildPhysical(map)
 	
-	physics.setDrawMode( "hybrid" )
+	--physics.setDrawMode( "hybrid" )
 	
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1, channel=1})

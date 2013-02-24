@@ -127,7 +127,7 @@ function ObjectLayer:new(data, map)
     
 end
 
---- Sets the value of a Property of the ObjectLayer. 
+---Sets the value of a Property of the ObjectLayer. 
 -- Will create a new Property if none found.
 -- @param name The name of the Property.
 -- @param value The new value.

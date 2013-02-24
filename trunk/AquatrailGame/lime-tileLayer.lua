@@ -669,16 +669,16 @@ function TileLayer:update( event )
 end
 
 function TileLayer:updateTileVisibility()
-	
+	print("updateTileVisibility")
 	if self.visible then
 		
-		if self.visibleTiles then
+		--[[if self.visibleTiles then
 			for i=1, #self.visibleTiles, 1 do
 				if self.visibleTiles[i].isVisible then
 					self.visibleTiles[i].isVisible = false
 				end
 			end
-		end
+		end]]
 		
 		self.visibleTiles = nil
 		self.visibleTiles = {}
@@ -720,7 +720,7 @@ function TileLayer:updateTileVisibility()
 		if view.yMax > self.map.height then
 			view.yMax = self.map.height
 		end
-
+		
 		for x = view.xMin, view.xMax, 1 do
 	
 			for y = view.yMin, view.yMax, 1 do 
