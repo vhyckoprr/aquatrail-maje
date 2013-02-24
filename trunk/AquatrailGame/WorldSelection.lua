@@ -126,7 +126,7 @@ new = function ( params )
 			director:changeScene ("DesertWorld")
 		end
 	end
-	islBtn:addEventListener ("touch", pressDesert)
+	islBtn:addEventListener ("touch", pressIsland)
 	
 	--Return Button
 	   	local function pressReturn (event)

@@ -9,11 +9,11 @@ new = function ( params )
 	
 	-- Create a background colour just to make the screen look a little nicer
 	local backcolor = DynResManager.createCenterRectangleFitted()
-	backcolor:setFillColor(169, 214, 255)
+	backcolor:setFillColor(59, 215, 169)
 	localGroup:insert(backcolor)
 	
 	--Background
-   local back = display.newImage("fond_accueil.png")
+   local back = display.newImage("fond_mondes.png")
    back.isVisible = true
    back.x = display.contentWidth*0.5 
    back.y = display.contentHeight*0.5 
@@ -23,8 +23,9 @@ new = function ( params )
    local text = display.newText("SCORES", 0, 0, "Arial", 50)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.5
-   text.y = display.contentHeight*0.1 + text.height*0.5
-   
+   text.y = display.contentHeight*0.075 + text.height*0.5
+  
+--[[
    --Creer la liste de score
 	local list = widget.newTableView
 	{
@@ -127,7 +128,36 @@ new = function ( params )
 			lineColor = lineColor
 		}
 	end
+]]--
 
+   --glaBtn (MONDE 1)
+	local glaBtn = display.newImage("bouton_glace.png")
+   glaBtn.isVisible = true
+   glaBtn.x = display.contentWidth/2 -glaBtn.width/1.8
+   glaBtn.y =  display.contentHeight/1.75-glaBtn.height/1.8
+   localGroup:insert(glaBtn)
+
+   --foretBtn (MONDE 2 )
+	local forBtn = display.newImage("bouton_foret.png")
+   forBtn.isVisible = true
+   forBtn.x = display.contentWidth/2 +forBtn.width/1.8
+   forBtn.y =  display.contentHeight/1.75 -forBtn.height/1.8
+   localGroup:insert(forBtn)
+
+   --desertBtn (MONDE 3 )
+	local desBtn = display.newImage("bouton_desert.png")
+   desBtn.isVisible = true
+   desBtn.x = display.contentWidth/2 -desBtn.width/1.8
+   desBtn.y =  display.contentHeight/1.75 +desBtn.height/1.8
+   localGroup:insert(desBtn)
+
+   --islandBtn ( MONDE 4)
+	local islBtn = display.newImage("bouton_ile.png")
+   islBtn.isVisible = true
+   islBtn.x = display.contentWidth/2 +islBtn.width/1.8
+   islBtn.y =  display.contentHeight/1.75 +islBtn.height/1.8
+   localGroup:insert(islBtn)
+   
    	-- Bouton retour
 	local reBtn = display.newImage("bouton_retour_defaut.png")
    reBtn.isVisible = true
@@ -135,6 +165,42 @@ new = function ( params )
    reBtn.x = 15
    reBtn.y = display.contentHeight - reBtn.height - 15
    localGroup:insert(reBtn)
+	
+	--Ice Button
+	 local function pressIce (event)
+		if (event.phase == "ended")  then
+			score.setMondeChoisi("glace")
+			director:changeScene ("scoreNivScreen")
+		end
+	end
+	glaBtn:addEventListener ("touch", pressIce)
+	
+	--Forest Button
+	 local function pressForest (event)
+		if (event.phase == "ended")  then
+			score.setMondeChoisi("foret")
+			director:changeScene ("scoreNivScreen")
+		end
+	end
+	forBtn:addEventListener ("touch", pressForest)
+		
+	--Desert Button
+	 local function pressDesert (event)
+		if (event.phase == "ended")  then
+			score.setMondeChoisi("desert")
+			director:changeScene ("scoreNivScreen")
+		end
+	end
+	desBtn:addEventListener ("touch", pressDesert)
+	
+	--Island Button
+	 local function pressIsland (event)
+		if (event.phase == "ended")  then
+			score.setMondeChoisi("ile")
+			director:changeScene ("scoreNivScreen")
+		end
+	end
+	islBtn:addEventListener ("touch", pressIsland)
 	
 	--Retour function
 	local function pressReturn (event)

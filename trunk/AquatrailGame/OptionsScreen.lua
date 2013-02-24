@@ -128,7 +128,6 @@ new = function ( params )
 	local function pressReturn (event)
 		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
-			profile.eraseProfile()
 			director:changeScene ("SuppressionDonneesScreen")
 		end
 	end

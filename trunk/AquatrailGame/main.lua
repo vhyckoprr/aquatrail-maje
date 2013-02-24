@@ -6,6 +6,7 @@ display.setStatusBar( display.HiddenStatusBar )
 
 director = require("director")
 profile = require("Profile")
+score = require("afficheScore")
 
 ---------------------------------------------------------------
 -- Create a main group
