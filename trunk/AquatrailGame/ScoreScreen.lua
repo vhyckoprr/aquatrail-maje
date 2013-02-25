@@ -130,39 +130,7 @@ backButton.y = titleBar.y
 widgetGroup:insert( backButton )
 
 
---Hande row touch events
-local function onRowTouch( event )
-	local row = event.row
-	local background = event.background
-	
-	if event.phase == "press" then
-		--print( "Pressed row: " .. row.index )
-		--background:setFillColor( 0, 110, 233, 255 )
 
-	elseif event.phase == "release" or event.phase == "tap" then
-		--Update the item selected text
-		--[[
-		itemSelected.text = "You selected item " .. row.index
-		
-		--Transition out the list, transition in the item selected text and the back button
-		transition.to( list, { x = - list.contentWidth, time = 400, transition = easing.outExpo } )
-		transition.to( itemSelected, { x = display.contentCenterX, time = 400, transition = easing.outExpo } )
-		transition.to( backButton, { x = 40, alpha = 1, time = 400, transition = easing.outQuad } )
-		
-		print( "Tapped and/or Released row: " .. row.index )
-		background:setFillColor( 0, 110, 233, 255 )
-		row.reRender = true
-		]]
-	end
-end
------------------------------------------------------------------------------------------------------------------------------- EXPLICATION SUR RECUPERATION de l''XML sur le serveur-- DEUX METHODES-- Recuperation de l'xml sous forme de requete (utilisation de xml.lua))
---network.request ( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListener)
-
--- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
---SOIT-- Sauvegarde de l'xml puis lecture (utilisation de xml_parse.lua)
---network.download ("http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData, "score.json")
--- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
-	----------------------------
 
 localGroup:insert(widgetGroup)
 --------------------------------------------------------------------------------------------END LIST------------------------------------------------------------------------------------------
@@ -224,9 +192,11 @@ localGroup:insert(widgetGroup)
 	
 	if ( playerData.login == tempInfos.Login )
 	then
-		color = 0
+		color = 255
+		rowColor = {0,0,0,155}
 	else
-		color = 127
+		color = 0
+		rowColor = {255,255,255,100}
 	end
 	
 	list:insertRow{
