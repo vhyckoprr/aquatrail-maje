@@ -23,6 +23,7 @@
  <tileset firstgid="157" source="esprit_glace.tsx"/>
  <tileset firstgid="162" source="boue.tsx"/>
  <tileset firstgid="172" source="buisson.tsx"/>
+ <tileset firstgid="173" source="ecureuil.tsx"/>
  <layer name="Platforms" width="300" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
