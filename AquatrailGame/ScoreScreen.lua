@@ -7,6 +7,8 @@ new = function ( params )
 --require ("request")	
 local json = require ("json")
 
+-- recuperation des infos
+local tempInfos = profile.getTempInfos()
 
 local localGroup = display.newGroup()
 ---------------------------------LIST---------------------------------------------------------------------
@@ -51,6 +53,12 @@ widgetGroup:insert( itemSelected )
 --Forward reference for our back button
 local backButton
 
+-- label test
+local label = "List item "
+local color = 0
+local score = "0"
+local tTime = "0"
+
 --Create Table view
 list = widget.newTableView{
 	width = 480, 
@@ -72,15 +80,27 @@ widgetGroup:insert( shadow )
 local function onRowRender( event )
 	local row = event.row
 	local rowGroup = event.view
-	local label = "List item "
-	local color = 0
 	
 	--Create the row's text
-	row.textObj = display.newRetinaText( rowGroup, label .. row.index, 0, 0, native.systemFontBold, 12 )
+	row.textObj = display.newRetinaText( rowGroup, row.index .. "     " ..label, 0, 0, native.systemFontBold, 12 )
 	row.textObj:setTextColor( color )
 	row.textObj:setReferencePoint( display.CenterLeftReferencePoint )
 	row.textObj.x, row.textObj.y = 20, rowGroup.contentHeight * 0.5
 	rowGroup:insert( row.textObj )
+	
+	--Create the second row's text
+	row.textObj2 = display.newRetinaText( rowGroup, score , 0, 0, native.systemFontBold, 12 )
+	row.textObj2:setTextColor( color )
+	row.textObj2:setReferencePoint( display.CenterLeftReferencePoint )
+	row.textObj2.x, row.textObj2.y = 120, rowGroup.contentHeight * 0.5
+	rowGroup:insert( row.textObj2 )
+	
+	--Create the third row's text [LE TEMPS NE MARCHE PAS ENCORE recuperation + transformation timestamp a faire]
+	--row.textObj3 = display.newRetinaText( rowGroup, tTime , 0, 0, native.systemFontBold, 12 )
+	--row.textObj3:setTextColor( color )
+	--row.textObj3:setReferencePoint( display.CenterLeftReferencePoint )
+	--row.textObj3.x, row.textObj3.y = 220, rowGroup.contentHeight * 0.5
+	--rowGroup:insert( row.textObj3 )
 	
 	--Create the row's arrow
 	--row.arrow = display.newImage( "rowArrow.png", false )
@@ -142,15 +162,6 @@ end
 --SOIT-- Sauvegarde de l'xml puis lecture (utilisation de xml_parse.lua)
 --network.download ("http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListenerData, "score.json")
 -- FAIRE VARIER LE "1" ET LE "3" en fonction du niveau
-
-	-- insert rows on list FOR TEST ONLY 
-for i = 1, 20 do
-	list:insertRow{
-		height = 30,
-		onRender = onRowRender,
-		listener = onRowTouch
-	}
-end
 	----------------------------
 
 localGroup:insert(widgetGroup)
@@ -171,39 +182,64 @@ localGroup:insert(widgetGroup)
 	end
 	backbutton:addEventListener ("touch", pressReturn)
 	
+	function networkListenerAjout( event )
+		if ( event.isError ) then
+            print( "Network error!")
+        else
+            network.request( "http://12h52.fr/aquatrail/list.php?world="..tempInfos.World.."&stage="..tempInfos.Level.."", "GET", networkListener )
+        end
+	end
+	print ( tempInfos.Uid.." "..tempInfos.Login.." "..tempInfos.Score.." "..tempInfos.World.." "..tempInfos.Level )
+	network.request( "http://12h52.fr/aquatrail/ajout.php?login="..tempInfos.Login.."&score="..tempInfos.Score.."&adress="..tempInfos.Uid.."&world="..tempInfos.World.."&stage="..tempInfos.Level.."", "GET", networkListenerAjout )
+	
 	function networkListener( event )
         if ( event.isError ) then
                 print( "Network error!")
         else
                 myNewData = event.response
                 print ("From server: "..myNewData)
-                decodedData = (json.decode( myNewData))
-				local index = decodedData.index - 1
-				print (index)
-				for i=1, index, 1 do
-					print(decodedData["row"..i].login);
+                decodedData = (json.decode( myNewData)) -- attention peter doit faire le changement : enlever les [ ] dans le login.php
+				if (decodedData.error == nil) then
+					local index = decodedData.index - 1
+					print (index)
+					for i=1, index, 1 do
+						--print(decodedData["row"..i].login);
+						refreshData(decodedData["row"..i], index)
+					end
+				else
+					print ("no data")
 				end
         end
 	end
-	network.request( "http://12h52.fr/aquatrail/list.php?world=1&stage=3", "GET", networkListener )
+	
+	
+	function refreshData(playerData, index)
+	
+	-- permet de creer la liste a partir des données json
+	
+	-- insert rows into list (tableView widget)
+	--print ("INDEX"..index)
+	label = playerData.login
+	score = playerData.score
+	
+	if ( playerData.login == tempInfos.Login )
+	then
+		color = 0
+	else
+		color = 127
+	end
+	
+	list:insertRow{
+		height = 30,
+		onRender = onRowRender,
+		listener = onRowTouch
+	}
+
+end
 
 	-- MUST return a display.newGroup()
 	return localGroup
 end
 
-function list:refreshData(playerData, index)
-		-- permet de creer la liste a partir des données xml	
-	-- insert rows into list (tableView widget)
-	print ("INDEX"..index)
-		list:insertRow{
-			height = 30,
-			onRender = onRowRender,
-			listener = onRowTouch
-			--onRender.classement = index,
-			--onRender.login = playerData.login,
-			--onRender.score = playerData.score,
-			--onRender.time = playerData.time
-		}
 
-end
 

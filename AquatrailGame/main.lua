@@ -34,8 +34,17 @@ local function main()
 	-----------------------------------
 	-- Change scene without effects
 	-----------------------------------
+	local Infos = profile.getInfos()
+	if ( Infos.pseudo=="unnamed" ) then
+		--load profil creation
+		director:changeScene("PseudoScreen")
+	else
+		--load profil creation
+		director:changeScene("TitleScreen")
+	end
 	
-	director:changeScene("TitleScreen")
+	--load profil creation
+	--director:changeScene("PseudoScreen")
 	
 	-----------------------------------
 	-- Return

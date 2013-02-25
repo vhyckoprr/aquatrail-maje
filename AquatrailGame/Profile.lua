@@ -1,12 +1,22 @@
 module(..., package.seeall)
 
 local loadsave = require("loadsave")
+require("UUID")
 
 local MAXLEVELINWORLD=6
 
-worldinfo = {}
+tempInfo = {}
+tempInfo.Login = "unnamed"
+tempInfo.Uid = "AD-48-48-48-48"
+tempInfo.Score = "0"
+tempInfo.Time="0"
+tempInfo.World="1"
+tempInfo.Level="1"
 
-worldinfo.version = 8
+worldinfo = {}
+worldinfo.pseudo="unnamed"
+worldinfo.Uid="AD-48-48-48-48"
+worldinfo.version = 10
 worldinfo.sound = 50
 worldinfo.bruitage = 50
  
@@ -133,6 +143,13 @@ worldinfo.world3.level6.unlocked = false
 worldinfo.world4 = {}
 worldinfo.world4.unlocked = false
 
+local saveProfile = function( pseudo )
+	worldinfo.pseudo=pseudo
+	tempInfo.Login = worldinfo.pseudo
+	worldinfo.Uid = UUID.UUID()
+	tempInfo.Uid = worldinfo.Uid
+	loadsave.saveTable(worldinfo, "profile.json")
+end
 
 local initProfile = function( )
 	local worldInfoFile = loadsave.loadTable("profile.json")
@@ -146,9 +163,17 @@ local initProfile = function( )
 		worldinfo = worldInfoFile
 		print("WORLDINFO LOADED FROM FILE")
 	end
+	tempInfo.Login = worldinfo.pseudo
+	tempInfo.Uid = worldinfo.Uid
 end
 
 local saveInfoLevel = function(idWorld, idLevel,score, time)
+
+	tempInfo.Score = ""..score
+	tempInfo.Time=""..time
+	tempInfo.World=""..idWorld
+	tempInfo.Level=""..idLevel
+
 	local nextIdLevel = idLevel+1 
 	local nextIdWorld = idWorld+1 
 	local oldScore = worldinfo["world"..idWorld]["level"..idLevel].score
@@ -175,6 +200,9 @@ local eraseProfile = function()
 	local worldInfoOriginFile = loadsave.loadTable("profileOrigin.json")
 	worldinfo = worldInfoOriginFile
 	loadsave.saveTable(worldinfo, "profile.json")
+	print ( "PSEUDO ! :"..worldinfo.pseudo)
+	tempInfo.Login = worldinfo.pseudo
+	tempInfo.Uid = worldinfo.Uid
 end
 
 local saveOption = function(musi,brui)
@@ -187,7 +215,11 @@ local getInfos = function ()
 	return worldinfo
 end
 
-local Profile = { initProfile=initProfile, saveInfoLevel=saveInfoLevel, getInfos=getInfos, saveOption=saveOption, eraseProfile=eraseProfile}
+local getTempInfos = function ()
+	return tempInfo
+end
+
+local Profile = { initProfile=initProfile, saveInfoLevel=saveInfoLevel, getInfos=getInfos, getTempInfos=getTempInfos, saveOption=saveOption, eraseProfile=eraseProfile, saveProfile = saveProfile}
 
 return Profile
 

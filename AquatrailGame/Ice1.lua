@@ -14,7 +14,6 @@ new = function ( params )
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
 endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
-
 							--chrono:Stop()
 							profile.saveInfoLevel(1, 1,score, time)
 							audio.stop()
