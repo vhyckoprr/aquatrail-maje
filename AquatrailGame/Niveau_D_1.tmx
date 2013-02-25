@@ -10823,17 +10823,6 @@
     <property name="points" value="[&quot;M18A&quot;,&quot;M18B&quot;,&quot;M18C&quot;]"/>
    </properties>
   </object>
-<<<<<<< .mine
-=======
-  <object type="Body" x="242" y="113" width="32" height="640">
-   <properties>
-    <property name="HasBody" value=""/>
-    <property name="IsEnd" value=""/>
-    <property name="bodyType" value="static"/>
-    <property name="isSensor" value="true"/>
-   </properties>
-  </object>
->>>>>>> .r240
  </objectgroup>
  <layer name="SableMouvant" width="300" height="30">
   <properties>
