@@ -17,6 +17,7 @@ afficheScore.scoreForetNiv = {false,false,false,false,false,false}
 afficheScore.scoreIleNiv = {false,false,false,false,false,false}
 afficheScore.scoreDesertNiv = {false,false,false,false,false,false}
 afficheScore.nivChoisi = 1
+afficheScore.mondeChoisi = 1
 
 afficheScore.monScore = true
 
@@ -26,10 +27,10 @@ local setMondeChoisi = function (monde)
 	afficheScore.scoreIle = false
 	afficheScore.scoreDesert = false
 	
-	if(monde == "glace") then afficheScore.scoreGlace = true
-	elseif(monde == "foret") then afficheScore.scoreForet = true
-	elseif(monde == "ile") then afficheScore.scoreIle = true
-	elseif(monde == "desert") then afficheScore.scoreDesert = true
+	if(monde == "glace") then afficheScore.scoreGlace = true afficheScore.mondeChoisi=1
+	elseif(monde == "foret") then afficheScore.scoreForet = true afficheScore.mondeChoisi=2
+	elseif(monde == "ile") then afficheScore.scoreIle = true afficheScore.mondeChoisi=3
+	elseif(monde == "desert") then afficheScore.scoreDesert = true afficheScore.mondeChoisi=4
 	else print("Monde non reconnu") end
 end
 
