@@ -7,7 +7,7 @@ new = function ( params )
 	local worldinfo = profile.getInfos()
 	local localGroup = display.newGroup()
 	local afficheScore = score.getAfficheScore()
-	
+print("temps Monde1 niv1 : "..worldinfo["world1"]["level1"].time)	
 	-- L'ecran change en fonction du monde choisi
 	local bg = "fond_glace.png"
 	local color = {158,233,235}
@@ -226,7 +226,15 @@ local function ongletActif(event)
 				colonne1Contenu = "Joueur"
 				colonne2Contenu = "France"
 				if (idMonde ~= 4) then -- A SUPPRIMER lorsque la bdd des mondes sera complète 
-					colonne3Contenu = worldinfo["world"..idMonde]["level"..idNiveau].time
+					local temps = tonumber(worldinfo["world"..idMonde]["level"..idNiveau].time)
+					if(temps ~= nil)
+					then
+						local zeroComposite = ""
+						if((temps%60) >= 0 and (temps%60) < 10) then zeroComposite = "0" end
+						colonne3Contenu = math.floor(temps/60)..":"..zeroComposite..(temps%60)
+					else
+						colonne3Contenu = "∞"
+					end
 				end -- A SUPPRIMER lorsque la bdd des mondes sera complète 
 			elseif(afficheScore.ongletActif == 3)
 			then
@@ -247,15 +255,16 @@ local function ongletActif(event)
 						--else end
 					--end
 					
-					--Pour depanner
+					--Pour depanner on dit que le score max est 5000 pour tous les niveaux 
+					--et que si le temps est inférieur à 1mn on a 100% et que s'il est supérieur à 3mn on a 0% (entre les deux, on applique une règle de proportionnalité)
 					if(event.index == 2) then colonne3Contenu = math.min(math.ceil(worldinfo["world"..idMonde]["level"..idNiveau].score*100 /5000), 100) end
 					if(event.index == 3) 
 					then
 						local temps = tonumber(worldinfo["world"..idMonde]["level"..idNiveau].time)
-						if(temps ~= nil and temps <= 120000) then colonne3Contenu = 100
-						elseif(temps ~= nil and temps >= 300000) then colonne3Contenu = 0
-						elseif (temps ~= nil) then colonne3Contenu = math.ceil(temps*100 / 120000)
-						else end
+						if(temps ~= nil and temps <= 60) then colonne3Contenu = 100
+						elseif(temps ~= nil and temps >= 180) then colonne3Contenu = 0
+						elseif (temps ~= nil) then colonne3Contenu = math.ceil(temps*100 / 60)
+						else colonne3Contenu = 0 end
 					end
 				end -- A SUPPRIMER lorsque la bdd des mondes sera complète
 			end
