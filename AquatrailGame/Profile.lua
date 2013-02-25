@@ -176,17 +176,26 @@ local saveInfoLevel = function(idWorld, idLevel,score, time)
 
 	local nextIdLevel = idLevel+1 
 	local nextIdWorld = idWorld+1 
+	
+	--Enregirstrement du meilleur score
 	local oldScore = worldinfo["world"..idWorld]["level"..idLevel].score
-	--local oldTime = worldinfo["world"..idWorld]["level"..idLevel].time
 	print("idWorld "..idWorld.." idLevel "..idLevel.."\noldScore "..oldScore.." NewScore "..score)
 	if (oldScore<score)then
 		worldinfo["world"..idWorld]["level"..idLevel].score=tonumber(score)
 	end
-	--[[
-	if (oldTime>time)then
-		worldinfo["world"..idWorld]["level"..idLevel].time=tonumber(time)
+	
+	--Enregirstrement du meilleur temps
+	print("Temps recupere :"..time)
+	local oldTime = tonumber(worldinfo["world"..idWorld]["level"..idLevel].time)
+	if(oldTime == nil)
+	then
+		worldinfo["world"..idWorld]["level"..idLevel].time = chrono.getTotalTimeInSecond()
+	elseif (oldTime>chrono.getTotalTimeInSecond())
+	then
+		worldinfo["world"..idWorld]["level"..idLevel].time = chrono.getTotalTimeInSecond()
 	end
-	]]--
+	print("Temps enregistre :"..worldinfo["world"..idWorld]["level"..idLevel].time)
+	
 	--unlock next level
 	if (MAXLEVELINWORLD<=idLevel) then
 		worldinfo["world"..nextIdWorld].unlocked = true

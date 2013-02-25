@@ -10,18 +10,16 @@ new = function ( params )
 	--system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
-	require("ClassChronometre")
 	 
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
-endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
-
-							--chrono:Stop()
-							profile.saveInfoLevel(1, 2,score, time)
-							audio.stop()
-							GameLogic.stopEvents()
-							director:changeScene ("ScoreScreen")
-                end
+endLevel = function (self, score, time)
+		profile.saveInfoLevel(1, 2,score, chrono.getTotalTimeInSecond())
+		chrono:Stop()
+		audio.stop()
+		GameLogic.stopEvents()
+		director:changeScene ("ScoreScreen")
+	end
     }
 	
 	--Background
@@ -53,9 +51,8 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
     local visual = GameLogic.createMap("Niveau_D_3.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
-	local chrono = Chrono:new()
-	chrono:Start()
-	chrono:Display(true)
+	chrono.Start()
+	chrono.setDisplay(true)
 	
 	-- BACKBUTTON--
 	local backbutton = display.newImage ("Bouton-Reload-HUD.png")
@@ -63,7 +60,7 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
-				chrono:Stop()
+				chrono.Stop()
 				audio.stop()
 				GameLogic.stopEvents()
 				director:changeScene ("ForestWorld")
@@ -79,10 +76,10 @@ endLevel = function (self, score, time) -- time = chrono:getTimeInSecond()
 		print("pause")
 		if event.phase == "ended" then
 			if paused == false then
-				chrono:Stop()
+				chrono.Pause()
 				GameLogic.PauseGame()
 			elseif paused == true then
-				chrono:Resume()
+				chrono.Pause()
 				GameLogic.PauseGame()
 			end
 		end
