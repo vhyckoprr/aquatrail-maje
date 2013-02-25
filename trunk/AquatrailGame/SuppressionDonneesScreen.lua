@@ -61,6 +61,9 @@ new = function ( params )
 			text.text = "Vos données ont bien été suprimées"
 			
 			timer.performWithDelay( 1, Valider2 )
+			--rentrer votre pseudo
+			profile.eraseProfile()
+			director:changeScene ("PseudoScreen")
 			return true
 		end
 	end
