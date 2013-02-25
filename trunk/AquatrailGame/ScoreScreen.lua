@@ -4,212 +4,401 @@ module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 	
---require ("request")	
-local json = require ("json")
-
--- recuperation des infos
-local tempInfos = profile.getTempInfos()
-
-local localGroup = display.newGroup()
----------------------------------LIST---------------------------------------------------------------------
---import the widget library
-local widget = require("widget")
-
---Create a group to hold our widgets & images
-local widgetGroup = display.newGroup()
-
--- create a gradient for the top-half of the toolbar
-local toolbarGradient = graphics.newGradient( {168, 181, 198, 255 }, {139, 157, 180, 255}, "down" )
-
--- create toolbar to go at the top of the screen
-local titleBar = widget.newTabBar{
-	gradient = toolbarGradient,
-	bottomFill = { 117, 139, 168, 255 },
-	height = 44
-}
-titleBar.y = display.screenOriginY + titleBar.contentHeight * 0.5
-
--- create embossed text to go on toolbar
-local titleText = display.newEmbossedText( "Scores", 0, 0, native.systemFontBold, 20 )
-titleText:setReferencePoint( display.CenterReferencePoint )
-titleText:setTextColor( 255 )
-titleText.x = display.viewableContentWidth/2
-titleText.y = titleBar.y
-
--- create a shadow underneath the titlebar (for a nice touch)
-local shadow = display.newImage( "shadow.png" )
-shadow:setReferencePoint( display.TopLeftReferencePoint )
-shadow.x, shadow.y = 0, titleBar.y + titleBar.contentHeight * 0.5
-shadow.xScale = 480 / shadow.contentWidth
-shadow.alpha = 0.45
-
---Text to show which item we selected
-local itemSelected = display.newText( "You selected item ", 0, 0, native.systemFontBold, 28 )
-itemSelected:setTextColor( 0 )
-itemSelected.x = display.contentWidth + itemSelected.contentWidth * 0.5
-itemSelected.y = display.contentCenterY
-widgetGroup:insert( itemSelected )
-
---Forward reference for our back button
-local backButton
-
--- label test
-local label = "List item "
-local color = 0
-local score = "0"
-local tTime = "0"
-
---Create Table view
-list = widget.newTableView{
-	width = 480, 
-	height = 288,
-	bottomPadding = 8,
-	maskFile = "mask-320x448.png"
-}
-list.y = titleBar.y + titleBar.contentHeight * 0.5
-
-
---Insert widgets/images into a group
-widgetGroup:insert( list )
-widgetGroup:insert( titleBar )
-widgetGroup:insert( titleText )
-widgetGroup:insert( shadow )
-
-
---Handle row rendering
-local function onRowRender( event )
-	local row = event.row
-	local rowGroup = event.view
+	local DynResManager = require("DynResManager")
+	local widget = require ("widget")
+	local json = require ("json")
+	local worldinfo = profile.getInfos()
+	local tempInfos = profile.getTempInfos()
+	local localGroup = display.newGroup()
+	local afficheScore = score.getAfficheScore()
 	
-	--Create the row's text
-	row.textObj = display.newRetinaText( rowGroup, row.index .. "     " ..label, 0, 0, native.systemFontBold, 12 )
-	row.textObj:setTextColor( color )
-	row.textObj:setReferencePoint( display.CenterLeftReferencePoint )
-	row.textObj.x, row.textObj.y = 20, rowGroup.contentHeight * 0.5
-	rowGroup:insert( row.textObj )
+	--update score
+	afficheScore.ongletScore = true
+	afficheScore.ongletTemps = false
+	afficheScore.ongletProgression = false
+	afficheScore.nivChoisi = tempInfos.Level
+	afficheScore.mondeChoisi = tempInfos.World
+	afficheScore.ongletActif = 1
 	
-	--Create the second row's text
-	row.textObj2 = display.newRetinaText( rowGroup, score , 0, 0, native.systemFontBold, 12 )
-	row.textObj2:setTextColor( color )
-	row.textObj2:setReferencePoint( display.CenterLeftReferencePoint )
-	row.textObj2.x, row.textObj2.y = 120, rowGroup.contentHeight * 0.5
-	rowGroup:insert( row.textObj2 )
 	
-	--Create the third row's text [LE TEMPS NE MARCHE PAS ENCORE recuperation + transformation timestamp a faire]
-	--row.textObj3 = display.newRetinaText( rowGroup, tTime , 0, 0, native.systemFontBold, 12 )
-	--row.textObj3:setTextColor( color )
-	--row.textObj3:setReferencePoint( display.CenterLeftReferencePoint )
-	--row.textObj3.x, row.textObj3.y = 220, rowGroup.contentHeight * 0.5
-	--rowGroup:insert( row.textObj3 )
 	
-	--Create the row's arrow
-	--row.arrow = display.newImage( "rowArrow.png", false )
-	--row.arrow.x = rowGroup.contentWidth - row.arrow.contentWidth * 2
-	--row.arrow.y = rowGroup.contentHeight * 0.5
-	--rowGroup:insert( row.arrow )
-end
+	-- L'ecran change en fonction du monde choisi
+	local bg = "fond_glace.png"
+	local color = {158,233,235}
+	local colorText = {87, 163, 166}
+	local boutonRetour = "bouton_retour_defaut.png"
+	if(tempInfos.World=="1") then bg = "fond_glace.png"; color = {158,233,235}; colorText = {87, 163, 166}; boutonRetour = "bouton_retour_glace.png";
+	elseif(tempInfos.World=="2") then bg = "fond_foret.png"; color = {200,127,23}; colorText = {192,125,59}; boutonRetour = "bouton_retour_foret.png";
+	elseif(tempInfos.World=="4") then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; boutonRetour = "bouton_retour_ile.png";
+	elseif(tempInfos.World=="3") then bg = "fond_desert.png"; color = {241,148,86}; colorText = {192,125,59}; boutonRetour = "bouton_retour_desert.png";
+	else end
+	
+	local colonne1Contenu = "number"
+	local colonne2Contenu = "player"
+	local colonne3Contenu = "score"	
 
---Handle the back button release event
-local function onBackRelease()
-	--Transition in the list, transition out the item selected text and the back button
-	transition.to( list, { x = 0, time = 400, transition = easing.outExpo } )
-	transition.to( itemSelected, { x = display.contentWidth + itemSelected.contentWidth * 0.5, time = 400, transition = easing.outExpo } )
-	transition.to( backButton, { x = 60, alpha = 0, time = 400, transition = easing.outQuad } )
-end
+	-- Create a background colour just to make the screen look a little nicer
+	local backcolor = DynResManager.createCenterRectangleFitted()
+	backcolor:setFillColor(color[1],color[2],color[3])
+	localGroup:insert(backcolor)
 
---Create the back button
-backButton = widget.newButton{
-	style = "backSmall",
-	label = "Back", 
-	yOffset = - 3,
-	onRelease = onBackRelease
-}
-backButton.alpha = 0
-backButton.x = 60
-backButton.y = titleBar.y
-widgetGroup:insert( backButton )
-
-
-
-
-localGroup:insert(widgetGroup)
---------------------------------------------------------------------------------------------END LIST------------------------------------------------------------------------------------------
+	--Background
+	local back = display.newImage(bg)
+   back.isVisible = true
+   back.x = display.contentWidth/2 
+   back.y = display.contentHeight/2 
+   localGroup:insert(back)
    
-	
-	--return
-	local backbutton = display.newImage ("backbutton.png")
-	backbutton.x = backbutton.width / 2
-	backbutton.y = backbutton.height / 2
-	localGroup:insert(backbutton)
+   --Textes
+   local titre = display.newText("SCORES", 0, 0, "Arial", 50)
+   titre:setTextColor(0, 56, 112)
+   titre.x = display.contentWidth*0.5
+   titre.y = display.contentHeight*0.075 + titre.height*0.5
    
-  --Return Button
-	   	local function pressReturn (event)
+   --Btn Score
+	local btnScore = display.newRect(0, 0, 100, 30)
+	btnScore.strokeWidth = 1
+	btnScore:setStrokeColor(0, 0, 0)
+	btnScore:setReferencePoint( display.TopLeftReferencePoint )
+	btnScore.x = 20
+	btnScore.y = 90
+	localGroup:insert(btnScore)
+	   
+	local text = display.newText("Score", 0, 0, "Arial", 14)
+	text:setReferencePoint( display.CenterLeftReferencePoint )
+	text:setTextColor(255, 255, 255)
+	text.x = 30
+	text.y = 105
+	
+	local function pressScore (event)
 		if event.phase == "ended" then
-			director:changeScene ("IceWorld")
+			score.setOngletChoisi(1)
 		end
 	end
-	backbutton:addEventListener ("touch", pressReturn)
+	btnScore:addEventListener ("touch", pressScore)
+	
+	--Btn Temps
+	local btnTemps = display.newRect(0, 0, 100, 30)
+	btnTemps.strokeWidth = 1
+	btnTemps:setStrokeColor(0, 0, 0)
+	btnTemps:setReferencePoint( display.TopLeftReferencePoint )
+	btnTemps.x = 123
+	btnTemps.y = 90
+	localGroup:insert(btnTemps)
+	   
+	text = display.newText("Temps", 0, 0, "Arial", 14)
+	text:setReferencePoint( display.CenterLeftReferencePoint )
+	text:setTextColor(255, 255, 255)
+	text.x = 133
+	text.y = 105
+	
+	local function pressTemps (event)
+		if event.phase == "ended" then
+			score.setOngletChoisi(2)
+		end
+	end
+	btnTemps:addEventListener ("touch", pressTemps)
+	
+	--Btn Progression
+	local btnProgression = display.newRect(0, 0, 100, 30)
+	btnProgression.strokeWidth = 1
+	
+	btnProgression:setStrokeColor(0, 0, 0)
+	btnProgression:setReferencePoint( display.TopLeftReferencePoint )
+	btnProgression.x = 226
+	btnProgression.y = 90
+	localGroup:insert(btnProgression)
+	   
+	text = display.newText("Progression", 0, 0, "Arial", 14)
+	text:setReferencePoint( display.CenterLeftReferencePoint )
+	text:setTextColor(255, 255, 255)
+	text.x = 236
+	text.y = 105
+   
+    local function pressProgression (event)
+		if event.phase == "ended" then
+			score.setOngletChoisi(3)
+		end
+	end
+	btnProgression:addEventListener ("touch", pressProgression)
+   
+	
+   
+   --Gestion de l'apparence de l'onglet actif
+	local function apparenceOngletActif ()
+		btnScore:setFillColor(0, 56, 112, 100)
+		btnTemps:setFillColor(0, 56, 112, 100)
+		btnProgression:setFillColor(0, 56, 112, 100)
+		if(afficheScore.ongletScore) then btnScore:setFillColor(0, 56, 112) end
+		if(afficheScore.ongletTemps) then btnTemps:setFillColor(0, 56, 112) end
+		if(afficheScore.ongletProgression) then btnProgression:setFillColor(0, 56, 112) end
+	end
+   
+	--Creer la liste de score
+	local list = widget.newTableView
+	{
+		top = 120,
+		width = 480, 
+		height = 125,
+		bgColor = { 255, 255, 255, 100 },
+		topPadding = 0,
+		maskFile = "mask-scoremenu-320x480.png"
+	}
+	
+	-- Insertion du texte dans chaque ligne au moment de leur génétion
+local function onRowRender( event )
+	local row = event.target
+	local rowGroup = event.view
+	
+	
+	-- Calcul de l'ID et du NOM du Monde et de l'ID du niveau
+	local nomMonde = ""
+	local idNiveau = afficheScore.nivChoisi
+	local idMonde = afficheScore.mondeChoisi
+	
+	--On détermine les colonnes en fonction de l'onglet actif
+		local colonne1Titre = ""
+		local colonne2Titre = ""
+		local colonne3Titre = ""
+		
+		if(afficheScore.ongletActif == 1)
+		then
+			colonne1Titre = "Classement"
+			colonne2Titre = "Nom"
+			colonne3Titre = "Score"
+
+		elseif(afficheScore.ongletActif == 2)
+		then
+			colonne1Titre = "Classement"
+			colonne2Titre = "Nom"
+			colonne3Titre = "Temps"
+
+		elseif(afficheScore.ongletActif == 3)
+		then
+			colonne1Titre = "Progression"
+			colonne2Titre = ""
+			colonne3Titre = "%"
+			if(event.index == 2) then colonne1Contenu = "Score" end
+			if(event.index == 3) then colonne1Contenu = "Temps" end
+			colonne2Contenu = ""
+
+		end
+		
+		-- Affichage des titres des colonnes et de leur valeur pour chaque ligne
+		if(not row.isCategory)
+		then
+			--Contenu Colonne1
+			local text = display.newRetinaText( colonne1Contenu, 0, 0, "Arial", 12 )
+			text:setReferencePoint( display.CenterMiddleReferencePoint )
+			text.y = row.height * 0.5
+			text.x = display.contentWidth*0.16
+			text:setTextColor( 0 )
+			rowGroup:insert( text )
+			
+			--Contenu Colonne2
+			text = display.newRetinaText( colonne2Contenu, 0, 0, "Arial", 12 )
+			text:setReferencePoint( display.CenterMiddleReferencePoint )
+			text.y = row.height * 0.5
+			text.x = display.contentWidth*0.5
+			text:setTextColor( 0 )
+			rowGroup:insert( text )
+			
+			--Contenu Colonne3
+			text = display.newRetinaText( colonne3Contenu, 0, 0, "Arial", 12 )
+			text:setReferencePoint( display.CenterMiddleReferencePoint )
+			text.y = row.height * 0.5
+			text.x = display.contentWidth*0.82
+			text:setTextColor( 0 )
+			rowGroup:insert( text )
+		else
+			--Titre Colonne1
+			local text = display.newRetinaText( colonne1Titre, 0, 0, "Arial", 14 )
+			text:setReferencePoint( display.CenterMiddleReferencePoint )
+			text.y = row.height * 0.5
+			text.x = display.contentWidth*0.16
+			text:setTextColor( 255, 255, 255 )
+			rowGroup:insert( text )
+			
+			--Titre Colonne2
+			text = display.newRetinaText( colonne2Titre, 0, 0, "Arial", 14 )
+			text:setReferencePoint( display.CenterMiddleReferencePoint )
+			text.y = row.height * 0.5
+			text.x = display.contentWidth*0.5
+			text:setTextColor( 255, 255, 255 )
+			rowGroup:insert( text )
+			
+			--Titre Colonne3
+			text = display.newRetinaText( colonne3Titre, 0, 0, "Arial", 14 )
+			text:setReferencePoint( display.CenterMiddleReferencePoint )
+			text.y = row.height * 0.5
+			text.x = display.contentWidth*0.82
+			text:setTextColor( 255, 255, 255 )
+			rowGroup:insert( text )
+		end
+	end
+	
+	--Insert widgets/images into a group
+	localGroup:insert( list )
 	
 	function networkListenerAjout( event )
 		if ( event.isError ) then
-            print( "Network error!")
-        else
-            network.request( "http://12h52.fr/aquatrail/list.php?world="..tempInfos.World.."&stage="..tempInfos.Level.."", "GET", networkListener )
-        end
+			colonne1Contenu = "Network Error"
+			colonne2Contenu = ""
+			colonne3Contenu = ""
+			displayError()
+		else
+			network.request( "http://12h52.fr/aquatrail/list.php?world="..tempInfos.World.."&stage="..tempInfos.Level.."", "GET", networkListener )
+		end
 	end
-	print ( tempInfos.Uid.." "..tempInfos.Login.." "..tempInfos.Score.." "..tempInfos.World.." "..tempInfos.Level )
 	network.request( "http://12h52.fr/aquatrail/ajout.php?login="..tempInfos.Login.."&score="..tempInfos.Score.."&adress="..tempInfos.Uid.."&world="..tempInfos.World.."&stage="..tempInfos.Level.."", "GET", networkListenerAjout )
 	
 	function networkListener( event )
         if ( event.isError ) then
-                print( "Network error!")
+                colonne1Contenu = "Network Error"
+				colonne2Contenu = ""
+				colonne3Contenu = ""
+				displayError()
         else
                 myNewData = event.response
                 print ("From server: "..myNewData)
-                decodedData = (json.decode( myNewData)) -- attention peter doit faire le changement : enlever les [ ] dans le login.php
+                decodedData = (json.decode( myNewData)) 
 				if (decodedData.error == nil) then
 					local index = decodedData.index - 1
-					print (index)
+					createCategory()
+					print(worldinfo.Uid)
 					for i=1, index, 1 do
-						--print(decodedData["row"..i].login);
-						refreshData(decodedData["row"..i], index)
+						colonne1Contenu = i
+						colonne2Contenu = decodedData["row"..i].login
+						if(afficheScore.ongletActif == 1)
+						then
+							colonne3Contenu = decodedData["row"..i].score
+						else
+							colonne3Contenu = decodedData["row"..i].time
+						end
+						refreshData(decodedData["row"..i], i)
 					end
 				else
-					print ("no data")
+					colonne1Contenu = "Pas de données"
+					colonne2Contenu = ""
+					colonne3Contenu = ""
+					displayWarning()
 				end
         end
 	end
-	
-	
-	function refreshData(playerData, index)
-	
-	-- permet de creer la liste a partir des données json
-	
-	-- insert rows into list (tableView widget)
-	--print ("INDEX"..index)
-	label = playerData.login
-	score = playerData.score
-	
-	if ( playerData.login == tempInfos.Login )
-	then
-		color = 255
-		rowColor = {0,0,0,155}
-	else
-		color = 0
-		rowColor = {255,255,255,100}
+
+	function displayError()
+		
+		isCategory = false; rowHeight = 34; rowColor={ 255, 0, 0, 255 }; lineColor={0, 56, 112, 255}
+		list:insertRow
+		{
+			isCategory = isCategory,
+			onRender = onRowRender,
+			height = rowHeight,
+			rowColor = rowColor,
+			lineColor = lineColor
+		}
+		
 	end
 	
-	list:insertRow{
-		height = 30,
-		onRender = onRowRender,
-		listener = onRowTouch
-	}
+	function displayWarning()
+		
+		isCategory = false; rowHeight = 34; rowColor={ 255, 255, 0, 255 }; lineColor={0, 56, 112, 255}
+		list:insertRow
+		{
+			isCategory = isCategory,
+			onRender = onRowRender,
+			height = rowHeight,
+			rowColor = rowColor,
+			lineColor = lineColor
+		}
+		
+	end
+	
+	function createCategory()
+		
+		isCategory = true; rowHeight = 34; rowColor={ 0, 56, 112, 255 }; lineColor={0, 56, 112, 255}
+		list:insertRow
+		{
+			isCategory = isCategory,
+			onRender = onRowRender,
+			height = rowHeight,
+			rowColor = rowColor,
+			lineColor = lineColor
+		}
+		
+	end
 
-end
+	function refreshData(playerData, index)
 
+		isCategory = false
+		rowHeight = 30
+		lineColor = {0, 56, 112, 255}
+		
+		print(playerData.adress)
+		if ( playerData.adress == worldinfo.Uid )
+		then
+			color = 127
+			rowColor = {0,0,0,155}
+		else
+			color = 0
+			rowColor = {255,255,255,100}
+		end
+		
+		
+		list:insertRow
+		{
+			isCategory = isCategory,
+			onRender = onRowRender,
+			height = rowHeight,
+			rowColor = rowColor,
+			lineColor = lineColor
+		}
+	end
+
+	function refresh()
+		apparenceOngletActif ()
+		list:deleteAllRows()
+		network.request( "http://12h52.fr/aquatrail/list.php?world="..afficheScore.mondeChoisi.."&stage="..afficheScore.nivChoisi.."", "GET", networkListener )
+	end
+	
+btnScore:addEventListener ("tap", refresh)
+btnTemps:addEventListener ("tap", refresh)
+btnProgression:addEventListener ("tap", refresh)	
+
+--Affichage initial
+timer.performWithDelay( 0, apparenceOngletActif )
+--timer.performWithDelay( 0, ongletActif )
+
+
+	-- Bouton retour
+	local reBtn = display.newImage(boutonRetour)
+   reBtn.isVisible = true
+   reBtn:setReferencePoint(display.BottomLeftReferencePoint)
+   reBtn.x = 15
+   reBtn.y = display.contentHeight - 15
+   
+   
+	
+	--Return Button
+	local function pressReturn (event)
+		if (event.phase == "ended") then
+			if(tempInfos.World=="1") then 
+				director:changeScene ("IceWorld")
+			elseif(tempInfos.World=="2") then 
+				director:changeScene ("DesertWorld")
+			elseif(tempInfos.World=="4") then 
+				director:changeScene ("IslandWorld") -- a verifier
+			elseif(tempInfos.World=="3") then 
+				director:changeScene ("ForestWorld")
+			end
+		end
+	end
+	reBtn:addEventListener ("touch", pressReturn)
+	localGroup:insert(reBtn)
+  
 	-- MUST return a display.newGroup()
 	return localGroup
 end
-
+	
 
 
