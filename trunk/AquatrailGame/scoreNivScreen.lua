@@ -169,7 +169,7 @@ new = function ( params )
 	--Return Button
 	   	local function pressReturn (event)
 		if event.phase == "ended" then
-			director:changeScene ("scoreMenuScreen")
+			director:changeScene ("ScoreMenuScreen")
 		end
 	end
 	reBtn:addEventListener ("touch", pressReturn)
