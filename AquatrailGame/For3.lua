@@ -23,7 +23,7 @@ endLevel = function (self, score, time)
     }
 	
 	--Background
-	local back = display.newImage("background_desert.png")
+	local back = display.newImage("background_ice.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
@@ -46,14 +46,15 @@ endLevel = function (self, score, time)
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
-	local STATECHANGE = "LiqGaz"
+	local STATECHANGE = "LiqSol"
 	
 
-    local visual = GameLogic.createMap("Niveau_D_3.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_G_2.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
+	local chrono = Chrono:new()
 	chrono.Start()
-	chrono.setDisplay(true))
+	chrono.setDisplay(true)
 	
 	-- BACKBUTTON--
 	local backbutton = display.newImage ("Bouton-Reload-HUD.png")
