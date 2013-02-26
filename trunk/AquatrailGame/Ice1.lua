@@ -32,10 +32,11 @@ new = function ( params )
    back.height=DynResManager.getScreenHeightPhysPix()
    --localGroup:insert(back)
    
-   local scoreText  = display.newText( "score: ", 0, 0, "Helvetica", 30 )
-	scoreText.x = display.contentWidth/2
-	scoreText.y =  scoreText.height / 2
 
+	local scoreText  = display.newText( "Score : ", 0, 0, "Arial", 20 )
+	scoreText:setReferencePoint(display.BottomCenterReferencePoint)
+	scoreText.x = display.contentWidth/2
+	scoreText.y = display.contentHeight
 	
 	function endLevel ()
 			

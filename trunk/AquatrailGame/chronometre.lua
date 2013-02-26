@@ -18,11 +18,11 @@
 			
 			display.remove(Chrono.timeDisplayed)
 			
-			Chrono.timeDisplayed = display.newText(Chrono.minutes..":"..zeroComposite..Chrono.secondes, 0, 0, "Arial", 16)
+			Chrono.timeDisplayed = display.newText(Chrono.minutes..":"..zeroComposite..Chrono.secondes, 0, 0, "Arial", 30)
 			Chrono.timeDisplayed:setTextColor(255, 255, 255)
-			Chrono.timeDisplayed:setReferencePoint(display.TopLeftReferencePoint)
-			Chrono.timeDisplayed.x = display.contentWidth*0.5 - Chrono.timeDisplayed.width*0.5
-			Chrono.timeDisplayed.y = display.contentHeight - Chrono.timeDisplayed.height
+			Chrono.timeDisplayed:setReferencePoint(display.TopCenterReferencePoint)
+			Chrono.timeDisplayed.x = display.contentWidth*0.5
+			Chrono.timeDisplayed.y = 0
 		end
 	end
 	

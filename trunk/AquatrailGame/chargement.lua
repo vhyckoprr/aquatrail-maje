@@ -6,7 +6,7 @@ local sprite = require "sprite"
 	Load = {}
 	Load.spriteSheet = sprite.newSpriteSheet("chargement.png", 77, 77)
 	Load.spriteSet = sprite.newSpriteSet(Load.spriteSheet, 1, 6)
-	Load.chargement = sprite.newSprite( Load.spriteSet )
+	
 
 	--Preload de l'animation de chargement
 local preLoadAnim = function ()
