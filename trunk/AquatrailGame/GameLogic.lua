@@ -2,7 +2,6 @@ module(..., package.seeall)
 
 -- CONSTANTS,VARIABLES, REQUIREMENTS ---------------------------------------------------------
 
-
 --Etat de jeu
 --
 local GAMESTATE

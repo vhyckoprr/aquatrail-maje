@@ -148,9 +148,14 @@ new = function ( params )
    case6Cad.x = case6Btn.x
    case6Cad.y =  case6Btn.y
    localGroup:insert(case6Cad)
+
+	chargement.preLoadAnim()
    
-   --Level 1 Clic
-	   	local function pressCase1(event)
+	--Level 1 Clic
+	local function pressCase1(event)
+		if(event.phase == "began" and unlockLevel1 ) then
+			chargement.play()
+		end
 		if (event.phase == "ended" and unlockLevel1 ) then
 			director:changeScene ("Ice1")
 		end
@@ -158,7 +163,7 @@ new = function ( params )
 	case1Btn:addEventListener ("touch", pressCase1)
 	
 	--Level 2 Clic
-	   	local function pressCase2(event)
+	local function pressCase2(event)
 		if (event.phase == "ended" and unlockLevel2 )  then
 			director:changeScene ("Ice2")
 		end
@@ -166,7 +171,7 @@ new = function ( params )
 	case2Btn:addEventListener ("touch", pressCase2)
 	
 	--Level 3 Clic
-	   	local function pressCase3(event)
+	local function pressCase3(event)
 		if (event.phase == "ended" and unlockLevel3 )  then
 			director:changeScene ("Ice3")
 		end
@@ -174,7 +179,7 @@ new = function ( params )
 	case3Btn:addEventListener ("touch", pressCase3)
 	
 	--Level 4 Clic
-	   	local function pressCase4(event)
+	local function pressCase4(event)
 		if (event.phase == "ended" and unlockLevel4 )  then
 			director:changeScene ("Ice4")
 		end
@@ -182,7 +187,7 @@ new = function ( params )
 	case4Btn:addEventListener ("touch", pressCase4)
 	
 	--Level 5 Clic
-	   	local function pressCase5(event)
+	local function pressCase5(event)
 		if (event.phase == "ended" and unlockLevel5 )  then
 			director:changeScene ("Ice5")
 		end
@@ -190,7 +195,7 @@ new = function ( params )
 	case5Btn:addEventListener ("touch", pressCase5)
 	
 	--Level 6 Clic
-	   	local function pressCase6(event)
+	local function pressCase6(event)
 		if (event.phase == "ended" and unlockLevel6 )  then
 			director:changeScene ("Ice6")
 		end

@@ -2,8 +2,8 @@ module(..., package.seeall)
 -- Main function - MUST return a display.newGroup()
 new = function ( params )
 
-	
 	local localGroup = display.newGroup()
+
 	display.setStatusBar( display.HiddenStatusBar )
 	local paused = false
 	--system.activate( "multitouch" )
