@@ -119,7 +119,7 @@ new = function ( params )	local DynResManager = require("DynResManager")
 		end
 	end
 	--exitBtn:addEventListener("touch",exitBtnt)
-
+	
 	-- MUST return a display.newGroup()
 	return localGroup
 end

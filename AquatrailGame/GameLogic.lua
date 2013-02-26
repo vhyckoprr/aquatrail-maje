@@ -141,7 +141,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	
 	SCORE=0
 	scoreElement = scoreEl 
-	scoreElement.text = "score: "..SCORE
+	scoreElement.text = "Score : "..SCORE
 
 	map:setFocus( player )
 	map:addPropertyListener("IsPlayer", onPlayerProperty)
@@ -223,7 +223,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				if (item.Score) then
 					SCORE=SCORE+item.Score
 					--print(item.Score)
-					scoreElement.text = "score: "..SCORE
+					scoreElement.text = "Score : "..SCORE
 				elseif item.pickupType == "health" then
 					text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
 				end
