@@ -8,6 +8,7 @@ director = require("director")
 profile = require("Profile")
 score = require("afficheScore")
 chrono = require("chronometre")
+chargement = require("chargement")
 
 
 ---------------------------------------------------------------

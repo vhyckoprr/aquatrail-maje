@@ -2,8 +2,7 @@
 --Creation d'une "classe" Chrono
 	Chrono = {}
 
-	Chrono.secondePast = true
-	Chrono.minutePast = false
+	Chrono.timerId = 0
 	Chrono.secondes = -1
 	Chrono.minutes = 0
 	Chrono.display = false
@@ -28,53 +27,37 @@
 	end
 	
 	--Systeme de chronometre
-	function enterFrame(event)
+	function update(event)
 		if(not Chrono.pause)
 		then
-			if((event.time%1000) >=0 and (event.time%1000) <= 500 and not Chrono.secondePast)
-			then
-				Chrono.secondes = Chrono.secondes+1
-				Chrono.secondePast = true
-				if(Chrono.display) then Display() end
-				Chrono.secondesDelta = Chrono.secondesDelta+1
-			end
-			if((event.time%1000) >500 and (event.time%1000) <= 999 and Chrono.secondePast)
-			then
-				Chrono.secondePast = false
-			end
+			Chrono.secondes = Chrono.secondes+1
+			Chrono.secondePast = true
+			if(Chrono.display) then Display() end
+			Chrono.secondesDelta = Chrono.secondesDelta+1
 			
-			if(Chrono.secondes%59 == 0 and not(Chrono.secondes <= 0) and not Chrono.minutePast and (event.time%1000) >500 and (event.time%1000) <= 999)
+			if(Chrono.secondes%59 == 0 and not(Chrono.secondes <= 0))
 			then
 				Chrono.secondes = -1
 				Chrono.minutes = Chrono.minutes+1
-				Chrono.minutePast = true
-			end
-			if(Chrono.minutePast and (event.time%1000) >=0 and (event.time%1000) <= 500)
-			then
-				Chrono.minutePast = false
 			end
 		end
 	end
 	
 	--Lancer le chronometre
 	local Start = function ()
-		Runtime:addEventListener("enterFrame", enterFrame)
+		timer.performWithDelay(0, update)
+		Chrono.timerId = timer.performWithDelay(1000, update, 0)
 	end
 	
 	--Pause du chrono
 	local Pause = function()
-		if(Chrono.pause)
-		then
-			Chrono.pause = false
-		else
-			Chrono.pause = true
-		end
+		if(Chrono.pause) then Chrono.pause = false
+		else Chrono.pause = true end
 	end
 	
 	--reinitialiser
 	function reInitialize()
-		Chrono.secondePast = true
-		Chrono.minutePast = false
+		Chrono.timerId = 0
 		Chrono.secondes = -1
 		Chrono.minutes = 0
 		Chrono.display = false
@@ -85,7 +68,7 @@
 	
 	--Stopper le chronometre
 	local Stop = function ()
-		Runtime:removeEventListener("enterFrame", enterFrame)
+		timer.cancel(Chrono.timerId)
 		reInitialize()
 	end
 
