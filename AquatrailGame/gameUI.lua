@@ -113,7 +113,7 @@ function newFontXP( params )
 	elseif params.ios then
 		font = params.ios -- return font for iOS/MacOS
 	else
-		font = native.systemFont -- default font (Helvetica on iOS, Android Sans on Android)
+		font = native.systemFont -- default font (Fontastique on iOS, Android Sans on Android)
 	end
 	
 	return font

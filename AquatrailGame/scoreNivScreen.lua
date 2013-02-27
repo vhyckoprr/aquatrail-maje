@@ -14,11 +14,11 @@ new = function ( params )
 	local colorText = {87, 163, 166}
 	local bouton = "bouton_niveau_glace.png"
 	local boutonRetour = "bouton_retour_defaut.png"
-	local text = display.newText("SCORES", 0, 0, "fontastique", 50)
-	if(afficheScore.scoreGlace) then bg = "fond_glace.png"; color = {158,233,235}; colorText = {87, 163, 166}; bouton = "bouton_niveau_glace.png"; boutonRetour = "bouton_retour_glace.png"; text:setTextColor(97, 211, 239);
-	elseif(afficheScore.scoreForet) then bg = "fond_foret.png"; color = {200,127,23}; colorText = {192,125,59}; bouton = "bouton_niveau_desert_foret.png"; boutonRetour = "bouton_retour_foret.png";text:setTextColor(105, 26, 186);
-	elseif(afficheScore.scoreIle) then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; bouton = "bouton_niveau_glace.png"; boutonRetour = "bouton_retour_ile.png";text:setTextColor(0, 56, 112);
-	elseif(afficheScore.scoreDesert) then bg = "fond_desert.png"; color = {241,148,86}; colorText = {192,125,59}; bouton = "bouton_niveau_desert_foret.png"; boutonRetour = "bouton_retour_desert.png";text:setTextColor(105, 26, 186);
+	
+	if(afficheScore.scoreGlace) then bg = "background_ice.png"; color = {158,233,235}; colorText = {87, 163, 166}; bouton = "bouton_niveau-glace_V2.0.png"; boutonRetour = "bouton_retour_glace.png";
+	elseif(afficheScore.scoreForet) then bg = "background_foret.png"; color = {200,127,23}; colorText = {120,65,0}; bouton = "bouton_niveau-foret_V2.0.png"; boutonRetour = "bouton_retour_foret.png";
+	elseif(afficheScore.scoreIle) then bg = "fond_ile.png"; color = {84,186,255}; colorText = {128,226,205}; bouton = "bouton_niveau-ile_V2.0.png"; boutonRetour = "bouton_retour_ile.png";
+	elseif(afficheScore.scoreDesert) then bg = "background_desert.png"; color = {241,148,86}; colorText = {105,26,186}; bouton = "bouton_niveau-desert_V2.0.png"; boutonRetour = "bouton_retour_desert.png";
 	else end
 		
 	-- Create a background colour just to make the screen look a little nicer
@@ -34,10 +34,11 @@ new = function ( params )
    localGroup:insert(back)
    
    --Textes
-   
-   
-   text.x = display.contentWidth*0.5
-   text.y = display.contentHeight*0.075 + text.height*0.5
+	local text = display.newText("SCORES", 0, 0, "Fontastique", 50) 
+	text:setTextColor(colorText[1], colorText[2], colorText[3])
+	if(afficheScore.scoreForet) then text:setTextColor(0,210,30) end
+	text.x = display.contentWidth*0.5
+	text.y = display.contentHeight*0.05 + text.height*0.5
    
    --return
 	local reBtn = display.newImage(boutonRetour)
@@ -53,7 +54,7 @@ new = function ( params )
    case1Btn.x = display.contentWidth/2 -case1Btn.width*1.5
    case1Btn.y =  display.contentHeight/1.75 -case1Btn.height/1.5
    localGroup:insert(case1Btn)
-    local case1Text = display.newText("1", 0, 0, native.systemFont, 32)
+    local case1Text = display.newText("1", 0, 0, "Fontastique", 32)
 	case1Text:setTextColor(colorText[1], colorText[2], colorText[3])
 	case1Text.x = case1Btn.x
 	case1Text.y = case1Btn.y
@@ -64,7 +65,7 @@ new = function ( params )
    case2Btn.x = display.contentWidth/2 
    case2Btn.y =  display.contentHeight/1.75 -case2Btn.height/1.5
    localGroup:insert(case2Btn)
-   local case2Text = display.newText("2", 0, 0, native.systemFont, 32)
+   local case2Text = display.newText("2", 0, 0, "Fontastique", 32)
 	case2Text:setTextColor(colorText[1], colorText[2], colorText[3])
 	case2Text.x = case2Btn.x
 	case2Text.y = case2Btn.y
@@ -75,7 +76,7 @@ new = function ( params )
    case3Btn.x = display.contentWidth/2 +case3Btn.width*1.5
    case3Btn.y =  display.contentHeight/1.75 -case3Btn.height/1.5
    localGroup:insert(case3Btn)
-   local case3Text = display.newText("3", 0, 0, native.systemFont, 32)
+   local case3Text = display.newText("3", 0, 0, "Fontastique", 32)
 	case3Text:setTextColor(colorText[1], colorText[2], colorText[3])
 	case3Text.x = case3Btn.x
 	case3Text.y = case3Btn.y
@@ -86,7 +87,7 @@ new = function ( params )
    case4Btn.x = display.contentWidth/2 -case4Btn.width*1.5
    case4Btn.y =  display.contentHeight/1.75 +case4Btn.height/1.5
    localGroup:insert(case4Btn)
-   local case4Text = display.newText("4", 0, 0, native.systemFont, 32)
+   local case4Text = display.newText("4", 0, 0, "Fontastique", 32)
 	case4Text:setTextColor(colorText[1], colorText[2], colorText[3])
 	case4Text.x = case4Btn.x
 	case4Text.y = case4Btn.y
@@ -97,7 +98,7 @@ new = function ( params )
    case5Btn.x = display.contentWidth/2
    case5Btn.y =  display.contentHeight/1.75 +case5Btn.height/1.5
    localGroup:insert(case5Btn)
-   local case5Text = display.newText("5", 0, 0, native.systemFont, 32)
+   local case5Text = display.newText("5", 0, 0, "Fontastique", 32)
 	case5Text:setTextColor(colorText[1], colorText[2], colorText[3])
 	case5Text.x = case5Btn.x
 	case5Text.y = case5Btn.y
@@ -108,7 +109,7 @@ new = function ( params )
    case6Btn.x = display.contentWidth/2 +case6Btn.width*1.5
    case6Btn.y =  display.contentHeight/1.75 +case6Btn.height/1.5
    localGroup:insert(case6Btn)
-   local case6Text = display.newText("6", 0, 0, native.systemFont, 32)
+   local case6Text = display.newText("6", 0, 0, "Fontastique", 32)
 	case6Text:setTextColor(colorText[1], colorText[2], colorText[3])
 	case6Text.x = case6Btn.x
 	case6Text.y = case6Btn.y

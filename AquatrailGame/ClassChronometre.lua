@@ -59,7 +59,7 @@
 			
 			display.remove(self.timeDisplayed)
 			
-			self.timeDisplayed = display.newText(self.minutes..":"..zeroComposite..self.secondes, 0, 0, "Arial", 16)
+			self.timeDisplayed = display.newText(self.minutes..":"..zeroComposite..self.secondes, 0, 0, "Fontastique", 16)
 			self.timeDisplayed:setTextColor(255, 255, 255)
 			self.timeDisplayed:setReferencePoint(display.TopLeftReferencePoint)
 			--self.timeDisplayed.x = display.contentWidth*0.5 - self.timeDisplayed.width*0.5
