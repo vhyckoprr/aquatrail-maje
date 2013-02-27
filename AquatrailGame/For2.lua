@@ -23,7 +23,7 @@ endLevel = function (self, score, time)
     }
 	
 	--Background
-	local back = display.newImage("background_ice.png")
+	local back = display.newImage("background_foret.png")
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
