@@ -20,8 +20,8 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("OPTIONS", 0, 0, "Arial", 50)
-   text:setTextColor(0, 56, 112)
+   local text = display.newText("OPTIONS", 0, 0, "fontastique", 50)
+   text:setTextColor(85, 181, 205)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.1 + text.height*0.5
    

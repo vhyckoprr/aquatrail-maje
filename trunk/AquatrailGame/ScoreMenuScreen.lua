@@ -9,19 +9,19 @@ new = function ( params )
 	
 	-- Create a background colour just to make the screen look a little nicer
 	local backcolor = DynResManager.createCenterRectangleFitted()
-	backcolor:setFillColor(59, 215, 169)
+	backcolor:setFillColor(169, 214, 255)
 	localGroup:insert(backcolor)
 	
 	--Background
-   local back = display.newImage("fond_mondes.png")
+   local back = display.newImage("fond_accueil.png")
    back.isVisible = true
    back.x = display.contentWidth*0.5 
    back.y = display.contentHeight*0.5 
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("SCORES", 0, 0, "Arial", 50)
-   text:setTextColor(0, 56, 112)
+   local text = display.newText("SCORES", 0, 0, "fontastique", 50)
+   text:setTextColor(85, 181, 205)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.075 + text.height*0.5
   
@@ -152,11 +152,18 @@ new = function ( params )
    localGroup:insert(desBtn)
 
    --islandBtn ( MONDE 4)
-	local islBtn = display.newImage("bouton_ile.png")
+	local islBtn = display.newImage("bouton_ile_lock.png")
    islBtn.isVisible = true
    islBtn.x = display.contentWidth/2 +islBtn.width/1.8
    islBtn.y =  display.contentHeight/1.75 +islBtn.height/1.8
    localGroup:insert(islBtn)
+   
+   -- cadenas
+   local islCad = display.newImage("cadenas_monde_bloque.png")
+   islCad.isVisible = not unlockWorld4
+   islCad.x = islBtn.x
+   islCad.y =  islBtn.y
+   localGroup:insert(islCad)
    
    	-- Bouton retour
 	local reBtn = display.newImage("bouton_retour_defaut.png")
@@ -200,7 +207,7 @@ new = function ( params )
 			director:changeScene ("scoreNivScreen")
 		end
 	end
-	islBtn:addEventListener ("touch", pressIsland)
+	--islBtn:addEventListener ("touch", pressIsland)
 	
 	--Retour function
 	local function pressReturn (event)

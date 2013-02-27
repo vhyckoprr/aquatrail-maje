@@ -820,7 +820,7 @@ end
 
 --- Completely removes all visual and physical objects associated with the Tile.
 function Tile:destroy()
-
+	print("Tile:destroy")
 	-- Destroy the properties
  	if self.properties then
  		self.properties = nil

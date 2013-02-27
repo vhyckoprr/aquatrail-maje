@@ -42,6 +42,7 @@ local chargesol = true
 local STATE_WALKING_GAZ = "WalkingGaz"
 local STATE_JUMPING_GAZ = "JumpingGaz"
 local gagnerAlt = false--gagner de l'altitude
+local arroser = false
 
 --Transition Etat
 local STATE_TRANSITIONLIQSOL = "TransitionLiqSol"
@@ -92,6 +93,7 @@ local pointsTable = {}
 local stalactiteTable = {}
 local stalacmiteTable = {}
 local line
+local Arrosable  = {}
 
 local scoreElement
 
@@ -104,14 +106,14 @@ local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
 ------------------------------------------------------------------------------------
 
-local createMap = function( urlMap, scoreEl, level, statehero)
+local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 	STATECHANGE = statehero
 	GAMESTATE = STATE_STARTLEVEL
 	STATE_ANIMATIONENCOURS = true
 	local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
-	
+
 	--start FPS show
 	--
 	local prevTime = system.getTimer()
@@ -120,7 +122,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 	fps.prevTime = prevTime
 	--
 	--
-
+	map = lime.loadMap(urlMap)
 	
 	if STATECHANGE == LIQSOL then
 		EtatHero = 0
@@ -130,7 +132,7 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 		EtatHero = 1
 	end
 	
-	map = lime.loadMap(urlMap)
+	
 	local onPlayerProperty = function(property, type, object)
 		player = object.sprite
 	end
@@ -157,12 +159,28 @@ local createMap = function( urlMap, scoreEl, level, statehero)
     --lancer le theme principal
 	audio.play(maintheme,{loops=-1, channel=1})
 	
-
 	local function changeStalactiteBodyType(body)
 		body.isAwake = true
 		body.isBodyActive = true
 		body.sprite.bodyType = "dynamic"
 		--print(body.sprite.bodyType)
+	end
+	
+	local layerPlatforms = map:getTileLayer("Platforms")
+	-- local layerCastle = map:getTileLayer("Castle")
+	local alltilesPlatforms = layerPlatforms.tiles
+	-- local alltilesCastle = layerCastle.tiles
+	print("layerPlatforms "..#alltilesPlatforms)
+	-- print("layerCastle "..#alltilesCastle)
+	
+	local function clear ()
+		print("clear"..#alltilesPlatforms)
+		for i=0,#alltilesPlatforms,1 do
+			if alltilesPlatforms[i]:isOnScreen () then
+				--alltilesPlatforms[i]:destroy ()
+			end
+		end
+		timer.performWithDelay( 2000, clear, 1 )
 	end
 	
 	--COLLISION --------------------------------------------------------------------------------------------------------
@@ -300,12 +318,18 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 				local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 				player:applyLinearImpulse(-POUVOIRVENT, 0, player.x, player.y)
 			end
-		--
+		end
+		if event.other.IsArrosable and EtatHero == 2 then
+			print("IsArrosable")
+			arroser = true
 		end
 		elseif ( event.phase == "ended" ) then
 			if event.other.IsGround then
 				--print("isground ended")
 				player.canJump = false
+			end
+			if event.other.IsArrosable and EtatHero == 2 then
+				arroser = false
 			end
 	 	end
 		
@@ -389,13 +413,13 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 		STATE_ANIMATIONENCOURS = true
 		--print("endlevel1")
 			--L'animation animTransition est enclencher?
-			if player.sequence == "animEndLevel"then
+			if player.sequence == "animEndLevel" then
 				--Le sprite est il entrain d'executer une animation?
 				if player.animating  then
 					--Le sprite a il fini son animation?
 					if player.currentFrame ==6 then
 						print("endlevel2")
-						LEVEL:endLevel(SCORE,TIME)
+						LEVEL:endLevel(SCORE,TIME,typeMap)
 					end
 				end
 			end
@@ -538,14 +562,19 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 						
 						
 						elseif EtatHero == 2 then
-							player.state = STATE_JUMPING_GAZ
-							player:prepare("anim" .. player.state)
-							player:play()
 							if event.y - display.contentHeight/2 >0 then
+								player.state = STATE_JUMPING_GAZ
+								player:prepare("anim" .. player.state)
+								player:play()
 								gagnerAlt = true
 								timer.performWithDelay( 0, changeraltGaz, 1 )
+								print("monte alt")
 							else
-								print("capacite special")
+								if arroser then 
+									print("fleur pousse")
+									--Arrosable[Numarroser]:prepare("animation1")
+									--Arrosable[Numarroser]:play()
+								end
 							end
 						end
 						
@@ -563,7 +592,9 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 						then
 							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
 							if EtatHero == 2 then
-								player:applyLinearImpulse(0, -3, player.x, player.y)
+								if event.y - display.contentHeight/2 >0 then
+									player:applyLinearImpulse(0, -3, player.x, player.y)
+								end
 							else
 								player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
 							end
@@ -651,21 +682,24 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 		
 		--Les Stalagmites ne bloque pas le glaçon :
 		local layer = map:getTileLayer("Platforms")
+		
 		if layer ~= nil then
-			local tiles = layer:getTilesWithProperty("IsStalacmite")
+			local Stalacmite = layer:getTilesWithProperty("IsStalacmite")
 			if(EtatHero == 1) then
-				for i=1, #tiles, 1 do
-					tiles[i]:setProperty("isSensor", true)
-					tiles[i]:reBuild()
+				for i=1, #Stalacmite, 1 do
+					Stalacmite[i]:setProperty("isSensor", true)
+					Stalacmite[i]:reBuild()
 				end
 			else
-				for i=1, #tiles, 1 do
-					tiles[i]:setProperty("isSensor", false)
-					tiles[i]:reBuild()
+				for i=1, #Stalacmite, 1 do
+					Stalacmite[i]:setProperty("isSensor", false)
+					Stalacmite[i]:reBuild()
 				end
 			end
 		end
 	end
+	
+	
 	
 	Runtime:addEventListener("touch", ToucheScreen)
 
@@ -718,6 +752,35 @@ local createMap = function( urlMap, scoreEl, level, statehero)
         end     
 	end
 	
+	-- Make sure we actually have a layer
+	if(layer) then
+        -- Get all the tiles on this layer
+        local tiles = layer.tiles
+        
+        -- Make sure tiles is not nil
+        if(tiles) then
+                
+			-- Loop through all our tiles on this layer     
+			for i=1, #tiles, 1 do
+				-- Check if the tile is animated (note the capitilisation)
+				if tiles[i].IsFler and tiles[i].IsAnimated then
+					-- Store off a copy of the tile
+					local tile = tiles[i]
+					
+					-- Check if the tile has a property named "animation1", our sequence
+					if(tile.animation1) then
+							
+						-- Prepare it through the sprite
+						tile.sprite:prepare("animation1")
+						
+						-- Now finally play it
+						tile.sprite:play()
+					end
+				end
+			end
+        end     
+	end
+	
 	local layer = map:getTileLayer("SableMouvant")
  
 -- Make sure we actually have a layer
@@ -748,7 +811,6 @@ local createMap = function( urlMap, scoreEl, level, statehero)
 			end
         end     
 	end
-
 	return visual
 	
 end

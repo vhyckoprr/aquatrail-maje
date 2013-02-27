@@ -890,7 +890,7 @@ function Map:getTilesWithProperty(name)
 	local tileLayers = {}
 	
 	for i = 1, #self.tileLayers, 1 do
-		
+
 		tileLayers = self.tileLayers[i]:getTilesWithProperty(name)
 		
 		for j = 1, #tileLayers, 1 do

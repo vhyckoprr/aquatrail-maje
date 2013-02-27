@@ -496,7 +496,7 @@ end
 --- Destroys a tile at a certain position.
 -- @param position The position of the tile, world or grid.
 function TileLayer:removeTileAt(position)
-
+	print("Tile:destroy")
 	local tile = self:getTileAt(position)
 
 	if tile then
@@ -669,7 +669,6 @@ function TileLayer:update( event )
 end
 
 function TileLayer:updateTileVisibility()
-	print("updateTileVisibility")
 	if self.visible then
 		
 		--[[if self.visibleTiles then
