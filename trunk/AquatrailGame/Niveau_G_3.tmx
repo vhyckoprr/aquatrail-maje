@@ -10532,7 +10532,7 @@
     <property name="points" value="[&quot;Montee3A&quot;,&quot;Montee3B&quot;,&quot;Montee3C&quot;]"/>
    </properties>
   </object>
-  <object name="Montee3B" type="Body" x="3987" y="702"/>
+  <object name="Montee3B" type="Body" x="3988" y="703"/>
   <object name="Montee5C" type="Body" x="4940" y="780"/>
   <object name="Montee5A" type="Body" x="4876" y="780">
    <properties>
@@ -10736,7 +10736,7 @@
    </properties>
   </object>
   <object name="Monteen8C" x="9004" y="460"/>
-  <object name="Monteen8B" x="9011" y="349"/>
+  <object name="Monteen8B" x="9013" y="352"/>
   <object name="Penten1B" x="1523" y="716"/>
   <object name="Penten1C" x="1459" y="716"/>
   <object name="Penten1A" type="Body" x="1459" y="652">
