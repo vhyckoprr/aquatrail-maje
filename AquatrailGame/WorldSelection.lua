@@ -54,7 +54,7 @@ new = function ( params )
    --------------------------------------------------------------------------
    
    --foretBtn (MONDE 2 )
-	local forBtn = display.newImage("bouton_foret_lock.png")
+	local forBtn = display.newImage("bouton_foret.png")
    forBtn.isVisible = true
    forBtn.x = display.contentWidth/2 +forBtn.width/1.8
    forBtn.y =  display.contentHeight/1.75 -forBtn.height/1.8
@@ -68,7 +68,7 @@ new = function ( params )
    -----------------------------------------------------------------------------
    
    --desertBtn (MONDE 3 )
-	local desBtn = display.newImage("bouton_desert_lock.png")
+	local desBtn = display.newImage("bouton_desert.png")
    desBtn.isVisible = true
    desBtn.x = display.contentWidth/2 -desBtn.width/1.8
    desBtn.y =  display.contentHeight/1.75 +desBtn.height/1.8

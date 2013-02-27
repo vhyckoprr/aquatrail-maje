@@ -47,7 +47,7 @@ new = function ( params )
    case1Btn.y =  display.contentHeight/1.75 -case1Btn.height/1.5
    localGroup:insert(case1Btn)
     local case1Text = display.newText("1", 0, 0, native.systemFont, 32)
-	case1Text:setTextColor(87, 163, 166)
+	case1Text:setTextColor(193, 100, 0)
 	case1Text.isVisible = unlockLevel1
 	case1Text.x = case1Btn.x
 	case1Text.y = case1Btn.y
@@ -59,7 +59,7 @@ new = function ( params )
    case2Btn.y =  display.contentHeight/1.75 -case2Btn.height/1.5
    localGroup:insert(case2Btn)
    local case2Text = display.newText("2", 0, 0, native.systemFont, 32)
-	case2Text:setTextColor(87, 163, 166)
+	case2Text:setTextColor(255, 0, 0)
 	case2Text.isVisible = unlockLevel2
 	case2Text.x = case2Btn.x
 	case2Text.y = case2Btn.y
@@ -71,7 +71,7 @@ new = function ( params )
    case3Btn.y =  display.contentHeight/1.75 -case3Btn.height/1.5
    localGroup:insert(case3Btn)
    local case3Text = display.newText("3", 0, 0, native.systemFont, 32)
-	case3Text:setTextColor(87, 163, 166)
+	case3Text:setTextColor(255, 0, 0)
 	case3Text.isVisible = unlockLevel3
 	case3Text.x = case3Btn.x
 	case3Text.y = case3Btn.y
@@ -83,7 +83,7 @@ new = function ( params )
    case4Btn.y =  display.contentHeight/1.75 +case4Btn.height/1.5
    localGroup:insert(case4Btn)
    local case4Text = display.newText("4", 0, 0, native.systemFont, 32)
-	case4Text:setTextColor(87, 163, 166)
+	case4Text:setTextColor(255, 0, 0)
 	case4Text.isVisible = unlockLevel4
 	case4Text.x = case4Btn.x
 	case4Text.y = case4Btn.y
@@ -95,7 +95,7 @@ new = function ( params )
    case5Btn.y =  display.contentHeight/1.75 +case5Btn.height/1.5
    localGroup:insert(case5Btn)
    local case5Text = display.newText("5", 0, 0, native.systemFont, 32)
-	case5Text:setTextColor(87, 163, 166)
+	case5Text:setTextColor(255, 0, 0)
 	case5Text.isVisible = unlockLevel5
 	case5Text.x = case5Btn.x
 	case5Text.y = case5Btn.y
@@ -107,7 +107,7 @@ new = function ( params )
    case6Btn.y =  display.contentHeight/1.75 +case6Btn.height/1.5
    localGroup:insert(case6Btn)
    local case6Text = display.newText("6", 0, 0, native.systemFont, 32)
-	case6Text:setTextColor(87, 163, 166)
+	case6Text:setTextColor(255, 0, 0)
 	case6Text.isVisible = unlockLevel6
 	case6Text.x = case6Btn.x
 	case6Text.y = case6Btn.y

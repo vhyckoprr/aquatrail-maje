@@ -27,35 +27,35 @@ new = function ( params )	local DynResManager = require("DynResManager")
 	--PlayButton
   	local playBtn = display.newImage("bouton_jouer.png")
    	playBtn.x =  display.contentWidth*0.5
-   	playBtn.y =  display.contentHeight*0.55
+   	playBtn.y =  display.contentHeight*0.62
    	playBtn.isVisible = true
    	localGroup:insert(playBtn)
    	
    	--OptionsButton
   	local optBtn = display.newImage("bouton_options.png")
    	optBtn.x = 	display.contentWidth*0.75
-   	optBtn.y =  display.contentHeight*0.70
+   	optBtn.y =  display.contentHeight*0.74
    	optBtn.isVisible = true
    	localGroup:insert(optBtn)
    	
    	--RecompensesButton
   	local recBtn = display.newImage("bouton_recompenses.png")
    	recBtn.x = 	display.contentWidth*0.25
-   	recBtn.y =  display.contentHeight*0.70 
+   	recBtn.y =  display.contentHeight*0.74
    	recBtn.isVisible = true
    	localGroup:insert(recBtn)
    	
    	--ScoreButton
   	local scoreBtn = display.newImage("bouton_scores.png")
    	scoreBtn.x = display.contentWidth*0.33
-   	scoreBtn.y = display.contentHeight*0.85 
+   	scoreBtn.y = display.contentHeight*0.89 
    	scoreBtn.isVisible = true
    	localGroup:insert(scoreBtn)
    	
    	--CreditButton
   	local creditBtn = display.newImage("bouton_credits.png")
    	creditBtn.x = display.contentWidth*0.66
-  	creditBtn.y = display.contentHeight*0.85
+  	creditBtn.y = display.contentHeight*0.89
    	creditBtn.isVisible = true
    	localGroup:insert(creditBtn)
    

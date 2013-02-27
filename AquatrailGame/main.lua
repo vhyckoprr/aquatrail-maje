@@ -45,10 +45,6 @@ local function main()
 		--load profil creation
 		director:changeScene("TitleScreen")
 	end
-	
-	--load profil creation
-	--director:changeScene("PseudoScreen")
-	
 	-----------------------------------
 	-- Return
 	-----------------------------------
