@@ -243,7 +243,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					--print(item.Score)
 					scoreElement.text = "Score : "..SCORE
 				elseif item.pickupType == "health" then
-					text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Helvetica", 50 )
+					text = display.newText( item.healthValue .. " Extra Health!", 0, 0, "Fontastique", 50 )
 				end
 				if text then
 					text:setTextColor(0, 0, 0, 255)

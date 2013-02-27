@@ -46,7 +46,7 @@ new = function ( params )
    case1Btn.x = display.contentWidth/2 -case1Btn.width*1.5
    case1Btn.y =  display.contentHeight/1.75 -case1Btn.height/1.5
    localGroup:insert(case1Btn)
-    local case1Text = display.newText("1", 0, 0, native.systemFont, 32)
+    local case1Text = display.newText("1", 0, 0, "Fontastique", 32)
 	case1Text:setTextColor(87, 163, 166)
 	case1Text.isVisible = unlockLevel1
 	case1Text.x = case1Btn.x
@@ -58,7 +58,7 @@ new = function ( params )
    case2Btn.x = display.contentWidth/2 
    case2Btn.y =  display.contentHeight/1.75 -case2Btn.height/1.5
    localGroup:insert(case2Btn)
-   local case2Text = display.newText("2", 0, 0, native.systemFont, 32)
+   local case2Text = display.newText("2", 0, 0, "Fontastique", 32)
 	case2Text:setTextColor(87, 163, 166)
 	case2Text.isVisible = unlockLevel2
 	case2Text.x = case2Btn.x
@@ -70,7 +70,7 @@ new = function ( params )
    case3Btn.x = display.contentWidth/2 +case3Btn.width*1.5
    case3Btn.y =  display.contentHeight/1.75 -case3Btn.height/1.5
    localGroup:insert(case3Btn)
-   local case3Text = display.newText("3", 0, 0, native.systemFont, 32)
+   local case3Text = display.newText("3", 0, 0, "Fontastique", 32)
 	case3Text:setTextColor(87, 163, 166)
 	case3Text.isVisible = unlockLevel3
 	case3Text.x = case3Btn.x
@@ -82,7 +82,7 @@ new = function ( params )
    case4Btn.x = display.contentWidth/2 -case4Btn.width*1.5
    case4Btn.y =  display.contentHeight/1.75 +case4Btn.height/1.5
    localGroup:insert(case4Btn)
-   local case4Text = display.newText("4", 0, 0, native.systemFont, 32)
+   local case4Text = display.newText("4", 0, 0, "Fontastique", 32)
 	case4Text:setTextColor(87, 163, 166)
 	case4Text.isVisible = unlockLevel4
 	case4Text.x = case4Btn.x
@@ -94,7 +94,7 @@ new = function ( params )
    case5Btn.x = display.contentWidth/2
    case5Btn.y =  display.contentHeight/1.75 +case5Btn.height/1.5
    localGroup:insert(case5Btn)
-   local case5Text = display.newText("5", 0, 0, native.systemFont, 32)
+   local case5Text = display.newText("5", 0, 0, "Fontastique", 32)
 	case5Text:setTextColor(87, 163, 166)
 	case5Text.isVisible = unlockLevel5
 	case5Text.x = case5Btn.x
@@ -106,7 +106,7 @@ new = function ( params )
    case6Btn.x = display.contentWidth/2 +case6Btn.width*1.5
    case6Btn.y =  display.contentHeight/1.75 +case6Btn.height/1.5
    localGroup:insert(case6Btn)
-   local case6Text = display.newText("6", 0, 0, native.systemFont, 32)
+   local case6Text = display.newText("6", 0, 0, "Fontastique", 32)
 	case6Text:setTextColor(87, 163, 166)
 	case6Text.isVisible = unlockLevel6
 	case6Text.x = case6Btn.x

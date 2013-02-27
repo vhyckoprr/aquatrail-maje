@@ -9,21 +9,21 @@ new = function ( params )
 	
 	-- Create a background colour just to make the screen look a little nicer
 	local backcolor = DynResManager.createCenterRectangleFitted()
-	backcolor:setFillColor(169, 214, 255)
+	backcolor:setFillColor(59, 215, 169)
 	localGroup:insert(backcolor)
 	
 	--Background
-   local back = display.newImage("fond_accueil.png")
+   local back = display.newImage("fond_mondes.png")
    back.isVisible = true
    back.x = display.contentWidth*0.5 
    back.y = display.contentHeight*0.5 
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("SCORES", 0, 0, "fontastique", 50)
-   text:setTextColor(85, 181, 205)
+   local text = display.newText("SCORES", 0, 0, "Fontastique", 50)
+   text:setTextColor(255,255,255)
    text.x = display.contentWidth*0.5
-   text.y = display.contentHeight*0.075 + text.height*0.5
+   text.y = display.contentHeight*0.05 + text.height*0.5
   
 --[[
    --Creer la liste de score
@@ -58,14 +58,14 @@ new = function ( params )
 		-- Affichage du nom des niveaux et de leur numéro
 		if(not row.isCategory)
 		then
-			local text = display.newRetinaText( "Niveau " .. nomMonde .. " - " .. idNiveau, 0, 0, "Arial", 12 )
+			local text = display.newRetinaText( "Niveau " .. nomMonde .. " - " .. idNiveau, 0, 0, "Fontastique", 12 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
 			text:setTextColor( 0 )
 			rowGroup:insert( text )
 		else
-			local text = display.newRetinaText( "Niveau " .. nomMonde, 0, 0, "Arial", 14 )
+			local text = display.newRetinaText( "Niveau " .. nomMonde, 0, 0, "Fontastique", 14 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
@@ -91,14 +91,14 @@ new = function ( params )
 		-- Affichage du score sur les ligne des niveaux mais pas sur les lignes d'en-tête
 		if(not row.isCategory)
 		then
-			text = display.newRetinaText( score, 0, 0, "Arial", 12 )
+			text = display.newRetinaText( score, 0, 0, "Fontastique", 12 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 415
 			text:setTextColor( 0 )
 			rowGroup:insert( text )
 		else
-			text = display.newRetinaText( "Score", 0, 0, "Arial", 14 )
+			text = display.newRetinaText( "Score", 0, 0, "Fontastique", 14 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 415
@@ -166,7 +166,7 @@ new = function ( params )
    localGroup:insert(islCad)
    
    	-- Bouton retour
-	local reBtn = display.newImage("bouton_retour_defaut.png")
+	local reBtn = display.newImage("bouton_retour_mondes.png")
    reBtn.isVisible = true
    reBtn:setReferencePoint(display.TopLeftReferencePoint)
    reBtn.x = 15

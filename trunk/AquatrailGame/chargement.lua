@@ -16,7 +16,7 @@ local preLoadAnim = function ()
 	Load.chargement.isVisible = false
 	Load.chargement:setReferencePoint( display.CenterRightReferencePoint )
 	
-	Load.textChargement = display.newText( "Chargement...", 0, 0, "Arial", 16 )
+	Load.textChargement = display.newText( "Chargement...", 0, 0, "Fontastique", 16 )
 	Load.textChargement.isVisible = false
 	Load.textChargement:setTextColor(255, 255, 255)
 	Load.textChargement:setReferencePoint(display.CenterRightReferencePoint)

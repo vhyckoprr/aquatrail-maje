@@ -46,7 +46,7 @@ local defaultButtonPress = function( event )
 			profile.saveProfile(defaultField.text)
 			director:changeScene("TitleScreen")
 		else
-			msg = display.newText( "Votre pseudo doit comporter entre 3 et 12 caractères", 0, 280, "Arial", 12 )
+			msg = display.newText( "Votre pseudo doit comporter entre 3 et 12 caractères", 0, 280, "Fontastique", 12 )
 			msg.x = display.contentWidth/2		-- center title
 			msg:setTextColor( 255,255,0 )
 		end
@@ -84,7 +84,7 @@ localGroup:insert(fields)
 -- *** Add field labels ***
 -------------------------------------------
 
-local defaultLabel = display.newText( "Rentrez votre Pseudo", display.contentWidth/2, 35, native.systemFont, 18 )
+local defaultLabel = display.newText( "Rentrez votre Pseudo", display.contentWidth/2, 35, "Fontastique", 18 )
 defaultLabel:setTextColor( 170, 170, 255, 255 )
 localGroup:insert(defaultLabel)
 
@@ -133,7 +133,7 @@ end
 -- Native Text Fields not supported on Simulator
 --
 if isSimulator then
-	msg = display.newText( "Don't work on simulator", 0, 280, "Arial", 12 )
+	msg = display.newText( "Don't work on simulator", 0, 280, "Fontastique", 12 )
 	msg.x = display.contentWidth/2		-- center title
 	msg:setTextColor( 255,255,0 )
 end

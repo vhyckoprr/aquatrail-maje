@@ -20,7 +20,7 @@ new = function ( params )
    localGroup:insert(back)
 
    --Textes
-   local text = display.newText("RÉCOMPENSES", 0, 0, "fontastique", 50)
+   local text = display.newText("RÉCOMPENSES", 0, 0, "Fontastique", 50)
    text:setTextColor(85, 181, 205)
    text.x = display.contentWidth*0.5
    text.y = display.contentHeight*0.1 + text.height*0.5
@@ -48,28 +48,28 @@ new = function ( params )
 		-- Affichage du nom des niveaux et de leur numéro
 		if(row.isCategory)
 		then
-			local text = display.newRetinaText( "Description", 0, 0, "arial", 14 )
+			local text = display.newRetinaText( "Description", 0, 0, "Fontastique", 16 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
 			text:setTextColor( 255, 255, 255 )
 			rowGroup:insert( text )
 			
-			text = display.newRetinaText( "Points rescousse", 0, 0, "arial", 14 )
+			text = display.newRetinaText( "Points rescousse", 0, 0, "Fontastique", 16 )
 			text:setReferencePoint( display.CenterRightReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth - 30
 			text:setTextColor( 255, 255, 255 )
 			rowGroup:insert( text )
 		else
-			local text = display.newRetinaText( "Récompense n°"..event.index-1, 0, 0, "arial", 12 )
+			local text = display.newRetinaText( "Récompense n°"..event.index-1, 0, 0, "Fontastique", 13 )
 			text:setReferencePoint( display.CenterLeftReferencePoint )
 			text.y = row.height * 0.5
 			text.x = 30
 			text:setTextColor( 0,56,112 )
 			rowGroup:insert( text )
 			
-			text = display.newRetinaText( "0", 0, 0, "arial", 12 )
+			text = display.newRetinaText( "0", 0, 0, "Fontastique", 12 )
 			text:setReferencePoint( display.CenterRightReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth - 30
