@@ -24,6 +24,9 @@
  <tileset firstgid="162" source="boue.tsx"/>
  <tileset firstgid="172" source="buisson.tsx"/>
  <tileset firstgid="173" source="ecureuil.tsx"/>
+ <tileset firstgid="175" source="transition_herbe_boue.tsx"/>
+ <tileset firstgid="179" source="transition_terre_boue.tsx"/>
+ <tileset firstgid="183" source="transition_terre_herbe.tsx"/>
  <layer name="Platforms" width="300" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
