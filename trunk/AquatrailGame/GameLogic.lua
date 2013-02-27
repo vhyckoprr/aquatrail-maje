@@ -543,79 +543,83 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 	
 	--Fonction de saut !
 	function ToucheScreen (event)
+		print(display.contentWidth - pauseBUTTON.width)
+		print(display.contentHeight - pauseBUTTON.height)
+		print("event.x"..event.x)
+		print("event.y"..event.y)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
 					if event.x - display.contentWidth/2 >0 
-					and  event.x < display.contentWidth - pauseBUTTON.width 
-					and  event.y < display.contentHeight - pauseBUTTON.height 
 					and STATE_ANIMATIONENCOURS == false
 					then
-						--Check Doublesaut
-						--
-						if EtatHero == 0 then
-							if player.canJump == false and doubleSaut == true then
-								player.canJump = true
-								doubleSaut=false 
+						if event.x < display.contentWidth - pauseBUTTON.width or  event.y > pauseBUTTON.height then
+							--Check Doublesaut
+							--
+							if EtatHero == 0 then
+								if player.canJump == false and doubleSaut == true then
+									player.canJump = true
+									doubleSaut=false 
+								end
+							elseif EtatHero == 1 and chargesol == true then
+							
+							
+							elseif EtatHero == 2 then
+								if event.y - display.contentHeight/2 >0 then
+									player.state = STATE_JUMPING_GAZ
+									player:prepare("anim" .. player.state)
+									player:play()
+									gagnerAlt = true
+									timer.performWithDelay( 0, changeraltGaz, 1 )
+									print("monte alt")
+								else
+									if arroser then 
+										print("fleur pousse")
+										--Arrosable[Numarroser]:prepare("animation1")
+										--Arrosable[Numarroser]:play()
+									end
+								end
 							end
-						elseif EtatHero == 1 and chargesol == true then
-						
-						
-						elseif EtatHero == 2 then
-							if event.y - display.contentHeight/2 >0 then
-								player.state = STATE_JUMPING_GAZ
+							
+							local jump
+							if EtatHero==0 then
+								jump = BASEJUMPLIQUIDE
+							elseif EtatHero==1 then
+								jump = BASEJUMPSOLIDE
+							elseif EtatHero==2 then
+								jump = BASEFLYGAZ
+							end
+								
+							if player.canJump 
+							and STATE_ANIMATIONENCOURS == false 
+							then
+								player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
+								if EtatHero == 2 then
+									if event.y - display.contentHeight/2 >0 then
+										player:applyLinearImpulse(0, -3, player.x, player.y)
+									end
+								else
+									player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
+								end
+								audio.play(b_saut)
+								if EtatHero == 0 then
+									player.state = STATE_JUMPING_LIQ
+								elseif EtatHero ==1 then
+									player.state = STATE_JUMPING_SOL
+								elseif EtatHero ==2 then
+									player.state = STATE_JUMPING_GAZ
+								end
+								player.canJump = false
 								player:prepare("anim" .. player.state)
 								player:play()
-								gagnerAlt = true
-								timer.performWithDelay( 0, changeraltGaz, 1 )
-								print("monte alt")
-							else
-								if arroser then 
-									print("fleur pousse")
-									--Arrosable[Numarroser]:prepare("animation1")
-									--Arrosable[Numarroser]:play()
-								end
+							--si je suis en glaçon et que je peu charger
+							elseif EtatHero == 1 and chargesol == true then 
+								chargesol = false
+								player:applyLinearImpulse(0, 30, player.x, player.y)
+								BriseGlace=true
+								--print("Charge")
+								timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 							end
-						end
-						
-						local jump
-						if EtatHero==0 then
-							jump = BASEJUMPLIQUIDE
-						elseif EtatHero==1 then
-							jump = BASEJUMPSOLIDE
-						elseif EtatHero==2 then
-							jump = BASEFLYGAZ
-						end
-							
-						if player.canJump 
-						and STATE_ANIMATIONENCOURS == false 
-						then
-							player:setLinearVelocity(vx , 0)--on reset limpulse y pour pas qu'il sembale et saute n'importe comment!
-							if EtatHero == 2 then
-								if event.y - display.contentHeight/2 >0 then
-									player:applyLinearImpulse(0, -3, player.x, player.y)
-								end
-							else
-								player:applyLinearImpulse(0, -(jump*player.globalJump), player.x, player.y)
-							end
-							audio.play(b_saut)
-							if EtatHero == 0 then
-								player.state = STATE_JUMPING_LIQ
-							elseif EtatHero ==1 then
-								player.state = STATE_JUMPING_SOL
-							elseif EtatHero ==2 then
-								player.state = STATE_JUMPING_GAZ
-							end
-							player.canJump = false
-							player:prepare("anim" .. player.state)
-							player:play()
-						--si je suis en glaçon et que je peu charger
-						elseif EtatHero == 1 and chargesol == true then 
-							chargesol = false
-							player:applyLinearImpulse(0, 30, player.x, player.y)
-							BriseGlace=true
-							--print("Charge")
-							timer.performWithDelay( 1000, function() BriseGlace=false end, 1 )
 						end
 					elseif event.x - display.contentWidth/2 <=0 
 					and STATE_ANIMATIONENCOURS == false
