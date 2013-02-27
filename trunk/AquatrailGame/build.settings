@@ -16,7 +16,7 @@ settings = {
 			
 			 UIAppFonts =
 				{
-					"Fontastique.ttf"
+					"fontastique.ttf"
 				}
 			
             --[[
