@@ -14,10 +14,10 @@ new = function ( params )
 	local colorText = {87, 163, 166}
 	local bouton = "bouton_niveau_glace.png"
 	local boutonRetour = "bouton_retour_defaut.png"
-	if(afficheScore.scoreGlace) then bg = "fond_glace.png"; color = {158,233,235}; colorText = {87, 163, 166}; bouton = "bouton_niveau_glace.png"; boutonRetour = "bouton_retour_glace.png";
-	elseif(afficheScore.scoreForet) then bg = "fond_foret.png"; color = {200,127,23}; colorText = {192,125,59}; bouton = "bouton_niveau_desert_foret.png"; boutonRetour = "bouton_retour_foret.png";
-	elseif(afficheScore.scoreIle) then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; bouton = "bouton_niveau_glace.png"; boutonRetour = "bouton_retour_ile.png";
-	elseif(afficheScore.scoreDesert) then bg = "fond_desert.png"; color = {241,148,86}; colorText = {192,125,59}; bouton = "bouton_niveau_desert_foret.png"; boutonRetour = "bouton_retour_desert.png";
+	if(afficheScore.scoreGlace) then bg = "background_ice.png"; color = {158,233,235}; colorText = {87, 163, 166}; bouton = "bouton_niveau-glace_V2.0.png"; boutonRetour = "bouton_retour_glace.png";
+	elseif(afficheScore.scoreForet) then bg = "background_foret.png"; color = {200,127,23}; colorText = {192,125,59}; bouton = "bouton_niveau-foret_V2.0.png"; boutonRetour = "bouton_retour_foret.png";
+	elseif(afficheScore.scoreIle) then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; bouton = "bouton_niveau-ile_V2.0.png"; boutonRetour = "bouton_retour_ile.png";
+	elseif(afficheScore.scoreDesert) then bg = "background_desert.png"; color = {241,148,86}; colorText = {192,125,59}; bouton = "bouton_niveau-desert_V2.0.png"; boutonRetour = "bouton_retour_desert.png";
 	else end
 		
 	-- Create a background colour just to make the screen look a little nicer

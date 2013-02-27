@@ -22,7 +22,7 @@
 			Chrono.timeDisplayed:setTextColor(255, 255, 255)
 			Chrono.timeDisplayed:setReferencePoint(display.TopCenterReferencePoint)
 			Chrono.timeDisplayed.x = display.contentWidth*0.5
-			Chrono.timeDisplayed.y = 0
+			Chrono.timeDisplayed.y = display.contentHeight*0.01
 		end
 	end
 	
