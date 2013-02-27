@@ -153,8 +153,11 @@ new = function ( params )
    
 	--Level 1 Clic
 	local function pressCase1(event)
-		if(event.phase == "began" and unlockLevel1 ) then
-			chargement.play()
+		if(unlockLevel1)
+		then
+			if(event.phase == "began" and unlockLevel1 ) then
+				chargement.play()
+			end
 		end
 		if (event.phase == "ended" and unlockLevel1 ) then
 			director:changeScene ("Ice1")
@@ -164,6 +167,12 @@ new = function ( params )
 	
 	--Level 2 Clic
 	local function pressCase2(event)
+		if(unlockLevel2)
+		then
+			if(event.phase == "began" and unlockLevel1 ) then
+				chargement.play()
+			end
+		end
 		if (event.phase == "ended" and unlockLevel2 )  then
 			director:changeScene ("Ice2")
 		end
@@ -172,6 +181,12 @@ new = function ( params )
 	
 	--Level 3 Clic
 	local function pressCase3(event)
+		if(unlockLevel3)
+		then
+			if(event.phase == "began" and unlockLevel1 ) then
+				chargement.play()
+			end
+		end
 		if (event.phase == "ended" and unlockLevel3 )  then
 			director:changeScene ("Ice3")
 		end
@@ -180,6 +195,12 @@ new = function ( params )
 	
 	--Level 4 Clic
 	local function pressCase4(event)
+		if(unlockLevel4)
+		then
+			if(event.phase == "began" and unlockLevel1 ) then
+				chargement.play()
+			end
+		end
 		if (event.phase == "ended" and unlockLevel4 )  then
 			director:changeScene ("Ice4")
 		end
@@ -188,6 +209,12 @@ new = function ( params )
 	
 	--Level 5 Clic
 	local function pressCase5(event)
+		if(unlockLevel5)
+		then
+			if(event.phase == "began" and unlockLevel1 ) then
+				chargement.play()
+			end
+		end
 		if (event.phase == "ended" and unlockLevel5 )  then
 			director:changeScene ("Ice5")
 		end
@@ -196,6 +223,12 @@ new = function ( params )
 	
 	--Level 6 Clic
 	local function pressCase6(event)
+		if(unlockLevel6)
+		then
+			if(event.phase == "began" and unlockLevel1 ) then
+				chargement.play()
+			end
+		end
 		if (event.phase == "ended" and unlockLevel6 )  then
 			director:changeScene ("Ice6")
 		end

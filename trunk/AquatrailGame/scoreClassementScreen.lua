@@ -14,10 +14,10 @@ new = function ( params )
 	local color = {158,233,235}
 	local colorText = {87, 163, 166}
 	local boutonRetour = "bouton_retour_defaut.png"
-	if(afficheScore.scoreGlace) then bg = "fond_glace.png"; color = {158,233,235}; colorText = {87, 163, 166}; boutonRetour = "bouton_retour_glace.png";
-	elseif(afficheScore.scoreForet) then bg = "fond_foret.png"; color = {200,127,23}; colorText = {192,125,59}; boutonRetour = "bouton_retour_foret.png";
+	if(afficheScore.scoreGlace) then bg = "background_ice.png"; color = {158,233,235}; colorText = {87, 163, 166}; boutonRetour = "bouton_retour_glace.png";
+	elseif(afficheScore.scoreForet) then bg = "background_foret.png"; color = {200,127,23}; colorText = {192,125,59}; boutonRetour = "bouton_retour_foret.png";
 	elseif(afficheScore.scoreIle) then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; boutonRetour = "bouton_retour_ile.png";
-	elseif(afficheScore.scoreDesert) then bg = "fond_desert.png"; color = {241,148,86}; colorText = {192,125,59}; boutonRetour = "bouton_retour_desert.png";
+	elseif(afficheScore.scoreDesert) then bg = "background_desert.png"; color = {241,148,86}; colorText = {192,125,59}; boutonRetour = "bouton_retour_desert.png";
 	else end
 	
 	local colonne1Contenu = "number"
