@@ -60,6 +60,9 @@
  <tileset firstgid="162" source="boue.tsx"/>
  <tileset firstgid="172" source="buisson.tsx"/>
  <tileset firstgid="173" source="ecureuil.tsx"/>
+ <tileset firstgid="175" source="transition_herbe_boue.tsx"/>
+ <tileset firstgid="179" source="transition_terre_boue.tsx"/>
+ <tileset firstgid="183" source="transition_terre_herbe.tsx"/>
  <layer name="AnimationForet" width="300" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
@@ -13846,7 +13849,7 @@
    <tile gid="136"/>
    <tile gid="136"/>
    <tile gid="136"/>
-   <tile gid="136"/>
+   <tile gid="184"/>
    <tile gid="150"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -14249,7 +14252,7 @@
    <tile gid="149"/>
    <tile gid="149"/>
    <tile gid="149"/>
-   <tile gid="149"/>
+   <tile gid="183"/>
    <tile gid="141"/>
    <tile gid="154"/>
    <tile gid="154"/>
@@ -14874,7 +14877,7 @@
    <tile gid="136"/>
    <tile gid="136"/>
    <tile gid="136"/>
-   <tile gid="164"/>
+   <tile gid="176"/>
    <tile gid="164"/>
    <tile gid="164"/>
    <tile gid="167"/>
@@ -14886,7 +14889,7 @@
    <tile gid="171"/>
    <tile gid="164"/>
    <tile gid="164"/>
-   <tile gid="164"/>
+   <tile gid="175"/>
    <tile gid="136"/>
    <tile gid="136"/>
    <tile gid="136"/>
@@ -15402,7 +15405,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="134"/>
-   <tile gid="149"/>
+   <tile gid="184"/>
    <tile gid="149"/>
    <tile gid="149"/>
    <tile gid="149"/>
@@ -16177,7 +16180,7 @@
    <tile gid="136"/>
    <tile gid="136"/>
    <tile gid="136"/>
-   <tile gid="164"/>
+   <tile gid="176"/>
    <tile gid="164"/>
    <tile gid="164"/>
    <tile gid="164"/>
@@ -16194,7 +16197,7 @@
    <tile gid="164"/>
    <tile gid="164"/>
    <tile gid="164"/>
-   <tile gid="164"/>
+   <tile gid="180"/>
    <tile gid="149"/>
    <tile gid="149"/>
    <tile gid="149"/>
@@ -16210,7 +16213,7 @@
    <tile gid="149"/>
    <tile gid="149"/>
    <tile gid="149"/>
-   <tile gid="149"/>
+   <tile gid="183"/>
    <tile gid="141"/>
    <tile gid="168"/>
    <tile gid="168"/>
@@ -16494,7 +16497,7 @@
    <tile gid="169"/>
    <tile gid="169"/>
    <tile gid="169"/>
-   <tile gid="169"/>
+   <tile gid="182"/>
    <tile gid="154"/>
    <tile gid="154"/>
    <tile gid="154"/>
@@ -16735,7 +16738,7 @@
    <tile gid="149"/>
    <tile gid="149"/>
    <tile gid="149"/>
-   <tile gid="151"/>
+   <tile gid="183"/>
    <tile gid="136"/>
    <tile gid="136"/>
    <tile gid="136"/>
@@ -16879,7 +16882,7 @@
    <tile gid="149"/>
    <tile gid="149"/>
    <tile gid="149"/>
-   <tile gid="149"/>
+   <tile gid="183"/>
    <tile gid="136"/>
    <tile gid="136"/>
    <tile gid="136"/>
