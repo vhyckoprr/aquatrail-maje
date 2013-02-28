@@ -76,7 +76,7 @@ new = function ( params )
    titre.x = display.contentWidth*0.55 + titre.width*0.5
    titre.y = text.y + text.height*0.5 + titre.height*0.5 + 20
    
-   text = display.newText("Peter Iafare", 0, 0, "Fontastique", 14)
+   text = display.newText("Peter Iafare\nNicolas Ré", 0, 0, "Fontastique", 14)
    text:setTextColor(0, 56, 112)
    text.x = display.contentWidth*0.55 + text.width*0.5
    text.y = titre.y + titre.height*0.5 + text.height*0.5 + 10
