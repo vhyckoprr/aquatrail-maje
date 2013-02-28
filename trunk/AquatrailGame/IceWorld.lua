@@ -150,14 +150,14 @@ new = function ( params )
    case6Cad.y =  case6Btn.y
    localGroup:insert(case6Cad)
 
-	chargement.preLoadAnim()
+	--chargement.preLoadAnim()
    
 	--Level 1 Clic
 	local function pressCase1(event)
 		if(unlockLevel1)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel1 ) then
@@ -172,7 +172,7 @@ new = function ( params )
 		if(unlockLevel2)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel2 )  then
@@ -187,7 +187,7 @@ new = function ( params )
 		if(unlockLevel3)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel3 )  then
@@ -202,7 +202,7 @@ new = function ( params )
 		if(unlockLevel4)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel4 )  then
@@ -217,7 +217,7 @@ new = function ( params )
 		if(unlockLevel5)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel5 )  then
@@ -232,7 +232,7 @@ new = function ( params )
 		if(unlockLevel6)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel6 )  then

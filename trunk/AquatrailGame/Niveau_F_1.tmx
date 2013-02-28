@@ -20,7 +20,7 @@
  <tileset firstgid="52" source="player.tsx"/>
  <tileset firstgid="133" source="sol_herbe.tsx"/>
  <tileset firstgid="147" source="sol_terre.tsx"/>
- <tileset firstgid="157" source="esprit_glace.tsx"/>
+ <tileset firstgid="157" source="esprit_foret.tsx"/>
  <tileset firstgid="162" source="boue.tsx"/>
  <tileset firstgid="172" source="buisson.tsx"/>
  <tileset firstgid="173" source="ecureuil.tsx"/>

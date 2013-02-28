@@ -149,18 +149,18 @@ new = function ( params )
    case6Cad.y =  case6Btn.y
    localGroup:insert(case6Cad)
    
-   chargement.preLoadAnim()
+   --chargement.preLoadAnim()
    
    --Level 1 Clic
 	local function pressCase1(event)
 		if(unlockLevel1)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel1 ) then
-			director:changeScene ("Des1")
+			director:changeScene ("EcranTutoD")
 		end
 	end
 	case1Btn:addEventListener ("touch", pressCase1)
@@ -170,11 +170,11 @@ new = function ( params )
 		if(unlockLevel2)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel2 )  then
-			director:changeScene ("Des2")
+			director:changeScene ("EcranTutoD")
 		end
 	end
 	case2Btn:addEventListener ("touch", pressCase2)
@@ -184,11 +184,11 @@ new = function ( params )
 		if(unlockLevel3)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel3 )  then
-			director:changeScene ("Des3")
+			director:changeScene ("EcranTutoD")
 		end
 	end
 	case3Btn:addEventListener ("touch", pressCase3)
@@ -198,11 +198,11 @@ new = function ( params )
 		if(unlockLevel4)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel4 )  then
-			director:changeScene ("Des4")
+			director:changeScene ("EcranTutoD")
 		end
 	end
 	case4Btn:addEventListener ("touch", pressCase4)
@@ -212,11 +212,11 @@ new = function ( params )
 		if(unlockLevel5)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel5 )  then
-			director:changeScene ("Des5")
+			director:changeScene ("EcranTutoD")
 		end
 	end
 	case5Btn:addEventListener ("touch", pressCase5)
@@ -226,11 +226,11 @@ new = function ( params )
 		if(unlockLevel6)
 		then
 			if(event.phase == "began" and unlockLevel1 ) then
-				chargement.play()
+				--chargement.play()
 			end
 		end
 		if (event.phase == "ended" and unlockLevel6 )  then
-			director:changeScene ("Des6")
+			director:changeScene ("EcranTutoD")
 		end
 	end
 	case6Btn:addEventListener ("touch", pressCase6)

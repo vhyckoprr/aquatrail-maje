@@ -11,6 +11,9 @@ local STATE_PLAY = "play"
 local STATE_PAUSE = "pause"
 local STATE_ENDLEVEL = "endlevel"
 
+
+local EcranTutoG = require("EcranTutoG")
+
 --Les scores
 --
 
@@ -118,7 +121,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 	local pauseBUTTON = display.newImage ("Bouton-Pause-HUD.png")
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
-
+	
 	--start FPS show
 	--
 	--local prevTime = system.getTimer()
@@ -221,12 +224,22 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					player:play()
 				end
 				if event.other.IsChangeVitesse then
-					BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
-					BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
-					BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
-					BASEJUMPSOLIDE=30*event.other.bonusJumpSol
-					BASESPEEDGAZ=20*event.other.bonusSpeedGaz
-					BASEFLYGAZ=30*event.other.bonusFlyGaz
+					if STATECHANGE == LIQSOL then
+						BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+						BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+						BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+						BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+					elseif STATECHANGE == LIQGAZ then
+						BASESPEEDLIQUIDE=30*event.other.bonusSpeedLiq
+						BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
+						BASESPEEDGAZ=20*event.other.bonusSpeedGaz
+						BASEFLYGAZ=30*event.other.bonusFlyGaz
+					elseif STATECHANGE == SOLGAZ then
+						BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
+						BASEJUMPSOLIDE=30*event.other.bonusJumpSol
+						BASESPEEDGAZ=20*event.other.bonusSpeedGaz
+						BASEFLYGAZ=30*event.other.bonusFlyGaz
+					end
 				end
 			elseif event.other.DeclencherStalactite then
 				--print("COUCOUDeclencherStalactite")
