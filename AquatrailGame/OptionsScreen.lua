@@ -100,7 +100,6 @@ new = function ( params )
 
 	--Valeur par défaut des curseurs
 	--recuperation des valeurs de volume enregistrees dans la bdd (avec worldInfos)
-	print(worldInfos.sound)
 	sliderMusique:setValue( worldInfos.sound )
 	sliderBruitages:setValue( worldInfos.bruitage )
 		
@@ -128,6 +127,11 @@ new = function ( params )
 	local function pressReturn (event)
 		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
+			--enregistrement des valeurs de volumes volumemusique et volumebruitages dans la bdd
+			local volumeMusique = audio.getVolume ( { channel = 1 } )
+			local volumeBruitages = audio.getVolume ( { channel = 2 } )
+			profile.saveOption(volumeMusique*100,volumeBruitages*100)
+			
 			director:changeScene ("SuppressionDonneesScreen")
 		end
 	end

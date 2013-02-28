@@ -4,11 +4,11 @@
  <tile id="0">
   <properties>
    <property name="HasBody" value=""/>
-   <property name="bodyType" value="static"/>
+   <property name="bodyType" value="dynamic"/>
    <property name="density" value="2.0"/>
    <property name="friction" value="2.0"/>
    <property name="ignoreCulling" value="true"/>
-   <property name="isSensor" value="true"/>
+   <property name="isSensor" value="false"/>
   </properties>
  </tile>
 </tileset>
