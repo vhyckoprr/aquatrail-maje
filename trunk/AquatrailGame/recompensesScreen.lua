@@ -110,7 +110,6 @@ new = function ( params )
 	
 	--Retour function
 	local function pressReturn (event)
-		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
 			director:changeScene ("TitleScreen")
 		end

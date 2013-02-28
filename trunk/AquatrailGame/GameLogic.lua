@@ -103,6 +103,10 @@ local b_saut = audio.loadSound( "b_saut.mp3" )
 local b_gouttelette = audio.loadSound( "b_gouttelette.mp3" )
 local startlevel = audio.loadSound( "debut_niveau.mp3" )
 
+local worldinfo = profile.getInfos()
+audio.setVolume(worldinfo.bruitage*0.01)
+audio.setVolume(worldinfo.sound*0.01, { channel=1 })
+
 
 ------------------------------------------------------------------------------------
 

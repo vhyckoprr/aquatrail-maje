@@ -357,7 +357,6 @@ timer.performWithDelay( 0, apparenceOngletActif )
    
 	--Retour function
 	local function pressReturn (event)
-		audio.stop( { channel =1 } )
 		if event.phase == "ended" then
 			director:changeScene ("scoreNivScreen")
 		end
