@@ -28,8 +28,7 @@ new = function ( params )
    back.x = display.contentWidth/2 
    back.y = display.contentHeight/2 
    --fit
-   back.width=DynResManager.getScreenWidthPhysPix()
-   back.height=DynResManager.getScreenHeightPhysPix()
+
    --localGroup:insert(back)
    
 
@@ -47,7 +46,6 @@ new = function ( params )
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
 	local STATECHANGE = "LiqSol"
-	
 
     local visual = GameLogic.createMap("Niveau_G_1.tmx", scoreText, LEVEL,STATECHANGE)
 

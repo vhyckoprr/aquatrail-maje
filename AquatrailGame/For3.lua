@@ -27,8 +27,6 @@ endLevel = function (self, score, time)
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
    --fit
-   back.width=DynResManager.getScreenWidthPhysPix()
-   back.height=DynResManager.getScreenHeightPhysPix()
    --localGroup:insert(back)
    
 	local scoreText  = display.newText( "Score : ", 0, 0, "Fontastique", 20 )

@@ -26,7 +26,7 @@
  <tileset firstgid="156" source="rocher.tsx"/>
  <tileset firstgid="157" source="SuperGouttellettes.tsx"/>
  <tileset firstgid="161" source="goutteletteSpriteSheet.tsx"/>
- <tileset firstgid="163" source="esprit_glace.tsx"/>
+ <tileset firstgid="163" source="Esprit_desert.tsx"/>
  <layer name="Platforms" width="300" height="30">
   <data>
    <tile gid="0"/>

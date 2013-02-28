@@ -9,7 +9,7 @@
  </tileset>
  <tileset firstgid="21" source="goutteletteSpriteSheet.tsx"/>
  <tileset firstgid="23" source="SuperGouttellettes.tsx"/>
- <tileset firstgid="27" source="esprit_glace.tsx"/>
+ <tileset firstgid="27" source="Esprit_desert.tsx"/>
  <tileset firstgid="32" source="vegetation_animation.tsx"/>
  <tileset firstgid="36" source="botte_de_foin.tsx"/>
  <tileset firstgid="37" source="sable_mouvants_animation.tsx"/>

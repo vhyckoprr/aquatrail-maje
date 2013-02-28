@@ -5,7 +5,7 @@
   <properties>
    <property name="HasBody" value=""/>
    <property name="Name" value="boule_de_neige"/>
-   <property name="bodyType" value="dynamic"/>
+   <property name="bodyType" value="static"/>
    <property name="density" value="2.0"/>
    <property name="friction" value="2.0"/>
    <property name="ignoreCulling" value="true"/>

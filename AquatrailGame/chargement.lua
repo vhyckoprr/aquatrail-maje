@@ -21,19 +21,19 @@ local preLoadAnim = function ()
 	Load.textChargement:setTextColor(255, 255, 255)
 	Load.textChargement:setReferencePoint(display.CenterRightReferencePoint)
 	
-	Load.chargement.x = display.contentWidth - Load.textChargement.width - 15
-	Load.chargement.y = display.contentHeight - Load.chargement.height/2 - 10
+	Load.chargement.x = Load.chargement.width +5
+	Load.chargement.y = Load.chargement.height - 10
 	Load.chargement:prepare("chargement")
 	
-	Load.textChargement.x = display.contentWidth - 10 
-	Load.textChargement.y = display.contentHeight - Load.chargement.height/2 - 10
+	Load.textChargement.x = Load.chargement.width + Load.chargement.width*4
+	Load.textChargement.y = Load.chargement.height - 10
 	
 end
 
 local play = function ()
 	Load.textChargement.isVisible = true
 	Load.chargement.isVisible = true
-	Load.chargement:play()
+	--Load.chargement:play()
 end
 
  local Loading = { play=play, preLoadAnim=preLoadAnim }
