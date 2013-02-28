@@ -4,12 +4,19 @@ new = function ( params )
 	
 	local DynResManager = require("DynResManager")
 	local worldInfos = profile.getInfos()
-	local unlockLevel1 = worldInfos.world1.level1.unlocked
-	local unlockLevel2 = worldInfos.world1.level2.unlocked
-	local unlockLevel3 = worldInfos.world1.level3.unlocked
-	local unlockLevel4 = worldInfos.world1.level4.unlocked
-	local unlockLevel5 = worldInfos.world1.level5.unlocked
-	local unlockLevel6 = worldInfos.world1.level6.unlocked
+	local unlockLevel1 = worldInfos.world2.level1.unlocked
+	local unlockLevel2 = worldInfos.world2.level2.unlocked
+	local unlockLevel3 = worldInfos.world2.level3.unlocked
+	local unlockLevel4 = worldInfos.world2.level4.unlocked
+	local unlockLevel5 = worldInfos.world2.level5.unlocked
+	local unlockLevel6 = worldInfos.world2.level6.unlocked
+	
+	--POUR LE MOMENT CES NIVEAUX SONT INEXISTANT DONC ON LES BLOQUE
+	unlockLevel2 = false
+	unlockLevel3 = false
+	unlockLevel4 = false
+	unlockLevel5 = false
+	unlockLevel6 = false
 	
 	local localGroup = display.newGroup()
 		-- Background
@@ -59,7 +66,7 @@ new = function ( params )
    case2Btn.y =  display.contentHeight/1.75 -case2Btn.height/1.5
    localGroup:insert(case2Btn)
    local case2Text = display.newText("2", 0, 0, "Fontastique", 32)
-	case2Text:setTextColor(255, 0, 0)
+	case2Text:setTextColor(193, 100, 0)
 	case2Text.isVisible = unlockLevel2
 	case2Text.x = case2Btn.x
 	case2Text.y = case2Btn.y
@@ -71,7 +78,7 @@ new = function ( params )
    case3Btn.y =  display.contentHeight/1.75 -case3Btn.height/1.5
    localGroup:insert(case3Btn)
    local case3Text = display.newText("3", 0, 0, "Fontastique", 32)
-	case3Text:setTextColor(255, 0, 0)
+	case3Text:setTextColor(193, 100, 0)
 	case3Text.isVisible = unlockLevel3
 	case3Text.x = case3Btn.x
 	case3Text.y = case3Btn.y
@@ -83,7 +90,7 @@ new = function ( params )
    case4Btn.y =  display.contentHeight/1.75 +case4Btn.height/1.5
    localGroup:insert(case4Btn)
    local case4Text = display.newText("4", 0, 0, "Fontastique", 32)
-	case4Text:setTextColor(255, 0, 0)
+	case4Text:setTextColor(193, 100, 0)
 	case4Text.isVisible = unlockLevel4
 	case4Text.x = case4Btn.x
 	case4Text.y = case4Btn.y
@@ -95,7 +102,7 @@ new = function ( params )
    case5Btn.y =  display.contentHeight/1.75 +case5Btn.height/1.5
    localGroup:insert(case5Btn)
    local case5Text = display.newText("5", 0, 0, "Fontastique", 32)
-	case5Text:setTextColor(255, 0, 0)
+	case5Text:setTextColor(193, 100, 0)
 	case5Text.isVisible = unlockLevel5
 	case5Text.x = case5Btn.x
 	case5Text.y = case5Btn.y
@@ -107,7 +114,7 @@ new = function ( params )
    case6Btn.y =  display.contentHeight/1.75 +case6Btn.height/1.5
    localGroup:insert(case6Btn)
    local case6Text = display.newText("6", 0, 0, "Fontastique", 32)
-	case6Text:setTextColor(255, 0, 0)
+	case6Text:setTextColor(193, 100, 0)
 	case6Text.isVisible = unlockLevel6
 	case6Text.x = case6Btn.x
 	case6Text.y = case6Btn.y

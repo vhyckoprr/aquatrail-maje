@@ -14,7 +14,7 @@ new = function ( params )
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
 endLevel = function (self, score, time)
-		profile.saveInfoLevel(1, 2,score, chrono.getTotalTimeInSecond())
+		profile.saveInfoLevel(2, 3,score, chrono.getTotalTimeInSecond())
 		chrono.Stop()
 		audio.stop()
 		GameLogic.stopEvents()
@@ -49,7 +49,7 @@ endLevel = function (self, score, time)
 	local STATECHANGE = "LiqSol"
 	
 
-    local visual = GameLogic.createMap("Niveau_G_2.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_F_3.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	local chrono = Chrono:new()

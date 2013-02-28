@@ -5,9 +5,9 @@ new = function ( params )
 	local DynResManager = require("DynResManager")
 	local worldInfos = profile.getInfos()
 	local unlockWorld1 = worldInfos.world1.unlocked
-	local unlockWorld2 =worldInfos.world2.unlocked
-	local unlockWorld3 =worldInfos.world3.unlocked
-	local unlockWorld4 =worldInfos.world4.unlocked
+	local unlockWorld2 = worldInfos.world2.unlocked
+	local unlockWorld3 = worldInfos.world3.unlocked
+	local unlockWorld4 = worldInfos.world4.unlocked
 
 	local localGroup = display.newGroup()
 		-- Background
