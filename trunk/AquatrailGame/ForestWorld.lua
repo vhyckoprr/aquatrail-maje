@@ -4,19 +4,12 @@ new = function ( params )
 	
 	local DynResManager = require("DynResManager")
 	local worldInfos = profile.getInfos()
-	local unlockLevel1 = worldInfos.world2.level1.unlocked
-	local unlockLevel2 = worldInfos.world2.level2.unlocked
-	local unlockLevel3 = worldInfos.world2.level3.unlocked
-	local unlockLevel4 = worldInfos.world2.level4.unlocked
-	local unlockLevel5 = worldInfos.world2.level5.unlocked
-	local unlockLevel6 = worldInfos.world2.level6.unlocked
-	
-	--POUR LE MOMENT CES NIVEAUX SONT INEXISTANT DONC ON LES BLOQUE
-	unlockLevel2 = false
-	unlockLevel3 = false
-	unlockLevel4 = false
-	unlockLevel5 = false
-	unlockLevel6 = false
+	local unlockLevel1 = worldInfos.world3.level1.unlocked
+	local unlockLevel2 = worldInfos.world3.level2.unlocked
+	local unlockLevel3 = worldInfos.world3.level3.unlocked
+	local unlockLevel4 = worldInfos.world3.level4.unlocked
+	local unlockLevel5 = worldInfos.world3.level5.unlocked
+	local unlockLevel6 = worldInfos.world3.level6.unlocked
 	
 	local localGroup = display.newGroup()
 		-- Background
@@ -167,6 +160,7 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel1 ) then
+			EcranTutoG.level=1
 			director:changeScene ("For1")
 		end
 	end
@@ -181,6 +175,7 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel2 )  then
+			EcranTutoG.level=2
 			director:changeScene ("For2")
 		end
 	end
@@ -195,6 +190,7 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel3 )  then
+			EcranTutoG.level=3
 			director:changeScene ("For3")
 		end
 	end
@@ -209,6 +205,7 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel4 )  then
+			EcranTutoG.level=4
 			director:changeScene ("For4")
 		end
 	end
@@ -223,6 +220,7 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel5 )  then
+			EcranTutoG.level=5
 			director:changeScene ("For5")
 		end
 	end
@@ -237,6 +235,7 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel6 )  then
+			EcranTutoG.level=6
 			director:changeScene ("For6")
 		end
 	end

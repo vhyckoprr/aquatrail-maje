@@ -3,6 +3,7 @@ module(..., package.seeall)
 new = function ( params )
 	
 	local DynResManager = require("DynResManager")
+	local EcranTutoG = require("EcranTutoG")
 	local worldInfos = profile.getInfos()
 	local unlockLevel1 = worldInfos.world1.level1.unlocked
 	local unlockLevel2 = worldInfos.world1.level2.unlocked
@@ -160,7 +161,8 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel1 ) then
-			director:changeScene ("Ice1")
+			EcranTutoG.level=1
+			director:changeScene ("EcranTutoG")
 		end
 	end
 	case1Btn:addEventListener ("touch", pressCase1)
@@ -174,7 +176,8 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel2 )  then
-			director:changeScene ("Ice2")
+			EcranTutoG.level=2
+			director:changeScene ("EcranTutoG")
 		end
 	end
 	case2Btn:addEventListener ("touch", pressCase2)
@@ -188,7 +191,8 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel3 )  then
-			director:changeScene ("Ice3")
+			EcranTutoG.level=3
+			director:changeScene ("EcranTutoG")
 		end
 	end
 	case3Btn:addEventListener ("touch", pressCase3)
@@ -202,7 +206,8 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel4 )  then
-			director:changeScene ("Ice4")
+			EcranTutoG.level=4
+			director:changeScene ("EcranTutoG")
 		end
 	end
 	case4Btn:addEventListener ("touch", pressCase4)
@@ -216,7 +221,8 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel5 )  then
-			director:changeScene ("Ice5")
+			EcranTutoG.level=5
+			director:changeScene ("EcranTutoG")
 		end
 	end
 	case5Btn:addEventListener ("touch", pressCase5)
@@ -230,7 +236,8 @@ new = function ( params )
 			end
 		end
 		if (event.phase == "ended" and unlockLevel6 )  then
-			director:changeScene ("Ice6")
+			EcranTutoG.level=6
+			director:changeScene ("EcranTutoG")
 		end
 	end
 	case6Btn:addEventListener ("touch", pressCase6)

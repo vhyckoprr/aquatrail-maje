@@ -4,9 +4,8 @@ new = function ( params )
 
 	
 	local localGroup = display.newGroup()
-	local paused = false
 	display.setStatusBar( display.HiddenStatusBar )
-
+	local paused = false
 	--system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
@@ -14,8 +13,8 @@ new = function ( params )
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
 endLevel = function (self, score, time)
-		profile.saveInfoLevel(2, 4,score, chrono.getTotalTimeInSecond())
-		chrono:Stop()
+		profile.saveInfoLevel(1, 2,score, chrono.getTotalTimeInSecond())
+		chrono.Stop()
 		audio.stop()
 		GameLogic.stopEvents()
 		director:changeScene ("ScoreScreen")
@@ -46,10 +45,10 @@ endLevel = function (self, score, time)
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
-	local STATECHANGE = "LiqSol"
+	local STATECHANGE = "LiqGaz"
 	
 
-    local visual = GameLogic.createMap("Niveau_F_4.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_F_1.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	chrono.Start()
@@ -61,6 +60,13 @@ endLevel = function (self, score, time)
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
+				if paused == false then
+					chrono.Pause()
+					GameLogic.PauseGame()
+				elseif paused == true then
+					chrono.Pause()
+					GameLogic.PauseGame()
+				end
 				chrono.Stop()
 				audio.stop()
 				GameLogic.stopEvents()
@@ -74,7 +80,6 @@ endLevel = function (self, score, time)
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
 	local function PauseFonction (event)
-		print("pause")
 		if event.phase == "ended" then
 			if paused == false then
 				chrono.Pause()
