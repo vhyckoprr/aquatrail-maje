@@ -29,8 +29,8 @@ new = function ( params )
 	local boutonRetour = "bouton_retour_defaut.png"
 	if(tempInfos.World=="1") then bg = "fond_glace.png"; color = {158,233,235}; colorText = {87, 163, 166}; boutonRetour = "bouton_retour_glace.png";
 	elseif(tempInfos.World=="2") then bg = "fond_foret.png"; color = {200,127,23}; colorText = {192,125,59}; boutonRetour = "bouton_retour_foret.png";
-	elseif(tempInfos.World=="4") then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; boutonRetour = "bouton_retour_ile.png";
 	elseif(tempInfos.World=="3") then bg = "fond_desert.png"; color = {241,148,86}; colorText = {192,125,59}; boutonRetour = "bouton_retour_desert.png";
+	elseif(tempInfos.World=="4") then bg = "fond_ile.png"; color = {84,186,255}; colorText = {115,205,217}; boutonRetour = "bouton_retour_ile.png";
 	else end
 	
 	local colonne1Contenu = "number"
@@ -385,11 +385,12 @@ timer.performWithDelay( 0, apparenceOngletActif )
 			if(tempInfos.World=="1") then 
 				director:changeScene ("IceWorld")
 			elseif(tempInfos.World=="2") then 
+				director:changeScene ("ForestWorld")
+			elseif(tempInfos.World=="3") then 
 				director:changeScene ("DesertWorld")
 			elseif(tempInfos.World=="4") then 
 				director:changeScene ("IslandWorld") -- a verifier
-			elseif(tempInfos.World=="3") then 
-				director:changeScene ("ForestWorld")
+			else
 			end
 		end
 	end

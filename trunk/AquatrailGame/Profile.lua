@@ -185,7 +185,6 @@ local saveInfoLevel = function(idWorld, idLevel,score, time)
 	end
 	
 	--Enregirstrement du meilleur temps
-	print("Temps recupere :"..time)
 	local oldTime = tonumber(worldinfo["world"..idWorld]["level"..idLevel].time)
 	if(oldTime == nil)
 	then
@@ -194,14 +193,16 @@ local saveInfoLevel = function(idWorld, idLevel,score, time)
 	then
 		worldinfo["world"..idWorld]["level"..idLevel].time = chrono.getTotalTimeInSecond()
 	end
-	print("Temps enregistre :"..worldinfo["world"..idWorld]["level"..idLevel].time)
 	
 	--unlock next level
-	if (MAXLEVELINWORLD<=idLevel) then
+	if (MAXLEVELINWORLD==idLevel and not(worldinfo["world"..nextIdWorld].unlocked) and nextIdWorld ~= 4) then
 		worldinfo["world"..nextIdWorld].unlocked = true
+		print("Monde debloque : Monde "..nextIdWorld)
 	else
 		worldinfo["world"..idWorld]["level"..nextIdLevel].unlocked=true
+		print("Niveau debloque : Monde "..idWorld.." Niveau : "..nextIdLevel)
 	end
+	
 	loadsave.saveTable(worldinfo, "profile.json")
 end
 
