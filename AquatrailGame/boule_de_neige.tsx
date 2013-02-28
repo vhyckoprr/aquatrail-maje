@@ -9,7 +9,7 @@
    <property name="density" value="2.0"/>
    <property name="friction" value="2.0"/>
    <property name="ignoreCulling" value="true"/>
-   <property name="isSensor" value="false"/>
+   <property name="isSensor" value="true"/>
   </properties>
  </tile>
 </tileset>

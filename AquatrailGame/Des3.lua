@@ -14,7 +14,7 @@ new = function ( params )
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
 endLevel = function (self, score, time)
-		profile.saveInfoLevel(3, 3,score, chrono.getTotalTimeInSecond())
+		profile.saveInfoLevel(2, 3,score, chrono.getTotalTimeInSecond())
 		chrono.Stop()
 		audio.stop()
 		GameLogic.stopEvents()
@@ -61,6 +61,13 @@ endLevel = function (self, score, time)
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
+				if paused == false then
+					chrono.Pause()
+					GameLogic.PauseGame()
+				elseif paused == true then
+					chrono.Pause()
+					GameLogic.PauseGame()
+				end
 				chrono.Stop()
 				audio.stop()
 				GameLogic.stopEvents()

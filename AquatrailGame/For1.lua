@@ -60,6 +60,13 @@ endLevel = function (self, score, time)
 	backbutton.y = backbutton.height / 2
 	local function pressBack (event)
 		if event.phase == "ended" then
+				if paused == false then
+					chrono.Pause()
+					GameLogic.PauseGame()
+				elseif paused == true then
+					chrono.Pause()
+					GameLogic.PauseGame()
+				end
 				chrono.Stop()
 				audio.stop()
 				GameLogic.stopEvents()

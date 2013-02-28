@@ -3,7 +3,7 @@ module(..., package.seeall)
 local loadsave = require("loadsave")
 require("UUID")
 
-local MAXLEVELINWORLD=6
+local MAXLEVELINWORLD=15
 
 tempInfo = {}
 tempInfo.Login = "unnamed"
@@ -48,27 +48,27 @@ worldinfo.world1.level1.unlocked = true
 worldinfo.world1.level2 = {}
 worldinfo.world1.level2.score = 0
 worldinfo.world1.level2.time = ""
-worldinfo.world1.level2.unlocked = false
+worldinfo.world1.level2.unlocked = true
 
 worldinfo.world1.level3 = {}
 worldinfo.world1.level3.score = 0
 worldinfo.world1.level3.time = ""
-worldinfo.world1.level3.unlocked = false
+worldinfo.world1.level3.unlocked = true
 
 worldinfo.world1.level4 = {}
 worldinfo.world1.level4.score = 0
 worldinfo.world1.level4.time = ""
-worldinfo.world1.level4.unlocked = false
+worldinfo.world1.level4.unlocked = true
 
 worldinfo.world1.level5 = {}
 worldinfo.world1.level5.score = 0
 worldinfo.world1.level5.time = ""
-worldinfo.world1.level5.unlocked = false
+worldinfo.world1.level5.unlocked = true
 
 worldinfo.world1.level6 = {}
 worldinfo.world1.level6.score = 0
 worldinfo.world1.level6.time = ""
-worldinfo.world1.level6.unlocked = false
+worldinfo.world1.level6.unlocked = true
 
 --WORLDINFO 2
 --
@@ -83,27 +83,27 @@ worldinfo.world2.level1.unlocked = true
 worldinfo.world2.level2 = {}
 worldinfo.world2.level2.score = 0
 worldinfo.world2.level2.time = ""
-worldinfo.world2.level2.unlocked = false
+worldinfo.world2.level2.unlocked = true
 
 worldinfo.world2.level3 = {}
 worldinfo.world2.level3.score = 0
 worldinfo.world2.level3.time = ""
-worldinfo.world2.level3.unlocked = false
+worldinfo.world2.level3.unlocked = true
 
 worldinfo.world2.level4 = {}
 worldinfo.world2.level4.score = 0
 worldinfo.world2.level4.time = ""
-worldinfo.world2.level4.unlocked = false
+worldinfo.world2.level4.unlocked = true
 
 worldinfo.world2.level5 = {}
 worldinfo.world2.level5.score = 0
 worldinfo.world2.level5.time = ""
-worldinfo.world2.level5.unlocked = false
+worldinfo.world2.level5.unlocked = true
 
 worldinfo.world2.level6 = {}
 worldinfo.world2.level6.score = 0
 worldinfo.world2.level6.time = ""
-worldinfo.world2.level6.unlocked = false
+worldinfo.world2.level6.unlocked = true
 
 --WORLDINFO 3
 --
@@ -158,13 +158,14 @@ local initProfile = function( )
 		loadsave.saveTable(worldinfo, "profileOrigin.json")
 		print("JASON FILE NOT FOUND, CREATING NEW FILE")
 	elseif (worldInfoFile.version ~= worldinfo.version ) then		loadsave.saveTable(worldinfo, "profile.json")
-		loadsave.saveTable(worldinfo, "profileOrigin.json")
+		--loadsave.saveTable(worldinfo, "profileOrigin.json")
 		print("JASON FILE OUT DATED, CREATING NEW FILE")	else 
 		worldinfo = worldInfoFile
 		print("WORLDINFO LOADED FROM FILE")
 	end
 	tempInfo.Login = worldinfo.pseudo
 	tempInfo.Uid = worldinfo.Uid
+	print(worldinfo.world1.level2.unlocked)
 end
 
 local saveInfoLevel = function(idWorld, idLevel,score, time)

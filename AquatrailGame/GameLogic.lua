@@ -41,6 +41,7 @@ local chargesol = true
 --Etat Gazeu
 local STATE_WALKING_GAZ = "WalkingGaz"
 local STATE_JUMPING_GAZ = "JumpingGaz"
+local STATE_PLUIE = "Pluie"
 local gagnerAlt = false--gagner de l'altitude
 local arroser = false
 
@@ -64,7 +65,7 @@ local BASESPEEDSOLIDE=30
 local BASESPEEDLIQUIDE=30
 local BASEJUMPSOLIDE= 5
 local BASEJUMPLIQUIDE= 5
-local BASESPEEDGAZ= 10
+local BASESPEEDGAZ= 5
 local BASEFLYGAZ= 0.02
 
 --local player.globalJump
@@ -120,10 +121,10 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 
 	--start FPS show
 	--
-	local prevTime = system.getTimer()
-	local fps = display.newText( "30", 30, 47, nil, 24 )
-	fps:setTextColor( 255 )
-	fps.prevTime = prevTime
+	--local prevTime = system.getTimer()
+	--local fps = display.newText( "30", 30, 47, nil, 24 )
+	--fps:setTextColor( 255 )
+	--fps.prevTime = prevTime
 	--
 	--
 	map = lime.loadMap(urlMap)
@@ -190,13 +191,14 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 	--COLLISION --------------------------------------------------------------------------------------------------------
 	function onCollision(self, event )
 	--if GAMESTATE == STATE_PLAY then
-	 	if ( event.phase == "began" ) then			if event.other.IsEnd then				--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau				print("FIN DU NIVEAU")
+	 	if ( event.phase == "began" ) then			if event.other.IsEnd then
+				GAMESTATE = STATE_ENDLEVEL				--En envoi les infos la fonction endLevel qui va se charger de sauvegarder le score et le temps par la suite et debloquer le prochain niveau				print("FIN DU NIVEAU")
 				player:setLinearVelocity(0,0)
 				player:prepare("animEndLevel")
 				player:play()
 				audio.play(startlevel)
-				GAMESTATE = STATE_ENDLEVEL			end
-			if event.other.IsGround then
+							end
+			if event.other.IsGround and GAMESTATE ~= STATE_ENDLEVEL then
 				--print("Ground");
 				player.canJump = true
 				if EtatHero == 0 then
@@ -207,6 +209,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					gagnerAlt = true
 				end
 				if player.state == STATE_JUMPING_LIQ or  player.state == STATE_JUMPING_SOL or  player.state == STATE_JUMPING_GAZ then
+					print("animwalk")
 					if EtatHero == 0 then
 						player.state = STATE_WALKING_LIQ
 					elseif EtatHero ==1 then
@@ -222,8 +225,8 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					BASEJUMPLIQUIDE=30*event.other.bonusJumpLiq
 					BASESPEEDSOLIDE=30*event.other.bonusSpeedSol
 					BASEJUMPSOLIDE=30*event.other.bonusJumpSol
-					--BASESPEEDGAZ=30*event.other.bonusSpeedGaz
-					--BASEFLYGAZ=30*event.other.bonusFlyGaz
+					BASESPEEDGAZ=20*event.other.bonusSpeedGaz
+					BASEFLYGAZ=30*event.other.bonusFlyGaz
 				end
 			elseif event.other.DeclencherStalactite then
 				--print("COUCOUDeclencherStalactite")
@@ -256,6 +259,20 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					transition.to(text, {time = 1000, alpha = 0, onComplete=onTransitionEnd})
 				end
 			end
+		if event.other.IsNuage then
+			if STATECHANGE == LIQGAZ then
+				if EtatHero == 2 then
+					EtatHero = 0
+					doubleSaut = true
+					--print("Etat Liquide")
+					player.state = STATE_TRANSITIONGAZLIQ
+				end
+			end
+		STATE_ANIMATIONENCOURS = true
+		player.direction = DIRECTION_RIGHT
+		player:prepare("anim" .. player.state)
+		player:play()
+		end
 		if event.other.IsFrozen then
 			print("isFrozen")
 				--Jouer l'animation de gele lac
@@ -388,13 +405,13 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 	onUpdate = function(event)
 		--FPS Show
 		--
-		local curTime = event.time
-		local dt = curTime - prevTime
-		prevTime = curTime
-		if ( (curTime - fps.prevTime ) > 100 ) then
+		--local curTime = event.time
+		--local dt = curTime - prevTime
+		--prevTime = curTime
+		--if ( (curTime - fps.prevTime ) > 100 ) then
 			-- limit how often fps updates
-			fps.text = string.format( '%.2f', 1000 / dt )
-		end
+		--	fps.text = string.format( '%.2f', 1000 / dt )
+		--end
 		--
 		--
 		if player.y < 80 then
@@ -434,6 +451,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 			if player.sequence == "animEndLevel" then
 				--Le sprite est il entrain d'executer une animation?
 				if player.animating  then
+					print(player.currentFrame)
 					--Le sprite a il fini son animation?
 					if player.currentFrame ==6 then
 						--print("endlevel2")
@@ -496,7 +514,26 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					end
 				end
 			end
-		
+			if player.sequence == "animPluie" 
+			then
+				--Le sprite est il entrain d'executer une animation?
+				if player.animating  then
+					--Le sprite a il fini son animation?
+					if player.currentFrame ==4 then
+						if EtatHero == 0 then
+							player.state = STATE_WALKING_LIQ
+						elseif EtatHero ==1 then
+							player.state = STATE_WALKING_SOL
+						elseif EtatHero ==2 then
+							player.state = STATE_WALKING_GAZ
+						end
+						STATE_ANIMATIONENCOURS = false
+						player.direction = DIRECTION_RIGHT
+						player:prepare("anim" .. player.state)
+						player:play()
+					end
+				end
+			end
 			local vx, vy = player:getLinearVelocity()
 			--print("vx "..vx)
 			local speed=30
@@ -566,10 +603,6 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 	
 	--Fonction de saut !
 	function ToucheScreen (event)
-		print(display.contentWidth - pauseBUTTON.width)
-		print(display.contentHeight - pauseBUTTON.height)
-		print("event.x"..event.x)
-		print("event.y"..event.y)
 		if GAMESTATE == STATE_PLAY then
 			local vx, vy = player:getLinearVelocity() -- on recup la velociter du hero
 			if ( event.phase == "began" ) then
@@ -596,6 +629,10 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 									timer.performWithDelay( 0, changeraltGaz, 1 )
 									print("monte alt")
 								else
+									player.state = STATE_PLUIE
+									player:prepare("anim" .. player.state)
+									player:play()
+									STATE_ANIMATIONENCOURS = true
 									if arroser then 
 										print("fleur pousse")
 										--Arrosable[Numarroser]:prepare("animation1")
@@ -696,7 +733,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 			end
 			if ( event.phase == "ended" ) then
 				gagnerAlt = false
-				if EtatHero == 2 and STATE_ANIMATIONENCOURS == false then --Faire animation quand on gagne en altitude et quand on perd
+				if EtatHero == 2 and STATE_ANIMATIONENCOURS == false and player.sequence ~= "animEndLevel" then --Faire animation quand on gagne en altitude et quand on perd
 					player.state = STATE_WALKING_GAZ
 					player:prepare("anim" .. player.state)
 					player:play()
