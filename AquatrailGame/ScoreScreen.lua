@@ -64,7 +64,7 @@ new = function ( params )
 	btnScore.y = 90
 	localGroup:insert(btnScore)
 	   
-	local text = display.newText("Score", 0, 0, "Fontastique", 14)
+	local text = display.newText("Score", 0, 0, "Fontastique", 18)
 	text:setReferencePoint( display.CenterLeftReferencePoint )
 	text:setTextColor(255, 255, 255)
 	text.x = 30
@@ -86,7 +86,7 @@ new = function ( params )
 	btnTemps.y = 90
 	localGroup:insert(btnTemps)
 	   
-	text = display.newText("Temps", 0, 0, "Fontastique", 14)
+	text = display.newText("Temps", 0, 0, "Fontastique", 18)
 	text:setReferencePoint( display.CenterLeftReferencePoint )
 	text:setTextColor(255, 255, 255)
 	text.x = 133
@@ -109,7 +109,7 @@ new = function ( params )
 	btnProgression.y = 90
 	localGroup:insert(btnProgression)
 	   
-	text = display.newText("Progression", 0, 0, "Fontastique", 14)
+	text = display.newText("Progression", 0, 0, "Fontastique", 18)
 	text:setReferencePoint( display.CenterLeftReferencePoint )
 	text:setTextColor(255, 255, 255)
 	text.x = 236
@@ -188,7 +188,7 @@ local function onRowRender( event )
 		if(not row.isCategory)
 		then
 			--Contenu Colonne1
-			local text = display.newRetinaText( colonne1Contenu, 0, 0, "Fontastique", 12 )
+			local text = display.newRetinaText( colonne1Contenu, 0, 0, "Fontastique", 13 )
 			text:setReferencePoint( display.CenterMiddleReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth*0.16
@@ -196,7 +196,7 @@ local function onRowRender( event )
 			rowGroup:insert( text )
 			
 			--Contenu Colonne2
-			text = display.newRetinaText( colonne2Contenu, 0, 0, "Fontastique", 12 )
+			text = display.newRetinaText( colonne2Contenu, 0, 0, "Fontastique", 13 )
 			text:setReferencePoint( display.CenterMiddleReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth*0.5
@@ -204,7 +204,7 @@ local function onRowRender( event )
 			rowGroup:insert( text )
 			
 			--Contenu Colonne3
-			text = display.newRetinaText( colonne3Contenu, 0, 0, "Fontastique", 12 )
+			text = display.newRetinaText( colonne3Contenu, 0, 0, "Fontastique", 13 )
 			text:setReferencePoint( display.CenterMiddleReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth*0.82
@@ -212,7 +212,7 @@ local function onRowRender( event )
 			rowGroup:insert( text )
 		else
 			--Titre Colonne1
-			local text = display.newRetinaText( colonne1Titre, 0, 0, "Fontastique", 14 )
+			local text = display.newRetinaText( colonne1Titre, 0, 0, "Fontastique", 16 )
 			text:setReferencePoint( display.CenterMiddleReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth*0.16
@@ -220,7 +220,7 @@ local function onRowRender( event )
 			rowGroup:insert( text )
 			
 			--Titre Colonne2
-			text = display.newRetinaText( colonne2Titre, 0, 0, "Fontastique", 14 )
+			text = display.newRetinaText( colonne2Titre, 0, 0, "Fontastique", 16 )
 			text:setReferencePoint( display.CenterMiddleReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth*0.5
@@ -228,7 +228,7 @@ local function onRowRender( event )
 			rowGroup:insert( text )
 			
 			--Titre Colonne3
-			text = display.newRetinaText( colonne3Titre, 0, 0, "Fontastique", 14 )
+			text = display.newRetinaText( colonne3Titre, 0, 0, "Fontastique", 16 )
 			text:setReferencePoint( display.CenterMiddleReferencePoint )
 			text.y = row.height * 0.5
 			text.x = display.contentWidth*0.82

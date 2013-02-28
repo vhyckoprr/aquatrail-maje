@@ -226,7 +226,7 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 					--BASEFLYGAZ=30*event.other.bonusFlyGaz
 				end
 			elseif event.other.DeclencherStalactite then
-				print("COUCOUDeclencherStalactite")
+				--print("COUCOUDeclencherStalactite")
 				for i=0, #stalactiteTable, 1 do
 					timer.performWithDelay(500, changeStalactiteBodyType(stalactiteTable[i]))
 				end
@@ -364,6 +364,20 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 			--Arrete le bonus dans 2 secondes
 			timer.performWithDelay(2000, stopSuperGoutteEffect, 1)
 		end
+		
+		--Boule de neige ou botte de foin disparaisse au bout de 10s
+		if (event.other.Name == "boule_de_neige" or event.other.Name == "botte_de_foin") 
+		then
+			local bouleNeige = event.other
+				local onTransitionEndBouleNeige = function(transitionEvent)
+					if transitionEvent["removeSelf"] then
+						transitionEvent:removeSelf()
+					end
+				end
+			-- Fade out the bouleNeige
+			transition.to(bouleNeige, {time = 500, delay= 10000, alpha = 0, onComplete=onTransitionEndBouleNeige})
+		end
+		
 	--end	
 	end
 	
@@ -422,10 +436,15 @@ local createMap = function( urlMap, scoreEl, level, statehero, typeMap)
 				if player.animating  then
 					--Le sprite a il fini son animation?
 					if player.currentFrame ==6 then
-						print("endlevel2")
+						--print("endlevel2")
 						LEVEL:endLevel(SCORE,TIME,typeMap)
 					end
 				end
+			end
+			--Evite le problème de fin de niveau (le niveau qui ne se termine pas après l'anim de fin)
+			if(player.sequence ~= "animEndLevel")
+			then
+				LEVEL:endLevel(SCORE,TIME,typeMap)
 			end
 		end
 		if GAMESTATE == STATE_PLAY then		
