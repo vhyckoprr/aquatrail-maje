@@ -46,7 +46,7 @@ endLevel = function (self, score, time)
 	local STATECHANGE = "LiqGaz"
 	
 
-    local visual = GameLogic.createMap("Niveau_F_1.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_F_2.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	chrono.Start()
