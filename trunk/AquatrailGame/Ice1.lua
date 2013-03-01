@@ -23,12 +23,13 @@ new = function ( params )
     }
 	
 	--Background
-   local back = display.newImage("background_ice.png")
+	local back = display.newImage("background_ice.png")
    back.isVisible = true
    back.x = display.contentWidth/2 
    back.y = display.contentHeight/2 
    --fit
-
+   back.width=DynResManager.getScreenWidthPhysPix()
+   back.height=DynResManager.getScreenHeightPhysPix()
    --localGroup:insert(back)
    
 
@@ -46,6 +47,7 @@ new = function ( params )
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
 	local STATECHANGE = "LiqSol"
+	
 
     local visual = GameLogic.createMap("Niveau_G_1.tmx", scoreText, LEVEL,STATECHANGE)
 
@@ -60,8 +62,8 @@ new = function ( params )
 	local function pressBack (event)
 		if event.phase == "ended" then
 				if paused == false then
-					chrono.Pause()
-					GameLogic.PauseGame()
+					--chrono.Pause()
+					--GameLogic.PauseGame()
 				elseif paused == true then
 					chrono.Pause()
 					GameLogic.PauseGame()

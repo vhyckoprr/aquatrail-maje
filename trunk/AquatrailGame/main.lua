@@ -39,8 +39,8 @@ local function main()
 	-----------------------------------
 	local Infos = profile.getInfos()
 	if ( Infos.pseudo=="unnamed" ) then
-		--load profil creation
-		director:changeScene("PseudoScreen")
+		Infos.pseudo = "Joueur"
+		director:changeScene("TitleScreen")
 	else
 		--load profil creation
 		director:changeScene("TitleScreen")

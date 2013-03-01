@@ -132,196 +132,168 @@ new = function ( params )
 		topPadding = 0,
 		maskFile = "mask-scoremenu-320x480.png"
 	}
-	
-	-- Insertion du texte dans chaque ligne au moment de leur génétion
-local function onRowRender( event )
-	local row = event.target
-	local rowGroup = event.view
-	
-	
-	-- Calcul de l'ID et du NOM du Monde et de l'ID du niveau
-	local nomMonde = ""
-	local idNiveau = afficheScore.nivChoisi
-	local idMonde = afficheScore.mondeChoisi
-	
-	--On détermine les colonnes en fonction de l'onglet actif
-		local colonne1Titre = ""
-		local colonne2Titre = ""
-		local colonne3Titre = ""
-		
-		if(afficheScore.ongletActif == 1)
-		then
-			colonne1Titre = "Classement"
-			colonne2Titre = "Nom"
-			colonne3Titre = "Score"
 
-		elseif(afficheScore.ongletActif == 2)
-		then
-			colonne1Titre = "Classement"
-			colonne2Titre = "Nom"
-			colonne3Titre = "Temps"
-
-		elseif(afficheScore.ongletActif == 3)
-		then
-			colonne1Titre = "Progression"
-			colonne2Titre = ""
-			colonne3Titre = "%"
-			if(event.index == 2) then colonne1Contenu = "Score" end
-			if(event.index == 3) then colonne1Contenu = "Temps" end
-			colonne2Contenu = ""
-		
-		end
-		
-		-- Affichage des titres des colonnes et de leur valeur pour chaque ligne
-		if(not row.isCategory)
-		then
-			--Contenu Colonne1
-			local text = display.newRetinaText( colonne1Contenu, 0, 0, "Fontastique", 13 )
-			text:setReferencePoint( display.CenterMiddleReferencePoint )
-			text.y = row.height * 0.5
-			text.x = display.contentWidth*0.16
-			text:setTextColor( 0 )
-			rowGroup:insert( text )
-			
-			--Contenu Colonne2
-			text = display.newRetinaText( colonne2Contenu, 0, 0, "Fontastique", 13 )
-			text:setReferencePoint( display.CenterMiddleReferencePoint )
-			text.y = row.height * 0.5
-			text.x = display.contentWidth*0.5
-			text:setTextColor( 0 )
-			rowGroup:insert( text )
-			
-			--Contenu Colonne3
-			text = display.newRetinaText( colonne3Contenu, 0, 0, "Fontastique", 13 )
-			text:setReferencePoint( display.CenterMiddleReferencePoint )
-			text.y = row.height * 0.5
-			text.x = display.contentWidth*0.82
-			text:setTextColor( 0 )
-			rowGroup:insert( text )
-		else
-			--Titre Colonne1
-			local text = display.newRetinaText( colonne1Titre, 0, 0, "Fontastique", 16 )
-			text:setReferencePoint( display.CenterMiddleReferencePoint )
-			text.y = row.height * 0.5
-			text.x = display.contentWidth*0.16
-			text:setTextColor( 255, 255, 255 )
-			rowGroup:insert( text )
-			
-			--Titre Colonne2
-			text = display.newRetinaText( colonne2Titre, 0, 0, "Fontastique", 16 )
-			text:setReferencePoint( display.CenterMiddleReferencePoint )
-			text.y = row.height * 0.5
-			text.x = display.contentWidth*0.5
-			text:setTextColor( 255, 255, 255 )
-			rowGroup:insert( text )
-			
-			--Titre Colonne3
-			text = display.newRetinaText( colonne3Titre, 0, 0, "Fontastique", 16 )
-			text:setReferencePoint( display.CenterMiddleReferencePoint )
-			text.y = row.height * 0.5
-			text.x = display.contentWidth*0.82
-			text:setTextColor( 255, 255, 255 )
-			rowGroup:insert( text )
-		end
-end
-	
 	--Insert widgets/images into a group
 	localGroup:insert( list )
 	
-	function networkListener( event )
-        if ( event.isError ) then
-                colonne1Contenu = "Network Error"
-				colonne2Contenu = ""
-				colonne3Contenu = ""
-				displayError()
-        else
-                myNewData = event.response
-                print ("From server: "..myNewData)
-                decodedData = (json.decode( myNewData)) 
-				if (decodedData.error == nil) then
-					local index = decodedData.index - 1
-					createCategory()
-					print(worldinfo.Uid)
-					for i=1, index, 1 do
-						colonne1Contenu = i
-						colonne2Contenu = decodedData["row"..i].login
-						if(afficheScore.ongletActif == 1)
-						then
-							colonne3Contenu = decodedData["row"..i].score
-						else
-							colonne3Contenu = decodedData["row"..i].time
-						end
-						refreshData(decodedData["row"..i], i)
+local function ongletActif(event)
+
+	
+	apparenceOngletActif ()
+	list:deleteAllRows()
+
+	-- Insertion du texte dans chaque ligne au moment de leur génétion
+	local function onRowRender( event )
+		local row = event.target
+		local rowGroup = event.view
+		
+		-- Calcul de l'ID et du NOM du Monde et de l'ID du niveau
+		local nomMonde = ""
+		local idNiveau = afficheScore.nivChoisi
+		local idMonde = 1
+		if(afficheScore.scoreGlace) then nomMonde = "Glace"; idMonde = 1
+		elseif(afficheScore.scoreForet) then nomMonde = "Forêt"; idMonde = 2
+		elseif(afficheScore.scoreDesert) then nomMonde = "Désert"; idMonde = 3
+		elseif(afficheScore.scoreIle) then nomMonde = "Île"; idMonde = 4
+		else end
+		
+		--On détermine les colonnes en fonction de l'onglet actif
+			local colonne1Titre = ""
+			local colonne2Titre = ""
+			local colonne3Titre = ""
+			local colonne1Contenu = ""
+			local colonne2Contenu = ""
+			local colonne3Contenu = 0
+			if(afficheScore.ongletActif == 1)
+			then
+				colonne1Titre = "Nom"
+				colonne2Titre = "Pays"
+				colonne3Titre = "Score"
+				colonne1Contenu = "Joueur"
+				colonne2Contenu = "France"
+				if (idMonde ~= 4) then -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+					colonne3Contenu = worldinfo["world"..idMonde]["level"..idNiveau].score
+				end -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+			elseif(afficheScore.ongletActif == 2)
+			then
+				colonne1Titre = "Nom"
+				colonne2Titre = "Pays"
+				colonne3Titre = "Temps"
+				colonne1Contenu = "Joueur"
+				colonne2Contenu = "France"
+				if (idMonde ~= 4) then -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+					local temps = tonumber(worldinfo["world"..idMonde]["level"..idNiveau].time)
+					if(temps ~= nil)
+					then
+						local zeroComposite = ""
+						if((temps%60) >= 0 and (temps%60) < 10) then zeroComposite = "0" end
+						colonne3Contenu = math.floor(temps/60)..":"..zeroComposite..(temps%60)
+					else
+						colonne3Contenu = "∞"
 					end
-				else
-					colonne1Contenu = "Pas de données"
-					colonne2Contenu = ""
-					colonne3Contenu = ""
-					displayWarning()
-				end
-        end
-	end
-	network.request( "http://12h52.fr/aquatrail/list.php?world="..afficheScore.mondeChoisi.."&stage="..afficheScore.nivChoisi.."", "GET", networkListener )
-
-	function displayError()
-		
-		isCategory = false; rowHeight = 34; rowColor={ 255, 0, 0, 255 }; lineColor={0, 56, 112, 255}
-		list:insertRow
-		{
-			isCategory = isCategory,
-			onRender = onRowRender,
-			height = rowHeight,
-			rowColor = rowColor,
-			lineColor = lineColor
-		}
-		
+				end -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+			elseif(afficheScore.ongletActif == 3)
+			then
+				colonne1Titre = "Progression"
+				colonne2Titre = ""
+				colonne3Titre = "%"
+				if(event.index == 2) then colonne1Contenu = "Score" end
+				if(event.index == 3) then colonne1Contenu = "Temps" end
+				colonne2Contenu = ""
+				if (idMonde ~= 4) then -- A SUPPRIMER lorsque la bdd des mondes sera complète 
+					--A DECOMENTER quand chaque niveau aura son scoreMax.
+					-- if(event.index == 2) then colonne3Contenu = math.min(math.ceil(worldinfo["world"..idMonde]["level"..idNiveau].score*100 / worldinfo["world"..idMonde]["level"..idNiveau].scoreMax), 100) end
+					-- if(event.index == 3) then 
+						--local temps = tonumber(worldinfo["world"..idMonde]["level"..idNiveau].time)
+						--if(temps ~= nil and temps <= 120000) then colonne3Contenu = 100
+						--elseif(temps ~= nil and temps >= 300000) then colonne3Contenu = 0
+						--elseif(temps ~= nil and ) then colonne3Contenu = math.ceil(temps*100 / worldinfo["world"..idMonde]["level"..idNiveau].timeMin)
+						--else end
+					--end
+					
+					--Pour depanner on dit que le score max est 5000 pour tous les niveaux 
+					--et que si le temps est inférieur à 1mn on a 100% et que s'il est supérieur à 3mn on a 0% (entre les deux, on applique une règle de proportionnalité)
+					if(event.index == 2) then colonne3Contenu = math.min(math.ceil(worldinfo["world"..idMonde]["level"..idNiveau].score*100 /5000), 100) end
+					if(event.index == 3) 
+					then
+						local temps = tonumber(worldinfo["world"..idMonde]["level"..idNiveau].time)
+						if(temps ~= nil and temps <= 60) then colonne3Contenu = 100
+						elseif(temps ~= nil and temps >= 180) then colonne3Contenu = 0
+						elseif (temps ~= nil) then colonne3Contenu = math.min(200-math.ceil(temps*100 / 60), 100)
+						else colonne3Contenu = 0 end
+					end
+				end -- A SUPPRIMER lorsque la bdd des mondes sera complète
+			end
+			
+			-- Affichage des titres des colonnes et de leur valeur pour chaque ligne
+			if(not row.isCategory)
+			then
+				--Contenu Colonne1
+				local text = display.newRetinaText( colonne1Contenu, 0, 0, "Arial", 12 )
+				text:setReferencePoint( display.CenterMiddleReferencePoint )
+				text.y = row.height * 0.5
+				text.x = display.contentWidth*0.16
+				text:setTextColor( 0 )
+				rowGroup:insert( text )
+				
+				--Contenu Colonne2
+				text = display.newRetinaText( colonne2Contenu, 0, 0, "Arial", 12 )
+				text:setReferencePoint( display.CenterMiddleReferencePoint )
+				text.y = row.height * 0.5
+				text.x = display.contentWidth*0.5
+				text:setTextColor( 0 )
+				rowGroup:insert( text )
+				
+				--Contenu Colonne3
+				text = display.newRetinaText( colonne3Contenu, 0, 0, "Arial", 12 )
+				text:setReferencePoint( display.CenterMiddleReferencePoint )
+				text.y = row.height * 0.5
+				text.x = display.contentWidth*0.82
+				text:setTextColor( 0 )
+				rowGroup:insert( text )
+			else
+				--Titre Colonne1
+				local text = display.newRetinaText( colonne1Titre, 0, 0, "Arial", 14 )
+				text:setReferencePoint( display.CenterMiddleReferencePoint )
+				text.y = row.height * 0.5
+				text.x = display.contentWidth*0.16
+				text:setTextColor( 255, 255, 255 )
+				rowGroup:insert( text )
+				
+				--Titre Colonne2
+				text = display.newRetinaText( colonne2Titre, 0, 0, "Arial", 14 )
+				text:setReferencePoint( display.CenterMiddleReferencePoint )
+				text.y = row.height * 0.5
+				text.x = display.contentWidth*0.5
+				text:setTextColor( 255, 255, 255 )
+				rowGroup:insert( text )
+				
+				--Titre Colonne3
+				text = display.newRetinaText( colonne3Titre, 0, 0, "Arial", 14 )
+				text:setReferencePoint( display.CenterMiddleReferencePoint )
+				text.y = row.height * 0.5
+				text.x = display.contentWidth*0.82
+				text:setTextColor( 255, 255, 255 )
+				rowGroup:insert( text )
+			end
 	end
 	
-	function displayWarning()
+	-- Creation des lignes
+		--Nombre de ligne necessaire (par défaut = 2) (normalement, il faut compter le nombre de ligne dans la bdd
+	local nbLigne = 2
+	if(afficheScore.ongletActif  == 3) then nbLigne = 3 end
 		
-		isCategory = false; rowHeight = 34; rowColor={ 255, 255, 0, 255 }; lineColor={0, 56, 112, 255}
-		list:insertRow
-		{
-			isCategory = isCategory,
-			onRender = onRowRender,
-			height = rowHeight,
-			rowColor = rowColor,
-			lineColor = lineColor
-		}
-		
-	end
+	for i=1,nbLigne do
 	
-	function createCategory()
-		
-		isCategory = true; rowHeight = 34; rowColor={ 0, 56, 112, 255 }; lineColor={0, 56, 112, 255}
-		list:insertRow
-		{
-			isCategory = isCategory,
-			onRender = onRowRender,
-			height = rowHeight,
-			rowColor = rowColor,
-			lineColor = lineColor
-		}
-		
-	end
-
-	function refreshData(playerData, index)
-
 		isCategory = false
 		rowHeight = 30
+		rowColor = {255,255,255,100}
 		lineColor = {0, 56, 112, 255}
 		
-		print(playerData.adress)
-		if ( playerData.adress == worldinfo.Uid )
-		then
-			color = 127
-			rowColor = {0,0,0,155}
-		else
-			color = 0
-			rowColor = {255,255,255,100}
+		if(i == 1) then 
+			isCategory = true; rowHeight = 34; rowColor={ 0, 56, 112, 255 }; lineColor={0, 56, 112, 255}
 		end
-		
-		
+	
 		list:insertRow
 		{
 			isCategory = isCategory,
@@ -331,21 +303,14 @@ end
 			lineColor = lineColor
 		}
 	end
-
-	function refresh()
-		apparenceOngletActif ()
-		list:deleteAllRows()
-		network.request( "http://12h52.fr/aquatrail/list.php?world="..afficheScore.mondeChoisi.."&stage="..afficheScore.nivChoisi.."", "GET", networkListener )
-	end
-	
-btnScore:addEventListener ("tap", refresh)
-btnTemps:addEventListener ("tap", refresh)
-btnProgression:addEventListener ("tap", refresh)	
+end
+btnScore:addEventListener ("tap", ongletActif)
+btnTemps:addEventListener ("tap", ongletActif)
+btnProgression:addEventListener ("tap", ongletActif)	
 
 --Affichage initial
 timer.performWithDelay( 0, apparenceOngletActif )
---timer.performWithDelay( 0, ongletActif )
-
+timer.performWithDelay( 0, ongletActif )
 
 	-- Bouton retour
 	local reBtn = display.newImage(boutonRetour)

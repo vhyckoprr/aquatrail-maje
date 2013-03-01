@@ -6,11 +6,11 @@
    <properties>
     <property name="HasBody" value=""/>
     <property name="IsAnimated" value=""/>
-    <property name="animFlame" value="frameCount=4,time=400"/>
     <property name="animFlameEteinte" value="startFrame=5,frameCount=6,time=500"/>
+    <property name="animation1" value="frameCount=4,time=400"/>
     <property name="bodyType" value="static"/>
     <property name="isSensor" value="true"/>
-    <property name="sequences" value="[&quot;animFlame&quot;,&quot;animFlamEteinte&quot;]"/>
+    <property name="sequences" value="[&quot;animation1&quot;,&quot;animFlamEteinte&quot;]"/>
    </properties>
   </tile>
  </tileset>
@@ -20,14 +20,14 @@
  <tileset firstgid="52" source="player.tsx"/>
  <tileset firstgid="133" source="sol_herbe.tsx"/>
  <tileset firstgid="147" source="sol_terre.tsx"/>
- <tileset firstgid="157" source="esprit_foret.tsx"/>
+ <tileset firstgid="157" source="esprit_glace.tsx"/>
  <tileset firstgid="162" source="boue.tsx"/>
  <tileset firstgid="172" source="buisson.tsx"/>
  <tileset firstgid="173" source="ecureuil.tsx"/>
  <tileset firstgid="175" source="transition_herbe_boue.tsx"/>
  <tileset firstgid="179" source="transition_terre_boue.tsx"/>
  <tileset firstgid="183" source="transition_terre_herbe.tsx"/>
- <layer name="AnimationForet" width="300" height="30">
+ <layer name="SableMouvant" width="300" height="30">
   <properties>
    <property name="parallaxBase" value=""/>
   </properties>

@@ -14,26 +14,25 @@ local preLoadAnim = function ()
 	
 	Load.chargement = sprite.newSprite( Load.spriteSet )
 	Load.chargement.isVisible = false
-	Load.chargement:setReferencePoint( display.CenterRightReferencePoint )
+	Load.chargement:setReferencePoint( display.CenterLeftReferencePoint )
 	
 	Load.textChargement = display.newText( "Chargement...", 0, 0, "Fontastique", 16 )
 	Load.textChargement.isVisible = false
 	Load.textChargement:setTextColor(255, 255, 255)
-	Load.textChargement:setReferencePoint(display.CenterRightReferencePoint)
+	Load.textChargement:setReferencePoint(display.CenterLeftReferencePoint)
 	
-	Load.chargement.x = Load.chargement.width +5
-	Load.chargement.y = Load.chargement.height - 10
+	Load.chargement.x = 10
+	Load.chargement.y = Load.chargement.height*0.5 + 10
 	Load.chargement:prepare("chargement")
 	
-	Load.textChargement.x = Load.chargement.width + Load.chargement.width*4
-	Load.textChargement.y = Load.chargement.height - 10
-	
+	Load.textChargement.x = Load.chargement.width + 20
+	Load.textChargement.y = Load.chargement.height*0.5 + 10
 end
 
 local play = function ()
 	Load.textChargement.isVisible = true
 	Load.chargement.isVisible = true
-	--Load.chargement:play()
+	Load.chargement:play()
 end
 
  local Loading = { play=play, preLoadAnim=preLoadAnim }

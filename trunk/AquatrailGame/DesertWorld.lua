@@ -3,13 +3,17 @@ module(..., package.seeall)
 new = function ( params )
 	
 	local DynResManager = require("DynResManager")
+	local EcranTutoD = require("EcranTutoD")
 	local worldInfos = profile.getInfos()
-	local unlockLevel1 = worldInfos.world2.level1.unlocked
-	local unlockLevel2 = worldInfos.world2.level2.unlocked
-	local unlockLevel3 = worldInfos.world2.level3.unlocked
-	local unlockLevel4 = worldInfos.world2.level4.unlocked
-	local unlockLevel5 = worldInfos.world2.level5.unlocked
-	local unlockLevel6 = worldInfos.world2.level6.unlocked
+	local unlockLevel1 = worldInfos.world3.level1.unlocked
+	local unlockLevel2 = worldInfos.world3.level2.unlocked
+	local unlockLevel3 = worldInfos.world3.level3.unlocked
+	local unlockLevel4 = worldInfos.world3.level4.unlocked
+	local unlockLevel5 = worldInfos.world3.level5.unlocked
+	local unlockLevel6 = worldInfos.world3.level6.unlocked
+	
+	--POUR LE MOMENT CES NIVEAUX SONT INEXISTANT DONC ON LES BLOQUE
+	unlockLevel6 = false
 	
 	local localGroup = display.newGroup()
 		-- Background
@@ -149,17 +153,12 @@ new = function ( params )
    case6Cad.y =  case6Btn.y
    localGroup:insert(case6Cad)
    
-   --chargement.preLoadAnim()
+   chargement.preLoadAnim()
    
    --Level 1 Clic
 	local function pressCase1(event)
-		if(unlockLevel1)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel1 ) then
+			EcranTutoD.level=1
 			director:changeScene ("EcranTutoD")
 		end
 	end
@@ -167,70 +166,45 @@ new = function ( params )
 	
 	--Level 2 Clic
 	local function pressCase2(event)
-		if(unlockLevel2)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel2 )  then
-			director:changeScene ("EcranTutoD")
+			EcranTutoD.level=2
+			director:changeScene ("Des2")
 		end
 	end
 	case2Btn:addEventListener ("touch", pressCase2)
 	
 	--Level 3 Clic
 	local function pressCase3(event)
-		if(unlockLevel3)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel3 )  then
-			director:changeScene ("EcranTutoD")
+			EcranTutoD.level=3
+			director:changeScene ("Des3")
 		end
 	end
 	case3Btn:addEventListener ("touch", pressCase3)
 	
 	--Level 4 Clic
 	local function pressCase4(event)
-		if(unlockLevel4)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel4 )  then
-			director:changeScene ("EcranTutoD")
+			EcranTutoD.level=4
+			director:changeScene ("Des4")
 		end
 	end
 	case4Btn:addEventListener ("touch", pressCase4)
 	
 	--Level 5 Clic
 	local function pressCase5(event)
-		if(unlockLevel5)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel5 )  then
-			director:changeScene ("EcranTutoD")
+			EcranTutoD.level=5
+			director:changeScene ("Des5")
 		end
 	end
 	case5Btn:addEventListener ("touch", pressCase5)
 	
 	--Level 6 Clic
 	local function pressCase6(event)
-		if(unlockLevel6)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel6 )  then
-			director:changeScene ("EcranTutoD")
+			EcranTutoD.level=6
+			director:changeScene ("Des6")
 		end
 	end
 	case6Btn:addEventListener ("touch", pressCase6)
