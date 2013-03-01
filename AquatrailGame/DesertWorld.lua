@@ -52,7 +52,7 @@ new = function ( params )
    localGroup:insert(case1Btn)
     local case1Text = display.newText("1", 0, 0, "Fontastique", 32)
 	case1Text:setTextColor(105, 26, 186)
-	case1Text.isVisible = unlockLevel1
+	case1Text.isVisible = true
 	case1Text.x = case1Btn.x
 	case1Text.y = case1Btn.y
    
@@ -64,7 +64,7 @@ new = function ( params )
    localGroup:insert(case2Btn)
    local case2Text = display.newText("2", 0, 0, "Fontastique", 32)
 	case2Text:setTextColor(105, 26, 186)
-	case2Text.isVisible = unlockLevel2
+	case2Text.isVisible = true
 	case2Text.x = case2Btn.x
 	case2Text.y = case2Btn.y
    
@@ -76,7 +76,7 @@ new = function ( params )
    localGroup:insert(case3Btn)
    local case3Text = display.newText("3", 0, 0, "Fontastique", 32)
 	case3Text:setTextColor(105, 26, 186)
-	case3Text.isVisible = unlockLevel3
+	case3Text.isVisible = true
 	case3Text.x = case3Btn.x
 	case3Text.y = case3Btn.y
    
@@ -88,7 +88,7 @@ new = function ( params )
    localGroup:insert(case4Btn)
    local case4Text = display.newText("4", 0, 0, "Fontastique", 32)
 	case4Text:setTextColor(105, 26, 186)
-	case4Text.isVisible = unlockLevel4
+	case4Text.isVisible = true
 	case4Text.x = case4Btn.x
 	case4Text.y = case4Btn.y
    
@@ -100,7 +100,7 @@ new = function ( params )
    localGroup:insert(case5Btn)
    local case5Text = display.newText("5", 0, 0, "Fontastique", 32)
 	case5Text:setTextColor(105, 26, 186)
-	case5Text.isVisible = unlockLevel5
+	case5Text.isVisible = true
 	case5Text.x = case5Btn.x
 	case5Text.y = case5Btn.y
    
@@ -112,43 +112,43 @@ new = function ( params )
    localGroup:insert(case6Btn)
    local case6Text = display.newText("6", 0, 0, "Fontastique", 32)
 	case6Text:setTextColor(105, 26, 186)
-	case6Text.isVisible = unlockLevel6
+	case6Text.isVisible = true
 	case6Text.x = case6Btn.x
 	case6Text.y = case6Btn.y
 	
 	--cadenas
    local case1Cad = display.newImage("cadenas_niveau_bloque.png")
-   case1Cad.isVisible = not unlockLevel1
+   case1Cad.isVisible = false
    case1Cad.x = case1Btn.x
    case1Cad.y =  case1Btn.y
    localGroup:insert(case1Cad)
    --
    local case2Cad = display.newImage("cadenas_niveau_bloque.png")
-   case2Cad.isVisible = not unlockLevel2
+   case2Cad.isVisible = false
    case2Cad.x = case2Btn.x
    case2Cad.y =  case2Btn.y
    localGroup:insert(case2Cad)
    --
    local case3Cad = display.newImage("cadenas_niveau_bloque.png")
-   case3Cad.isVisible = not unlockLevel3
+   case3Cad.isVisible = false
    case3Cad.x = case3Btn.x
    case3Cad.y =  case3Btn.y
    localGroup:insert(case3Cad)
    --
    local case4Cad = display.newImage("cadenas_niveau_bloque.png")
-   case4Cad.isVisible = not unlockLevel4
+   case4Cad.isVisible = false
    case4Cad.x = case4Btn.x
    case4Cad.y =  case4Btn.y
    localGroup:insert(case4Cad)
    --
    local case5Cad = display.newImage("cadenas_niveau_bloque.png")
-   case5Cad.isVisible = not unlockLevel5
+   case5Cad.isVisible = false
    case5Cad.x = case5Btn.x
    case5Cad.y =  case5Btn.y
    localGroup:insert(case5Cad)
    --
    local case6Cad = display.newImage("cadenas_niveau_bloque.png")
-   case6Cad.isVisible = not unlockLevel6
+   case6Cad.isVisible = false
    case6Cad.x = case6Btn.x
    case6Cad.y =  case6Btn.y
    localGroup:insert(case6Cad)
