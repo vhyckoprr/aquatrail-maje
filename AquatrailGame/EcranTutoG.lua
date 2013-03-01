@@ -5,8 +5,8 @@ new = function ( params )
 	--system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
-	local level = 1
 	local localGroup = display.newGroup()
+	local level = 1
 	local tuto = false
 	chargement.preLoadAnim()
 	--Background
@@ -44,7 +44,7 @@ new = function ( params )
 		end
    end
    Runtime:addEventListener("touch", ToucheScreenTuto)
-   
+
    return localGroup
 end
 

@@ -4,15 +4,7 @@
   <property name="ParallaxEnabled" value="true"/>
  </properties>
  <tileset firstgid="1" source="goutteletteSpriteSheet.tsx"/>
- <tileset firstgid="3" name="boule_de_neige" tilewidth="64" tileheight="64">
-  <image source="boule_de_neige.png" width="64" height="64"/>
-  <tile id="0">
-   <properties>
-    <property name="HasBody" value=""/>
-    <property name="bodyType" value="dynamic"/>
-   </properties>
-  </tile>
- </tileset>
+ <tileset firstgid="3" source="boule_de_neige.tsx"/>
  <tileset firstgid="4" name="plateforme" tilewidth="32" tileheight="32">
   <image source="plateforme.png" width="96" height="96"/>
  </tileset>

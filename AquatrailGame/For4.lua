@@ -4,8 +4,9 @@ new = function ( params )
 
 	
 	local localGroup = display.newGroup()
-	display.setStatusBar( display.HiddenStatusBar )
 	local paused = false
+	display.setStatusBar( display.HiddenStatusBar )
+
 	--system.activate( "multitouch" )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
@@ -13,8 +14,8 @@ new = function ( params )
 	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
 	local LEVEL = { 
 endLevel = function (self, score, time)
-		profile.saveInfoLevel(1, 2,score, chrono.getTotalTimeInSecond())
-		chrono.Stop()
+		profile.saveInfoLevel(3, 4,score, chrono.getTotalTimeInSecond())
+		chrono:Stop()
 		audio.stop()
 		GameLogic.stopEvents()
 		director:changeScene ("ScoreScreen")
@@ -26,7 +27,9 @@ endLevel = function (self, score, time)
    back.isVisible = true
    back.x = 	display.contentWidth/2 
    back.y =  display.contentHeight/2 
-
+   --fit
+   back.width=DynResManager.getScreenWidthPhysPix()
+   back.height=DynResManager.getScreenHeightPhysPix()
    --localGroup:insert(back)
    
 	local scoreText  = display.newText( "Score : ", 0, 0, "Fontastique", 20 )
@@ -43,10 +46,10 @@ endLevel = function (self, score, time)
 	--local LIQSOL = "LiqSol"
 	--local LIQGAZ = "LiqGaz"
 	--local SOLGAZ = "SolGaz"
-	local STATECHANGE = "LiqGaz"
+	local STATECHANGE = "LiqSol"
 	
 
-    local visual = GameLogic.createMap("Niveau_F_1.tmx", scoreText, LEVEL,STATECHANGE)
+    local visual = GameLogic.createMap("Niveau_F_4.tmx", scoreText, LEVEL,STATECHANGE)
 
 	--CHRONOMETRE
 	chrono.Start()
@@ -59,8 +62,8 @@ endLevel = function (self, score, time)
 	local function pressBack (event)
 		if event.phase == "ended" then
 				if paused == false then
-					chrono.Pause()
-					GameLogic.PauseGame()
+					--chrono.Pause()
+					--GameLogic.PauseGame()
 				elseif paused == true then
 					chrono.Pause()
 					GameLogic.PauseGame()
@@ -78,6 +81,7 @@ endLevel = function (self, score, time)
 	pauseBUTTON.x = display.contentWidth - (pauseBUTTON.width / 2)
 	pauseBUTTON.y = pauseBUTTON.height / 2
 	local function PauseFonction (event)
+		print("pause")
 		if event.phase == "ended" then
 			if paused == false then
 				chrono.Pause()

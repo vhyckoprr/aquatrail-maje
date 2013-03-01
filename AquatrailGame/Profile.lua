@@ -3,7 +3,7 @@ module(..., package.seeall)
 local loadsave = require("loadsave")
 require("UUID")
 
-local MAXLEVELINWORLD=15
+local MAXLEVELINWORLD=10
 
 tempInfo = {}
 tempInfo.Login = "unnamed"
@@ -158,14 +158,13 @@ local initProfile = function( )
 		loadsave.saveTable(worldinfo, "profileOrigin.json")
 		print("JASON FILE NOT FOUND, CREATING NEW FILE")
 	elseif (worldInfoFile.version ~= worldinfo.version ) then		loadsave.saveTable(worldinfo, "profile.json")
-		--loadsave.saveTable(worldinfo, "profileOrigin.json")
+		loadsave.saveTable(worldinfo, "profileOrigin.json")
 		print("JASON FILE OUT DATED, CREATING NEW FILE")	else 
 		worldinfo = worldInfoFile
 		print("WORLDINFO LOADED FROM FILE")
 	end
 	tempInfo.Login = worldinfo.pseudo
 	tempInfo.Uid = worldinfo.Uid
-	print(worldinfo.world1.level2.unlocked)
 end
 
 local saveInfoLevel = function(idWorld, idLevel,score, time)

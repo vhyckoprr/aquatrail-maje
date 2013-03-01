@@ -5,8 +5,10 @@
   <properties>
    <property name="HasBody" value=""/>
    <property name="IsAnimated" value=""/>
+   <property name="IsNuage" value=""/>
    <property name="animation1" value="frameCount=2,time=800"/>
    <property name="bodyType" value="static"/>
+   <property name="isSensor" value="true"/>
    <property name="sequences" value="animation1"/>
   </properties>
  </tile>

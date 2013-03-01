@@ -150,16 +150,10 @@ new = function ( params )
    case6Cad.y =  case6Btn.y
    localGroup:insert(case6Cad)
 
-	--chargement.preLoadAnim()
+	chargement.preLoadAnim()
    
 	--Level 1 Clic
 	local function pressCase1(event)
-		if(unlockLevel1)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel1 ) then
 			EcranTutoG.level=1
 			director:changeScene ("EcranTutoG")
@@ -169,75 +163,45 @@ new = function ( params )
 	
 	--Level 2 Clic
 	local function pressCase2(event)
-		if(unlockLevel2)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel2 )  then
 			EcranTutoG.level=2
-			director:changeScene ("EcranTutoG")
+			director:changeScene ("Ice2")
 		end
 	end
 	case2Btn:addEventListener ("touch", pressCase2)
 	
 	--Level 3 Clic
 	local function pressCase3(event)
-		if(unlockLevel3)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel3 )  then
 			EcranTutoG.level=3
-			director:changeScene ("EcranTutoG")
+			director:changeScene ("Ice3")
 		end
 	end
 	case3Btn:addEventListener ("touch", pressCase3)
 	
 	--Level 4 Clic
 	local function pressCase4(event)
-		if(unlockLevel4)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel4 )  then
 			EcranTutoG.level=4
-			director:changeScene ("EcranTutoG")
+			director:changeScene ("Ice4")
 		end
 	end
 	case4Btn:addEventListener ("touch", pressCase4)
 	
 	--Level 5 Clic
 	local function pressCase5(event)
-		if(unlockLevel5)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel5 )  then
 			EcranTutoG.level=5
-			director:changeScene ("EcranTutoG")
+			director:changeScene ("Ice5")
 		end
 	end
 	case5Btn:addEventListener ("touch", pressCase5)
 	
 	--Level 6 Clic
 	local function pressCase6(event)
-		if(unlockLevel6)
-		then
-			if(event.phase == "began" and unlockLevel1 ) then
-				--chargement.play()
-			end
-		end
 		if (event.phase == "ended" and unlockLevel6 )  then
 			EcranTutoG.level=6
-			director:changeScene ("EcranTutoG")
+			director:changeScene ("Ice6")
 		end
 	end
 	case6Btn:addEventListener ("touch", pressCase6)

@@ -7,7 +7,7 @@
    <property name="IsAnimated" value=""/>
    <property name="IsPlayer" value=""/>
    <property name="animDJumping" value="startFrame=6,frameCount=3,time=800"/>
-   <property name="animEndLevel" value="startFrame=73,frameCount=6,time=10000,loopCount=1"/>
+   <property name="animEndLevel" value="startFrame=73,frameCount=6,time=1000,loopCount=1"/>
    <property name="animJumpingGaz" value="startFrame=22,frameCount=3,time=800"/>
    <property name="animJumpingLiq" value="startFrame=6,frameCount=3,time=800"/>
    <property name="animJumpingSol" value="startFrame=14,frameCount=3,time=800"/>
