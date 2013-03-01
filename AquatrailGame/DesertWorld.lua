@@ -157,7 +157,7 @@ new = function ( params )
    
    --Level 1 Clic
 	local function pressCase1(event)
-		if (event.phase == "ended" and unlockLevel1 ) then
+		if (event.phase == "ended" ) then
 			EcranTutoD.level=1
 			director:changeScene ("EcranTutoD")
 		end
@@ -166,7 +166,7 @@ new = function ( params )
 	
 	--Level 2 Clic
 	local function pressCase2(event)
-		if (event.phase == "ended" and unlockLevel2 )  then
+		if (event.phase == "ended" )  then
 			EcranTutoD.level=2
 			director:changeScene ("Des2")
 		end
@@ -175,7 +175,7 @@ new = function ( params )
 	
 	--Level 3 Clic
 	local function pressCase3(event)
-		if (event.phase == "ended" and unlockLevel3 )  then
+		if (event.phase == "ended" )  then
 			EcranTutoD.level=3
 			director:changeScene ("Des3")
 		end
@@ -184,7 +184,7 @@ new = function ( params )
 	
 	--Level 4 Clic
 	local function pressCase4(event)
-		if (event.phase == "ended" and unlockLevel4 )  then
+		if (event.phase == "ended" )  then
 			EcranTutoD.level=4
 			director:changeScene ("Des4")
 		end
@@ -193,7 +193,7 @@ new = function ( params )
 	
 	--Level 5 Clic
 	local function pressCase5(event)
-		if (event.phase == "ended" and unlockLevel5 )  then
+		if (event.phase == "ended")  then
 			EcranTutoD.level=5
 			director:changeScene ("Des5")
 		end
