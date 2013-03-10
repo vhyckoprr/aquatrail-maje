@@ -4,7 +4,7 @@
 --
 -- Version: 3.4
 --
--- File name: lime-atlas.lua
+-- File name: lime-atlas.luaa
 --
 -- Author: Graham Ranson 
 --

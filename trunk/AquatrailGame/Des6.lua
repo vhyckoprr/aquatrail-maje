@@ -1,5 +1,5 @@
 module(..., package.seeall)
--- Main function - MUST return a display.newGroup()
+-- Main function - MUST return a display.newGroup()a
 new = function ( params )
 
 	
