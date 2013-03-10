@@ -11,7 +11,7 @@ new = function ( params )
 	local DynResManager = require("DynResManager")
 	local GameLogic = require("GameLogic")
 	 
-	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEU
+	 -- L'OBJET LEVEL POSSEDE LA METHODE endLevel QUI PERMETRA A LA GAME LOGIC DE SORTIR DU JEUa
 	local LEVEL = { 
 endLevel = function (self, score, time)
 		profile.saveInfoLevel(3, 4,score, chrono.getTotalTimeInSecond())

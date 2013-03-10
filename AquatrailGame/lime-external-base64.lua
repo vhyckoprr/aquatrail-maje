@@ -1,5 +1,5 @@
 
--- Make some functions easier to write
+-- Make some functions easier to writea
 local floor = math.floor
 local sub = string.sub
 local gsub = string.gsub

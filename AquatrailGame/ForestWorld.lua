@@ -11,7 +11,7 @@ new = function ( params )
 	local unlockLevel5 = worldInfos.world2.level5.unlocked
 	local unlockLevel6 = worldInfos.world2.level6.unlocked
 	
-	--POUR LE MOMENT CES NIVEAUX SONT INEXISTANT DONC ON LES BLOQUE
+	--POUR LE MOMENT CES NIVEAUX SONT INEXISTANT DONC ON LES BLOQUEa
 	unlockLevel2 = false
 	unlockLevel3 = false
 	unlockLevel4 = false
